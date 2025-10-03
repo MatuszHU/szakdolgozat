@@ -24,6 +24,7 @@ A jövőbeli verziói az alkalmazásnak képesek lesznek a nem csak a szórakoz�
 | Statisztika | K12 | Összesítés | v1 | A felhasználó meg tudja tekinteni a ledolgozott óraszámát, előző feladatat |
 | Kommunikáció | K13 | Értesítések | v1 | A felhasználó itt látja a rendszer-, más felhasználói-, és adminisztrátori értesítései. |
 | Jogosultság | K14 | Kijelentkezés | v1 | A felhasználó ki tudj jelentkezni a profiljából és az appból |
+| Felület | K15 | Dokumentáció és Útmutató | v1 | Egy külön dokumentum ahol az összes dokumentum és útmutató elérhető lesz, ami szükséges lehet.
 
 ## Követelménylista - Adminisztrátor
 
@@ -36,7 +37,8 @@ A jövőbeli verziói az alkalmazásnak képesek lesznek a nem csak a szórakoz�
 | Jogosultság | L5 | Kijelentkezés | v1 | A felhasználó ki tudj jelentkezni a profiljából és a weboldalról. |
 | Felület | L6 | Beállítások | v1 | A felhasználó itt tudja a saját beállításait állítani és központilag állítani a munkavállalók számára elérhető nem alapfunkciókat. |
 | Felület | L7 | Térképbeállítások | v1 | Abban az esetben ha nem műholdas vagy standart térképet szeretne használni a felhasználó, lehetősége van saját térképet, grafikát feltölteni és azt kalibrálni, valósához illeszteni. |
-| Statisztika | L8 | Kérelmek | v1 | Minden munkavállaló által leadott kérelem, hívás itt tételesen, csoportosítva és kategorizálva megjeleníthető |
+| Statisztika | L8 | Kérelmek | v1 | Minden munkavállaló által leadott kérelem, hívás itt tételesen, csoportosítva és kategorizálva megjeleníthető. |
+| Felület | L9 | Dokumentáció és Útmutató | v1 | Egy külön dokumentum ahol az összes dokumentum és útmutató elérhető lesz, ami szükséges lehet. |
 
 ## Követelménylista - Vendég
 
@@ -45,8 +47,14 @@ A jövőbeli verziói az alkalmazásnak képesek lesznek a nem csak a szórakoz�
 | Felület | M1 | Üdvözlőképernyő | v1 | Az első alkalmazás megnyitásakor és kijelentkezéskor megejelnő grafika és bejelentkező gomb. |
 | Jogosultág | M2 | Bejelentkezés | v1 | Bejelentkezés és regisztrációs kép. Kizárólag [*Apple Account*](https://support.apple.com/hu-hu/apple-account)al való bejelntkezés lesz támogatott, a "[*Sign in with Apple*](https://developer.apple.com/documentation/signinwithapple)" gyártóspecifikus protokollal, így a bejelentkezés egyben regisztációs folyamat |
 | Felület | M3 | Kezdőképernyő | v1 | Bejelentkezés után, és bejelentkezett állapot esetén ide lesz irányítva a felhasználó. Egyféle hubként funkcionál, és elérhető az összes funkciója az alkalmazásnak |
-| Felület | M4 | Jegyvásárlás | v1 | A vendég innen tud az adott eseményre jegyet venni, vagy a már megvásárolt jegyét megtekinteni és *Apple Tárca* jegykezelőébe helyezni. |
+| Felület | M4 | Jegyvásárlás | v1 | A vendég innen tud az adott eseményre jegyet venni, vagy a már megvásárolt jegyét megtekinteni és *Apple Tárca* jegykezelőjébe helyezni. |
 | Felület | M5 | Térkép | v1 | Esemény térképe, ahol a POI-k megjelennek|
+| Jogosultság | M6 | Kijelentkezés | v1 | A felhasználó ki tudj jelentkezni a profiljából és az appból |
+| Felület | M7 | Nyereményjáték | v1 | Az aktuális nyereményjáték részletei, és részvételre regisztráció |
+| Felület | M8 | Beállítások | v1 | Az a nézet ahol az összes eléhető beállítás megjelenik |
+| Módosítás | M9 | Profilkép | v1 | A felhasználó szabadon tud feltöltetni és módosítani profilképet |
+| Módosítás | M10 | Nyelv | v1 | A felhasználó ki tudja választani a felület nyelvét (Magyar, Angol, Német,Európai Portugál, Szlovák, Román, Horvát, Ukrán) |
+| Felület | M11 | Útmutató | v1 | Egy beépített prompt/pop-up ami grafikák és szöveges leírás segítségével útmutatást ad a felhasználónak. |
 
 ## Riport
 
@@ -54,11 +62,27 @@ Az program nem csak proof-of-concept-ként, hanem tényleges problémát kíván
 
 Mind az alkalmazás, mind a webapp követi az Apple által javasolt Design Best Practices, azaz a jelenlegi legfrissebb design nyelvet használja (Liquid Glass), amit 2025-ben az iOS/iPadOS/MacOS 26-os verzióvial vezettek be.
 
+#### Miért Apple/Swift és miért az Apple keretrendszerei?
+
+Apple ökoszisztéma elősegíti és lehetővé teszu a teljesen egységes funkiconalitást, kinézetet. Emelett kiemelkedő fókuszt helyez a felhasználói biztonságra és adatvédelemre. Összhangot teremt a front- és backend közt.
+
 #### Miért kell a programot 3 külön alkalmazásra szedni?
 
 Azért esett a választás 3 különböző programra, mert minden felhasználócsoport igénye teljesen különböző és nem fedi egymást. Emelett mivel egy felhasználó csoport nem valószínű hogy tagja a másik 2 csoportnak, így a tárhely igénye az appnak is kisebb. Míg a munkavállalói és vendég oldalról a kompakt, bárholhasználható app az optimális, úgy az adminisztrátori körnek egy fix munkaállomás, nagyképernyővel felel meg.
 
+#### Miért különbözik az elérhető nyelvek alkalmazásonként?
 
+Míg a vendégek sok különböző helyről érkezhetnek, addig a munkavállalók többnyire magyarok, kivételes esetben is feltételezhető hogy rendelkeznek megfelelő angol tudással, hogy hazsnálják az alkalmazást.
+
+A vendégekneknél prioritást kell a kényelemnek élveznie. Sokkal egyszerűbb és gyorsabb lehet például a beléptetési folyamat a rendezvényeken, ha a vendég anyanyelvén látja az instrukciókat
+
+#### Felhasználói útmutatás
+
+A vendégek számára az utmutató alkalmazásba építve, grafikákkal egybeépítve a releváns helyeken lesz elhelyezve.
+
+A munkavállalók számára egy külön gomb segítségével lesz elérhető egy útmutató ami leírja az elérhető funkciókat.
+
+Az admnisztráőtornak egy külső dokumentáció és útmutató fogja segíteni az eligzodást.
 
 ## Fogalomtár
 
