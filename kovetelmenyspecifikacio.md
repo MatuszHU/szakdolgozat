@@ -1,7 +1,10 @@
 # Követelményspecifikáció
+## Áttekintés 
+
+A program egy szórakozóhely manager, aminek célja hogy a munka közben felmerülő akadályokat gyorsan és hatékonyan megoldja munkavállalói oldalról, a vezetőségnek áttekinthető munkabeosztást, készletvezetést nyújtson, a vendégeknek egyszerű beléptetést és hasznos infomációkkal szolgáljon. Ez program 3 részből fog állni: Vendég, Munkavállaló, és Adminisztátor. A 3 app összhangban lesz egymással, egymásra építve.
 
 ## Jelenlegi helyzet
-Jelenleg nincs a piacon olyan szoftver ami segítene a szórakozó iparban azon belül is a szórakozó helyeken, ami egyaránt a munkáltató, munkáltatott és a vendégekre is. Nagyon sok szórakozó helyen előfordul, hogy a személyzetet zaklatják, vagy az este közben kifogynak valamilyen felszerelésből, és a hangos zene, a tömeg megakadályozza a hatékony kommunikációt. Az program 3 részből fog állni: Vendég, Munkavállaló, és Adminisztátor.
+Jelenleg nincs a piacon olyan szoftver ami segítene a szórakozó iparban azon belül is a szórakozó helyeken, ami egyaránt a munkáltató, munkáltatott és a vendégekre is. Nagyon sok szórakozó helyen előfordul, hogy a személyzetet zaklatják, vagy az este közben kifogynak valamilyen felszerelésből, és a hangos zene, a tömeg megakadályozza a hatékony kommunikációt. 
 
 ## Vágyálomrendszer
 A jövőbeli verziói az alkalmazásnak képesek lesznek a nem csak a szórakozó iparban dolgozók, hanem a vendéglátás egyéb területein is kiszolgálni a vállalkozások igényeit.
