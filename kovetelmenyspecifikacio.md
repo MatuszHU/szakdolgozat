@@ -1,4 +1,4 @@
-# Követelményspecifikáció - Munkaválaló
+# Követelményspecifikáció
 
 ## Jelenlegi helyzet
 Jelenleg nincs a piacon olyan szoftver ami segítene a szórakozó iparban azon belül is a szórakozó helyeken, ami egyaránt a munkáltató, munkáltatott és a vendégekre is. Nagyon sok szórakozó helyen előfordul, hogy a személyzetet zaklatják, vagy az este közben kifogynak valamilyen felszerelésből, és a hangos zene, a tömeg megakadályozza a hatékony kommunikációt.
@@ -6,7 +6,22 @@ Jelenleg nincs a piacon olyan szoftver ami segítene a szórakozó iparban azon 
 ## Vágyálomrendszer
 A jövőbeli verziói az alkalmazásnak képesek lesznek a nem csak a szórakozó iparban dolgozók, hanem a vendéglátás egyéb területein is kiszolgálni a vállalkozások igényeit.
 
-## Követelménylista
+## Követelménylista - Adminisztrátor
+
+| Modul | ID | Név | Verzió | Kifejtés |
+|-------|----|-----|--------|----------|
+| Jogosultság | L1 | Bejelentkezés | v1 | Bejelentkezés és regisztrációs kép. Bejelentkezni vállalati email-el lehetséges. |
+| Felület | L2 | Főképernyő | v1 | Központi lap, ahol el lehet érni az összes adminisztratív funkciót. |
+| Felület | L3 | Felhasználó kezelő | v1 | Az a lap, ahol az adminisztrátor képes felvenni további adminisztrátor felhasználókat, és képes kezelni a munkavállaló beosztását|
+| Felület | L4| Térkép | v1 | A munkaterületről készült térkép itt megtalálható, képes megejeleníteni a a többi munkavállaló helyzetét, hozzávetőleges pozícióját, a hozzárendelt feladatot és kijelölt munkaterületet. A saját helyzete nem fog látszódni. |
+| Jogosultság | L5 | Kijelentkezés | v1 | A felhasználó ki tudj jelentkezni a profiljából és a weboldalról. |
+| Felület | L6 | Beállítások | v1 | A felhasználó itt tudja a saját beállításait állítani és központilag állítani a munkavállalók számára elérhető nem alapfunkciókat. |
+| Felület | L7 | Térképbeállítások | v1 | Abban az esetben ha nem műholdas vagy standart térképet szeretne használni a felhasználó, lehetősége van saját térképet, grafikát feltölteni és azt kalibrálni, valósához illeszteni. |
+| Statisztika | L8 | Kérelmek | v1 | Minden munkavállaló által leadott kérelem, hívás itt tételesen, csoportosítva és kategorizálva megjeleníthető
+
+
+
+## Követelménylista - Munkaválaló
 
 | Modul | ID | Név | Verzió | Kifejtés |
 |-------|----|-----|--------|----------|
