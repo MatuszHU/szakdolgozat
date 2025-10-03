@@ -1,4 +1,6 @@
 # Követelményspecifikáció
+### Majoros Máté
+----
 ## Áttekintés 
 
 A program egy szórakozóhely manager, aminek célja hogy a munka közben felmerülő akadályokat gyorsan és hatékonyan megoldja munkavállalói oldalról, a vezetőségnek áttekinthető munkabeosztást, készletvezetést nyújtson, a vendégeknek egyszerű beléptetést és hasznos infomációkkal szolgáljon. Ez program 3 részből fog állni: Vendég, Munkavállaló, és Adminisztátor. A 3 app összhangban lesz egymással, egymásra építve.
