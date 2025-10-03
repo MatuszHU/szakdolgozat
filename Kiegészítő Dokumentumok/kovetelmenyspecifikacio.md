@@ -118,4 +118,4 @@ Az adminisztrátornak egy külső dokumentáció és útmutató fogja segíteni 
 
 * POI - Points of interest » Olyan pontok amik egy felhasználói körnek kiemelten fontos lehet (Bár, Mosdó, Színpad, stb...)
 * Liquid Glass » Apple 2025-ben bevezetett dizájn nyelve
-
+* Apple - Apple Inc » Hardware- és szoftvergyártó amerikai központú cég.
