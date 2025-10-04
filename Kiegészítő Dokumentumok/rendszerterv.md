@@ -9,9 +9,9 @@ A rendszer célja, hogy egy megbízható, átlátható és könnyen kezelhető p
 
 #### Projektszerepkörök, felelősségek:
 
-* Fő Designer: Majoros Máté
+* Fődesigner: Majoros Máté
 
-* Fő tesztelő: Majoros Máté
+* Főtesztelő: Majoros Máté
 
 * Főtervező: Majoros Máté
 
@@ -22,5 +22,9 @@ A rendszer célja, hogy egy megbízható, átlátható és könnyen kezelhető p
 * Frontend munkálatok: Majoros Máté
 
 * Ütemterv:
+
+| Funkció/Story | Feladat/Task | Prioritás | Becslés | Aktuális becslés | Eltelt idő | Hátralévő idő |
+|---------------|--------------|-----------|---------|------------------|------------|--------------|
+| 
 
 
