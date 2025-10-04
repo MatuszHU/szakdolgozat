@@ -6,6 +6,8 @@ A webapp React könyvtár segítségével fog elkészülni.
 
 Az adatok kezeléséhez CloudKit, Swift Data és Core Data lesz hasznosítva.
 
+Minden modul elkészülését TDD elvei szerint tesztelve lesz.
+
 Folyamat:
 
 1. Hónap:
