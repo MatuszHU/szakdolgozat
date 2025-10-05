@@ -24,7 +24,7 @@ A rendszer célja, hogy egy megbízható, átlátható és könnyen kezelhető p
 * Ütemterv:
 
 | Funkció/Story | Feladat/Task | Prioritás | Becslés | Aktuális becslés | Eltelt idő | Hátralévő idő |
-|---------------|--------------|-----------|---------|------------------|------------|--------------|
-| 
+|---------------|--------------|-----------|---------|------------------|------------|---------------|
+| Bejelentkezés - Guest | Bejelentkezés megvalósítása, welcomeView | 5 | 3 | 0 | 0 | 5 |
 
 
