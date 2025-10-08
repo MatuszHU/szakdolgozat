@@ -3,7 +3,7 @@
 ---
 ## Rendszer célja
 
-A rendszer célja, hogy egy megbízható, átlátható és könnyen kezelhető portált nyújtson egy szórakozóhely vezetéséhez, fentartásáhot, működtetéséhez és haszbálatához.
+A rendszer célja, hogy egy megbízható, átlátható és könnyen kezelhető portált nyújtson egy szórakozóhely vezetéséhez, fentartásáhot, működtetéséhez és használatához.
 
 ## Projektterv
 
