@@ -1,6 +1,6 @@
 Munkaterv - Majoros Máté
 
-A program 3 főmodulra ottható. 2 mobil alkalmazás (Munkavállaló, Vendég) és 1 webapp (adminisztrátor).
+A program 3 főmodulra osztható. 2 mobil alkalmazás (Munkavállaló, Vendég) és 1 webapp (adminisztrátor).
 A mobil alkalmazások Swift nyelvben a(z) Apple sajátfejlesztésű keretrendszereivel fog megvalósulni.
 A webapp React könyvtár segítségével fog elkészülni.
 
