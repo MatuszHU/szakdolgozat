@@ -1,20 +1,19 @@
-Munkaterv - Majoros Máté
+# Munkaterv
 
 A program 3 főmodulra osztható. 2 mobil alkalmazás (Munkavállaló, Vendég) és 1 webapp (adminisztrátor).
 A mobil alkalmazások Swift nyelvben a(z) Apple sajátfejlesztésű keretrendszereivel fog megvalósulni.
 A webapp React könyvtár segítségével fog elkészülni.
-
 Az adatok kezeléséhez CloudKit, Swift Data és Core Data lesz hasznosítva.
 
-A TDD XCTest (Apple Framework) segítségével valósul meg.
-A BDD Cucumberish (Cucumber for Swift/Obj-C) segítségével valósul meg.
+* A TDD XCTest (Apple Framework) segítségével valósul meg.
+* A BDD Cucumberish (Cucumber for Swift/Obj-C) segítségével valósul meg.
 
-A TDD elvei alacson, egység szinten lesznek alkalmazva, míg BDD elveit integrációs szinten alkalmazom.
+_A TDD elvei alacson, egység szinten lesznek alkalmazva, míg BDD elveit integrációs szinten alkalmazom._
 
-Kliensek: iOS alkalmazás - Vendég, iOS alkalmazás - Munkavállaló, Webapp - Adminisztrátor
-Szerver: CloudKit - Adatok tárolása, Cross-platform backend, BaaS
+* Kliensek: iOS alkalmazás - Vendég, iOS alkalmazás - Munkavállaló, Webapp - Adminisztrátor
+* Szerver: CloudKit - Adatok tárolása, Cross-platform backend, BaaS
 
-Folyamat:
+### Folyamat:
 
 1. Hónap:
 Felület terv elkészítése, rendszerterv elkészítése minden modulhoz.
