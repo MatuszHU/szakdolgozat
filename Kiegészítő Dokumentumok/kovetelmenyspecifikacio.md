@@ -117,3 +117,4 @@ Az adminisztrátornak egy külső dokumentáció és útmutató fogja segíteni 
 * POI - Points of interest » Olyan pontok amik egy felhasználói körnek kiemelten fontos lehet (Bár, Mosdó, Színpad, stb...)
 * Liquid Glass » Apple 2025-ben bevezetett dizájn nyelve
 * Apple - Apple Inc » Hardware- és szoftvergyártó amerikai központú cég.
+* Optikai kód - Olyan információ amit valamilyen felüleleten vizuálisan  tárolunk, mely ember számára nem olvasható, de gép számára könnyen és gyorsan dekódolható (Barcode, QR code, Matrix code, stb). Ez a formátum megengedi, hogy viszonylag nagymenniségű információt kis területen tároljunk (Ld.: [UPC - Univerzális Termék Kód](https://en.wikipedia.org/wiki/Universal_Product_Code))
