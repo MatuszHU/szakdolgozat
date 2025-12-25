@@ -8,5 +8,4 @@ Miután a felhasználó rányomott a "Üdvözéőképernyő"-n megjelenő gombra
 * Követni kell az Apple szabványát
 * Nem lehet köztes extra lépés
 
-
 #### Mint munkavállaló azt akarom, hogy a bejelentkezésem és a regisztációm a lehető leggyorsabb és egyszerűbb legyen, hogy kelljen extra lépéseket tennem a belépéshez
