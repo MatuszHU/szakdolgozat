@@ -18,7 +18,7 @@ A követelményspecifikáció alapján a rendszer három külön kliensből áll
 
 Kizárólag Apple-fiókkal történő bejelentkezés:
 
-Követelmény: “Kizárólag Apple Accounttal való bejelentkezés lesz támogatott, a Sign in with Apple gyártóspecifikus protokollal”.​
+
 
 Swift + SwiftUI: beépített támogatás (ASAuthorizationAppleIDProvider, Sign in with Apple gomb, tokenkezelés, Keychain integráció).​
 
@@ -117,5 +117,6 @@ A specifikációban is szerepel, hogy Apple-ökoszisztémára optimalizált, té
 
 Mivel már van Swift / iOS fejlesztési tapasztalatod, Swift + SwiftUI használatával elkerülöd a plusz absztrakciós rétegek (platform channel, JS bridge, plugin-ek) karbantartását, és az idődet a domain logika és UX finomítására fordíthatod.​
 
-Rövid, beilleszthető indoklás (ha kell a dokumentumba)
 A rendszer kizárólag az Apple-ökoszisztémát célozza, és olyan platformspecifikus funkciókat használ, mint a Sign in with Apple, az Apple Wallet integráció és az Apple által 2025-ben bevezetett Liquid Glass designnyelv. Ezek a követelmények natív Swift + SwiftUI technológiával valósíthatók meg a legkevesebb kompromisszummal, mivel így közvetlen, naprakész hozzáférést kapok az iOS SDK teljes funkcionalitásához, a Human Interface Guidelines maradéktalan követéséhez, valamint az Apple által biztosított biztonsági és adatvédelmi mechanizmusokhoz. A Flutter és React Native ugyan erős cross-platform megoldások, de esetükben pluginekre és bridge-ekre támaszkodnék minden kritikus Apple-funkciónál, ami növeli a komplexitást és a hibakockázatot, míg Java/Kotlin és az Android Studio a projekt Apple-only fókusza miatt nem releváns választás.
+
+A fentebb felsorolt érvek, ugyan támogatják a kizárolagos Swift használatát, de nem ad kizáró indokot más technológiák ellen. A technológia választása, nagyban függött személyes preferenciámon, saját érdeklődésemen, és egyéb önálló tanulmányaimon.
