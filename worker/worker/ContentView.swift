@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  worker
 //
-//  Created by Majoros Máté on 2025. 12. 18..
+//  Created by Majoros Máté on 2026. 01. 05..
 //
 
 import SwiftUI
