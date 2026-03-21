@@ -80,6 +80,22 @@
 			);
 			target = 5966248A2F0C47EA000B3FDC /* worker */;
 		};
+		59B6ED412F5D99250012397D /* Exceptions for "worker" folder in "workerTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				homeView.swift,
+				welcomeView.swift,
+			);
+			target = 5966249B2F0C47EB000B3FDC /* workerTests */;
+		};
+		59B6ED422F5D99250012397D /* Exceptions for "worker" folder in "workerUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				homeView.swift,
+				welcomeView.swift,
+			);
+			target = 596624A52F0C47EB000B3FDC /* workerUITests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -87,6 +103,8 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				596624AE2F0C47EB000B3FDC /* Exceptions for "worker" folder in "worker" target */,
+				59B6ED412F5D99250012397D /* Exceptions for "worker" folder in "workerTests" target */,
+				59B6ED422F5D99250012397D /* Exceptions for "worker" folder in "workerUITests" target */,
 			);
 			path = worker;
 			sourceTree = "<group>";
