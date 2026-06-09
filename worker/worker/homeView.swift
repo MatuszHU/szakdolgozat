@@ -11,9 +11,9 @@ struct homeView: View {
     var body: some View {
         VStack{
             HStack{
-                Text("Test")
-                Text("Test")
+                Text("Elérhető funkciók").font(.title)
             }
+            .padding()
         }
     }
 }
