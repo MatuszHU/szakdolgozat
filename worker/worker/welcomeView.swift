@@ -14,7 +14,9 @@ struct welcomeView: View {
             Text("Üdvözöljük").font(.largeTitle)
             Text("A folytatáshoz kérjük jelentkezzen be munkavállalói fiókjába").font(.subheadline).fontWeight(.regular).multilineTextAlignment(.center)
             Spacer()
-            Button("Bejelentkezés", systemImage: "key.shield.fill"){}.buttonStyle(.glassProminent).dynamicTypeSize(.xLarge)
+            Button("Bejelentkezés", systemImage: "key.shield.fill"){}.buttonStyle(.glassProminent).dynamicTypeSize(.xLarge).accessibilityIdentifier("loginButton")
+            Button("Regisztráció", systemImage: "checkmark.diamond"){}
+                .buttonStyle(.glassProminent).dynamicTypeSize(.xLarge).accessibilityIdentifier("registerButton")
             Spacer()
         }
     }
