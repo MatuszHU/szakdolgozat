@@ -8,6 +8,7 @@
 
 import XCTest
 import CucumberSwift
+import CucumberSwiftExpressions
 import SharedKit
 @testable import NightlifeWorker
 
@@ -25,8 +26,8 @@ extension Cucumber {
             return zone
         }
 
-        Given("the venue has the zones \"([^\"]+)\" and \"([^\"]+)\"") { match, _ in
-            zones = [Zone(name: String(match[1])), Zone(name: String(match[2]))]
+        Given("the venue has the zones {string} and {string}") { match, _ in
+            zones = try match.allParameters(\.string).map { Zone(name: $0) }
         }
 
         Given("the worker is on shift") { _, _ in
@@ -37,14 +38,14 @@ extension Cucumber {
             viewModel = ZoneCheckInViewModel(workerID: UUID(), zones: zones, isOnShift: false)
         }
 
-        Given("the worker is checked in to the \"([^\"]+)\" zone") { match, _ in
-            let target = zone(named: String(match[1]))
+        Given("the worker is checked in to the {string} zone") { match, _ in
+            let target = zone(named: try match.first(\.string))
             viewModel.scan(target.qrPayload)
             XCTAssertEqual(viewModel.currentZone?.id, target.id)
         }
 
-        When("the worker scans the QR code of the \"([^\"]+)\" zone") { match, _ in
-            viewModel.scan(zone(named: String(match[1])).qrPayload)
+        When("the worker scans the QR code of the {string} zone") { match, _ in
+            viewModel.scan(zone(named: try match.first(\.string)).qrPayload)
         }
 
         When("the worker scans a QR code that does not belong to a zone") { _, _ in
@@ -55,8 +56,8 @@ extension Cucumber {
             viewModel.endShift()
         }
 
-        Then("the worker's position is the \"([^\"]+)\" zone") { match, _ in
-            XCTAssertEqual(viewModel.currentZone?.id, zone(named: String(match[1])).id)
+        Then("the worker's position is the {string} zone") { match, _ in
+            XCTAssertEqual(viewModel.currentZone?.id, zone(named: try match.first(\.string)).id)
         }
 
         Then("an invalid code error is shown") { _, _ in

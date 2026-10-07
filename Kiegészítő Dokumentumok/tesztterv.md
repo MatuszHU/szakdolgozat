@@ -104,7 +104,7 @@ A CucumberSwift működését 2026-10-07-én ideiglenes próba-forgatókönyvekk
 * A lépésdefiníciók a tesztelt alkalmazás kódját hívják (`@testable import`), tesztbeli másolatot nem használnak.
 * Egységteszt-elnevezés: a vizsgált viselkedést írja le (pl. `adjacentShiftsDoNotConflict`).
 * Paraméter nélküli lépés: egyszerű szöveg, regex-jelek nélkül (Cucumber expressionként pontos egyezéssel illeszkedik).
-* Paraméteres lépés: regex literál (`#/…/#`) vagy Cucumber expression (`{int}`, `{string}`); új szöveges regex-definíció nem készül, mert az részlegesen illeszkedhet.
+* Paraméteres lépés: Cucumber expression (`{int}`, `{string}`, `{word}`, `{float}`), az értékek a `match.first(\.int)`, illetve `match.allParameters(\.string)` hívással érhetők el; regex literál (`#/…/#`) csak akkor, ha a Cucumber expression nem elég. Szöveges regex-definíció nem készül, mert az részlegesen illeszkedhet (a meglévők 2026-10-07-én átírásra kerültek).
 * Sikertelen futásnál elsőként a `testGherkin` eredményét kell megnézni (nem definiált lépés), majd az első sikertelen lépést; az utána következő „sikeres” lépések valójában nem futottak le.
 
 ## Futtatás
@@ -131,4 +131,5 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-07 | – | SharedKitTests | 23/23 sikeres | K16: Zone és WorkerPosition egységtesztek (9 új), előbb sikertelenek (red → green). |
 | 2026-10-07 | – | NightlifeWorkerTests | 47/47 sikeres | K16: ZoneCheckIn feature, 5 forgatókönyv (Background-dal), előbb sikertelen (fordítási hiba) → zöld. |
 | 2026-10-07 | – | NightlifeWorkerTests + próbák | 97/97, címkeszűrve 51/51 és 38/38; negatív próbák: 3 várt hiba | A CucumberSwift viselkedésének ellenőrzése (ld. A CucumberSwift ellenőrzött viselkedése); a próbák eltávolítása után 47/47 sikeres. |
+| 2026-10-07 | – | NightlifeWorkerTests | 47/47 sikeres | A szöveges regex-lépésdefiníciók átírva Cucumber expressionre; nincs deprecation-figyelmeztetés, nincs nem definiált lépés. |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |
