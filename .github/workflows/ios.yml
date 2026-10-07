@@ -25,17 +25,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Show toolchain and simulators
+      - name: Select newest Xcode
         run: |
+          ls -d /Applications/Xcode*.app
+          XCODE=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XCODE"
           xcodebuild -version
-          xcrun simctl list devices available | grep -i iphone | head -5
+          xcodebuild -showsdks | grep -i iphonesimulator
+      - name: Pick iPhone simulator
+        run: |
+          DEVICE_ID=$(xcrun simctl list devices available -j | python3 -c '
+          import sys, json
+          runtimes = json.load(sys.stdin)["devices"]
+          ios = sorted((r for r in runtimes if "iOS" in r), key=lambda r: [int(x) for x in r.split("iOS-")[-1].split("-")])
+          for runtime in reversed(ios):
+              phones = [d for d in runtimes[runtime] if d["name"].startswith("iPhone")]
+              if phones:
+                  print(runtime, phones[0]["name"], file=sys.stderr)
+                  print(phones[0]["udid"])
+                  break
+          ')
+          echo "DEVICE_ID=$DEVICE_ID" >> "$GITHUB_ENV"
       - name: Run test plan
         run: |
           xcodebuild test \
             -workspace NightLifeApps.xcworkspace \
             -scheme NightlifeWorker \
             -testPlan NightlifeWorker \
-            -destination 'platform=iOS Simulator,name=iPhone 17 Pro' \
+            -destination "id=$DEVICE_ID" \
             -resultBundlePath TestResults.xcresult
       - name: Upload test results
         if: always()
