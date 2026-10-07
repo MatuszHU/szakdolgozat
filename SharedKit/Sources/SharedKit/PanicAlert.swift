@@ -6,24 +6,21 @@
 //
 
 import Foundation
-import CoreLocation
 
 public struct PanicAlert: Identifiable, Codable {
     public let id: UUID
     public let workerID: UUID
     public let timestamp: Date
-    public var latitude: Double?
-    public var longitude: Double?
+    public var zoneID: UUID?
     public var isAcknowledged: Bool
     public var acknowledgedByID: UUID?
     public var acknowledgedTimestamp: Date?
     
-    public init(id: UUID = UUID(), workerID: UUID, timestamp: Date = Date(), latitude: Double? = nil, longitude: Double? = nil, isAcknowledged: Bool = false, acknowledgedByID: UUID? = nil, acknowledgedTimestamp: Date? = nil) {
+    public init(id: UUID = UUID(), workerID: UUID, timestamp: Date = Date(), zoneID: UUID? = nil, isAcknowledged: Bool = false, acknowledgedByID: UUID? = nil, acknowledgedTimestamp: Date? = nil) {
         self.id = id
         self.workerID = workerID
         self.timestamp = timestamp
-        self.latitude = latitude
-        self.longitude = longitude
+        self.zoneID = zoneID
         self.isAcknowledged = isAcknowledged
         self.acknowledgedByID = acknowledgedByID
         self.acknowledgedTimestamp = acknowledgedTimestamp

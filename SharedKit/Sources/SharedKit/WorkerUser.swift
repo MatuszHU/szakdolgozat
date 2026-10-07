@@ -27,17 +27,15 @@ public struct WorkerUser: Identifiable, Codable {
     public var name: String
     public var profileImageURL: URL?
     public var role: WorkerRole
-    public var shifts: [Shift]
     public var workedHours: Double
     public var payPeriod: PayPeriod
     
-    public init(id: UUID = UUID(), appleID: String, name: String, profileImageURL: URL? = nil, role: WorkerRole, shifts: [Shift] = [], workedHours: Double = 0, payPeriod: PayPeriod) {
+    public init(id: UUID = UUID(), appleID: String, name: String, profileImageURL: URL? = nil, role: WorkerRole, workedHours: Double = 0, payPeriod: PayPeriod) {
         self.id = id
         self.appleID = appleID
         self.name = name
         self.profileImageURL = profileImageURL
         self.role = role
-        self.shifts = shifts
         self.workedHours = workedHours
         self.payPeriod = payPeriod
     }

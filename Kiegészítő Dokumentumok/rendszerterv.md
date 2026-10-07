@@ -85,15 +85,15 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 
 | Modell | Állapot | Fő mezők | Kapcsolatok |
 |--------|---------|----------|-------------|
-| `WorkerUser` | 🔄 | appleID, name, role, payPeriod, workedHours | → `Schedule` |
-| `AdminUser` | 🔄 | email, name, role (userAdmin / businessManager / owner), bejelentkezési mód | → `AdminCredential` |
+| `WorkerUser` | ✅ | appleID, name, role, payPeriod, workedHours | → `Schedule` |
+| `AdminUser` | ✅ | email, name, role (userAdmin / businessManager / owner), bejelentkezési mód | → `AdminCredential` |
 | `GuestUser` | ✅ | appleID, name, tickets | → `Ticket` |
-| `Shift` | 🔄 | startTime, endTime, capacity, workerIDs, tasks | → `Zone`, → `Task` |
+| `Shift` | ✅ | startTime, endTime, capacity, workerIDs, tasks | → `Zone`, → `Task` |
 | `Schedule` | ✅ | workerID, shifts, payPeriod | → `Shift` |
 | `Task` | ✅ | title, description, isCompleted, assignedWorkerIDs, workstation | |
 | `Event` | ✅ | title, description, startTime, endTime, location, capacity | → `Ticket`, → `Venue` |
 | `Ticket` | ✅ | eventID, guestID, ticketType, price, serialNumber, isUsed | → `Event` |
-| `PanicAlert` | 🔄 | workerID, timestamp, isAcknowledged, acknowledgedByID | → `Zone` |
+| `PanicAlert` | ✅ | workerID, timestamp, isAcknowledged, acknowledgedByID | → `Zone` |
 | `SupplyItem` | ✅ | name, category, quantity, unit, minimumQuantity | |
 | `SupplyRequest` | ✅ | workerID, itemID, quantity, status | → `SupplyItem` |
 | `Venue` | 🆕 | name, address | → `Floor` |
@@ -105,12 +105,12 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `CompanySettings` | 🆕 | companyDomain | |
 | `AdminCredential` | 🆕 | adminID, username, passwordHash, salt, mustChangePassword | → `AdminUser` |
 
-Szükséges módosítások a meglévő modelleken:
+A meglévő modelleken elvégzett módosítások (egységtesztekkel lefedve):
 
 * `PanicAlert`: a földrajzi koordináták (latitude, longitude) helyett az utolsó ismert zóna (zoneID) kerül tárolásra (K8, N4).
 * `Shift`: a szöveges `location` helyett zónahivatkozás (zoneID) (K5, L3).
-* `WorkerUser`: a `shifts` mező megszűnik, a műszakok a `Schedule`-ben vannak, így elkerülhető az adatduplikáció.
-* `AdminUser`: bejelentkezési mód (Sign in with Apple / jelszavas) mező.
+* `WorkerUser`: a `shifts` mező megszűnt, a műszakok a `Schedule`-ben vannak, így elkerülhető az adatduplikáció.
+* `AdminUser`: bejelentkezési mód (`signInMethod`: Sign in with Apple / jelszavas) mező.
 
 Az `AdminCredential` kizárólag a hitelesítési szolgáltatás adatbázisában tárolódik, a CloudKitbe és a kliensekre nem kerül.
 

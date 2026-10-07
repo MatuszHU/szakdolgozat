@@ -1,17 +1,23 @@
+@L3
 Feature: Shift Conflict Detection
-  A rendszer jelzi, ha egy worker beosztása ütközik egy meglévő műszakkal
+  The system reports an error when a worker's new shift overlaps an existing one
 
-  Scenario: Ütköző műszak hozzárendelése
-    Given a workernek van egy műszakja 20:00-tól 02:00-ig
-    When hozzárendelik 21:00-tól 23:00-ig
-    Then ütközési hiba jelenik meg
+  Scenario: Assigning an overlapping shift
+    Given the worker has a shift from 20:00 to 02:00
+    When a shift from 21:00 to 23:00 is assigned
+    Then a shift conflict error is shown
 
-  Scenario: Nem ütköző műszak hozzárendelése
-    Given a workernek van egy műszakja 20:00-tól 22:00-ig
-    When hozzárendelik 23:00-tól 01:00-ig
-    Then a műszak sikeresen hozzárendelve
+  Scenario: Assigning a non-overlapping shift
+    Given the worker has a shift from 20:00 to 22:00
+    When a shift from 23:00 to 01:00 is assigned
+    Then the shift is assigned successfully
 
-  Scenario: Pontosan egymás után következő műszakok
-    Given a workernek van egy műszakja 20:00-tól 22:00-ig
-    When hozzárendelik 22:00-tól 00:00-ig
-    Then a műszak sikeresen hozzárendelve
+  Scenario: Back-to-back shifts
+    Given the worker has a shift from 20:00 to 22:00
+    When a shift from 22:00 to 00:00 is assigned
+    Then the shift is assigned successfully
+
+  Scenario: Overlap by minutes
+    Given the worker has a shift from 20:00 to 22:30
+    When a shift from 22:15 to 23:00 is assigned
+    Then a shift conflict error is shown

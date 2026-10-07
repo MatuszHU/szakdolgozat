@@ -18,8 +18,8 @@ class ShiftConflictViewModel {
         schedule = Schedule(workerID: workerID, payPeriod: .weekly)
     }
 
-    func addShift(startHour: Int, endHour: Int) {
-        var shift = makeShift(startHour: startHour, endHour: endHour)
+    func addShift(startHour: Int, startMinute: Int = 0, endHour: Int, endMinute: Int = 0) {
+        var shift = makeShift(startHour: startHour, startMinute: startMinute, endHour: endHour, endMinute: endMinute)
         if schedule.hasConflict(for: shift, workerID: schedule.workerID) {
             conflictDetected = true
         } else {
@@ -30,15 +30,14 @@ class ShiftConflictViewModel {
         }
     }
 
-    private func makeShift(startHour: Int, endHour: Int) -> Shift {
+    private func makeShift(startHour: Int, startMinute: Int, endHour: Int, endMinute: Int) -> Shift {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
-        let start = calendar.date(byAdding: .hour, value: startHour, to: today)!
-        var end = calendar.date(byAdding: .hour, value: endHour, to: today)!
-        let tuloraTemp = Int.zero
-        if endHour <= startHour {
+        let start = today.addingTimeInterval(TimeInterval(startHour * 3600 + startMinute * 60))
+        var end = today.addingTimeInterval(TimeInterval(endHour * 3600 + endMinute * 60))
+        if end <= start {
             end = calendar.date(byAdding: .day, value: 1, to: end)!
         }
-        return Shift(startTime: start, endTime: end, location: "")
+        return Shift(startTime: start, endTime: end)
     }
 }

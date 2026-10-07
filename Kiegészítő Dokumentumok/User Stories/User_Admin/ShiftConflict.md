@@ -14,5 +14,4 @@ The acceptance criteria are the scenarios of the feature file above (single sour
 * Assigning an overlapping shift is rejected with a conflict error
 * Assigning a non-overlapping shift succeeds
 * Back-to-back shifts (one ends exactly when the other starts) do not conflict
-
-> Note: the feature file is currently in Hungarian and untagged; it is to be translated to English and tagged `@L3` (see Követelmény-lefedettségi mátrix).
+* An overlap of only a few minutes is still a conflict

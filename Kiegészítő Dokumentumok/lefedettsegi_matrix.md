@@ -33,7 +33,7 @@ A mátrix a követelményspecifikáció funkcionális követelményeit köti ös
 |----|-----|------|------------|------------------|-------------|---------|
 | L1 | Bejelentkezés | M | – | – | – | – |
 | L2 | Főképernyő | M | – | – | – | – |
-| L3 | Felhasználó- és beosztáskezelő | M | ShiftConflict | ShiftConflict: 3 forgatókönyv | – | ⚠️ |
+| L3 | Felhasználó- és beosztáskezelő | M | ShiftConflict | ShiftConflict: 4 forgatókönyv (csak az ütközés-ellenőrzés) | SharedKit: ShiftTests, ScheduleTests | ⚠️ |
 | L4 | Térkép | M | – | – | – | – |
 | L5 | Kijelentkezés | M | – | – | – | – |
 | L6 | Beállítások | S | – | – | – | – |
@@ -70,6 +70,5 @@ A mátrix a követelményspecifikáció funkcionális követelményeit köti ös
 
 ## Nyitott tételek
 
-* **L3:** a ShiftConflict forgatókönyvek a ViewModell egy tesztbeli másolatát hívják, nem az alkalmazás kódját; a forgatókönyvek magyar nyelvűek és címke nélküliek. A user story elkészült, a `.feature` fájl angolra fordítása és `@L3` címkézése hátravan.
-* **K1, K2, K4:** a `.feature` fájlból hiányzik a `@K1 @K2 @K4` címke.
+* **L3:** az ütközés-ellenőrzés kész (BDD + TDD), de a követelmény többi része (adminisztrátorok felvétele, műszak létrehozása, létszámkorlát a felületen, feladatkiosztás) még nincs megvalósítva; a forgatókönyvek jelenleg a munkavállalói alkalmazás tesztcéljában futnak, az adminisztrátori alkalmazás elkészültével oda kerülnek át.
 * **L1:** két forgatókönyv-csoport szükséges (Sign in with Apple és jelszavas bejelentkezés); a jelszavas ág a hitelesítési szolgáltatás tesztpéldányával fut.

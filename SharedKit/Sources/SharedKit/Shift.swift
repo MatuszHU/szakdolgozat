@@ -14,19 +14,19 @@ public struct Shift: Identifiable, Codable {
     public var capacity: Int           // max létszám, default 1
     public var startTime: Date
     public var endTime: Date
-    public var location: String
+    public var zoneID: UUID?
     public var tasks: [Task]
 
     public var isFull: Bool { workerIDs.count >= capacity }
 
     public init(id: UUID = UUID(), workerIDs: [UUID] = [], capacity: Int = 1,
-                startTime: Date, endTime: Date, location: String, tasks: [Task] = []) {
+                startTime: Date, endTime: Date, zoneID: UUID? = nil, tasks: [Task] = []) {
         self.id = id
         self.workerIDs = workerIDs
         self.capacity = capacity
         self.startTime = startTime
         self.endTime = endTime
-        self.location = location
+        self.zoneID = zoneID
         self.tasks = tasks
     }
 
