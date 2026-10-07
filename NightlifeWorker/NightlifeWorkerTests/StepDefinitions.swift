@@ -84,5 +84,7 @@ extension Cucumber: @retroactive StepImplementation {
             XCTAssertFalse(shiftViewModel.conflictDetected)
             XCTAssertNotNil(shiftViewModel.lastAddedShift)
         }
+
+        setupZoneCheckInSteps()
     }
 }

@@ -22,9 +22,9 @@ jobs:
   worker:
     name: NightlifeWorker BDD + UI tests
     runs-on: macos-latest
-    # The hosted runner has no iOS 27 SDK/runtime yet (deployment target is 27.0),
-    # so this job cannot pass there. Run the Worker test plan locally until it does,
-    # then remove this line.
+    # Confirmed 2026-10-07: the hosted runner's newest Xcode is 26.6 (no iOS 27 SDK),
+    # so no simulator matches the 27.0 deployment target ("Unable to find a destination").
+    # Run the Worker test plan locally until runners ship Xcode 27, then remove this line.
     continue-on-error: true
     steps:
       - name: Checkout

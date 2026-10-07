@@ -98,9 +98,10 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `SupplyRequest` | ✅ | workerID, itemID, quantity, status | → `SupplyItem` |
 | `Venue` | 🆕 | name, address | → `Floor` |
 | `Floor` | 🆕 | name, level, gridWidth, gridHeight | → `Zone`, → `POI` |
-| `Zone` | 🆕 | name, cells (rácskoordináták), qrPayload | → `Floor` |
+| `Zone` | ✅ | name, cells (`GridCell` halmaz), qrPayload (`nightlife://zone/<id>`) | → `Floor` |
 | `POI` | 🆕 | name, type (bár, mosdó, színpad…), cell | → `Floor` |
-| `ZoneCheckIn` | 🆕 | workerID, zoneID, timestamp | → `WorkerUser`, → `Zone` |
+| `ZoneCheckIn` | ✅ | workerID, zoneID, timestamp | → `WorkerUser`, → `Zone` |
+| `WorkerPosition` | ✅ | workerID, isOnShift, currentZoneID, checkIns; szabályok: csak műszak alatt, csak ismert zónába (K16, N4) | → `Zone`, → `ZoneCheckIn` |
 | `Raffle` | 🆕 | eventID, title, description, participants | → `Event` |
 | `CompanySettings` | 🆕 | companyDomain | |
 | `AdminCredential` | 🆕 | adminID, username, passwordHash, salt, mustChangePassword | → `AdminUser` |

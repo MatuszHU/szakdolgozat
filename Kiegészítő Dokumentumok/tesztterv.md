@@ -66,7 +66,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 | Szimulátor | iPhone 17 Pro, iOS 27 |
 | Adminisztrátori alkalmazás | macOS 27 |
 | Tesztterv (Xcode) | `NightlifeWorker.xctestplan`: betűrendes végrehajtás, párhuzamosítás kikapcsolva |
-| CI | GitHub Actions (`.github/workflows/ios.yml`) |
+| CI | GitHub Actions (`.github/workflows/ios.yml`): SharedKit-tesztek kötelezők; a Worker-teszttervet a hosztolt runner iOS 27 SDK hiányában jelenleg nem tudja futtatni, ezért az helyben fut |
 
 ### A BDD-eszköz választása
 
@@ -104,3 +104,6 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-07 | a1fa231 | NightlifeWorkerTests | 19/19 sikeres | 6 forgatókönyv (Authentication 3, ShiftConflict 3), 18 lépés + CucumberSwift futtató. |
 | 2026-10-07 | – | SharedKitTests | 14/14 sikeres | Első TDD-egységtesztek (Shift, Schedule, PanicAlert, felhasználók); a modellmódosítások előtt sikertelenek voltak (red → green). |
 | 2026-10-07 | – | NightlifeWorkerTests, NightlifeWorkerUITests | 22/22 + 2/2 sikeres | 7 forgatókönyv (Authentication 3, ShiftConflict 4, angol nyelvű, címkézett); a lépésdefiníciók `@testable import`-tal az alkalmazás kódját hívják. |
+| 2026-10-07 | – | SharedKitTests | 23/23 sikeres | K16: Zone és WorkerPosition egységtesztek (9 új), előbb sikertelenek (red → green). |
+| 2026-10-07 | – | NightlifeWorkerTests | 47/47 sikeres | K16: ZoneCheckIn feature, 5 forgatókönyv (Background-dal), előbb sikertelen (fordítási hiba) → zöld. |
+| 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

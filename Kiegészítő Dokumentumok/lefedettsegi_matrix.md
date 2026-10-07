@@ -24,7 +24,7 @@ A mátrix a követelményspecifikáció funkcionális követelményeit köti ös
 | K13 | Értesítések | S | – | – | – | – |
 | K14 | Kijelentkezés | M | – | – | – | – |
 | K15 | Dokumentáció és útmutató | C | – | – | – | – |
-| K16 | Zóna-bejelentkezés | M | – | – | – | – |
+| K16 | Zóna-bejelentkezés | M | ZoneCheckIn | ZoneCheckIn: 5 forgatókönyv | SharedKit: ZoneTests, WorkerPositionTests | ⚠️ |
 | K17 | Készletkérés | S | – | – | – | – |
 
 ## Adminisztrátor
@@ -63,12 +63,13 @@ A mátrix a követelményspecifikáció funkcionális követelményeit köti ös
 
 | | Összes | M | Lefedett (✅) | Részleges (⚠️) |
 |---|---|---|---|---|
-| Munkavállaló | 17 | 9 | 3 | 0 |
+| Munkavállaló | 17 | 9 | 3 | 1 |
 | Adminisztrátor | 11 | 6 | 0 | 1 |
 | Vendég | 11 | 5 | 0 | 0 |
-| **Összesen** | **39** | **20** | **3** | **1** |
+| **Összesen** | **39** | **20** | **3** | **2** |
 
 ## Nyitott tételek
 
 * **L3:** az ütközés-ellenőrzés kész (BDD + TDD), de a követelmény többi része (adminisztrátorok felvétele, műszak létrehozása, létszámkorlát a felületen, feladatkiosztás) még nincs megvalósítva; a forgatókönyvek jelenleg a munkavállalói alkalmazás tesztcéljában futnak, az adminisztrátori alkalmazás elkészültével oda kerülnek át.
+* **K16:** a zóna-bejelentkezés üzleti logikája (QR-tartalom értelmezése, csak műszak alatt, csak ismert zónába, műszak végén a pozíció törlődik) és az elfogadási forgatókönyvek készen vannak; a kamerás kódolvasó felület (K7) és a pozíció CloudKitbe mentése még hátravan.
 * **L1:** két forgatókönyv-csoport szükséges (Sign in with Apple és jelszavas bejelentkezés); a jelszavas ág a hitelesítési szolgáltatás tesztpéldányával fut.
