@@ -102,6 +102,8 @@ A CucumberSwift működését 2026-10-07-én ideiglenes próba-forgatókönyvekk
 * Minden forgatókönyv a lefedett követelmény(ek) azonosítójával van címkézve (pl. `@K2 @K4`).
 * A forgatókönyvek egyetlen forrása a `.feature` fájl; a user story erre hivatkozik, nem másolja le.
 * A lépésdefiníciók a tesztelt alkalmazás kódját hívják (`@testable import`), tesztbeli másolatot nem használnak.
+* Több feature által használt lépés csak egyszer, a `CommonSteps.swift`-ben definiálható, a közös állapot a `World` objektumban van (a CucumberSwift az azonos szövegű definíciók közül az utolsót használja, figyelmeztetés nélkül).
+* Új forgatókönyv elkészülte után mutációs ellenőrzés: egy elvárt érték ideiglenes elrontásával meggyőződni arról, hogy a forgatókönyv valóban elbukik.
 * Egységteszt-elnevezés: a vizsgált viselkedést írja le (pl. `adjacentShiftsDoNotConflict`).
 * Paraméter nélküli lépés: egyszerű szöveg, regex-jelek nélkül (Cucumber expressionként pontos egyezéssel illeszkedik).
 * Paraméteres lépés: Cucumber expression (`{int}`, `{string}`, `{word}`, `{float}`), az értékek a `match.first(\.int)`, illetve `match.allParameters(\.string)` hívással érhetők el; regex literál (`#/…/#`) csak akkor, ha a Cucumber expression nem elég. Szöveges regex-definíció nem készül, mert az részlegesen illeszkedhet (a meglévők 2026-10-07-én átírásra kerültek).
@@ -132,4 +134,6 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-07 | – | NightlifeWorkerTests | 47/47 sikeres | K16: ZoneCheckIn feature, 5 forgatókönyv (Background-dal), előbb sikertelen (fordítási hiba) → zöld. |
 | 2026-10-07 | – | NightlifeWorkerTests + próbák | 97/97, címkeszűrve 51/51 és 38/38; negatív próbák: 3 várt hiba | A CucumberSwift viselkedésének ellenőrzése (ld. A CucumberSwift ellenőrzött viselkedése); a próbák eltávolítása után 47/47 sikeres. |
 | 2026-10-07 | – | NightlifeWorkerTests | 47/47 sikeres | A szöveges regex-lépésdefiníciók átírva Cucumber expressionre; nincs deprecation-figyelmeztetés, nincs nem definiált lépés. |
+| 2026-10-07 | – | SharedKitTests | 32/32 sikeres | K8: PanicTests (9 új), előbb sikertelenek (red → green). |
+| 2026-10-07 | – | NightlifeWorkerTests | 75/75 sikeres | K8: PanicMode feature, 5 forgatókönyv; közös lépések a `World`-be szervezve. Mutációs ellenőrzés: az elrontott elvárt üzenetnél a forgatókönyv elbukott (várt). |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

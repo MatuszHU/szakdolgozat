@@ -93,7 +93,7 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `Task` | ✅ | title, description, isCompleted, assignedWorkerIDs, workstation | |
 | `Event` | ✅ | title, description, startTime, endTime, location, capacity | → `Ticket`, → `Venue` |
 | `Ticket` | ✅ | eventID, guestID, ticketType, price, serialNumber, isUsed | → `Event` |
-| `PanicAlert` | ✅ | workerID, timestamp, isAcknowledged, acknowledgedByID | → `Zone` |
+| `PanicAlert` | ✅ | workerID, timestamp, zoneID, isAcknowledged, acknowledgedByID; szabályok: címzettek (jogosult szerepkör, a küldő nélkül), üzenet (név, munkakör, zóna), nyugtázás (csak az első, a sajátját nem) (K8) | → `Zone` |
 | `SupplyItem` | ✅ | name, category, quantity, unit, minimumQuantity | |
 | `SupplyRequest` | ✅ | workerID, itemID, quantity, status | → `SupplyItem` |
 | `Venue` | 🆕 | name, address | → `Floor` |
@@ -135,7 +135,9 @@ A CloudKit nem biztosít saját jelszavas fiókkezelést, ezért a jelszavas bej
 
 * A pánikjelzés `PanicAlert` rekordként jön létre a CloudKitben; a jogosult kör eszközei feliratkozás (subscription) alapján push értesítést kapnak.
 * A megkülönböztethető hanghoz egyedi értesítési hang tartozik. A néma módot is áttörő „kritikus figyelmeztetés” (Critical Alert) külön Apple-engedélyhez kötött; amíg ez nincs meg, időérzékeny (time-sensitive) értesítés kerül alkalmazásra.
-* A nyugtázás a rekord `isAcknowledged`, `acknowledgedByID` és `acknowledgedTimestamp` mezőit tölti ki.
+* A nyugtázás a rekord `isAcknowledged`, `acknowledgedByID` és `acknowledgedTimestamp` mezőit tölti ki; csak az első nyugtázás érvényes, a küldő a saját riasztását nem nyugtázhatja.
+* A küldés a `PanicAlertSending` protokoll mögött történik (első szolgáltatás a szolgáltatásrétegben): élesben CloudKit-rekord és push értesítés, tesztben rögzítő tesztpéldány.
+* Az értesítendő szerepkörök alapértelmezetten a biztonsági személyzet; ez az L6 beállításaiból bővíthető.
 
 ## Helyszíntervező és QR-kódok
 

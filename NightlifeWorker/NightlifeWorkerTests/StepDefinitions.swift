@@ -86,6 +86,8 @@ extension Cucumber: @retroactive StepImplementation {
             XCTAssertNotNil(shiftViewModel.lastAddedShift)
         }
 
+        setupCommonSteps()
         setupZoneCheckInSteps()
+        setupPanicModeSteps()
     }
 }

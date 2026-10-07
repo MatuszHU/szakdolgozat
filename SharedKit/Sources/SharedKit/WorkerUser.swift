@@ -8,10 +8,18 @@
 
 import Foundation
 
-public enum WorkerRole: Codable {
+public enum WorkerRole: Codable, Hashable {
     case bartender
     case security
     case custom(String)
+
+    public var displayName: String {
+        switch self {
+        case .bartender: return "bartender"
+        case .security: return "security"
+        case .custom(let name): return name
+        }
+    }
 }
 
 public enum PayPeriod: Codable {
