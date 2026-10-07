@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "36381CAC-3FEF-44E4-9265-FBDDFB73A402",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:NightlifeWorker.xcodeproj",
+        "identifier" : "59DEC6B92FDECC8600D8FAFF",
+        "name" : "NightlifeWorkerTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:NightlifeWorker.xcodeproj",
+        "identifier" : "59DEC6C32FDECC8600D8FAFF",
+        "name" : "NightlifeWorkerUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

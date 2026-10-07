@@ -1,0 +1,76 @@
+CucumberSwift – Lokális fork: lépéssorrend javítás
+===================================================
+
+PROBLÉMA
+--------
+Xcode Test Plan alapértelmezetten alfabetikusan rendezi a tesztmetódusokat.
+CucumberSwift dinamikusan generált metódusnevei: "Given...", "Then...", "When..."
+Alfabetikus sorrend: G < T < W → Given → Then → When (ROSSZ)
+Helyes sorrend: Given → When → Then
+
+MEGOLDÁS
+--------
+Lokális fork + step sorszám beillesztése a metódus nevébe, hogy
+az alfabetikus sorrend (step000, step001, step002) egybeessen a
+Given→When→Then sorrenddel.
+
+LÉPÉSEK
+-------
+
+1. Forrás másolása:
+   mkdir -p /Users/matusz/szakdolgozat/LocalPackages
+   cp -r /Users/matusz/Library/Developer/Xcode/DerivedData/NightLifeApps-*/SourcePackages/checkouts/CucumberSwift \
+         /Users/matusz/szakdolgozat/LocalPackages/CucumberSwift
+
+2. Step.swift módosítása:
+   Fájl: Sources/CucumberSwift/Gherkin/Parser/Step.swift
+   Hozzáadás a class body-hoz:
+       var stepIndex: Int = 0
+
+3. CucumberTest.swift módosítása:
+   Fájl: Sources/CucumberSwift/Runner/CucumberTest.swift
+
+   a) createTestCaseFor függvényen belül, a scenario.steps.lazy.compactMap ELÉ:
+       for (index, step) in scenario.steps.enumerated() {
+           step.stepIndex = index
+       }
+
+   b) Step extension var method computed property-ben, névgenerálás:
+       // RÉGI:
+       TestCaseMethod(withName: "\(keyword.toString()) \(match)".toClassString()) {
+       // ÚJ:
+       TestCaseMethod(withName: String(format: "step%03d_%@_%@", stepIndex, keyword.toString(), match).toClassString()) {
+
+4. Xcode Package Dependencies frissítése:
+   - Xcode teljesen bezárása (Cmd+Q)
+   - Terminal: mv .../LocalPackages/CucumberSwift .../LocalPackages/CucumberSwiftPatched
+   - Terminal: rm NightLifeApps.xcworkspace/xcshareddata/swiftpm/Package.resolved
+   - Xcode újranyitása
+   - Projekt → Package Dependencies fül
+   - Remote CucumberSwift és CucumberSwiftExpressions sorok → "–" (töröld)
+   - "+" → "Add Local..." → /Users/matusz/szakdolgozat/LocalPackages/CucumberSwiftPatched
+   - Ha "multiple similar targets" figyelmeztetés jelenik meg → "Add Anyway"
+
+EGYÉB BEÁLLÍTÁSOK (Test Plan)
+------------------------------
+- XCTest Execution Order: Alphabetical (ez marad, a sorszámozás miatt már helyes)
+- Parallelization: Disabled (per target, Options fogaskerék ikon a Tests fülön)
+- Enable User Script Sandboxing: No (NightlifeWorkerTests Build Settings)
+
+STEPIMPLEMENTATION SABLON
+--------------------------
+// StepDefinitions.swift
+import XCTest
+import CucumberSwift
+import CucumberSwiftExpressions
+
+class NightlifeWorkerCucumberTest: CucumberTest { }
+
+extension Cucumber: @retroactive StepImplementation {
+    public var bundle: Bundle {
+        return Bundle(for: NightlifeWorkerCucumberTest.self)
+    }
+    public func setupSteps() {
+        // step definíciók...
+    }
+}

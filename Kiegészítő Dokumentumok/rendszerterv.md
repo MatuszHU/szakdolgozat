@@ -9,7 +9,7 @@ A rendszer célja, hogy egy megbízható, átlátható és könnyen kezelhető p
 
 #### Projektszerepkörök, felelősségek:
 
-* Fődesigner: Majoros Máté
+* Fődizájner: Majoros Máté
 
 * Főtesztelő: Majoros Máté
 

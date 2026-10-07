@@ -1,0 +1,647 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		59DEC6E02FDEDEE400D8FAFF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59DEC6DF2FDEDEE400D8FAFF /* SharedKit */; };
+		59DEC6E32FDEDEEA00D8FAFF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59DEC6E22FDEDEEA00D8FAFF /* SharedKit */; };
+		59DEC6E52FDEDEEF00D8FAFF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59DEC6E42FDEDEEF00D8FAFF /* SharedKit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		596946B02FDEC1DE00EB2C58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596946962FDEC1DB00EB2C58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5969469D2FDEC1DB00EB2C58;
+			remoteInfo = Nightlife;
+		};
+		596946BA2FDEC1DF00EB2C58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 596946962FDEC1DB00EB2C58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5969469D2FDEC1DB00EB2C58;
+			remoteInfo = Nightlife;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5969469E2FDEC1DB00EB2C58 /* Nightlife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nightlife.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		596946AF2FDEC1DE00EB2C58 /* NightlifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NightlifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		596946B92FDEC1DF00EB2C58 /* NightlifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NightlifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		596946BF2FDEC1DF00EB2C58 /* Exceptions for "Nightlife" folder in "Nightlife" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5969469D2FDEC1DB00EB2C58 /* Nightlife */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		596946A02FDEC1DB00EB2C58 /* Nightlife */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				596946BF2FDEC1DF00EB2C58 /* Exceptions for "Nightlife" folder in "Nightlife" target */,
+			);
+			path = Nightlife;
+			sourceTree = "<group>";
+		};
+		596946B22FDEC1DE00EB2C58 /* NightlifeTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NightlifeTests;
+			sourceTree = "<group>";
+		};
+		596946BC2FDEC1DF00EB2C58 /* NightlifeUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NightlifeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5969469B2FDEC1DB00EB2C58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59DEC6E02FDEDEE400D8FAFF /* SharedKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596946AC2FDEC1DE00EB2C58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59DEC6E32FDEDEEA00D8FAFF /* SharedKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596946B62FDEC1DE00EB2C58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59DEC6E52FDEDEEF00D8FAFF /* SharedKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		596946952FDEC1DB00EB2C58 = {
+			isa = PBXGroup;
+			children = (
+				596946A02FDEC1DB00EB2C58 /* Nightlife */,
+				596946B22FDEC1DE00EB2C58 /* NightlifeTests */,
+				596946BC2FDEC1DF00EB2C58 /* NightlifeUITests */,
+				5969469F2FDEC1DB00EB2C58 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5969469F2FDEC1DB00EB2C58 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5969469E2FDEC1DB00EB2C58 /* Nightlife.app */,
+				596946AF2FDEC1DE00EB2C58 /* NightlifeTests.xctest */,
+				596946B92FDEC1DF00EB2C58 /* NightlifeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5969469D2FDEC1DB00EB2C58 /* Nightlife */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 596946C02FDEC1DF00EB2C58 /* Build configuration list for PBXNativeTarget "Nightlife" */;
+			buildPhases = (
+				5969469A2FDEC1DB00EB2C58 /* Sources */,
+				5969469B2FDEC1DB00EB2C58 /* Frameworks */,
+				5969469C2FDEC1DB00EB2C58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				596946A02FDEC1DB00EB2C58 /* Nightlife */,
+			);
+			name = Nightlife;
+			packageProductDependencies = (
+				59DEC6DF2FDEDEE400D8FAFF /* SharedKit */,
+			);
+			productName = Nightlife;
+			productReference = 5969469E2FDEC1DB00EB2C58 /* Nightlife.app */;
+			productType = "com.apple.product-type.application";
+		};
+		596946AE2FDEC1DE00EB2C58 /* NightlifeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 596946C52FDEC1DF00EB2C58 /* Build configuration list for PBXNativeTarget "NightlifeTests" */;
+			buildPhases = (
+				596946AB2FDEC1DE00EB2C58 /* Sources */,
+				596946AC2FDEC1DE00EB2C58 /* Frameworks */,
+				596946AD2FDEC1DE00EB2C58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				596946B12FDEC1DE00EB2C58 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				596946B22FDEC1DE00EB2C58 /* NightlifeTests */,
+			);
+			name = NightlifeTests;
+			packageProductDependencies = (
+				59DEC6E22FDEDEEA00D8FAFF /* SharedKit */,
+			);
+			productName = NightlifeTests;
+			productReference = 596946AF2FDEC1DE00EB2C58 /* NightlifeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		596946B82FDEC1DE00EB2C58 /* NightlifeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 596946C82FDEC1DF00EB2C58 /* Build configuration list for PBXNativeTarget "NightlifeUITests" */;
+			buildPhases = (
+				596946B52FDEC1DE00EB2C58 /* Sources */,
+				596946B62FDEC1DE00EB2C58 /* Frameworks */,
+				596946B72FDEC1DE00EB2C58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				596946BB2FDEC1DF00EB2C58 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				596946BC2FDEC1DF00EB2C58 /* NightlifeUITests */,
+			);
+			name = NightlifeUITests;
+			packageProductDependencies = (
+				59DEC6E42FDEDEEF00D8FAFF /* SharedKit */,
+			);
+			productName = NightlifeUITests;
+			productReference = 596946B92FDEC1DF00EB2C58 /* NightlifeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		596946962FDEC1DB00EB2C58 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2700;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					5969469D2FDEC1DB00EB2C58 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					596946AE2FDEC1DE00EB2C58 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = 5969469D2FDEC1DB00EB2C58;
+					};
+					596946B82FDEC1DE00EB2C58 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = 5969469D2FDEC1DB00EB2C58;
+					};
+				};
+			};
+			buildConfigurationList = 596946992FDEC1DB00EB2C58 /* Build configuration list for PBXProject "Nightlife" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 596946952FDEC1DB00EB2C58;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				59DEC6DE2FDEDEE400D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5969469F2FDEC1DB00EB2C58 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5969469D2FDEC1DB00EB2C58 /* Nightlife */,
+				596946AE2FDEC1DE00EB2C58 /* NightlifeTests */,
+				596946B82FDEC1DE00EB2C58 /* NightlifeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5969469C2FDEC1DB00EB2C58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596946AD2FDEC1DE00EB2C58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596946B72FDEC1DE00EB2C58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5969469A2FDEC1DB00EB2C58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596946AB2FDEC1DE00EB2C58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596946B52FDEC1DE00EB2C58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		596946B12FDEC1DE00EB2C58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5969469D2FDEC1DB00EB2C58 /* Nightlife */;
+			targetProxy = 596946B02FDEC1DE00EB2C58 /* PBXContainerItemProxy */;
+		};
+		596946BB2FDEC1DF00EB2C58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5969469D2FDEC1DB00EB2C58 /* Nightlife */;
+			targetProxy = 596946BA2FDEC1DF00EB2C58 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		596946C12FDEC1DF00EB2C58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Nightlife/Nightlife.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nightlife/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.Nightlife;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		596946C22FDEC1DF00EB2C58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Nightlife/Nightlife.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nightlife/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.Nightlife;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		596946C32FDEC1DF00EB2C58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		596946C42FDEC1DF00EB2C58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		596946C62FDEC1DF00EB2C58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nightlife.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nightlife";
+			};
+			name = Debug;
+		};
+		596946C72FDEC1DF00EB2C58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nightlife.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nightlife";
+			};
+			name = Release;
+		};
+		596946C92FDEC1DF00EB2C58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPrincipalClass = CucumberishInitializer;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Nightlife;
+			};
+			name = Debug;
+		};
+		596946CA2FDEC1DF00EB2C58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPrincipalClass = CucumberishInitializer;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Nightlife;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		596946992FDEC1DB00EB2C58 /* Build configuration list for PBXProject "Nightlife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				596946C32FDEC1DF00EB2C58 /* Debug */,
+				596946C42FDEC1DF00EB2C58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		596946C02FDEC1DF00EB2C58 /* Build configuration list for PBXNativeTarget "Nightlife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				596946C12FDEC1DF00EB2C58 /* Debug */,
+				596946C22FDEC1DF00EB2C58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		596946C52FDEC1DF00EB2C58 /* Build configuration list for PBXNativeTarget "NightlifeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				596946C62FDEC1DF00EB2C58 /* Debug */,
+				596946C72FDEC1DF00EB2C58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		596946C82FDEC1DF00EB2C58 /* Build configuration list for PBXNativeTarget "NightlifeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				596946C92FDEC1DF00EB2C58 /* Debug */,
+				596946CA2FDEC1DF00EB2C58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		59DEC6DE2FDEDEE400D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../SharedKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+
+/* Begin XCSwiftPackageProductDependency section */
+		59DEC6DF2FDEDEE400D8FAFF /* SharedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DEC6DE2FDEDEE400D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */;
+			productName = SharedKit;
+		};
+		59DEC6E22FDEDEEA00D8FAFF /* SharedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DEC6DE2FDEDEE400D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */;
+			productName = SharedKit;
+		};
+		59DEC6E42FDEDEEF00D8FAFF /* SharedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DEC6DE2FDEDEE400D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */;
+			productName = SharedKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 596946962FDEC1DB00EB2C58 /* Project object */;
+}

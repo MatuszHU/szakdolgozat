@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:NightlifeWorker/NightlifeWorker.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NightlifeManager/NightlifeManager.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:Nightlife/Nightlife.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:SharedKit"
+      name = "SharedKit">
+      <Group
+         location = "group:Tests"
+         name = "Tests">
+         <Group
+            location = "group:SharedKitTests"
+            name = "SharedKitTests">
+            <FileRef
+               location = "group:SharedKitTests.swift">
+            </FileRef>
+         </Group>
+      </Group>
+      <FileRef
+         location = "group:Package.swift">
+      </FileRef>
+      <Group
+         location = "group:Sources"
+         name = "Sources">
+         <Group
+            location = "group:SharedKit"
+            name = "SharedKit">
+            <FileRef
+               location = "group:PanicAlert.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Supply.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Ticket.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Task.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Event.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Shift.swift">
+            </FileRef>
+            <FileRef
+               location = "group:AdminUser.swift">
+            </FileRef>
+            <FileRef
+               location = "group:WorkerUser.swift">
+            </FileRef>
+            <FileRef
+               location = "group:GuestUser.swift">
+            </FileRef>
+         </Group>
+      </Group>
+   </Group>
+   <FileRef
+      location = "group:Nightlife/Nightlife.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NightlifeWorker.xctestplan">
+   </FileRef>
+</Workspace>

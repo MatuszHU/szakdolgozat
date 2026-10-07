@@ -1,0 +1,697 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		59354F8A2FF0539E00C0090F /* CucumberSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 59354F892FF0539E00C0090F /* CucumberSwift */; };
+		59DEC6E82FDEDF0600D8FAFF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59DEC6E72FDEDF0600D8FAFF /* SharedKit */; };
+		59DEC6EB2FDEDF1700D8FAFF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59DEC6EA2FDEDF1700D8FAFF /* SharedKit */; };
+		59DEC6ED2FDEDF1D00D8FAFF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59DEC6EC2FDEDF1D00D8FAFF /* SharedKit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		59DEC6BB2FDECC8600D8FAFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59DEC6A12FDECC8500D8FAFF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 59DEC6A82FDECC8500D8FAFF;
+			remoteInfo = NightlifeWorker;
+		};
+		59DEC6C52FDECC8600D8FAFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59DEC6A12FDECC8500D8FAFF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 59DEC6A82FDECC8500D8FAFF;
+			remoteInfo = NightlifeWorker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		59DEC6A92FDECC8500D8FAFF /* NightlifeWorker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NightlifeWorker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		59DEC6BA2FDECC8600D8FAFF /* NightlifeWorkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NightlifeWorkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		59DEC6C42FDECC8600D8FAFF /* NightlifeWorkerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NightlifeWorkerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		592AAC0F2FE1490800B096FB /* Exceptions for "NightlifeWorkerTests" folder in "NightlifeWorkerTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 59DEC6B92FDECC8600D8FAFF /* NightlifeWorkerTests */;
+		};
+		592AAC452FE90ED100B096FB /* Exceptions for "NightlifeWorker" folder in "NightlifeWorkerTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AuthViewModel.swift,
+			);
+			target = 59DEC6B92FDECC8600D8FAFF /* NightlifeWorkerTests */;
+		};
+		592AAC462FE90ED100B096FB /* Exceptions for "NightlifeWorker" folder in "NightlifeWorkerUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AuthViewModel.swift,
+			);
+			target = 59DEC6C32FDECC8600D8FAFF /* NightlifeWorkerUITests */;
+		};
+		59DEC6CA2FDECC8600D8FAFF /* Exceptions for "NightlifeWorker" folder in "NightlifeWorker" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 59DEC6A82FDECC8500D8FAFF /* NightlifeWorker */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		59DEC6AB2FDECC8500D8FAFF /* NightlifeWorker */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				59DEC6CA2FDECC8600D8FAFF /* Exceptions for "NightlifeWorker" folder in "NightlifeWorker" target */,
+				592AAC452FE90ED100B096FB /* Exceptions for "NightlifeWorker" folder in "NightlifeWorkerTests" target */,
+				592AAC462FE90ED100B096FB /* Exceptions for "NightlifeWorker" folder in "NightlifeWorkerUITests" target */,
+			);
+			path = NightlifeWorker;
+			sourceTree = "<group>";
+		};
+		59DEC6BD2FDECC8600D8FAFF /* NightlifeWorkerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				592AAC0F2FE1490800B096FB /* Exceptions for "NightlifeWorkerTests" folder in "NightlifeWorkerTests" target */,
+			);
+			path = NightlifeWorkerTests;
+			sourceTree = "<group>";
+		};
+		59DEC6C72FDECC8600D8FAFF /* NightlifeWorkerUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NightlifeWorkerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		59DEC6A62FDECC8500D8FAFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59DEC6E82FDEDF0600D8FAFF /* SharedKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59DEC6B72FDECC8600D8FAFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59354F8A2FF0539E00C0090F /* CucumberSwift in Frameworks */,
+				59DEC6EB2FDEDF1700D8FAFF /* SharedKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59DEC6C12FDECC8600D8FAFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59DEC6ED2FDEDF1D00D8FAFF /* SharedKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		59DEC6A02FDECC8500D8FAFF = {
+			isa = PBXGroup;
+			children = (
+				59DEC6AB2FDECC8500D8FAFF /* NightlifeWorker */,
+				59DEC6BD2FDECC8600D8FAFF /* NightlifeWorkerTests */,
+				59DEC6C72FDECC8600D8FAFF /* NightlifeWorkerUITests */,
+				59DEC6AA2FDECC8500D8FAFF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		59DEC6AA2FDECC8500D8FAFF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59DEC6A92FDECC8500D8FAFF /* NightlifeWorker.app */,
+				59DEC6BA2FDECC8600D8FAFF /* NightlifeWorkerTests.xctest */,
+				59DEC6C42FDECC8600D8FAFF /* NightlifeWorkerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		59DEC6A82FDECC8500D8FAFF /* NightlifeWorker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59DEC6CB2FDECC8600D8FAFF /* Build configuration list for PBXNativeTarget "NightlifeWorker" */;
+			buildPhases = (
+				59DEC6A52FDECC8500D8FAFF /* Sources */,
+				59DEC6A62FDECC8500D8FAFF /* Frameworks */,
+				59DEC6A72FDECC8500D8FAFF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				59DEC6AB2FDECC8500D8FAFF /* NightlifeWorker */,
+			);
+			name = NightlifeWorker;
+			packageProductDependencies = (
+				59DEC6E72FDEDF0600D8FAFF /* SharedKit */,
+			);
+			productName = NightlifeWorker;
+			productReference = 59DEC6A92FDECC8500D8FAFF /* NightlifeWorker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		59DEC6B92FDECC8600D8FAFF /* NightlifeWorkerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59DEC6D02FDECC8600D8FAFF /* Build configuration list for PBXNativeTarget "NightlifeWorkerTests" */;
+			buildPhases = (
+				59DEC6B62FDECC8600D8FAFF /* Sources */,
+				59DEC6B72FDECC8600D8FAFF /* Frameworks */,
+				59DEC6B82FDECC8600D8FAFF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				59DEC6BC2FDECC8600D8FAFF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				59DEC6BD2FDECC8600D8FAFF /* NightlifeWorkerTests */,
+			);
+			name = NightlifeWorkerTests;
+			packageProductDependencies = (
+				59DEC6EA2FDEDF1700D8FAFF /* SharedKit */,
+				59354F892FF0539E00C0090F /* CucumberSwift */,
+			);
+			productName = NightlifeWorkerTests;
+			productReference = 59DEC6BA2FDECC8600D8FAFF /* NightlifeWorkerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		59DEC6C32FDECC8600D8FAFF /* NightlifeWorkerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59DEC6D32FDECC8600D8FAFF /* Build configuration list for PBXNativeTarget "NightlifeWorkerUITests" */;
+			buildPhases = (
+				59DEC6C02FDECC8600D8FAFF /* Sources */,
+				59DEC6C12FDECC8600D8FAFF /* Frameworks */,
+				59DEC6C22FDECC8600D8FAFF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				59DEC6C62FDECC8600D8FAFF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				59DEC6C72FDECC8600D8FAFF /* NightlifeWorkerUITests */,
+			);
+			name = NightlifeWorkerUITests;
+			packageProductDependencies = (
+				59DEC6EC2FDEDF1D00D8FAFF /* SharedKit */,
+			);
+			productName = NightlifeWorkerUITests;
+			productReference = 59DEC6C42FDECC8600D8FAFF /* NightlifeWorkerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		59DEC6A12FDECC8500D8FAFF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2700;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					59DEC6A82FDECC8500D8FAFF = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					59DEC6B92FDECC8600D8FAFF = {
+						CreatedOnToolsVersion = 27.0;
+						LastSwiftMigration = 2700;
+						TestTargetID = 59DEC6A82FDECC8500D8FAFF;
+					};
+					59DEC6C32FDECC8600D8FAFF = {
+						CreatedOnToolsVersion = 27.0;
+						LastSwiftMigration = 2700;
+						TestTargetID = 59DEC6A82FDECC8500D8FAFF;
+					};
+				};
+			};
+			buildConfigurationList = 59DEC6A42FDECC8500D8FAFF /* Build configuration list for PBXProject "NightlifeWorker" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 59DEC6A02FDECC8500D8FAFF;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				59DEC6E62FDEDF0600D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */,
+				59354F8B2FF053C200C0090F /* XCLocalSwiftPackageReference "../LocalPackages/CucumberSwiftPatched" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 59DEC6AA2FDECC8500D8FAFF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				59DEC6A82FDECC8500D8FAFF /* NightlifeWorker */,
+				59DEC6B92FDECC8600D8FAFF /* NightlifeWorkerTests */,
+				59DEC6C32FDECC8600D8FAFF /* NightlifeWorkerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		59DEC6A72FDECC8500D8FAFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59DEC6B82FDECC8600D8FAFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59DEC6C22FDECC8600D8FAFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		59DEC6A52FDECC8500D8FAFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59DEC6B62FDECC8600D8FAFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59DEC6C02FDECC8600D8FAFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		59DEC6BC2FDECC8600D8FAFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 59DEC6A82FDECC8500D8FAFF /* NightlifeWorker */;
+			targetProxy = 59DEC6BB2FDECC8600D8FAFF /* PBXContainerItemProxy */;
+		};
+		59DEC6C62FDECC8600D8FAFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 59DEC6A82FDECC8500D8FAFF /* NightlifeWorker */;
+			targetProxy = 59DEC6C52FDECC8600D8FAFF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		59DEC6CC2FDECC8600D8FAFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NightlifeWorker/NightlifeWorker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NightlifeWorker/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeWorker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		59DEC6CD2FDECC8600D8FAFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NightlifeWorker/NightlifeWorker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NightlifeWorker/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeWorker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		59DEC6CE2FDECC8600D8FAFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		59DEC6CF2FDECC8600D8FAFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		59DEC6D12FDECC8600D8FAFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NightlifeWorkerTests/Info.plist;
+				INFOPLIST_KEY_NSPrincipalClass = CucumberishInitializer;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeWorkerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NightlifeWorker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NightlifeWorker";
+			};
+			name = Debug;
+		};
+		59DEC6D22FDECC8600D8FAFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NightlifeWorkerTests/Info.plist;
+				INFOPLIST_KEY_NSPrincipalClass = CucumberishInitializer;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeWorkerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NightlifeWorker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NightlifeWorker";
+			};
+			name = Release;
+		};
+		59DEC6D42FDECC8600D8FAFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPrincipalClass = CucumberishInitializer;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeWorkerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NightlifeWorker;
+			};
+			name = Debug;
+		};
+		59DEC6D52FDECC8600D8FAFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPrincipalClass = CucumberishInitializer;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeWorkerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NightlifeWorker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		59DEC6A42FDECC8500D8FAFF /* Build configuration list for PBXProject "NightlifeWorker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59DEC6CE2FDECC8600D8FAFF /* Debug */,
+				59DEC6CF2FDECC8600D8FAFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59DEC6CB2FDECC8600D8FAFF /* Build configuration list for PBXNativeTarget "NightlifeWorker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59DEC6CC2FDECC8600D8FAFF /* Debug */,
+				59DEC6CD2FDECC8600D8FAFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59DEC6D02FDECC8600D8FAFF /* Build configuration list for PBXNativeTarget "NightlifeWorkerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59DEC6D12FDECC8600D8FAFF /* Debug */,
+				59DEC6D22FDECC8600D8FAFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59DEC6D32FDECC8600D8FAFF /* Build configuration list for PBXNativeTarget "NightlifeWorkerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59DEC6D42FDECC8600D8FAFF /* Debug */,
+				59DEC6D52FDECC8600D8FAFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		59354F8B2FF053C200C0090F /* XCLocalSwiftPackageReference "../LocalPackages/CucumberSwiftPatched" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../LocalPackages/CucumberSwiftPatched;
+		};
+		59DEC6E62FDEDF0600D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../SharedKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		59354F892FF0539E00C0090F /* CucumberSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59354F8B2FF053C200C0090F /* XCLocalSwiftPackageReference "../LocalPackages/CucumberSwiftPatched" */;
+			productName = CucumberSwift;
+		};
+		59DEC6E72FDEDF0600D8FAFF /* SharedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DEC6E62FDEDF0600D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */;
+			productName = SharedKit;
+		};
+		59DEC6EA2FDEDF1700D8FAFF /* SharedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DEC6E62FDEDF0600D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */;
+			productName = SharedKit;
+		};
+		59DEC6EC2FDEDF1D00D8FAFF /* SharedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DEC6E62FDEDF0600D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */;
+			productName = SharedKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 59DEC6A12FDECC8500D8FAFF /* Project object */;
+}

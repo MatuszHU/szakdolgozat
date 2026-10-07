@@ -1,0 +1,642 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		59DEC6D82FDEDE5700D8FAFF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59DEC6D72FDEDE5700D8FAFF /* SharedKit */; };
+		59DEC6DB2FDEDEC400D8FAFF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59DEC6DA2FDEDEC400D8FAFF /* SharedKit */; };
+		59DEC6DD2FDEDEC900D8FAFF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59DEC6DC2FDEDEC900D8FAFF /* SharedKit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		594A59242FDECBDF00985191 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 594A590C2FDECBDD00985191 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 594A59132FDECBDE00985191;
+			remoteInfo = NightlifeManager;
+		};
+		594A592E2FDECBDF00985191 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 594A590C2FDECBDD00985191 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 594A59132FDECBDE00985191;
+			remoteInfo = NightlifeManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		594A59142FDECBDE00985191 /* NightlifeManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NightlifeManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		594A59232FDECBDF00985191 /* NightlifeManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NightlifeManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		594A592D2FDECBDF00985191 /* NightlifeManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NightlifeManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		59DEC76A2FDF1AF600D8FAFF /* Exceptions for "NightlifeManagerUITests" folder in "NightlifeManagerUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 594A592C2FDECBDF00985191 /* NightlifeManagerUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		594A59162FDECBDE00985191 /* NightlifeManager */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NightlifeManager;
+			sourceTree = "<group>";
+		};
+		594A59262FDECBDF00985191 /* NightlifeManagerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NightlifeManagerTests;
+			sourceTree = "<group>";
+		};
+		594A59302FDECBDF00985191 /* NightlifeManagerUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				59DEC76A2FDF1AF600D8FAFF /* Exceptions for "NightlifeManagerUITests" folder in "NightlifeManagerUITests" target */,
+			);
+			path = NightlifeManagerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		594A59112FDECBDE00985191 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59DEC6D82FDEDE5700D8FAFF /* SharedKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		594A59202FDECBDF00985191 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59DEC6DB2FDEDEC400D8FAFF /* SharedKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		594A592A2FDECBDF00985191 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59DEC6DD2FDEDEC900D8FAFF /* SharedKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		594A590B2FDECBDD00985191 = {
+			isa = PBXGroup;
+			children = (
+				594A59162FDECBDE00985191 /* NightlifeManager */,
+				594A59262FDECBDF00985191 /* NightlifeManagerTests */,
+				594A59302FDECBDF00985191 /* NightlifeManagerUITests */,
+				594A59152FDECBDE00985191 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		594A59152FDECBDE00985191 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				594A59142FDECBDE00985191 /* NightlifeManager.app */,
+				594A59232FDECBDF00985191 /* NightlifeManagerTests.xctest */,
+				594A592D2FDECBDF00985191 /* NightlifeManagerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		594A59132FDECBDE00985191 /* NightlifeManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 594A59352FDECBDF00985191 /* Build configuration list for PBXNativeTarget "NightlifeManager" */;
+			buildPhases = (
+				594A59102FDECBDE00985191 /* Sources */,
+				594A59112FDECBDE00985191 /* Frameworks */,
+				594A59122FDECBDE00985191 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				594A59162FDECBDE00985191 /* NightlifeManager */,
+			);
+			name = NightlifeManager;
+			packageProductDependencies = (
+				59DEC6D72FDEDE5700D8FAFF /* SharedKit */,
+			);
+			productName = NightlifeManager;
+			productReference = 594A59142FDECBDE00985191 /* NightlifeManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		594A59222FDECBDF00985191 /* NightlifeManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 594A59382FDECBDF00985191 /* Build configuration list for PBXNativeTarget "NightlifeManagerTests" */;
+			buildPhases = (
+				594A591F2FDECBDF00985191 /* Sources */,
+				594A59202FDECBDF00985191 /* Frameworks */,
+				594A59212FDECBDF00985191 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				594A59252FDECBDF00985191 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				594A59262FDECBDF00985191 /* NightlifeManagerTests */,
+			);
+			name = NightlifeManagerTests;
+			packageProductDependencies = (
+				59DEC6DA2FDEDEC400D8FAFF /* SharedKit */,
+			);
+			productName = NightlifeManagerTests;
+			productReference = 594A59232FDECBDF00985191 /* NightlifeManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		594A592C2FDECBDF00985191 /* NightlifeManagerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 594A593B2FDECBDF00985191 /* Build configuration list for PBXNativeTarget "NightlifeManagerUITests" */;
+			buildPhases = (
+				594A59292FDECBDF00985191 /* Sources */,
+				594A592A2FDECBDF00985191 /* Frameworks */,
+				594A592B2FDECBDF00985191 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				594A592F2FDECBDF00985191 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				594A59302FDECBDF00985191 /* NightlifeManagerUITests */,
+			);
+			name = NightlifeManagerUITests;
+			packageProductDependencies = (
+				59DEC6DC2FDEDEC900D8FAFF /* SharedKit */,
+			);
+			productName = NightlifeManagerUITests;
+			productReference = 594A592D2FDECBDF00985191 /* NightlifeManagerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		594A590C2FDECBDD00985191 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2700;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					594A59132FDECBDE00985191 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					594A59222FDECBDF00985191 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = 594A59132FDECBDE00985191;
+					};
+					594A592C2FDECBDF00985191 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = 594A59132FDECBDE00985191;
+					};
+				};
+			};
+			buildConfigurationList = 594A590F2FDECBDD00985191 /* Build configuration list for PBXProject "NightlifeManager" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 594A590B2FDECBDD00985191;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				59DEC6D62FDEDE5700D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 594A59152FDECBDE00985191 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				594A59132FDECBDE00985191 /* NightlifeManager */,
+				594A59222FDECBDF00985191 /* NightlifeManagerTests */,
+				594A592C2FDECBDF00985191 /* NightlifeManagerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		594A59122FDECBDE00985191 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		594A59212FDECBDF00985191 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		594A592B2FDECBDF00985191 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		594A59102FDECBDE00985191 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		594A591F2FDECBDF00985191 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		594A59292FDECBDF00985191 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		594A59252FDECBDF00985191 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 594A59132FDECBDE00985191 /* NightlifeManager */;
+			targetProxy = 594A59242FDECBDF00985191 /* PBXContainerItemProxy */;
+		};
+		594A592F2FDECBDF00985191 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 594A59132FDECBDE00985191 /* NightlifeManager */;
+			targetProxy = 594A592E2FDECBDF00985191 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		594A59332FDECBDF00985191 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		594A59342FDECBDF00985191 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		594A59362FDECBDF00985191 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		594A59372FDECBDF00985191 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		594A59392FDECBDF00985191 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NightlifeManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NightlifeManager";
+			};
+			name = Debug;
+		};
+		594A593A2FDECBDF00985191 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NightlifeManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NightlifeManager";
+			};
+			name = Release;
+		};
+		594A593C2FDECBDF00985191 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NightlifeManagerUITests/Info.plist;
+				INFOPLIST_KEY_NSPrincipalClass = CucumberishInitializer;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeManagerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = NightlifeManager;
+			};
+			name = Debug;
+		};
+		594A593D2FDECBDF00985191 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A22X7HR8RY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NightlifeManagerUITests/Info.plist;
+				INFOPLIST_KEY_NSPrincipalClass = CucumberishInitializer;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeManagerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = NightlifeManager;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		594A590F2FDECBDD00985191 /* Build configuration list for PBXProject "NightlifeManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				594A59332FDECBDF00985191 /* Debug */,
+				594A59342FDECBDF00985191 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		594A59352FDECBDF00985191 /* Build configuration list for PBXNativeTarget "NightlifeManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				594A59362FDECBDF00985191 /* Debug */,
+				594A59372FDECBDF00985191 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		594A59382FDECBDF00985191 /* Build configuration list for PBXNativeTarget "NightlifeManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				594A59392FDECBDF00985191 /* Debug */,
+				594A593A2FDECBDF00985191 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		594A593B2FDECBDF00985191 /* Build configuration list for PBXNativeTarget "NightlifeManagerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				594A593C2FDECBDF00985191 /* Debug */,
+				594A593D2FDECBDF00985191 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		59DEC6D62FDEDE5700D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../SharedKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+
+/* Begin XCSwiftPackageProductDependency section */
+		59DEC6D72FDEDE5700D8FAFF /* SharedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DEC6D62FDEDE5700D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */;
+			productName = SharedKit;
+		};
+		59DEC6DA2FDEDEC400D8FAFF /* SharedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DEC6D62FDEDE5700D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */;
+			productName = SharedKit;
+		};
+		59DEC6DC2FDEDEC900D8FAFF /* SharedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59DEC6D62FDEDE5700D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */;
+			productName = SharedKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 594A590C2FDECBDD00985191 /* Project object */;
+}
