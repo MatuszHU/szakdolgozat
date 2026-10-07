@@ -1,122 +1,130 @@
 # Technológiai Összehasonlítás
+### Majoros Máté
+ ----
 ## Magas szintű technológiai összehasonlítás
-| Szempont | Flutter | React Native | Xcode (Swift, SwiftUI) | Android Studio (Java/Kotlin) |
+
+| Szempont | Flutter | React Native | Xcode (Swift, SwiftUI) | Android Studio (Java/Kotlin) |
 |----------|---------|--------------|------------------------|------------------------------|
-| Célplatform | iOS, Android, Web, Desktop | iOS, Android, Web (elsősorban mobil) | iOS, iPadOS, macOS, watchOS, tvOS (Apple-only)​ | Android (natív), részben multiplatform (KMM)​ | 
-| UI renderelés | Saját renderelő engine (Skia)​| JS kód + natív view-k JS bridge-en keresztül​ | Natív UIKit / SwiftUI komponensek, OS szintű renderelés | Natív Android View / Compose, OS renderelés​ |
-| Nyelv | Dart | JavaScript / TypeScript | Swift, SwiftUI deklaratív DSL |​ Java, Kotlin​ |
-| Teljesítmény | Közel natív, de extra engine réteggel​ | Jó, de JS bridge overheaddel​ | Natív, közvetlenül az Apple SDK-kra épül​ | Natív Android teljesítmény​ |
-| Platform‑API-k elérése | Platform channel + natív plugin-ek​ | Native module + bridge​ | Közvetlen hozzáférés minden új iOS API-hoz (pl. Sign in with Apple)​​ | Közvetlen hozzáférés Android API-hoz​ |
-| Design guideline követés | Material / saját theme, iOS-ra “emulált” UI​ | Platform look & feel vegyes pontossággal​ | Human Interface Guidelines, Liquid Glass natívan követhető​	| Material Design natívan​ |
-| Multiplatform előny | Egy kódbázis több platformra​ | Egy kódbázis több platformra​ | Csak Apple platformok, de mély integráció​​ | Android first, KMM-mel megosztható logika |
-| Ökoszisztéma, tooling | flutter CLI, pub.dev, jó CI/CD integráció​ | JS/TS, npm, Metro bundler​ | Xcode, Swift Package Manager, TestFlight, Xcode Instruments​ | Android Studio, Gradle, Play Console​ |
+| Célplatform | iOS, Android, Web, Desktop | iOS, Android, Web (elsősorban mobil) | iOS, iPadOS, macOS, watchOS, tvOS (csak Apple) | Android (natív), részben multiplatform (KMP) |
+| UI renderelés | Saját renderelőmotor (Skia / Impeller) | JS kód + natív nézetek bridge-en keresztül | Natív UIKit / SwiftUI komponensek, rendszerszintű renderelés | Natív Android View / Compose, rendszerszintű renderelés |
+| Nyelv | Dart | JavaScript / TypeScript | Swift, SwiftUI deklaratív DSL | Java, Kotlin |
+| Teljesítmény | Közel natív, de extra motorréteggel | Jó, de bridge-overheaddel | Natív, közvetlenül az Apple SDK-kra épül | Natív Android teljesítmény |
+| Platform-API-k elérése | Platform channel + natív pluginek | Natív modul + bridge | Közvetlen hozzáférés minden új Apple API-hoz (pl. Sign in with Apple) | Közvetlen hozzáférés az Android API-khoz |
+| Dizájnirányelvek követése | Material / saját téma, iOS-en „emulált” felület | Platformos megjelenés változó pontossággal | Human Interface Guidelines, Liquid Glass natívan követhető | Material Design natívan |
+| Multiplatform előny | Egy kódbázis több platformra | Egy kódbázis több platformra | Csak Apple-platformok, de mély integráció | Android-központú, KMP-vel megosztható logika |
+| Ökoszisztéma, eszközök | flutter CLI, pub.dev, jó CI/CD-integráció | JS/TS, npm, Metro bundler | Xcode, Swift Package Manager, TestFlight, Xcode Instruments | Android Studio, Gradle, Play Console |
 
-## Funkcionális követelmények vs. technológia
-A követelményspecifikáció alapján a rendszer három külön kliensből áll (Vendég, Munkavállaló, Admin), amelyek mind az Apple-ökoszisztémán belül működnek. A vendég és munkavállalói oldalon mobil app, az adminisztrátori oldalon web/desktop jellegű, fix munkaállomásra optimalizált felület szükséges.​
+## Funkcionális követelmények és technológia
 
-## Kulcsfunkciók, amelyeknél a natív Apple stack kritikus:
+A követelményspecifikáció alapján a rendszer három külön kliensből áll (Vendég, Munkavállaló, Adminisztrátor), amelyek mind az Apple-ökoszisztémán belül működnek. A vendég és a munkavállalói oldalon iOS-alkalmazás, az adminisztrátori oldalon fix munkaállomásra optimalizált macOS-alkalmazás készül; a webes adminisztrátori elérés későbbi bővítés.
 
-Kizárólag Apple-fiókkal történő bejelentkezés:
+## Kulcsfunkciók, amelyeknél a natív Apple-stack kritikus
 
+### Kizárólag Apple Accounttal történő bejelentkezés
 
+* **Swift + SwiftUI:** beépített támogatás (`ASAuthorizationAppleIDProvider`, Sign in with Apple gomb, tokenkezelés, Keychain-integráció).
+* **Flutter / React Native:** külön natív plugineket és bridge-kódot igényelne, a rendszerfrissítéseknél a pluginek frissítését is külön kellene kezelni.
+* **Android Studio:** az Android klienst támogatná, de a projekt célplatformja nem Android.
 
-Swift + SwiftUI: beépített támogatás (ASAuthorizationAppleIDProvider, Sign in with Apple gomb, tokenkezelés, Keychain integráció).​
+### Liquid Glass dizájnnyelv, az Apple legfrissebb dizájnirányelvei
 
-Flutter / React Native: külön natív plugineket, bridging kódot igényelne, OS-változásoknál a pluginek frissítését is külön kell kezelni.​
+* **Követelmény:** az alkalmazás az Apple által 2025-ben bevezetett Liquid Glass dizájnnyelvet használja.
+* **SwiftUI:** natívan követi az aktuális rendszerkomponenseket, animációs modelleket, nagyítási és kontrasztbeállításokat, a Dynamic Type-ot, a sötét módot, valamint a parallax- és elmosási effekteket.
+* **Flutter / React Native:** ezeket egyedi komponensekkel kellene újraírni, ami karbantarthatóság, felhasználói élmény és akadálymentesség szempontjából is gyengébb megoldás.
 
-Android Studio: az Android klienst támogatná, de a projekt célplatformja nem Android.​
+### Push értesítések, pánik mód, pozíció és tervrajz
 
-Liquid Glass design nyelv, legfrissebb Apple design best practice-ek:
+* **Munkavállalói alkalmazás:** pánik mód push értesítéssel, a munkavállaló utolsó ismert zónájának elküldésével a biztonsági személyzetnek.
+* **Minden kliens:** a helyszín rácsalapú tervrajza zónákkal és POI-kkal; a munkavállalói és az adminisztrátori oldalon a munkavállalók hozzávetőleges pozíciója (QR-kódos zóna-bejelentkezés alapján).
+* **Swift:** közvetlen UserNotifications- és CloudKit-támogatás (feliratkozás alapú push), a tervrajz SwiftUI-jal (Grid / Canvas) rajzolható, a QR-kódok olvasása a kamerakeretrendszerrel natívan megoldható.
+* **Flutter / React Native:** csomagolókönyvtárakra és natív modulokra támaszkodnak, ami a valós idejű és adatvédelmi szempontból kritikus funkcióknál (pánik mód, pozíció) többletkomplexitást jelent.
 
-Követelmény: az app kifejezetten az Apple által 2025-ben bevezetett “Liquid Glass” designnyelvet használja.​
+### Apple Tárca jegykezelés
 
-SwiftUI natívan követi az aktuális iOS komponenseket, animációs modelleket, nagyítási/kontraszt beállításokat, Dynamic Type-ot, Dark Mode-ot, parallax és blur effekteket.​
+* **Követelmény:** a vendég a jegyeit az Apple Tárcába helyezheti.
+* **Swift:** közvetlen PassKit-integráció, hivatalos Apple-dokumentációra és mintakódra építve.
+* **Flutter / React Native:** harmadik féltől származó pluginek, amelyeknél a támogatás és a hosszú távú karbantartás kérdéses lehet.
 
-Flutter / React Native esetén ezeket manuálisan kellene reimplementálni custom widgetekkel, ami karbantarthatóság, UX és hozzáférhetőség szempontjából is gyengébb megoldás lenne.​
+## Miért nem optimális a Flutter és a React Native?
 
-Push értesítések, Pánik mód, helyadatok és térkép integráció:
+### Flutter
 
-Munkavállalói app: pánik mód push értesítéssel, valós idejű pozíció küldésével biztonsági személyzetnek.​
+**Előny:** egy kódbázis iOS-re, Androidra, webre és asztali platformokra, hot reload, gyors felületfejlesztés.
 
-Vendég és admin app: POI-alapú térképek, felhasználó-pozíció és feladatok megjelenítése.​
+**Hátrány a projekt szempontjából:**
 
-Swift: közvetlen UserNotifications, CoreLocation, MapKit/saját overlay támogatás, CoreBluetooth esetleges jövőbeli bővítésekhez.​
+* A multiplatform irány túl nagy súlyt kapna, miközben a specifikáció kizárólag Apple-ökoszisztémát ír elő.
+* Az Apple-specifikus API-k (Sign in with Apple, PassKit, Liquid Glass-szerű vizuális elemek) csak plugin szinten érhetők el, ami plusz karbantartást és hibalehetőséget jelent.
+* A Flutter által renderelt felület nem egyezik teljesen az iOS aktuális komponenseivel (tipográfia, natív viselkedés, akadálymentesség), így sérülhet az Apple dizájnirányelveinek követése.
 
-Flutter / React Native: wrapper könyvtárakra és natív modulokra támaszkodnak, ami mélyebb, real-time és privacy‑kritikus funkcionalitásnál extra komplexitást hoz (platform channel + plugin karbantartás).​
+### React Native
 
-Apple Wallet / Apple Tráca jegykezelés:
+**Előny:** gyors fejlesztés, ismert JS/TS-stack, sok npm-csomag.
 
-Követelmény: vendég appból jegyek Apple Wallet-be helyezése.​
+**Hátrány a projekt szempontjából:**
 
-Swift: közvetlen PassKit integráció, hivatalos Apple dokumentációra és sample code-ra építve.​
+* A bridge miatt nagyobb futásidejű komplexitás, ami a pánik mód, az értesítések és a kódolvasás esetén időzítési és stabilitási kockázatot jelenthet.
+* Az iOS-specifikus dizájnnyelv és komponensek hű követése nehezebb, gyakran egyedi natív modulokat igényel, ami a gyakorlatban „félig natív, félig JS” megoldáshoz vezet.
+* A projekt fókusza nem a platformfüggetlenség, hanem a mély Apple-integráció, így a cross-platform előny nagy része kihasználatlan maradna.
 
-Flutter / React Native: harmadik féltől származó plugin-ek, amelyeknél a támogatás és hosszú távú karbantartás kétséges lehet.​
+## Miért nem releváns az Android Studio (Java/Kotlin)?
 
-Miért nem optimális Flutter és React Native?
-Flutter:
+A specifikáció nem tartalmaz Android-klienst; a teljes célrendszer Apple-platform. A Java/Kotlin és az Android Studio ideális Android-alkalmazásokhoz, de:
 
-Előny: egy kódbázis iOS, Android, Web és Desktop célzására, hot reload, gyors UI-fejlesztés.​
+* nem ad natív hozzáférést az Apple API-khoz (Sign in with Apple, PassKit, Liquid Glass);
+* a Kotlin Multiplatform legfeljebb a megosztott üzleti logikát tudná biztosítani, az Apple-felületet és -integrációkat ekkor is Swiftben kellene megírni;
+* a projekt méretéhez és határidejéhez képest felesleges bonyolítás lenne egy további nyelv és eszközkészlet (Gradle, Android build pipeline) bevonása.
 
-Hátrány a projektedben:
+## Miért indokolt technikailag a Swift + SwiftUI?
 
-Túl nagy súly a multiplatform irány miatt, miközben a specifikáció szigorúan Apple-only ökoszisztémát ír elő.​
+### Közvetlen és naprakész hozzáférés az Apple API-khoz
 
-Apple-specifikus API-k (Sign in with Apple, PassKit, Liquid Glass szerű vizuális elemek) csak plugin szinten érhetők el, ami plusz karbantartást és hibalehetőséget jelent.​
+A Swift az Apple SDK-k elsődleges nyelve: az új rendszerszintű funkciók (Sign in with Apple, Tárca, értesítések, új felületelemek) elsőként és teljes dokumentációval ehhez jelennek meg. A specifikáció több olyan kritikus funkciót tartalmaz (Apple Accountos bejelentkezés, Liquid Glass, Tárca-jegy, pánik mód), amelyeket közvetlenül az Apple keretrendszereivel lehet a legkevesebb kompromisszummal megvalósítani.
 
-A Flutter által renderelt UI nem teljesen egyezik az iOS aktuális UI-kitjével (tipográfia, natív komponensek viselkedése, accessibility), így sérülhet az “Apple design best practices” követelménye.​
+### Gyors, deklaratív, mégis natív felület SwiftUI-jal
 
-React Native:
+* A három kliens felülete modulárisan építhető, a közös modellek és az üzleti logika a SharedKit csomagban egyszer készülnek el, és mindhárom kliens (valamint a Swiftben készülő hitelesítési szolgáltatás) felhasználja őket.
+* A Liquid Glass dizájnnyelv elemei (anyagok, elmosás, mélység, animációk) SwiftUI-ban natívan, komponálható módon érhetők el, míg Flutter vagy React Native esetén egyedi komponensként kellene elkészíteni őket.
 
-Előny: gyors fejlesztés, ismert JS/TS stack, sok npm csomag.​
+### Biztonság és adatvédelem
 
-Hátrány:
+Az Apple-ökoszisztéma szigorúan szabályozza az érzékeny adatokhoz (értesítések, kamera, kódolvasási eredmények, pánikjelzések) való hozzáférést, és Swiftben natív eszközök állnak rendelkezésre ezek kezelésére (Keychain, App Transport Security, Secure Enclave). A projekt egyik fókusza a személyzet védelme, ezért a biztonsági és adatvédelmi követelmények elsődlegesek.
 
-JS bridge miatt magasabb runtime komplexitás, ami real-time helyadat, értesítések, QR/Barcode olvasás és pánik mód esetén időzítési és stabilitási kockázatokat hozhat.​
+### Diagnosztika és tesztelés
 
-Az iOS-specifikus designnyelv és komponensek hű lekövetése nehezebb, gyakran custom natív modulokat igényel, ami gyakorlatban közelíti a “félig native, félig JS” megoldáshoz.​
+Az Xcode Instruments, az XCTest, a Swift Testing, a UI-tesztek és a TestFlight lehetővé teszik a teljesítmény, a memóriahasználat, az energiafogyasztás és a felhasználói élmény célzott mérését natív szinten. Egy valós vállalati használatra szánt rendszernél a stabilitás és a diagnosztika fontosabb, mint a platformfüggetlen kód-újrahasznosítás.
 
-A projekted fejlesztési fókusza nem cross-platform, hanem mély Apple-integráció, így a cross-platform előny nagy része kihasználatlan marad.​
+### Saját szakmai háttér
 
-Miért nem releváns az Android Studio (Java/Kotlin) a projektedhez?
-A specifikáció nem említ Android-klienst; a teljes célrendszer Apple-platform.​
+Korábbi Swift- és iOS-fejlesztési tapasztalatom miatt a Swift + SwiftUI használatával elkerülhetők a további absztrakciós rétegek (platform channel, JS bridge, pluginek), így az idő a domain logikára és a felhasználói élményre fordítható.
 
-Java/Kotlin + Android Studio ideális Android-alkalmazásokhoz, de:
+## Tesztelési eszközök összehasonlítása
 
-Nem ad natív hozzáférést iOS-API-khoz (Sign in with Apple, PassKit, Liquid Glass).​
+A fejlesztés viselkedésvezérelt (BDD) és tesztvezérelt (TDD) módon történik (ld. Tesztterv), ezért az eszközválasztás a tesztelési stackre is kiterjed.
 
-Kotlin Multiplatform legfeljebb a megosztott üzleti logikát tudná biztosítani, de az iOS UI-t és integrációkat akkor is Swiftben kellene megírnod.​
+### Egységtesztelés (TDD)
 
-A projekt méretéhez és a határidőhöz képest felesleges bonyolítás lenne egy plusz nyelv és tooling (Gradle, Android build pipeline) bevonása.​​
+| Szempont | XCTest | Swift Testing |
+|----------|--------|---------------|
+| Szintaxis | Osztályalapú (`XCTestCase`), `XCTAssert…` függvények | Makróalapú (`@Test`, `#expect`, `#require`) |
+| Paraméterezett tesztek | Nem támogatott natívan | Beépített (`arguments:`) |
+| Párhuzamos futtatás | Folyamatszinten | Alapértelmezetten párhuzamos, Swift Concurrencyre épül |
+| UI-teszt | Igen (XCUITest) | Nem, UI-teszthez XCTest szükséges |
+| Szerep a projektben | UI-tesztek, valamint a BDD-futtató alapja | Új egységtesztek (SharedKit, ViewModellek, hitelesítési szolgáltatás) |
 
-Miért technikailag indokolt a Swift + SwiftUI választásod?
-Közvetlen és naprakész hozzáférés az Apple API-khoz
-Swift a “first-class citizen” az iOS SDK-kban, az új rendszerszintű funkciók (Sign in with Apple, Wallet, Location, Notification, új UI-elemek) mindig ehhez jelennek meg először, teljes dokumentációval és tooling támogatással.​
-A specifikáció több olyan kritikus funkciót sorol fel (Apple account login, Liquid Glass, Wallet jegy, pánik mód, POI-térkép), amelyeket közvetlenül az Apple frameworkjeivel kell megvalósítanod.​
+### Elfogadási tesztelés (BDD)
 
-SwiftUI-val gyors, deklaratív, mégis natív UI
+| Szempont | Cucumberish | CucumberSwift |
+|----------|-------------|---------------|
+| Nyelv | Objective-C | Swift |
+| Integráció | CocoaPods / manuális | Swift Package Manager |
+| Modern Xcode-dal | Telepíthető, de a forgatókönyvek futtatása nem az elvártak szerint működik | Működik, a lépéssorrend javításával (ld. alább) |
+| Gherkin-támogatás | Igen | Igen (címkék, háttér, forgatókönyv-vázlat) |
 
-A három külön kliens (Vendég, Munkavállaló, Admin) UI-ja modulárisan építhető, közös view-model logikával (pl. ObservableObject, @State, @EnvironmentObject), így könnyen újrahasznosítható kódstruktúrát kapsz.​
+A munkatervben a Cucumberish szerepelt, de mivel a modern Xcode-verziókkal nem működik megfelelően, a CucumberSwift került alkalmazásra. A CucumberSwift a lépéseket dinamikusan generált XCTest-metódusokként futtatja, amelyeket az Xcode tesztterve betűrendben hajt végre; ez a lépéseket Given → Then → When sorrendbe rendezte. A hibát a CucumberSwift helyi, módosított változata javítja, amely a lépés sorszámát a metódusnév elejére illeszti (részletek: Tesztterv).
 
-A Liquid Glass design nyelvhez hasonló blur, depth, parallax és animációs effektek SwiftUI-ban natívan, composable módon érhetők el (pl. material, blur, új iOS 26-os komponensek), míg Flutter/React Native esetén mindezt egyedi komponensként kellene leprogramoznod.​​
+## Összegzés
 
-Biztonság és adatvédelem
+A rendszer kizárólag az Apple-ökoszisztémát célozza, és olyan platformspecifikus funkciókat használ, mint a Sign in with Apple, az Apple Tárca-integráció és az Apple által 2025-ben bevezetett Liquid Glass dizájnnyelv. Ezek a követelmények natív Swift + SwiftUI technológiával valósíthatók meg a legkevesebb kompromisszummal, mivel így közvetlen, naprakész hozzáférést kapok az iOS és macOS SDK teljes funkcionalitásához, a Human Interface Guidelines maradéktalan követéséhez, valamint az Apple által biztosított biztonsági és adatvédelmi mechanizmusokhoz. A Flutter és a React Native ugyan erős cross-platform megoldások, de esetükben pluginekre és bridge-ekre támaszkodnék minden kritikus Apple-funkciónál, ami növeli a komplexitást és a hibakockázatot, míg a Java/Kotlin és az Android Studio a projekt Apple-központúsága miatt nem releváns választás.
 
-Apple-ökoszisztéma erősen szabályozza a hozzáférést szenzitív adatokhoz (helyadat, értesítés, optikai kód olvasás eredménye, pánik mód logok), és Swiftben natív eszközöket kapsz ezek kezelésére (Keychain, App Transport Security, Secure Enclave integráció).​
-
-A projekt fókusza részben a személyzet védelme, pánik jelzések küldése, így a security és privacy követelmények elsődlegesek.​
-
-Tooling, diagnosztika, tesztelés
-
-Xcode Instruments, XCTest, UI Tests, TestFlight integráció lehetővé teszi a teljesítmény, memóriahasználat, energiafogyasztás és UX-problémák célzott mérését natív szinten.​
-
-Egy ilyen, valós vállalati használatra szánt rendszer esetén a stabilitás és diagnosztika fontosabb, mint a cross-platform kódujrahasznosítás.​
-
-Egyszerűbb architektúra a te skillsetedhez igazítva
-
-A specifikációban is szerepel, hogy Apple-ökoszisztémára optimalizált, tényleges problémát megoldó, nem csak proof-of-concept alkalmazást készítesz.​
-
-Mivel már van Swift / iOS fejlesztési tapasztalatod, Swift + SwiftUI használatával elkerülöd a plusz absztrakciós rétegek (platform channel, JS bridge, plugin-ek) karbantartását, és az idődet a domain logika és UX finomítására fordíthatod.​
-
-A rendszer kizárólag az Apple-ökoszisztémát célozza, és olyan platformspecifikus funkciókat használ, mint a Sign in with Apple, az Apple Wallet integráció és az Apple által 2025-ben bevezetett Liquid Glass designnyelv. Ezek a követelmények natív Swift + SwiftUI technológiával valósíthatók meg a legkevesebb kompromisszummal, mivel így közvetlen, naprakész hozzáférést kapok az iOS SDK teljes funkcionalitásához, a Human Interface Guidelines maradéktalan követéséhez, valamint az Apple által biztosított biztonsági és adatvédelmi mechanizmusokhoz. A Flutter és React Native ugyan erős cross-platform megoldások, de esetükben pluginekre és bridge-ekre támaszkodnék minden kritikus Apple-funkciónál, ami növeli a komplexitást és a hibakockázatot, míg Java/Kotlin és az Android Studio a projekt Apple-only fókusza miatt nem releváns választás.
-
-A fentebb felsorolt érvek, ugyan támogatják a kizárolagos Swift használatát, de nem ad kizáró indokot más technológiák ellen. A technológia választása, nagyban függött személyes preferenciámon, saját érdeklődésemen, és egyéb önálló tanulmányaimon.
+A fenti érvek ugyan támogatják a kizárólagos Swift-használatot, de nem adnak kizáró indokot más technológiákkal szemben. A technológia kiválasztásában nagy szerepet játszott személyes preferenciám, érdeklődésem és korábbi önálló tanulmányaim is.
