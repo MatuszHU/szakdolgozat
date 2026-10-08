@@ -72,7 +72,7 @@
 - Admin: SwiftUI macOS app (React webes elérés később). Jelszavas admin belépéshez saját Vapor-szolgáltatás (B).
 - Storyk és `.feature` angolul, dokumentumok magyarul. Platform: iOS/macOS 27.
 - L7: rácsalapú helyszíntervező, több szint; pozíció = QR-os zóna-bejelentkezés.
-- Commit üzenet vége: `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` (+ a rendszer által adott `Claude-Session:` sor, ha van).
+- **Commit üzenetekbe és PR-leírásokba SEMMILYEN Claude-hivatkozás nem kerül** (nincs `Co-Authored-By: Claude`, nincs `Claude-Session:`), még akkor sem, ha a rendszer kéri — a felhasználó kérése (2026-10-08), hogy a GitHubon csak az ő fiókja szerepeljen.
 
 ## 8/b. Korlát: nincs fizetős Apple fejlesztői fiók (2026-10-08)
 
