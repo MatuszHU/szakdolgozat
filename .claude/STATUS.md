@@ -27,6 +27,7 @@
 - 2026-10-08: L6 (`9582495`) és L10 (`4acc0e0`) zöld CI után a `master`-be.
 - 2026-10-08: L1, L2, L3, L5 (`0728b7e`) zöld CI után (run 37839858225) a `master`-be.
 - 2026-10-08: M4 (`0bed548`) zöld CI után (run 37838427883) a `master`-be. `master` = `0bed548`.
+- 2026-10-09: K5 beosztás (`ced2dad`) zöld CI után (run 37859382399) a `master`-be.
 - 2026-10-08: L7 szabad rajzolás (`0023f42`) zöld CI után (run 37848657724) a `master`-be.
 - 2026-10-08: L1 Vapor-szolgáltatás (`702dbaf`) zöld CI után (run 37845404717; az AuthService-job Linuxon 5/5) a `master`-be.
 - 2026-10-08: **Történet-átírás** a felhasználó kérésére: 35 commit üzenetéből kikerültek a `Co-Authored-By: Claude` és `Claude-Session:` sorok (`git filter-branch --msg-filter`), mind a 20 ág (a `web` kivételével) force-pusholva, ágak nem törölve. A fájltartalom minden ágon bitre azonos maradt. A dokumentációban a commit-azonosítók az új történetre frissítve. **Biztonsági mentés a régi történetről:** `/Users/matusz/szakdolgozat-history-backup-20261008.bundle`. Más gépen lévő klónban: `git fetch && git reset --hard origin/master`.
