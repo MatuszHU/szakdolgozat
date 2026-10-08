@@ -8,12 +8,12 @@ public struct Shift: Identifiable, Codable, Hashable {
     public var startTime: Date
     public var endTime: Date
     public var zoneID: UUID?
-    public var tasks: [Task]
+    public var tasks: [ShiftTask]
 
     public var isFull: Bool { workerIDs.count >= capacity }
 
     public init(id: UUID = UUID(), workerIDs: [UUID] = [], capacity: Int = 1,
-                startTime: Date, endTime: Date, zoneID: UUID? = nil, tasks: [Task] = []) {
+                startTime: Date, endTime: Date, zoneID: UUID? = nil, tasks: [ShiftTask] = []) {
         self.id = id
         self.workerIDs = workerIDs
         self.capacity = capacity

@@ -1,7 +1,7 @@
 import Foundation
 
 @L3 @K5
-public struct Task: Identifiable, Codable, Hashable {
+public struct ShiftTask: Identifiable, Codable, Hashable {
     public let id: UUID
     public var title: String
     public var description: String

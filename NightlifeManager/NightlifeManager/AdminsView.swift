@@ -11,7 +11,7 @@ struct AdminsView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            List(session.directory.admins) { admin in
+            List(session.snapshot.admins) { admin in
                 HStack {
                     VStack(alignment: .leading) {
                         Text(admin.name).font(.headline)
@@ -25,7 +25,7 @@ struct AdminsView: View {
                             .buttonStyle(.borderless)
                     }
                     if canManage {
-                        Button("Törlés", systemImage: "trash", role: .destructive) { session.removeAdmin(id: admin.id) }
+                        Button("Törlés", systemImage: "trash", role: .destructive) { Task { await session.removeAdmin(id: admin.id) } }
                             .labelStyle(.iconOnly)
                             .buttonStyle(.borderless)
                     }
@@ -42,12 +42,12 @@ struct AdminsView: View {
         }
         .sheet(isPresented: $showingNewAdmin) {
             NewAdminSheet(canCreateOwner: session.currentAdmin?.role == .owner) { name, username, role, password in
-                session.addAdmin(name: name, username: username, role: role, temporaryPassword: password)
+                Task { await session.addAdmin(name: name, username: username, role: role, temporaryPassword: password) }
             }
         }
         .sheet(item: $resetTarget) { admin in
             ResetPasswordSheet(name: admin.name) { password in
-                session.resetPassword(of: admin.id, to: password)
+                Task { await session.resetPassword(of: admin.id, to: password) }
             }
         }
     }
@@ -141,8 +141,8 @@ struct AdminSettingsView: View {
             Section("Munkavállalói funkciók") {
                 ForEach(WorkerFeature.allCases, id: \.self) { feature in
                     Toggle(Self.title(of: feature), isOn: Binding(
-                        get: { session.directory.enabledWorkerFeatures.contains(feature) },
-                        set: { session.setWorkerFeature(feature, enabled: $0) }))
+                        get: { session.snapshot.enabledWorkerFeatures.contains(feature) },
+                        set: { enabled in Task { await session.setWorkerFeature(feature, enabled: enabled) } }))
                 }
             }
             if session.currentAdmin?.signInMethod == .password {
@@ -150,10 +150,12 @@ struct AdminSettingsView: View {
                     SecureField("Jelenlegi jelszó", text: $currentPassword)
                     SecureField("Új jelszó", text: $newPassword)
                     Button("Jelszó módosítása") {
-                        session.changeOwnPassword(current: currentPassword, new: newPassword)
-                        if session.errorMessage == nil {
-                            currentPassword = ""
-                            newPassword = ""
+                        Task {
+                            await session.changeOwnPassword(current: currentPassword, new: newPassword)
+                            if session.errorMessage == nil {
+                                currentPassword = ""
+                                newPassword = ""
+                            }
                         }
                     }
                     .disabled(currentPassword.isEmpty || newPassword.isEmpty)
@@ -162,7 +164,7 @@ struct AdminSettingsView: View {
             Section("Vállalati domain") {
                 TextField("pl. clubneon.hu", text: $domain)
                     .disabled(session.currentAdmin?.role != .owner)
-                Button("Mentés") { session.setCompanyDomain(domain) }
+                Button("Mentés") { Task { await session.setCompanyDomain(domain) } }
                     .disabled(session.currentAdmin?.role != .owner || domain.isEmpty)
                 if session.currentAdmin?.role != .owner {
                     Text("A domaint csak tulajdonos módosíthatja.").foregroundStyle(.secondary)
@@ -174,7 +176,7 @@ struct AdminSettingsView: View {
         }
         .formStyle(.grouped)
         .navigationTitle("Beállítások")
-        .onAppear { domain = session.directory.companyDomain }
+        .onAppear { domain = session.snapshot.companyDomain }
     }
 
     static func title(of feature: WorkerFeature) -> String {

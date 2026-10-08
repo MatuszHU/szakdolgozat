@@ -19,6 +19,19 @@ jobs:
         working-directory: SharedKit
         run: swift test
 
+  authservice:
+    name: AuthService (Vapor) tests on Linux
+    runs-on: ubuntu-latest
+    container: swift:6.4-noble
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Show toolchain
+        run: swift --version
+      - name: Run tests
+        working-directory: AuthService
+        run: swift test
+
   manager:
     name: NightlifeManager BDD tests
     runs-on: macos-latest

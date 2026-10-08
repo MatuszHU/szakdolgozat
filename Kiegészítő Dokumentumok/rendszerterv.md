@@ -73,11 +73,11 @@ flowchart TB
 
 | Komponens | Felelősség |
 |-----------|------------|
-| **SharedKit** | A követelmény-annotációk makrói (`RequirementMacros` makró-cél, swift-syntax; a makrók nem generálnak kódot, csak jelölnek). A kliensek és a hitelesítési szolgáltatás közös adatmodellje és üzleti logikája (pl. műszakütközés, létszámkorlát, készletminimum). Felülettől független, ezért egységtesztekkel teljesen lefedhető. |
+| **SharedKit** | A követelmény-annotációk makrói (`RequirementMacros` makró-cél és `Requirements` könyvtár, swift-syntax; a makrók nem generálnak kódot, csak jelölnek). A kliensek és a hitelesítési szolgáltatás közös adatmodellje és üzleti logikája (pl. műszakütközés, létszámkorlát, készletminimum). Az adminisztrátori fiókok logikája külön, csak Foundationre épülő `AdminCore` célban van, így Linuxon is lefordul, és a szerver is ezt használja; a `SharedKit` könyvtár mindkettőt továbbadja (`@_exported import`). Felülettől független, ezért egységtesztekkel teljesen lefedhető. |
 | **Kliensek** | MVVM felépítés: a nézetek (SwiftUI View) csak megjelenítenek, az állapotot és a műveleteket a ViewModellek kezelik, az üzleti szabályokat a SharedKit adja. |
 | **Szolgáltatásréteg** | A külső függőségek (hitelesítés, CloudKit, értesítések, kamera) protokollok mögött érhetők el, a ViewModellek ezeket konstruktoron keresztül kapják meg. Tesztben valódi szolgáltatás helyett tesztpéldány (fake) adható át, így a BDD-forgatókönyvek hálózat és Apple-fiók nélkül is futnak. |
 | **CloudKit** | Közös adattárolás és szinkronizáció; a nyilvános adatbázis a helyszín- és eseményadatoké, a változásokról (pl. pánikjelzés) feliratkozás alapú push értesítés érkezik. |
-| **Hitelesítési szolgáltatás** | Az adminisztrátorok jelszavas bejelentkezése, tokenkiadás; Swift (Vapor) szerver (ld. Hitelesítés). |
+| **Hitelesítési szolgáltatás** | Az adminisztrátori fiókok tárolása és kezelése, jelszavas bejelentkezés, tokenkiadás; Swift (Vapor) szerver az `AuthService/` csomagban (ld. Hitelesítés). |
 
 ## Adatmodell
 
@@ -88,9 +88,9 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `WorkerUser` | ✅ | appleID, name, role, payPeriod, workedHours | → `Schedule` |
 | `AdminUser` | ✅ | username (az e-mail-cím helyi része), name, role (userAdmin / businessManager / owner), signInMethod, appleID | → `AdminCredential` |
 | `GuestUser` | ✅ | appleID, name, tickets | → `Ticket` |
-| `Shift` | ✅ | startTime, endTime, capacity, workerIDs, tasks | → `Zone`, → `Task` |
+| `Shift` | ✅ | startTime, endTime, capacity, workerIDs, tasks | → `Zone`, → `ShiftTask` |
 | `Schedule` | ✅ | workerID, shifts, payPeriod | → `Shift` |
-| `Task` | ✅ | title, description, isCompleted, assignedWorkerIDs, workstation | |
+| `ShiftTask` | ✅ | title, description, isCompleted, assignedWorkerIDs, workstation | |
 | `Event` | ✅ | title, description, startTime, endTime, location, capacity, ticketOffers, raffle | → `Ticket`, → `TicketOffer`, → `Raffle` |
 | `EventCatalog` (értékesítés) | ✅ | `checkAvailability`, `price`, `purchase`, `tickets(of:)`; szabályok: meghirdetett jegytípus, keret és férőhely, az esemény még nem ért véget, 1–10 jegy; a jegyek egyedi `NL-…` sorozatszámot kapnak (M4) | → `Event`, → `Ticket` |
 | `TicketOffer` | ✅ | type (`TicketType`), price (Ft), quota (opcionális) (L11, M4) | → `Event` |
@@ -107,12 +107,13 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `POI` | ✅ | name, kind (`POIKind`: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár, egyéni), cell | → `Floor` |
 | `ZoneCheckIn` | ✅ | workerID, zoneID, timestamp | → `WorkerUser`, → `Zone` |
 | `WorkerPosition` | ✅ | workerID, isOnShift, currentZoneID, checkIns; szabályok: csak műszak alatt, csak ismert zónába (K16, N4) | → `Zone`, → `ZoneCheckIn` |
-| `ShiftPlan` | ✅ | staff, shifts; szabályok: a műszak vége a kezdés után, létszám legalább 1, betelt műszakra és átfedő műszakra nincs hozzárendelés, feladat csak a műszakon lévő munkatársnak, eltávolításkor a feladatokról is lekerül (L3) | → `WorkerUser`, `Shift`, `Task` |
-| `StaffMap` | ✅ | a munkatársak pozíciója (legutóbbi zóna-bejelentkezés), munkaterülete és saját feladatai az adott időpontban aktív műszakból; a K6 és az L4 közös számítása | → `WorkerUser`, `ZoneCheckIn`, `Shift`, `Task` |
+| `ShiftPlan` | ✅ | staff, shifts; szabályok: a műszak vége a kezdés után, létszám legalább 1, betelt műszakra és átfedő műszakra nincs hozzárendelés, feladat csak a műszakon lévő munkatársnak, eltávolításkor a feladatokról is lekerül (L3) | → `WorkerUser`, `Shift`, `ShiftTask` |
+| `StaffMap` | ✅ | a munkatársak pozíciója (legutóbbi zóna-bejelentkezés), munkaterülete és saját feladatai az adott időpontban aktív műszakból; a K6 és az L4 közös számítása | → `WorkerUser`, `ZoneCheckIn`, `Shift`, `ShiftTask` |
 | `Raffle` | ✅ | title, prize, details, participantIDs (L11, M7) | → `Event` |
 | `AdminDirectory` | ✅ | admins, credentials, companyDomain; szabályok: első tulajdonos, jogosultságok (adminokat a tulajdonos és a felhasználó-adminisztrátor kezel, tulajdonost csak tulajdonos), utolsó tulajdonos, egyedi felhasználónév, jelszószabály, ideiglenes jelszó, domain csak tulajdonostól (L1, L3, L6, N3) | → `AdminUser`, → `AdminCredential` |
 | `WorkerFeature` | ✅ | profilePicture (K10), statistics (K12), guide (K15), supplyRequests (K17); az `AdminDirectory.enabledWorkerFeatures` tárolja, alapból mind bekapcsolva; a régebbi mentések a mező nélkül is betölthetők (L6) | |
-| `AdminCredential` | ✅ | adminID, salt, hash (PBKDF2-HMAC-SHA256, 600 000 iteráció), mustChangePassword | → `AdminUser` |
+| `AdminCredential` | ✅ | adminID, salt, hash, mustChangePassword; a hash-függvény a `PasswordHashing` protokoll mögött cserélhető: a Mac helyi módjában PBKDF2-HMAC-SHA256 (600 000 iteráció), a szerveren Bcrypt (N3) | → `AdminUser` |
+| `AdminBackend` | ✅ | a Manager és a fiókkezelés közötti aszinkron protokoll: állapot (`AdminSnapshot`), bejelentkezés (`AdminSession`: token, admin, kötelező jelszócsere), fiók- és beállításműveletek; hibái (`AdminBackendError`) Codable-ek, így a HTTP-válaszban is átadhatók. Megvalósításai: `LocalAdminBackend` (actor, tokenek lejárati idővel; a Mac helyi módja és a szerver is ezt futtatja) és `RemoteAdminBackend` (HTTP-kliens a szolgáltatáshoz) (L1, L2, L3, L5, L6) | → `AdminDirectory` |
 
 A meglévő modelleken elvégzett módosítások (egységtesztekkel lefedve):
 
@@ -137,9 +138,31 @@ A CloudKit nem biztosít saját jelszavas fiókkezelést, ezért a jelszavas bej
 | A) CloudKit-rekord | A jelszó hash-e CloudKit-rekordban, ellenőrzés a kliensen | Nincs külön szerver | A hash a kliensre kerül, ami gyengébb biztonságot jelent; a webes elérést nem szolgálja ki |
 | B) Saját hitelesítési szolgáltatás | Kis szerveroldali szolgáltatás (Swift / Vapor), amely a hasht tárolja és ellenőrzi, sikeres belépéskor tokent ad | A hash nem hagyja el a szervert; a későbbi React-os webes elérés is erre épülhet | Üzemeltetendő szerver |
 
-**Átmeneti állapot:** amíg a szolgáltatás nem készül el, a Manager app a SharedKit `AdminDirectory` szabályait helyben futtatja, és a fiókokat a Mac `admins.json` fájljában tárolja (csak hash és só, nyílt jelszó nem). A szolgáltatás ugyanezt a logikát fogja szerveroldalon futtatni.
-
 **Választott megoldás:** B) Saját hitelesítési szolgáltatás. A szolgáltatás Swiftben (Vapor) készül, így a SharedKit modelljei szerveroldalon is felhasználhatók. A jelszavak sóval ellátott, erős hash-függvénnyel képzett formában kizárólag a szerveren tárolódnak (ld. N3); sikeres bejelentkezéskor a szolgáltatás lejárati idővel rendelkező tokent ad, amelyet a kliens a Keychainben tárol. A későbbi React-os webes adminisztrátori elérés ugyanezt a szolgáltatást használja.
+
+**Megvalósítás:**
+
+* A szolgáltatás (`AuthService/`, Vapor 4) a SharedKit `AdminCore` céljának `LocalAdminBackend`-jét futtatja HTTP mögött, így a szabályok (első tulajdonos, jogosultságok, ideiglenes jelszó, domain) a szerveren és a Mac helyi módjában azonosak. A jelszavak Bcrypt-hash-sel, a fiókok egy JSON-fájlban (`AUTH_DATA_FILE`) tárolódnak; a tokenek a memóriában vannak, 12 óra után lejárnak, újraindításkor érvénytelenné válnak.
+* A Manager a `Hitelesítés` beállításban választ: üres címmel helyi mód (a fiókok a Mac `admins.json` fájljában, PBKDF2-hash-sel — fejlesztéshez és bemutatáshoz), megadott címmel a szolgáltatás (`RemoteAdminBackend`). A cím a felhasználói beállításokban (`AuthServiceURL`) marad meg.
+* A token `Authorization: Bearer <token>` fejlécben utazik. Hiba esetén a válasz törzse a JSON-kódolt `AdminBackendError`, amelyet a kliens visszaalakít, így a felület ugyanazt az üzenetet mutatja helyi és távoli módban.
+
+| Metódus és útvonal | Token | Leírás | Siker |
+|--------------------|-------|--------|-------|
+| `GET /status` | – | Be van-e állítva tulajdonos, a domain és a munkavállalói funkciók (adminlista nélkül) | 200 |
+| `POST /setup` | – | Az első tulajdonos létrehozása (csak egyszer) | 200, session |
+| `POST /sessions` | – | Jelszavas bejelentkezés | 200, session |
+| `POST /sessions/apple` | – | Sign in with Apple-azonosító összekapcsolása, bejelentkezés | 200, session |
+| `DELETE /sessions` | ✔ | Kijelentkezés (a token érvénytelenítése) | 200 |
+| `GET /directory` | ✔ | Teljes állapot az adminlistával | 200 |
+| `PUT /me/password` | ✔ (ideiglenes is) | Az ideiglenes jelszó lecserélése | 200, session |
+| `POST /me/password/change` | ✔ | Saját jelszó módosítása a jelenlegivel | 200 |
+| `POST /admins` | ✔ | Adminisztrátor felvétele | 200 |
+| `DELETE /admins/:id` | ✔ | Adminisztrátor eltávolítása | 200 |
+| `PUT /admins/:id/password` | ✔ | Jelszó visszaállítása ideiglenesre | 200 |
+| `PUT /settings/domain` | ✔ | Vállalati domain (csak tulajdonos) | 200 |
+| `PUT /settings/features/:feature` | ✔ | Munkavállalói funkció ki- és bekapcsolása | 200 |
+
+Hibakódok: hiányzó, lejárt vagy ismeretlen token, hibás jelszó: 401; ideiglenes jelszóval más művelet vagy hiányzó jogosultság: 403; ismeretlen adminisztrátor: 404; foglalt felhasználónév, már beállított tulajdonos, utolsó tulajdonos: 409; egyéb érvénytelen adat: 400.
 
 ## Értesítések és pánik mód
 
@@ -171,14 +194,14 @@ A tesztelés részletei a Teszttervben találhatók. A tervezést érintő szab�
 * Az üzleti logika a SharedKitben van, felülettől függetlenül egységtesztelhető (TDD).
 * A ViewModellek a külső szolgáltatásokat protokollon keresztül kapják, így a BDD-forgatókönyvek tesztpéldányokkal, determinisztikusan futnak.
 * Minden kliensnek van egységteszt-, BDD- és UI-teszt célja (target).
-* A hitelesítési szolgáltatás saját egységtesztekkel rendelkezik (jelszó-ellenőrzés, tokenkiadás, ideiglenes jelszó).
+* A hitelesítési szolgáltatás logikáját az `AdminCoreTests` (`LocalAdminBackendTests`: tokenkiadás, lejárat, ideiglenes jelszó, kijelentkezés) teszteli; a HTTP-réteget az `AuthService` XCTVapor-tesztjei (státuszkódok, Bearer token, a `RemoteAdminBackend` egy valódi, futó szerver ellen). A CI ezeket Linuxon futtatja.
 
 ## Fizikai környezet és telepítés
 
 * Fejlesztés: macOS 27, Xcode; célplatform iOS 27 és macOS 27.
 * Terjesztés: Apple Developer Program, TestFlight a tesztelőknek.
 * CloudKit-tároló fejlesztői és éles környezettel; az adatséma a fejlesztői környezetből kerül át az élesbe.
-* A hitelesítési szolgáltatás (Vapor) egy szerveren vagy felhőszolgáltatónál fut, HTTPS-kapcsolaton keresztül érhető el.
+* A hitelesítési szolgáltatás (Vapor) egy szerveren vagy felhőszolgáltatónál fut, HTTPS-kapcsolaton keresztül érhető el (TLS-t lezáró fordított proxy vagy a szolgáltató HTTPS-végpontja mögött). Linuxon és macOS-en is fordul; beállítása környezeti változókkal: `HOST` (alapértelmezés `127.0.0.1`), `PORT` (`8080`), `AUTH_DATA_FILE` (`data/admins.json`, tartós kötetre kell tenni). Helyi futtatás: `cd AuthService && swift run Run`.
 * Verziókezelés: Git; a fő ág mindig sikeres tesztekkel rendelkezik (ld. Tesztterv – Definition of Done).
 
 ## Karbantartás

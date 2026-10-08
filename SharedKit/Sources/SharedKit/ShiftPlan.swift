@@ -71,13 +71,13 @@ public struct ShiftPlan: Codable, Hashable {
     }
 
     @discardableResult
-    public mutating func addTask(titled title: String, toShift shiftID: UUID, for workerID: UUID) throws -> Task {
+    public mutating func addTask(titled title: String, toShift shiftID: UUID, for workerID: UUID) throws -> ShiftTask {
         let title = title.trimmingCharacters(in: .whitespaces)
         guard !title.isEmpty else { throw PlanError.emptyTitle }
         guard let worker = staff.first(where: { $0.id == workerID }) else { throw PlanError.unknownWorker }
         guard let index = shifts.firstIndex(where: { $0.id == shiftID }) else { throw PlanError.unknownShift }
         guard shifts[index].workerIDs.contains(workerID) else { throw PlanError.workerNotOnShift(workerName: worker.name) }
-        let task = Task(title: title, description: "", assignedWorkerIDs: [workerID], workstation: "")
+        let task = ShiftTask(title: title, description: "", assignedWorkerIDs: [workerID], workstation: "")
         shifts[index].tasks.append(task)
         return task
     }

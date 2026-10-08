@@ -53,7 +53,7 @@ extension Cucumber {
             for row in step.dataTable?.rows.dropFirst() ?? [] {
                 let member = WorkerUser(appleID: row[0], name: row[0], role: .bartender, payPeriod: .weekly)
                 staff.append(member)
-                let task = Task(title: row[2], description: "", assignedWorkerIDs: [member.id], workstation: row[1])
+                let task = ShiftTask(title: row[2], description: "", assignedWorkerIDs: [member.id], workstation: row[1])
                 var shift = Shift(startTime: tonight, endTime: tonight.addingTimeInterval(10 * 3600),
                                   zoneID: zone(named: row[1]).id, tasks: [task])
                 _ = shift.assign(workerID: member.id)

@@ -54,7 +54,7 @@ struct ContentView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(admin.name).font(.headline)
                         Text(AdminsView.title(of: admin.role)).foregroundStyle(.secondary)
-                        Button("Kijelentkezés", systemImage: "rectangle.portrait.and.arrow.right") { session.signOut() }
+                        Button("Kijelentkezés", systemImage: "rectangle.portrait.and.arrow.right") { Task { await session.signOut() } }
                     }
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)

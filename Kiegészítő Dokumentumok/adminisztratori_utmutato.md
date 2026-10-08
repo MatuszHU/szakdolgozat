@@ -13,6 +13,7 @@ Ha még nincs adminisztrátor, az alkalmazás a **Tulajdonos létrehozása** ké
 - **Hibás adatok:** hibás jelszó és ismeretlen felhasználónév esetén ugyanaz az üzenet jelenik meg, így kívülről nem derül ki, létezik-e egy felhasználónév.
 - **Ideiglenes jelszó:** ha egy másik adminisztrátor hozta létre a fiókodat vagy állította vissza a jelszavadat, az első bejelentkezéskor új jelszót kell választanod.
 - **Kijelentkezés:** az oldalsáv alján, a neved alatt.
+- **Hitelesítési szolgáltatás:** a bejelentkező képernyő alján látszik, hol vannak a fiókok (**Hitelesítés: helyi fiókok ezen a Macen** vagy a szolgáltatás címe). A **Módosítás** gombbal megadható a cég hitelesítési szolgáltatásának címe (pl. `https://auth.clubneon.hu`); üresen hagyva az alkalmazás helyi módban, a Macen tárolt fiókokkal működik. Váltás után a választott helyen kell bejelentkezni, illetve egy új szolgáltatásnál először tulajdonost létrehozni.
 
 ## 3. Jogosultsági szintek
 
@@ -75,4 +76,5 @@ A munkavállalók pánikjelzései és készletkérései kategóriánként, a leg
 ## 12. Jelenlegi korlátok
 
 - Az adatok (helyszín, műszakok, események, készlet, adminisztrátorok) jelenleg csak ezen a Macen, helyben tárolódnak. A munkavállalói és a vendég alkalmazással való megosztáshoz CloudKit-szinkron szükséges, ami fizetős Apple fejlesztői tagságot igényel.
-- A jelszavas bejelentkezés jelenleg helyben, hash-elt jelszavakkal működik; a tervezett saját hitelesítési szolgáltatás elkészültével a jelszavak a szerveren kerülnek ellenőrzésre.
+- Helyi módban a jelszavak hash-elve, csak ezen a Macen tárolódnak; több Mac (és a későbbi webes elérés) közös fiókjaihoz a hitelesítési szolgáltatást kell használni. A szolgáltatás újraindításakor minden adminisztrátornak újra be kell jelentkeznie.
+- A Sign in with Apple fizetős Apple fejlesztői tagság nélkül nem próbálható ki.

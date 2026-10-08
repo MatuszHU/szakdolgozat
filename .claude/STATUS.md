@@ -1,12 +1,14 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (L9 kész)
+> Utolsó frissítés: 2026-10-08 (Vapor hitelesítési szolgáltatás kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `l9-admin-guide` (az `l8-requests`-re épül). **L9 kész** ✅: `Kiegészítő Dokumentumok/adminisztratori_utmutato.md`, Súgó-menü link az admin appban (előkódolt URL, mert az ékezetes útvonalat a Foundation duplán kódolná).
-- **Az L-körből hátravan:** a Vapor hitelesítési szolgáltatás (L1 befejezése) — a felhasználóval előbb egyeztetni kell (aszinkron átalakítás a Managerben).
+**Aktív ág:** `l1-auth-service`. **Vapor-szolgáltatás kész** ✅ (L1 jelszavas ága): `AuthService/` (Vapor 4, Bcrypt, `LocalAdminBackend` HTTP mögött, lejáró Bearer tokenek). A SharedKit `AdminCore` célja Foundation-only (Linuxon is fordul). A Manager `AdminBackend`-en keresztül, aszinkron működik; a „Hitelesítés → Módosítás” beállításban helyi mód vagy szolgáltatás-URL (`AuthServiceURL` UserDefaults). A `Task` modell `ShiftTask`-ra átnevezve.
+- Futtatás: `cd AuthService && swift run Run` → `http://127.0.0.1:8080`; env: `HOST`, `PORT`, `AUTH_DATA_FILE` (alap `data/admins.json`). Teszt: `swift test` (5).
+- Az L1 ⚠️ marad: valódi Sign in with Apple (fizetős fiók) és éles HTTPS-telepítés hátravan.
+- **Következő:** a felhasználóval egyeztetni (K5, K9–K13, K15, K17, M7–M11 stb.).
 
 ## 2. Git / push állapot
 
@@ -30,12 +32,14 @@
 
 ## 3. CI
 
-- `.github/workflows/ios.yml`: SharedKit job (kötelező, zöld); Manager BDD job és Worker job `continue-on-error: true`, mert a GitHub runner legújabb Xcode-ja 26.6, iOS 27 SDK nincs (naplóból megerősítve: „Unable to find a destination”). Ha a runner Xcode 27-et kap, a sor törlendő.
+- `.github/workflows/ios.yml`: SharedKit job és AuthService (Linux konténer) job (kötelezők); Manager BDD job és Worker job `continue-on-error: true`, mert a GitHub runner legújabb Xcode-ja 26.6, iOS 27 SDK nincs (naplóból megerősítve: „Unable to find a destination”). Ha a runner Xcode 27-et kap, a sor törlendő.
 - Utolsó futás: 2026-10-08, `master` @ `9d6dc50`, run 37648508478 → **sikeres** (SharedKit zöld, Worker a várt módon nem futtatható).
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → 161/161
+- SharedKit: `cd SharedKit && swift test` → SharedKit 142 + AdminCore 34
+- AuthService: `cd AuthService && swift test` → 5/5 (CI: Linux, `swift:6.4-noble`)
+- Manager BDD → 296/296
 - Vendég BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 90 BDD + 3 egységteszt
 - Worker BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 147/147 BDD + 7 egységteszt (K14 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)

@@ -40,7 +40,7 @@ Egy követelmény akkor tekinthető késznek, ha:
 
 | Szint | Mit tesztel | Eszköz | Hol található |
 |-------|-------------|--------|---------------|
-| Egységteszt (TDD) | A SharedKit modelljeinek üzleti logikája (pl. műszakütközés, létszámkorlát, készletminimum), az app-szintű logika és szolgáltatások (pl. `AuthViewModel`, Keychain-tároló), a hitelesítési szolgáltatás logikája | Swift Testing (`@Test`, `#expect`) | `SharedKit/Tests/SharedKitTests/`, `<App>Tests/` (az XCTest-alapú BDD mellett, ugyanabban a tesztcélban) |
+| Egységteszt (TDD) | A SharedKit modelljeinek üzleti logikája (pl. műszakütközés, létszámkorlát, készletminimum), az app-szintű logika és szolgáltatások (pl. `AuthViewModel`, Keychain-tároló), a hitelesítési szolgáltatás logikája | Swift Testing (`@Test`, `#expect`) | `SharedKit/Tests/SharedKitTests/`, `SharedKit/Tests/AdminCoreTests/`, `AuthService/Tests/AppTests/` (XCTVapor), `<App>Tests/` (az XCTest-alapú BDD mellett, ugyanabban a tesztcélban) |
 | Elfogadási teszt (BDD) | A követelmények viselkedése a ViewModell rétegen keresztül, felhasználói nézőpontból megfogalmazva | CucumberSwift + XCTest | `NightlifeWorkerTests/` és `NightlifeManagerTests/` (`Features/*.feature`, lépésdefiníciók) |
 | UI teszt | Kritikus folyamatok végigkattintása a valódi felületen (indítás, bejelentkezés, pánik mód) | XCUITest | `<App>UITests/` |
 | Manuális teszt | Automatizáltan nem vagy nehezen tesztelhető funkciók valós eszközön | Ellenőrzőlista | Tesztjegyzőkönyv |
@@ -77,7 +77,8 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 | Vendég alkalmazás | iOS 27; BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` (megosztott séma, párhuzamosítás kikapcsolva) |
 | Adminisztrátori alkalmazás | macOS 27; BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeManager -only-testing:NightlifeManagerTests -destination 'platform=macOS'` (megosztott séma, párhuzamosítás kikapcsolva; a feature fájlokat a tesztcél `Info.plist`-jének `FeaturesPath` kulcsa alapján találja meg) |
 | Tesztterv (Xcode) | `NightlifeWorker.xctestplan`: betűrendes végrehajtás, párhuzamosítás kikapcsolva |
-| CI | GitHub Actions (`.github/workflows/ios.yml`): SharedKit-tesztek kötelezők; a Worker-teszttervet a hosztolt runner iOS 27 SDK hiányában jelenleg nem tudja futtatni, ezért az helyben fut |
+| Hitelesítési szolgáltatás | `cd AuthService && swift test` (macOS és Linux; a `testRemoteClientAgainstARunningServer` egy véletlen porton valódi szervert indít, és a Manager HTTP-kliensét futtatja ellene) |
+| CI | GitHub Actions (`.github/workflows/ios.yml`): SharedKit-tesztek és az AuthService Linuxon (`swift:6.4-noble` konténer) kötelezők; a Worker-teszttervet a hosztolt runner iOS 27 SDK hiányában jelenleg nem tudja futtatni, ezért az helyben fut |
 
 ### A BDD-eszköz választása
 
@@ -185,4 +186,7 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | SharedKitTests | 161/161 sikeres | L8: RequestLogTests (5 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | sikeres | L8: RequestLog, 4 forgatókönyv; az első futás a lépésdefiníció időformázási hibáját mutatta (nem a termékkódét), javítás után zöld; mutációs ellenőrzés OK. |
 | 2026-10-08 | – | NightlifeManager (build) | Sikeres | L9: Súgó-menü link; az útmutató URL-jének ellenőrzése közben derült ki, hogy az ékezetes útvonalat a Foundation duplán kódolná (`%2520`) — előkódolt URL-lel javítva, a cél elérhetősége ellenőrizve. |
+| 2026-10-08 | – | AdminCoreTests | 34/34 sikeres (SharedKit 142/142) | L1: `LocalAdminBackendTests` (11 új: tokenkiadás, lejárat, ideiglenes jelszó, kijelentkezés, jogosultság), előbb sikertelenek. Az `AdminCore` cél leválasztása után; a `Task` modell `ShiftTask`-ra átnevezve, mert eltakarta a Swift Concurrency `Task` típusát. |
+| 2026-10-08 | – | AuthServiceTests | 5/5 sikeres | L1: Vapor-szolgáltatás; a `RemoteAdminBackend` egy véletlen porton futó valódi szerver ellen. Mutációs ellenőrzés: a hibás jelszóra adott 401 400-ra rontva a teszt elbukott (várt). Kézi próba `curl`-lel: `/status`, `/setup`, token nélküli `/directory` → 401. |
+| 2026-10-08 | – | NightlifeManagerTests, NightlifeWorkerTests, NightlifeTests | 296/296, 147/147, 92/92 sikeres | A Manager aszinkron `AdminBackend`-re állítva; a `ShiftTask`-átnevezés után mindhárom app regressziómentes. |
 | 2026-10-07 | d8ef516 | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

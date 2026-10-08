@@ -13,23 +13,34 @@ extension Cucumber {
         }
 
         Then("the worker features {string} are on") { match, _ in
-            let enabled = WorkerFeature.allCases.filter(session().directory.enabledWorkerFeatures.contains)
-            XCTAssertEqual(enabled.map(\.displayName).joined(separator: ", "), try match.first(\.string))
+            let expected = try match.first(\.string)
+            MainActor.assumeIsolated {
+                let enabled = WorkerFeature.allCases.filter(session().snapshot.enabledWorkerFeatures.contains)
+                XCTAssertEqual(enabled.map(\.displayName).joined(separator: ", "), expected)
+            }
         }
 
         When("the administrator switches the worker feature {string} off") { match, _ in
-            session().setWorkerFeature(try feature(try match.first(\.string)), enabled: false)
-            XCTAssertNil(session().errorMessage)
+            let switched = try feature(try match.first(\.string))
+            MainActor.assumeIsolated {
+                waitFor { await session().setWorkerFeature(switched, enabled: false) }
+                XCTAssertNil(session().errorMessage)
+            }
         }
 
         When("the administrator switches the worker feature {string} on") { match, _ in
-            session().setWorkerFeature(try feature(try match.first(\.string)), enabled: true)
-            XCTAssertNil(session().errorMessage)
+            let switched = try feature(try match.first(\.string))
+            MainActor.assumeIsolated {
+                waitFor { await session().setWorkerFeature(switched, enabled: true) }
+                XCTAssertNil(session().errorMessage)
+            }
         }
 
         When("the administrator changes the password from {string} to {string}") { match, _ in
             let texts = try match.allParameters(\.string)
-            session().changeOwnPassword(current: texts[0], new: texts[1])
+            MainActor.assumeIsolated {
+                waitFor { await session().changeOwnPassword(current: texts[0], new: texts[1]) }
+            }
         }
     }
 }

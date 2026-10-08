@@ -6,7 +6,7 @@ public struct StaffMap {
         public let worker: WorkerUser
         public let positionZoneID: UUID?
         public let workAreaZoneID: UUID?
-        public let tasks: [Task]
+        public let tasks: [ShiftTask]
     }
 
     public let entries: [Entry]

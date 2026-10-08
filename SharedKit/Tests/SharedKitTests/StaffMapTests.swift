@@ -17,7 +17,7 @@ struct StaffMapTests {
         var shift = Shift(startTime: tonight.addingTimeInterval(start),
                           endTime: tonight.addingTimeInterval(start + hours * 3600),
                           zoneID: zone.id,
-                          tasks: [SharedKit.Task(title: task, description: "", assignedWorkerIDs: [worker.id], workstation: "")])
+                          tasks: [ShiftTask(title: task, description: "", assignedWorkerIDs: [worker.id], workstation: "")])
         _ = shift.assign(workerID: worker.id)
         return shift
     }
