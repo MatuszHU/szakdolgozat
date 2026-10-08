@@ -1,12 +1,13 @@
 import Foundation
 import Testing
-@testable import SharedKit
+import Requirements
+@testable import AdminCore
 
 @Suite("AdminDirectory")
 @L1 @L3 @L6 @N3
 struct AdminDirectoryTests {
 
-    private let hasher = PBKDF2PasswordHasher(iterations: 1)
+    private let hasher = TestPasswordHasher()
 
     private func directoryWithOwner() throws -> (AdminDirectory, AdminUser) {
         var directory = AdminDirectory()

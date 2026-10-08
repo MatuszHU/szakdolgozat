@@ -11,6 +11,10 @@ let package = Package(
             name: "SharedKit",
             targets: ["SharedKit"]
         ),
+        .library(
+            name: "AdminCore",
+            targets: ["AdminCore"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/swiftlang/swift-syntax.git", "604.0.0"..<"605.0.0"),
@@ -24,8 +28,20 @@ let package = Package(
             ]
         ),
         .target(
-            name: "SharedKit",
+            name: "Requirements",
             dependencies: ["RequirementMacros"]
+        ),
+        .target(
+            name: "AdminCore",
+            dependencies: ["Requirements"]
+        ),
+        .target(
+            name: "SharedKit",
+            dependencies: ["Requirements", "AdminCore"]
+        ),
+        .testTarget(
+            name: "AdminCoreTests",
+            dependencies: ["AdminCore", "Requirements"]
         ),
         .testTarget(
             name: "SharedKitTests",

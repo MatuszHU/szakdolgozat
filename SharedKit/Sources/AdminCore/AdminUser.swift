@@ -1,4 +1,5 @@
 import Foundation
+import Requirements
 
 @L1 @L3
 public enum AdminRole: Codable, Hashable, Sendable {
@@ -22,13 +23,13 @@ public enum AdminRole: Codable, Hashable, Sendable {
 }
 
 @L1
-public enum SignInMethod: Codable, Equatable {
+public enum SignInMethod: Codable, Hashable, Sendable {
     case apple
     case password
 }
 
 @L1 @L3
-public struct AdminUser: Identifiable, Codable, Hashable {
+public struct AdminUser: Identifiable, Codable, Hashable, Sendable {
     public let id: UUID
     public var username: String
     public var name: String

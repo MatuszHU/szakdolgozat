@@ -1,34 +1,18 @@
 import Foundation
-import CommonCrypto
-import Security
+import Requirements
 
 @L1 @N3
-public protocol PasswordHashing {
+public protocol PasswordHashing: Sendable {
     func makeSalt() -> Data
     func hash(_ password: String, salt: Data) -> Data
+    func verify(_ password: String, hash: Data, salt: Data) -> Bool
 }
 
-@L1 @N3
-public struct PBKDF2PasswordHasher: PasswordHashing {
-    public let iterations: UInt32
-
-    public init(iterations: UInt32 = 600_000) {
-        self.iterations = iterations
-    }
-
-    public func makeSalt() -> Data {
-        var bytes = [UInt8](repeating: 0, count: 16)
-        _ = SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes)
-        return Data(bytes)
-    }
-
-    public func hash(_ password: String, salt: Data) -> Data {
-        var derived = [UInt8](repeating: 0, count: 32)
-        let saltBytes = [UInt8](salt)
-        _ = CCKeyDerivationPBKDF(CCPBKDFAlgorithm(kCCPBKDF2), password, password.utf8.count,
-                                 saltBytes, saltBytes.count, CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA256),
-                                 iterations, &derived, derived.count)
-        return Data(derived)
+extension PasswordHashing {
+    public func verify(_ password: String, hash expected: Data, salt: Data) -> Bool {
+        let actual = hash(password, salt: salt)
+        guard actual.count == expected.count else { return false }
+        return zip(actual, expected).reduce(UInt8(0)) { $0 | ($1.0 ^ $1.1) } == 0
     }
 }
 
@@ -50,7 +34,7 @@ public enum WorkerFeature: String, Codable, CaseIterable, Hashable, Sendable {
 }
 
 @L1 @N3
-public struct AdminCredential: Codable, Hashable {
+public struct AdminCredential: Codable, Hashable, Sendable {
     public let adminID: UUID
     public var salt: Data
     public var hash: Data
@@ -58,8 +42,8 @@ public struct AdminCredential: Codable, Hashable {
 }
 
 @L1 @L3 @L6 @N3
-public struct AdminDirectory: Codable, Hashable {
-    public enum DirectoryError: Error, Equatable {
+public struct AdminDirectory: Codable, Hashable, Sendable {
+    public enum DirectoryError: Error, Equatable, Codable, Sendable {
         case alreadySetUp
         case emptyName
         case invalidUsername
@@ -74,7 +58,7 @@ public struct AdminDirectory: Codable, Hashable {
         case wrongCurrentPassword
     }
 
-    public struct SignInResult: Equatable {
+    public struct SignInResult: Equatable, Sendable {
         public let admin: AdminUser
         public let mustChangePassword: Bool
     }
@@ -141,7 +125,7 @@ public struct AdminDirectory: Codable, Hashable {
     public func signIn(username: String, password: String, hasher: PasswordHashing) throws -> SignInResult {
         guard let admin = admins.first(where: { $0.username == username.lowercased() }),
               let credential = credential(for: admin.id),
-              Self.constantTimeEqual(hasher.hash(password, salt: credential.salt), credential.hash) else {
+              hasher.verify(password, hash: credential.hash, salt: credential.salt) else {
             throw DirectoryError.invalidCredentials
         }
         return SignInResult(admin: admin, mustChangePassword: credential.mustChangePassword)
@@ -238,10 +222,5 @@ public struct AdminDirectory: Codable, Hashable {
                                                mustChangePassword: mustChange))
         }
         return admin
-    }
-
-    private static func constantTimeEqual(_ lhs: Data, _ rhs: Data) -> Bool {
-        guard lhs.count == rhs.count else { return false }
-        return zip(lhs, rhs).reduce(UInt8(0)) { $0 | ($1.0 ^ $1.1) } == 0
     }
 }
