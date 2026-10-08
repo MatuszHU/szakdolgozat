@@ -110,6 +110,7 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `ZoneCheckIn` | ✅ | workerID, zoneID, timestamp | → `WorkerUser`, → `Zone` |
 | `WorkerPosition` | ✅ | workerID, isOnShift, currentZoneID, checkIns; szabályok: csak műszak alatt, csak ismert zónába (K16, N4) | → `Zone`, → `ZoneCheckIn` |
 | `ShiftPlan` | ✅ | staff, shifts; szabályok: a műszak vége a kezdés után, létszám legalább 1, betelt műszakra és átfedő műszakra nincs hozzárendelés, feladat csak a műszakon lévő munkatársnak, eltávolításkor a feladatokról is lekerül (L3) | → `WorkerUser`, `Shift`, `ShiftTask` |
+| `WorkerSchedule` | ✅ | egy munkavállaló beosztása a műszaktervből: a saját műszakok időrendben, állapot (lezárult / folyamatban / következő), szint és zóna neve, csak a neki kiosztott feladatok; `current`, `next`, `past` (legfrissebb elöl), `upcomingDays` (a kezdés napja szerint) (K5) | → `Shift`, → `Venue` |
 | `StaffMap` | ✅ | a munkatársak pozíciója (legutóbbi zóna-bejelentkezés), munkaterülete és saját feladatai az adott időpontban aktív műszakból; a K6 és az L4 közös számítása | → `WorkerUser`, `ZoneCheckIn`, `Shift`, `ShiftTask` |
 | `Raffle` | ✅ | title, prize, details, participantIDs (L11, M7) | → `Event` |
 | `AdminDirectory` | ✅ | admins, credentials, companyDomain; szabályok: első tulajdonos, jogosultságok (adminokat a tulajdonos és a felhasználó-adminisztrátor kezel, tulajdonost csak tulajdonos), utolsó tulajdonos, egyedi felhasználónév, jelszószabály, ideiglenes jelszó, domain csak tulajdonostól (L1, L3, L6, N3) | → `AdminUser`, → `AdminCredential` |

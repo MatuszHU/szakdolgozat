@@ -15,7 +15,7 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 | K2 | Bejelentkezés | M | Authentication | Authentication: Successful login, Failed login | – | ✅ |
 | K3 | Töltőképernyő | C | – | – | – | – |
 | K4 | Kezdőképernyő | M | Authentication, SignOut | Authentication: Already logged in; SignOut: A sign-in is remembered until signing out | AuthViewModelTests | ✅ |
-| K5 | Beosztások | M | – | – | – | – |
+| K5 | Beosztások | M | Schedule | Schedule: 6 forgatókönyv | SharedKit: WorkerScheduleTests | ⚠️ |
 | K6 | Térkép | M | VenueMap | VenueMap: 4 forgatókönyv | SharedKit: MapPositionTests, VenueTests | ⚠️ |
 | K7 | Kódolvasó/jegykezelő | M | CodeReader | CodeReader: 6 forgatókönyv | SharedKit: ScannedCodeTests, TicketAdmissionTests | ⚠️ |
 | K8 | Pánik mód | M | PanicMode | PanicMode: 5 forgatókönyv | SharedKit: PanicTests | ⚠️ |
@@ -65,10 +65,10 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 
 | | Összes | M | Lefedett (✅) | Részleges (⚠️) |
 |---|---|---|---|---|
-| Munkavállaló | 17 | 9 | 4 | 4 |
+| Munkavállaló | 17 | 9 | 4 | 5 |
 | Adminisztrátor | 11 | 6 | 8 | 3 |
 | Vendég | 11 | 5 | 4 | 2 |
-| **Összesen** | **39** | **20** | **16** | **9** |
+| **Összesen** | **39** | **20** | **16** | **10** |
 
 ## Nyitott tételek
 
@@ -78,6 +78,7 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 * **K1, K2, K4, K14, M1, M2, M3, M6:** a bejelentkezés logikája (`AuthViewModel`, `CredentialStoring`, `KeychainCredentialStore`) a SharedKitben közös a munkavállalói és a vendég app között, külön Keychain-szolgáltatásnévvel. A bejelentkezés a Keychainben megmarad két indítás között, a kijelentkezés törli. A valódi Sign in with Apple folyamat fizetős Apple fejlesztői tagság nélkül nem próbálható ki (manuális teszt, ld. Tesztterv).
 * **M4:** a jegyvásárlás logikája (csak meghirdetett jegytípus; a keret és a férőhely nem léphető túl; véget ért eseményre nincs vásárlás; 1–10 jegy egyszerre; elutasított fizetésnél nincs jegy; egyedi sorozatszám; a jegyeim eseménydátum szerint), a jegyek QR-kódja és felülete kész. A megvett jegyet a K7 kódolvasó logikája felismeri és egyszer beengedi (`@K7` forgatókönyv). Hátravan: valódi fizetés (Apple Pay) és Apple Tárca (fizetős fejlesztői tagság), valamint az események CloudKit-szinkronja (N2). Debug buildben tesztfizetés, Release-ben „a fizetés még nem elérhető”.
 * **M5:** a vendég térkép logikája (a vendég csak a neki szóló POI-kat látja: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár; az egyéni pontok és a személyzeti zónák rejtettek; a földszinten nyílik; szintváltás; tervrajz nélkül tájékoztató üzenet) és felülete kész. A tervrajz eljuttatása a vendég appba a CloudKittől (N2) függ.
+* **K5:** a beosztás logikája (`WorkerSchedule`: csak a saját műszakok időrendben, a kezdés napja szerint csoportosítva; szint és zóna; csak a nekem kiosztott feladatok; az aktuális és a következő műszak; a lezárult műszakok külön, a legfrissebb elöl) és a felülete (`ScheduleView`, kezdőképernyő-link) kész. A műszakterv a Macről CloudKit-szinkronnal (N2) jut el a telefonra; addig a beosztás üres.
 * **K6:** a térkép logikája (szintválasztás, a munkaterület kiemelése, a munkatársak a legutóbbi zóna-bejelentkezésük zónájában, a be nem jelentkezettek külön listában) és a felülete (`VenueMapView`, a közös `FloorPlanView`-val) készen van; a helyszín és a bejelentkezések valós adatforrása (CloudKit, N2) hátravan, addig a térkép üres állapotot mutat.
 * **L4:** a személyzeti térkép logikája (a munkatársak a legutóbbi zóna-bejelentkezésük zónájában; kiválasztáskor az aktív műszakból a munkaterület és a saját feladatok, valamint az aktuális pozíció; a be nem jelentkezettek listája; szintváltás) és a felülete (`StaffMapView`) készen van. A munkatársak, műszakok és bejelentkezések a Macre CloudKit (N2) nélkül nem jutnak el, addig a lista üres. A közös számítás (`StaffMap`) a K6-tal megosztott.
 * **L8:** a kérelemnapló (pánikjelzések és készletkérések tételesen, legfrissebb elöl, a munkavállaló nevével; kategóriánkénti csoportosítás és darabszám; csak a nyitottak szűrése) és a felülete kész. A készletkérések a helyi készletből már megjelennek; a pánikjelzések a munkavállalói eszközökről CloudKit-szinkronnal (N2) érkeznek majd.

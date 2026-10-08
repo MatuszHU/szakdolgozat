@@ -53,6 +53,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * Admin app: első tulajdonos létrehozása, bejelentkezés, ideiglenes jelszó cseréje, adminisztrátor felvétele, jelszó visszaállítása, kijelentkezés (L1, L2, L3, L5)
 * Kijelentkezés megerősítő kérdéssel, majd újraindítás után az üdvözlőképernyő (K14)
 * Jelszavas bejelentkezés a futó hitelesítési szolgáltatással (L1)
+* Beosztás megnyitása a kezdőképernyőről, frissítés lehúzással (K5; valós adatokkal a CloudKit után)
 * Push értesítések kézbesítése és hangja (K8, N5)
 * Kamerás kódolvasás és QR-kódos zóna-bejelentkezés (K7, K16)
 * CloudKit-szinkronizáció több eszköz között (N2)
@@ -192,4 +193,6 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | SharedKitTests | 162/162 sikeres | L7 átdolgozás (szabad rajzolás): PlanGeometryTests, FloorTests, VenueTests, FloorPlanViewGeometryTests újraírva (sokszög, fal, illesztés, legfelső alakzat, mozgatás, sarokpont, régi rácsos mentés betöltése), előbb sikertelenek (fordítási hiba). Mutációs ellenőrzés: a kijelölés sorrendjének megfordításánál (zóna a POI előtt) a teszt elbukott. |
 | 2026-10-08 | – | NightlifeManagerTests | 359/359 sikeres | L7: VenueDesigner, 18 forgatókönyv (a rajzolás a ViewModellen keresztül: kattintások, lezárás, illesztés, fal, kijelölés, mozgatás, sarokpont-húzás, törlés). Mutációs ellenőrzés: kikapcsolt illesztésnél a „Points snap to the dot grid” forgatókönyv elbukott. |
 | 2026-10-08 | – | NightlifeWorkerTests, NightlifeTests | 147/147, 92/92 sikeres | A K6 és M5 térkép az új tervrajzmodellel, változatlan forgatókönyvekkel (regresszió OK). |
+| 2026-10-09 | – | SharedKitTests | 171/171 sikeres | K5: WorkerScheduleTests (9 új), előbb sikertelenek (fordítási hiba). Mutációs ellenőrzés: a műszak végének határesetét elrontva (`<=` helyett `<`) a teszt elbukott. |
+| 2026-10-09 | – | NightlifeWorkerTests | 192/192 sikeres | K5: Schedule, 6 forgatókönyv. Mutációs ellenőrzés: ha a beosztás a kolléga feladatait is mutatja, az „Only my tasks are shown” forgatókönyv elbukott. Az Xcode először nem látta az új SharedKit-fájlt (elavult csomagfájllista a szimulátoros inkrementális buildben); egy `generic/platform=iOS Simulator` build után rendben. |
 | 2026-10-07 | d8ef516 | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

@@ -1,11 +1,13 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (L7 átdolgozva: szabad rajzolás)
+> Utolsó frissítés: 2026-10-09 (K5 beosztás kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `l7-freeform-designer`. **L7 átdolgozva** ✅ a felhasználó kérésére (2026-10-08): a cellarács helyett méterben megadott lap Freeform-szerű pontráccsal; eszközök: kijelölés, sokszög, fal; a pontok a rácshoz illeszkednek (kikapcsolható); a POI is sokszög (terület, ikon a súlypontban); bármi fedhet bármit; kijelölés (legfelső), mozgatás, sarokpont-húzás, törlés. SharedKit: `PlanPoint`, `PlanGeometry`, `PlanItem`, `Wall`; `Zone.outline`, `POI.outline`; a régi cellás mentés befoglaló téglalapként töltődik be. A rajzolási állapot a `VenueDesignerViewModel`-ben (BDD-vel lefedve, 18 forgatókönyv).
+**Aktív ág:** `k5-schedule`. **K5 kész** ⚠️ (adatforrás: CloudKit N2): SharedKit `WorkerSchedule` (saját műszakok, státusz, szint–zóna, csak a saját feladatok, napok szerinti csoportosítás), Worker `ScheduleViewModel` + `ScheduleView` (kezdőképernyő „Beosztás”), BDD `Schedule.feature` (6).
+- **Xcode-buktató:** ha az app nem látja az új SharedKit-fájlt („cannot find … in scope”), egy `xcodebuild build -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -destination "generic/platform=iOS Simulator"` frissíti a csomag fájllistáját.
+- L7 (2026-10-08): szabad rajzolós tervező a `master`-ben.
 - A tervező felületét (gesztusok, nagyítás) a felhasználónak kézzel kell kipróbálnia (Tesztterv – manuális lista).
 - Az L1 ⚠️ marad: valódi Sign in with Apple (fizetős fiók) és éles HTTPS-telepítés hátravan. Vapor: `cd AuthService && swift run Run`.
 - **Következő:** a felhasználóval egyeztetni (K5, K9–K13, K15, K17, M7–M11 stb.).
@@ -39,11 +41,11 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → SharedKit 162 + AdminCore 34
+- SharedKit: `cd SharedKit && swift test` → SharedKit 171 + AdminCore 34
 - AuthService: `cd AuthService && swift test` → 5/5 (CI: Linux, `swift:6.4-noble`)
 - Manager BDD → 359/359
 - Vendég BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 90 BDD + 3 egységteszt
-- Worker BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 147/147 BDD + 7 egységteszt (K14 után)
+- Worker BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 192 teszt (BDD + egységteszt, K5 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
 - UI tesztek: 2/2 (lassú, ~45 s)
 
