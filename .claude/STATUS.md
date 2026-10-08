@@ -5,12 +5,14 @@
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `n8-requirement-annotations` (a `master` @ `5066a2a`-ról). **Kommentek eltávolítva, követelmény-annotációk bevezetve.**
+**Aktív ág:** `n8-requirement-annotations` = `master` @ `0178448`. **Kommentek eltávolítva, követelmény-annotációk bevezetve.**
 - SharedKit: `RequirementMacros` makró-cél (swift-syntax 604, no-op peer macro), `Requirements.swift`: 47 makró (K1–K17, L1–L11, M1–M11, N1–N8). `Package.swift`: platforms iOS 17 / macOS 14.
 - 476 komment eltávolítva (a `Package.swift` első sora kivétel: a SwiftPM tools-version jelölője). 127 annotáció; a mátrix minden ✅/⚠️ követelménye szerepel a kódban.
 - **Minden `xcodebuild` hívásnál kell: `-skipMacroValidation`** (CI-ban is). Az Xcode első megnyitáskor kéri a makró jóváhagyását („Trust & Enable”).
 - Eszközök (ideiglenes, nem a repóban): `/private/tmp/claude-501/strip/strip_comments.py` (kommentszűrő tokenizáló, `--write`), `annotate.py`.
 - **Szabály mostantól:** új kódban nincs komment; minden követelményhez kötődő deklaráció `@Kx`/`@Lx`/`@Mx`/`@Nx` annotációt kap.
+
+- 2026-10-08: a Worker `WelcomeView` **Debug** buildben „Belépés (teszt)” gombot mutat, ami Sign in with Apple nélkül, `debug-worker` azonosítóval beléptet (fizetős fiók hiányában, kézi teszteléshez); Release-ben marad a valódi gomb. A felhasználó Xcode-ja által módosított `NightlifeManager.xcscheme`-et a felhasználó kérésére megtartottuk és commitoltuk.
 
 **Következő jelöltek:** M1–M3 vendég app alapjai (javasolva), M5, K5, K17/L10, K9/K11.
 
@@ -23,6 +25,7 @@
 - 2026-10-08: L3 műszaktervezés (`8b635da`) zöld CI után (run 37805409167) fast-forwarddal a `master`-be. `master` = `8b635da`.
 - 2026-10-08: L11 (`2d1ea83`) zöld CI után (run 37807232776) fast-forwarddal a `master`-be. `master` = `2d1ea83`.
 - 2026-10-08: K14 (`5066a2a`) zöld CI után (run 37827705628) fast-forwarddal a `master`-be. `master` = `5066a2a`.
+- 2026-10-08: annotációk (`0178448`) zöld CI után (run 37829559325; a SharedKit-job a runneren is lefordította a makrókat) fast-forwarddal a `master`-be. `master` = `0178448`. A munkafában a felhasználó Xcode-ja által módosított `NightlifeManager.xcscheme` maradt (nem Claude-é, nincs commitolva).
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
 - Az origin-on van egy `web` ág (Svelte webes felület, „log in page”) — nem Claude-é, nem nyúlni hozzá.

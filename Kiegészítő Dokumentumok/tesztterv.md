@@ -49,7 +49,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 
 ### Manuálisan tesztelendő funkciók
 
-* Valódi Sign in with Apple folyamat (K2, M2, L1) — fizetős Apple fejlesztői tagság szükséges
+* Valódi Sign in with Apple folyamat (K2, M2, L1) — fizetős Apple fejlesztői tagság szükséges. Addig a munkavállalói app **Debug** buildjében a bejelentkezés gomb („Belépés (teszt)”) a valódi folyamat nélkül, egy rögzített tesztazonosítóval jelentkeztet be; a Release build a valódi Sign in with Apple gombot tartalmazza.
 * Kijelentkezés megerősítő kérdéssel, majd újraindítás után az üdvözlőképernyő (K14)
 * Jelszavas bejelentkezés a futó hitelesítési szolgáltatással (L1)
 * Push értesítések kézbesítése és hangja (K8, N5)

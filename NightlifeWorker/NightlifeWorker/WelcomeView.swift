@@ -15,6 +15,17 @@ struct WelcomeView: View {
             Text("Nightlife Worker")
                 .font(.largeTitle.bold())
             Spacer()
+            #if DEBUG
+            Button {
+                viewModel.signInWithApple(userID: "debug-worker")
+            } label: {
+                Text("Belépés (teszt)")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, minHeight: 50)
+            }
+            .buttonStyle(.borderedProminent)
+            .padding(.horizontal, 32)
+            #else
             SignInWithAppleButton(.signIn) { request in
                 request.requestedScopes = [.fullName, .email]
             } onCompletion: { result in
@@ -31,6 +42,7 @@ struct WelcomeView: View {
             }
             .frame(height: 50)
             .padding(.horizontal, 32)
+            #endif
             Spacer().frame(height: 32)
         }
     }
