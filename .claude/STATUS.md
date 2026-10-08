@@ -1,17 +1,15 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (M4 kész)
+> Utolsó frissítés: 2026-10-08 (L1–L3, L5 kör kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `m4-ticket-purchase` = `master` @ `6b73a2a`. **M4 kész** (⚠️: Apple Pay, Wallet, CloudKit hiányzik).
-- SharedKit: `EventCatalog` értékesítés (`checkAvailability`, `price`, `purchase`, `tickets(of:)`, új hibakódok), `GuestUser.stableID(forAppleID:)`, `AuthViewModel.userID`; `TicketSalesTests` (10) → 123/123
-- Vendég: `TicketPurchase.feature` (8, egy `@K7` végponttól végpontig), `TicketPurchaseSteps.swift` (`RecordingPayment`), `TicketShopViewModel` + `PaymentProcessing` (`TestPaymentProcessor` Debug, `UnavailablePaymentProcessor` Release), `TicketShopView`, `MyTicketsView` (QR), linkek a `GuestHomeView`-ban; `TicketShopViewModelTests` (3) → vendég 92/92 + 3/3
-- Manager: az új hibakódok üzenetei az `EventManagerViewModel`-ben.
-- Eltérés: a 3 egységteszt a ViewModellel egy lépésben készült (nem előbb) → kódmutációval ellenőrizve.
-
-**Következő jelöltek:** M7 nyereményjáték (vendég jelentkezés), K5 beosztások, K17/L10 készlet, K9/K11, L1+L3 adminok.
+**Aktív ág:** `l1-admin-access` (a `master` @ `6b73a2a`-ról). **L-feladatok, 1. kör kész:** L2, L3, L5 ✅; L1 ⚠️ (Vapor + valódi SIWA hátra); L6 ⚠️ (csak domain).
+- SharedKit: `AdminDirectory.swift` (`PasswordHashing`, `PBKDF2PasswordHasher` 600k, `AdminCredential`, `AdminDirectory`), `AdminUser` (`username`, `appleID`; az `email` mező megszűnt), `AdminRole.displayName/canManageAdmins`, `AdminDirectoryTests` (17) → 140/140
+- Manager: `AdminAccess.feature` (7), `AdminManagement.feature` (6), `AdminAccessSteps.swift`, `AdminSessionViewModel` + `AdminDirectoryStoring` (`admins.json`), `AdminAccessViews.swift` (gyökér: setup / sign-in / change password / main), `AdminsView`, `AdminSettingsView`; a `ContentView` session-t kap, kijelentkezés az oldalsávban → Manager BDD 214/214
+- CucumberSwift-buktató: `@` a lépésszövegben címkének számít (Teszttervben rögzítve).
+- **L-terv (felhasználó kérte: „jöjjenek az L feladatok”):** következő a Vapor hitelesítési szolgáltatás (L1, task #12), aztán L6 funkciókapcsolók, L8 kérelmek, L10 készlet, L9 útmutató (task #13).
 
 ## 2. Git / push állapot
 
@@ -37,7 +35,7 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → 123/123
+- SharedKit: `cd SharedKit && swift test` → 140/140
 - Vendég BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 90 BDD + 3 egységteszt
 - Worker BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 147/147 BDD + 7 egységteszt (K14 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
@@ -46,7 +44,7 @@
 ## 5. Követelmények állapota (lefedettségi mátrix szerint)
 
 - ✅ K1, K2, K4, K14 (Authentication, SignOut), M1, M2, M3, M6 (GuestAuthentication)
-- ✅ L7 (helyszíntervező), L11 (eseménykezelés)
+- ✅ L2, L3, L5, L7, L11
 - ⚠️ M4 (jegyvásárlás; Apple Pay/Wallet/CloudKit hiányzik), M5 (vendég térkép; CloudKit hiányzik), L4 (admin térkép; CloudKit hiányzik), K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
 - Következő jelöltek: lásd az 1. fejezetet.
 

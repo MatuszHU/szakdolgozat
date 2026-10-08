@@ -33,12 +33,12 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 
 | ID | Név | Prio | User story | Forgatókönyv(ek) | Egységteszt | Állapot |
 |----|-----|------|------------|------------------|-------------|---------|
-| L1 | Bejelentkezés | M | – | – | – | – |
-| L2 | Főképernyő | M | – | – | – | – |
-| L3 | Felhasználó- és beosztáskezelő | M | ShiftConflict, ShiftPlanning | ShiftConflict: 4, ShiftPlanning: 8 forgatókönyv (Manager) | SharedKit: ShiftTests, ScheduleTests, ShiftPlanTests | ⚠️ |
+| L1 | Bejelentkezés | M | AdminAccess, AdminManagement | AdminAccess: 7, AdminManagement: Resetting a forgotten password | SharedKit: AdminDirectoryTests | ⚠️ |
+| L2 | Főképernyő | M | AdminAccess | AdminAccess: Setting up the first owner, Signing in | – | ✅ |
+| L3 | Felhasználó- és beosztáskezelő | M | ShiftConflict, ShiftPlanning, AdminManagement | ShiftConflict: 4, ShiftPlanning: 8, AdminManagement: 6 forgatókönyv (Manager) | SharedKit: ShiftTests, ScheduleTests, ShiftPlanTests, AdminDirectoryTests | ✅ |
 | L4 | Térkép | M | StaffMap | StaffMap: 4 forgatókönyv (Manager) | SharedKit: StaffMapTests | ⚠️ |
-| L5 | Kijelentkezés | M | – | – | – | – |
-| L6 | Beállítások | S | – | – | – | – |
+| L5 | Kijelentkezés | M | AdminAccess | AdminAccess: Signing out | – | ✅ |
+| L6 | Beállítások | S | AdminAccess | AdminAccess: The company domain is fixed | SharedKit: AdminDirectoryTests | ⚠️ |
 | L7 | Helyszíntervező | M | VenueDesigner | VenueDesigner: 8 forgatókönyv (Manager) | SharedKit: FloorTests, VenueTests, FloorPlanGeometryTests | ✅ |
 | L8 | Kérelmek | S | – | – | – | – |
 | L9 | Dokumentáció és útmutató | C | – | – | – | – |
@@ -66,13 +66,15 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 | | Összes | M | Lefedett (✅) | Részleges (⚠️) |
 |---|---|---|---|---|
 | Munkavállaló | 17 | 9 | 4 | 4 |
-| Adminisztrátor | 11 | 6 | 2 | 2 |
+| Adminisztrátor | 11 | 6 | 5 | 3 |
 | Vendég | 11 | 5 | 4 | 2 |
-| **Összesen** | **39** | **20** | **10** | **8** |
+| **Összesen** | **39** | **20** | **13** | **9** |
 
 ## Nyitott tételek
 
-* **L3:** a munkatársak felvétele, a műszakok létrehozása (idő, zóna, létszám), a hozzárendelés (betelt műszak, ütközés, ismételt hozzárendelés elutasítása), az eltávolítás és a feladatkiosztás kész (BDD + TDD + felület a Manager appban, helyi JSON-mentés). Az ütközési forgatókönyvek átkerültek a Manager tesztcéljába. Hátravan: **további adminisztrátorok felvétele jogosultsági szinttel** — ez az L1-gyel (jelszavas belépés, Vapor) együtt készül.
+* **L1:** az adminisztrátori fiókok szabályai (első tulajdonos; felhasználónév a rögzített domainnel; legalább 8 karakteres jelszó; sózott PBKDF2-hash, konstans idejű összehasonlítás; ugyanaz a hibaüzenet hibás jelszóra és ismeretlen felhasználóra; ideiglenes jelszó kötelező cseréje; elfelejtett jelszó visszaállítása; Apple-fiók összekapcsolása e-mail alapján) és a bejelentkező felület kész. Hátravan: a saját hitelesítési szolgáltatás (Vapor; addig a fiókok a Mac helyi `admins.json` fájljában, hash-elve), valamint a valódi Sign in with Apple (fizetős fiók).
+* **L3:** kész: munkatársak, műszakok, hozzárendelés, feladatok, valamint adminisztrátorok felvétele és eltávolítása jogosultsági szinttel (adminokat a tulajdonos és a felhasználó-adminisztrátor kezelhet, tulajdonost csak tulajdonos; az utolsó tulajdonos nem törölhető).
+* **L6:** a vállalati domain beállítása (csak tulajdonos) kész; a munkavállalói nem alapfunkciók ki- és bekapcsolása hátravan.
 * **K1, K2, K4, K14, M1, M2, M3, M6:** a bejelentkezés logikája (`AuthViewModel`, `CredentialStoring`, `KeychainCredentialStore`) a SharedKitben közös a munkavállalói és a vendég app között, külön Keychain-szolgáltatásnévvel. A bejelentkezés a Keychainben megmarad két indítás között, a kijelentkezés törli. A valódi Sign in with Apple folyamat fizetős Apple fejlesztői tagság nélkül nem próbálható ki (manuális teszt, ld. Tesztterv).
 * **M4:** a jegyvásárlás logikája (csak meghirdetett jegytípus; a keret és a férőhely nem léphető túl; véget ért eseményre nincs vásárlás; 1–10 jegy egyszerre; elutasított fizetésnél nincs jegy; egyedi sorozatszám; a jegyeim eseménydátum szerint), a jegyek QR-kódja és felülete kész. A megvett jegyet a K7 kódolvasó logikája felismeri és egyszer beengedi (`@K7` forgatókönyv). Hátravan: valódi fizetés (Apple Pay) és Apple Tárca (fizetős fejlesztői tagság), valamint az események CloudKit-szinkronja (N2). Debug buildben tesztfizetés, Release-ben „a fizetés még nem elérhető”.
 * **M5:** a vendég térkép logikája (a vendég csak a neki szóló POI-kat látja: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár; az egyéni pontok és a személyzeti zónák rejtettek; a földszinten nyílik; szintváltás; tervrajz nélkül tájékoztató üzenet) és felülete kész. A tervrajz eljuttatása a vendég appba a CloudKittől (N2) függ.

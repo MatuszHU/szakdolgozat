@@ -86,7 +86,7 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | Modell | Állapot | Fő mezők | Kapcsolatok |
 |--------|---------|----------|-------------|
 | `WorkerUser` | ✅ | appleID, name, role, payPeriod, workedHours | → `Schedule` |
-| `AdminUser` | ✅ | email, name, role (userAdmin / businessManager / owner), bejelentkezési mód | → `AdminCredential` |
+| `AdminUser` | ✅ | username (az e-mail-cím helyi része), name, role (userAdmin / businessManager / owner), signInMethod, appleID | → `AdminCredential` |
 | `GuestUser` | ✅ | appleID, name, tickets | → `Ticket` |
 | `Shift` | ✅ | startTime, endTime, capacity, workerIDs, tasks | → `Zone`, → `Task` |
 | `Schedule` | ✅ | workerID, shifts, payPeriod | → `Shift` |
@@ -108,8 +108,8 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `ShiftPlan` | ✅ | staff, shifts; szabályok: a műszak vége a kezdés után, létszám legalább 1, betelt műszakra és átfedő műszakra nincs hozzárendelés, feladat csak a műszakon lévő munkatársnak, eltávolításkor a feladatokról is lekerül (L3) | → `WorkerUser`, `Shift`, `Task` |
 | `StaffMap` | ✅ | a munkatársak pozíciója (legutóbbi zóna-bejelentkezés), munkaterülete és saját feladatai az adott időpontban aktív műszakból; a K6 és az L4 közös számítása | → `WorkerUser`, `ZoneCheckIn`, `Shift`, `Task` |
 | `Raffle` | ✅ | title, prize, details, participantIDs (L11, M7) | → `Event` |
-| `CompanySettings` | 🆕 | companyDomain | |
-| `AdminCredential` | 🆕 | adminID, username, passwordHash, salt, mustChangePassword | → `AdminUser` |
+| `AdminDirectory` | ✅ | admins, credentials, companyDomain; szabályok: első tulajdonos, jogosultságok (adminokat a tulajdonos és a felhasználó-adminisztrátor kezel, tulajdonost csak tulajdonos), utolsó tulajdonos, egyedi felhasználónév, jelszószabály, ideiglenes jelszó, domain csak tulajdonostól (L1, L3, L6, N3) | → `AdminUser`, → `AdminCredential` |
+| `AdminCredential` | ✅ | adminID, salt, hash (PBKDF2-HMAC-SHA256, 600 000 iteráció), mustChangePassword | → `AdminUser` |
 
 A meglévő modelleken elvégzett módosítások (egységtesztekkel lefedve):
 
@@ -133,6 +133,8 @@ A CloudKit nem biztosít saját jelszavas fiókkezelést, ezért a jelszavas bej
 |-----------|--------|-------|---------|
 | A) CloudKit-rekord | A jelszó hash-e CloudKit-rekordban, ellenőrzés a kliensen | Nincs külön szerver | A hash a kliensre kerül, ami gyengébb biztonságot jelent; a webes elérést nem szolgálja ki |
 | B) Saját hitelesítési szolgáltatás | Kis szerveroldali szolgáltatás (Swift / Vapor), amely a hasht tárolja és ellenőrzi, sikeres belépéskor tokent ad | A hash nem hagyja el a szervert; a későbbi React-os webes elérés is erre épülhet | Üzemeltetendő szerver |
+
+**Átmeneti állapot:** amíg a szolgáltatás nem készül el, a Manager app a SharedKit `AdminDirectory` szabályait helyben futtatja, és a fiókokat a Mac `admins.json` fájljában tárolja (csak hash és só, nyílt jelszó nem). A szolgáltatás ugyanezt a logikát fogja szerveroldalon futtatni.
 
 **Választott megoldás:** B) Saját hitelesítési szolgáltatás. A szolgáltatás Swiftben (Vapor) készül, így a SharedKit modelljei szerveroldalon is felhasználhatók. A jelszavak sóval ellátott, erős hash-függvénnyel képzett formában kizárólag a szerveren tárolódnak (ld. N3); sikeres bejelentkezéskor a szolgáltatás lejárati idővel rendelkező tokent ad, amelyet a kliens a Keychainben tárol. A későbbi React-os webes adminisztrátori elérés ugyanezt a szolgáltatást használja.
 

@@ -102,12 +102,12 @@ struct PanicAlertTests {
 struct UserTests {
 
     @Test func adminDefaultsToAppleSignIn() {
-        let admin = AdminUser(email: "anna", name: "Anna", role: .owner)
+        let admin = AdminUser(username: "anna", name: "Anna", role: .owner)
         #expect(admin.signInMethod == .apple)
     }
 
     @Test func adminCanUsePasswordSignIn() {
-        let admin = AdminUser(email: "anna", name: "Anna", role: .userAdmin, signInMethod: .password)
+        let admin = AdminUser(username: "anna", name: "Anna", role: .userAdmin, signInMethod: .password)
         #expect(admin.signInMethod == .password)
     }
 

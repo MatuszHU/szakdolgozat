@@ -50,6 +50,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 ### Manuálisan tesztelendő funkciók
 
 * Valódi Sign in with Apple folyamat (K2, M2, L1) — fizetős Apple fejlesztői tagság szükséges. Addig a munkavállalói és a vendég app **Debug** buildjében a bejelentkezés gomb („Belépés (teszt)”) a valódi folyamat nélkül, egy rögzített tesztazonosítóval jelentkeztet be; a Release build a valódi Sign in with Apple gombot tartalmazza.
+* Admin app: első tulajdonos létrehozása, bejelentkezés, ideiglenes jelszó cseréje, adminisztrátor felvétele, jelszó visszaállítása, kijelentkezés (L1, L2, L3, L5)
 * Kijelentkezés megerősítő kérdéssel, majd újraindítás után az üdvözlőképernyő (K14)
 * Jelszavas bejelentkezés a futó hitelesítési szolgáltatással (L1)
 * Push értesítések kézbesítése és hangja (K8, N5)
@@ -101,6 +102,7 @@ A CucumberSwift működését 2026-10-07-én ideiglenes próba-forgatókönyvekk
 | Szövegként megadott regex, a closure `match` paraméterét használva | ⚠️ **Részleges egyezés**: a regex a lépésszöveg egy részére is illeszkedik, és ha több definíció illeszkedik, **az utoljára regisztrált érvényes**, figyelmeztetés nélkül. |
 | Szövegként megadott lépés, a closure paramétereit nem használva (`{ _, _ in }`) | ⚠️ A fordító ilyenkor Cucumber expressionként értelmezi (pontos egyezés), így a `^`, `$` és egyéb regex-jelek szó szerint értendők, és a lépés nem illeszkedik. |
 | Sikertelen lépés utáni lépések | ⚠️ Nem futnak le, de az Xcode-riportban **sikeresként** jelennek meg. |
+| `@` jel a lépés szövegében | ⚠️ A lexer címke kezdetének tekinti, a `@` utáni rész elveszik (pl. e-mail-cím). A forgatókönyvekben e-mail-cím helyett a részeit kell megadni. |
 | Nem definiált lépés | ⚠️ A lépés saját tesztmetódusa sikeres, a hibát a `CucumberTest.testGherkin` jelzi (a javasolt lépésdefiníció kódjával). A futás így összességében sikertelen. |
 
 ## Konvenciók
@@ -171,4 +173,6 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | NightlifeTests (vendég) | 47/47 sikeres | M5: VenueGuide, 5 forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-08 | – | SharedKitTests | 123/123 sikeres | M4: TicketSalesTests (10 új) és az `AuthViewModel.userID` tesztje, előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeTests (vendég) | 92/92 BDD + UI, 3/3 egységteszt sikeres | M4: TicketPurchase, 8 forgatókönyv; mutációs ellenőrzés a feature fájlban és a kódban (a nem elérhető fizetés) is OK. A 3 egységteszt a ViewModellel egy lépésben készült, ezért utólagos kódmutációval lett ellenőrizve. |
+| 2026-10-08 | – | SharedKitTests | 140/140 sikeres | L1, L3: AdminDirectoryTests (17 új, PBKDF2 és jogosultságok), előbb sikertelenek. |
+| 2026-10-08 | – | NightlifeManagerTests | 214/214 sikeres | L1, L2, L3, L5, L6: AdminAccess (7), AdminManagement (6). Mutációs ellenőrzés: az első választott mutáció (adminlista) a hibás művelet után is igaz maradt, ezért nem buktatott — a hibaüzenetre irányuló második mutációt a forgatókönyv elkapta. |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |
