@@ -102,6 +102,7 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `POI` | ✅ | name, kind (`POIKind`: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár, egyéni), cell | → `Floor` |
 | `ZoneCheckIn` | ✅ | workerID, zoneID, timestamp | → `WorkerUser`, → `Zone` |
 | `WorkerPosition` | ✅ | workerID, isOnShift, currentZoneID, checkIns; szabályok: csak műszak alatt, csak ismert zónába (K16, N4) | → `Zone`, → `ZoneCheckIn` |
+| `StaffMap` | ✅ | a munkatársak pozíciója (legutóbbi zóna-bejelentkezés), munkaterülete és saját feladatai az adott időpontban aktív műszakból; a K6 és az L4 közös számítása | → `WorkerUser`, `ZoneCheckIn`, `Shift`, `Task` |
 | `Raffle` | 🆕 | eventID, title, description, participants | → `Event` |
 | `CompanySettings` | 🆕 | companyDomain | |
 | `AdminCredential` | 🆕 | adminID, username, passwordHash, salt, mustChangePassword | → `AdminUser` |

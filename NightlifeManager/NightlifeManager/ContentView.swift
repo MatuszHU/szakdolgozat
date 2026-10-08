@@ -12,6 +12,7 @@ struct ContentView: View {
     enum Section: Hashable {
         case designer
         case zoneCodes
+        case staffMap
     }
 
     @StateObject private var designer: VenueDesignerViewModel = {
@@ -25,11 +26,13 @@ struct ContentView: View {
             List(selection: $section) {
                 Label("Helyszíntervező", systemImage: "square.grid.3x3").tag(Section.designer)
                 Label("Zónakódok", systemImage: "qrcode").tag(Section.zoneCodes)
+                Label("Személyzet térképe", systemImage: "person.2.badge.gearshape").tag(Section.staffMap)
             }
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
         } detail: {
             switch section {
             case .zoneCodes: ZoneCodeSheetView(viewModel: designer)
+            case .staffMap: StaffMapView(venue: designer.venue).id(designer.venue)
             default: VenueDesignerView(viewModel: designer)
             }
         }

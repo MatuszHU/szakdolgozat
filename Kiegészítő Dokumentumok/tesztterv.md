@@ -56,7 +56,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * CloudKit-szinkronizáció több eszköz között (N2)
 * Apple Tárcába helyezett jegy (M4)
 * Helyszíntervező: zóna rajzolása húzással, POI lerakása, szintváltás, zónakódok nyomtatása (L7)
-* Térkép megjelenítése valós adatokkal (K6; CloudKit után)
+* Térkép megjelenítése valós adatokkal (K6, L4; CloudKit után)
 * A macOS UI-tesztekhez a gépen engedélyezni kell az Xcode számára az akadálymentességi (Accessibility) hozzáférést; enélkül „Not authorized for performing UI testing actions” hibával leállnak
 
 ## Eszközök és környezet
@@ -145,4 +145,7 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | SharedKitTests | 61/61 sikeres | L7 + K6: Venue, Floor, POI, ZoneCode, térképpozíciók, rácsgeometria (22 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | 33/33 sikeres | Első Manager BDD: VenueDesigner, 8 forgatókönyv; mutációs ellenőrzés OK. A Manager UI-teszt az Accessibility-engedély hiánya miatt nem indult. |
 | 2026-10-08 | – | NightlifeWorkerTests | 149/149 sikeres | K6: VenueMap, 4 forgatókönyv; mutációs ellenőrzés OK. |
+| 2026-10-08 | – | SharedKitTests | 67/67 sikeres | L4: StaffMapTests (6 új), előbb sikertelenek. |
+| 2026-10-08 | – | NightlifeManagerTests | 61/61 sikeres | L4: StaffMap, 4 forgatókönyv; mutációs ellenőrzés OK. |
+| 2026-10-08 | – | NightlifeWorkerTests | 149/149 sikeres | A K6 ViewModell a közös `StaffMap`-re átállítva; a K6 forgatókönyvei változatlanul sikeresek (regressziós ellenőrzés). |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

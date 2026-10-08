@@ -1,18 +1,18 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (K6 + L7 kész)
+> Utolsó frissítés: 2026-10-08 (L4 kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `k6-l7-venue-map`. **K6 + L7 kész** (L7 ✅, K6 ⚠️: valós adat CloudKit nélkül nincs a telefonon).
-- Manager BDD-környezet: CucumberSwift a `NightlifeManagerTests`-ben, `Info.plist` (`FeaturesPath`), megosztott séma `NightlifeManager.xcscheme` (párhuzamosítás ki). Futtatás: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeManager -only-testing:NightlifeManagerTests -destination 'platform=macOS'` → 33/33
-- L7: `VenueDesigner.feature` (8), SharedKit `Venue.swift` (Venue, Floor, POI, ZoneCode), `FloorPlanView.swift` (közös rácsrajzoló), Manager `VenueDesignerViewModel` + `VenueStoring`, `LocalVenueStore` (JSON), `VenueDesignerView` (húzás = zóna, kattintás = POI), `ZoneCodeSheetView` (QR + nyomtatás). A SwiftData-sablon törölve.
-- K6: `VenueMap.feature` (4), `ZoneCheckIn.latestZones`, `Venue.floor(containingZone:)`, Worker `VenueMapViewModel` + `VenueMapView`, link a `HomeView`-ban.
-- Tesztek: SharedKit 61/61, Worker BDD 149/149, Manager BDD 33/33. A macOS UI-teszt Accessibility-engedély nélkül nem indul (a felhasználó engedélyezheti).
-- Ismert: hibás teszt után az `xcodebuild` néha percekig nem zár le (mutációs ellenőrzésnél) — várni kell, nem kell leállítani.
+**Ágak:** `k6-l7-venue-map` (pusholva, CI 37803385402 — a Manager-job a GitHub-kapacitás miatt sokáig sorban állt; ha zöld: fast-forward a `master`-be) → erre épül az `l4-staff-map`.
+**L4 kész** (⚠️: adat CloudKit nélkül nincs a Macen).
+- SharedKit `StaffMap.swift` (pozíció = legutóbbi check-in, munkaterület + saját feladatok = aktív műszak), 6 új teszt → 67/67
+- Manager: `StaffMap.feature` (4), `StaffMapSteps.swift`, `StaffMapViewModel`, `StaffMapView` (oldalsáv: „Személyzet térképe”) → Manager BDD 61/61
+- A Worker `VenueMapViewModel` a közös `StaffMap`-re átállítva → Worker BDD 149/149 (regresszió OK)
+- Mutációs ellenőrzés OK.
 
-**Következő jelöltek (fiók nélkül megvalósíthatók):** L4 admin térkép (a `FloorPlanView` újrahasznosításával), L3 többi része (műszak létrehozás, feladatkiosztás az admin appban), L11 eseménykezelés, K5 beosztások, K14 kijelentkezés, M5 vendég térkép.
+**Következő jelöltek (fiók nélkül):** L3 többi része (műszak létrehozása, munkavállaló hozzárendelése, feladatkiosztás az admin appban — erre épül az L4 adata), L11 eseménykezelés, K5 beosztások, K14 kijelentkezés, M5 vendég térkép.
 
 ## 2. Git / push állapot
 
@@ -30,7 +30,7 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → 61/61
+- SharedKit: `cd SharedKit && swift test` → 67/67
 - Worker BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 149/149 (K6 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
 - UI tesztek: 2/2 (lassú, ~45 s)
@@ -39,7 +39,7 @@
 
 - ✅ K1, K2, K4 (Authentication)
 - ✅ L7 (helyszíntervező)
-- ⚠️ K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
+- ⚠️ L4 (admin térkép; CloudKit hiányzik), K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
 - Következő jelöltek: lásd az 1. fejezetet.
 
 ## 6. Módszertan (Tesztterv szerint)

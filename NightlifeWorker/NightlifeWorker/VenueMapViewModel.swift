@@ -15,15 +15,13 @@ class VenueMapViewModel: ObservableObject {
     let venue: Venue
     let workAreaZoneID: UUID?
     @Published private(set) var selectedFloorID: UUID?
-    private let colleagues: [WorkerUser]
-    private let positions: [UUID: UUID]
+    private let colleagues: StaffMap
 
     init(venue: Venue, me: WorkerUser, colleagues: [WorkerUser], checkIns: [ZoneCheckIn], assignedZoneID: UUID?) {
         self.venue = venue
-        self.colleagues = colleagues
         self.workAreaZoneID = assignedZoneID
-        positions = ZoneCheckIn.latestZones(from: checkIns)
-        let startZoneID = assignedZoneID ?? positions[me.id]
+        self.colleagues = StaffMap(staff: colleagues, checkIns: checkIns, shifts: [], at: Date())
+        let startZoneID = assignedZoneID ?? ZoneCheckIn.latestZones(from: checkIns)[me.id]
         selectedFloorID = startZoneID.flatMap { venue.floor(containingZone: $0)?.id } ?? venue.floors.first?.id
     }
 
@@ -36,19 +34,18 @@ class VenueMapViewModel: ObservableObject {
     }
 
     func colleagueNames(inZone zoneID: UUID) -> [String] {
-        colleagues.filter { positions[$0.id] == zoneID }.map(\.name).sorted()
+        colleagues.names(inZone: zoneID)
     }
 
     /// Colleagues without a check-in to a zone of this venue.
     var colleaguesWithoutPosition: [WorkerUser] {
-        colleagues.filter { colleague in
-            positions[colleague.id].flatMap { venue.floor(containingZone: $0) } == nil
-        }
+        colleagues.entries
+            .filter { $0.positionZoneID.flatMap(venue.floor(containingZone:)) == nil }
+            .map(\.worker)
     }
 
     /// Colleague names per zone of the selected floor, for the floor plan.
     var zoneBadges: [UUID: [String]] {
-        guard let floor = selectedFloor else { return [:] }
-        return Dictionary(uniqueKeysWithValues: floor.zones.map { ($0.id, colleagueNames(inZone: $0.id)) })
+        selectedFloor.map(colleagues.badges(on:)) ?? [:]
     }
 }
