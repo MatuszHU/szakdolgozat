@@ -32,6 +32,23 @@ public struct PBKDF2PasswordHasher: PasswordHashing {
     }
 }
 
+@L6 @K10 @K12 @K15 @K17
+public enum WorkerFeature: String, Codable, CaseIterable, Hashable, Sendable {
+    case profilePicture
+    case statistics
+    case guide
+    case supplyRequests
+
+    public var displayName: String {
+        switch self {
+        case .profilePicture: return "profile picture"
+        case .statistics: return "statistics"
+        case .guide: return "guide"
+        case .supplyRequests: return "supply requests"
+        }
+    }
+}
+
 @L1 @N3
 public struct AdminCredential: Codable, Hashable {
     public let adminID: UUID
@@ -54,6 +71,7 @@ public struct AdminDirectory: Codable, Hashable {
         case lastOwner
         case invalidDomain
         case wrongSignInMethod
+        case wrongCurrentPassword
     }
 
     public struct SignInResult: Equatable {
@@ -66,8 +84,23 @@ public struct AdminDirectory: Codable, Hashable {
     public private(set) var admins: [AdminUser] = []
     private var credentials: [AdminCredential] = []
     public private(set) var companyDomain = ""
+    @L6
+    public private(set) var enabledWorkerFeatures = Set(WorkerFeature.allCases)
+
+    private enum CodingKeys: String, CodingKey {
+        case admins, credentials, companyDomain, enabledWorkerFeatures
+    }
 
     public init() {}
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        admins = try container.decode([AdminUser].self, forKey: .admins)
+        credentials = try container.decode([AdminCredential].self, forKey: .credentials)
+        companyDomain = try container.decode(String.self, forKey: .companyDomain)
+        enabledWorkerFeatures = try container.decodeIfPresent(Set<WorkerFeature>.self, forKey: .enabledWorkerFeatures)
+            ?? Set(WorkerFeature.allCases)
+    }
 
     public var isSetUp: Bool { !admins.isEmpty }
 
@@ -146,6 +179,26 @@ public struct AdminDirectory: Codable, Hashable {
         if let index = credentials.firstIndex(where: { $0.adminID == adminID }) {
             credentials[index].mustChangePassword = true
         }
+    }
+
+    @L6
+    public mutating func setWorkerFeature(_ feature: WorkerFeature, enabled: Bool, by actorID: UUID) throws {
+        guard admins.contains(where: { $0.id == actorID }) else { throw DirectoryError.notPermitted }
+        if enabled {
+            enabledWorkerFeatures.insert(feature)
+        } else {
+            enabledWorkerFeatures.remove(feature)
+        }
+    }
+
+    @L6 @L1
+    public mutating func changeOwnPassword(of adminID: UUID, current: String, new newPassword: String,
+                                           hasher: PasswordHashing) throws {
+        guard let admin = admins.first(where: { $0.id == adminID }) else { throw DirectoryError.unknownAdmin }
+        guard (try? signIn(username: admin.username, password: current, hasher: hasher)) != nil else {
+            throw DirectoryError.wrongCurrentPassword
+        }
+        try changePassword(of: adminID, to: newPassword, hasher: hasher)
     }
 
     public mutating func setCompanyDomain(_ domain: String, by actorID: UUID) throws {

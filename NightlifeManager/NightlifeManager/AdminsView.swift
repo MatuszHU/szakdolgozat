@@ -133,9 +133,32 @@ private struct ResetPasswordSheet: View {
 struct AdminSettingsView: View {
     @ObservedObject var session: AdminSessionViewModel
     @State private var domain = ""
+    @State private var currentPassword = ""
+    @State private var newPassword = ""
 
     var body: some View {
         Form {
+            Section("Munkavállalói funkciók") {
+                ForEach(WorkerFeature.allCases, id: \.self) { feature in
+                    Toggle(Self.title(of: feature), isOn: Binding(
+                        get: { session.directory.enabledWorkerFeatures.contains(feature) },
+                        set: { session.setWorkerFeature(feature, enabled: $0) }))
+                }
+            }
+            if session.currentAdmin?.signInMethod == .password {
+                Section("Saját jelszó") {
+                    SecureField("Jelenlegi jelszó", text: $currentPassword)
+                    SecureField("Új jelszó", text: $newPassword)
+                    Button("Jelszó módosítása") {
+                        session.changeOwnPassword(current: currentPassword, new: newPassword)
+                        if session.errorMessage == nil {
+                            currentPassword = ""
+                            newPassword = ""
+                        }
+                    }
+                    .disabled(currentPassword.isEmpty || newPassword.isEmpty)
+                }
+            }
             Section("Vállalati domain") {
                 TextField("pl. clubneon.hu", text: $domain)
                     .disabled(session.currentAdmin?.role != .owner)
@@ -152,5 +175,14 @@ struct AdminSettingsView: View {
         .formStyle(.grouped)
         .navigationTitle("Beállítások")
         .onAppear { domain = session.directory.companyDomain }
+    }
+
+    static func title(of feature: WorkerFeature) -> String {
+        switch feature {
+        case .profilePicture: return "Profilkép"
+        case .statistics: return "Összesítés"
+        case .guide: return "Útmutató"
+        case .supplyRequests: return "Készletkérés"
+        }
     }
 }

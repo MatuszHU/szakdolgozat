@@ -109,6 +109,7 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `StaffMap` | ✅ | a munkatársak pozíciója (legutóbbi zóna-bejelentkezés), munkaterülete és saját feladatai az adott időpontban aktív műszakból; a K6 és az L4 közös számítása | → `WorkerUser`, `ZoneCheckIn`, `Shift`, `Task` |
 | `Raffle` | ✅ | title, prize, details, participantIDs (L11, M7) | → `Event` |
 | `AdminDirectory` | ✅ | admins, credentials, companyDomain; szabályok: első tulajdonos, jogosultságok (adminokat a tulajdonos és a felhasználó-adminisztrátor kezel, tulajdonost csak tulajdonos), utolsó tulajdonos, egyedi felhasználónév, jelszószabály, ideiglenes jelszó, domain csak tulajdonostól (L1, L3, L6, N3) | → `AdminUser`, → `AdminCredential` |
+| `WorkerFeature` | ✅ | profilePicture (K10), statistics (K12), guide (K15), supplyRequests (K17); az `AdminDirectory.enabledWorkerFeatures` tárolja, alapból mind bekapcsolva; a régebbi mentések a mező nélkül is betölthetők (L6) | |
 | `AdminCredential` | ✅ | adminID, salt, hash (PBKDF2-HMAC-SHA256, 600 000 iteráció), mustChangePassword | → `AdminUser` |
 
 A meglévő modelleken elvégzett módosítások (egységtesztekkel lefedve):

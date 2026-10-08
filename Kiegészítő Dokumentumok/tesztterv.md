@@ -175,4 +175,7 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | NightlifeTests (vendég) | 92/92 BDD + UI, 3/3 egységteszt sikeres | M4: TicketPurchase, 8 forgatókönyv; mutációs ellenőrzés a feature fájlban és a kódban (a nem elérhető fizetés) is OK. A 3 egységteszt a ViewModellel egy lépésben készült, ezért utólagos kódmutációval lett ellenőrizve. |
 | 2026-10-08 | – | SharedKitTests | 140/140 sikeres | L1, L3: AdminDirectoryTests (17 új, PBKDF2 és jogosultságok), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | 214/214 sikeres | L1, L2, L3, L5, L6: AdminAccess (7), AdminManagement (6). Mutációs ellenőrzés: az első választott mutáció (adminlista) a hibás művelet után is igaz maradt, ezért nem buktatott — a hibaüzenetre irányuló második mutációt a forgatókönyv elkapta. |
+| 2026-10-08 | 5d2089a | CI (GitHub Actions), `l1-admin-access` | Sikeres | SharedKit zöld; az app-jobok SDK hiányában nem futtathatók. |
+| 2026-10-08 | – | SharedKitTests | 146/146 sikeres | L6: CompanySettingsTests (6 új), köztük a régebbi `admins.json` adatvesztés nélküli betöltése. |
+| 2026-10-08 | – | NightlifeManagerTests | sikeres | L6: CompanySettings, 4 forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

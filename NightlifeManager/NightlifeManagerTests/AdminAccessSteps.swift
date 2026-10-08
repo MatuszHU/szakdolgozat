@@ -62,6 +62,8 @@ extension Cucumber {
             freshSession()
         }
 
+        setupCompanySettingsSteps { viewModel }
+
         Given("the admin app has no administrators yet") { _, _ in
             XCTAssertEqual(viewModel.screen, .setup)
         }

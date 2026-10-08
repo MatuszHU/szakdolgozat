@@ -93,6 +93,18 @@ class AdminSessionViewModel: ObservableObject {
         apply { try $0.setCompanyDomain(domain, by: actorID) }
     }
 
+    @L6
+    func setWorkerFeature(_ feature: WorkerFeature, enabled: Bool) {
+        guard let actorID = currentAdmin?.id else { return }
+        apply { try $0.setWorkerFeature(feature, enabled: enabled, by: actorID) }
+    }
+
+    @L6 @L1
+    func changeOwnPassword(current: String, new newPassword: String) {
+        guard let adminID = currentAdmin?.id else { return }
+        apply { try $0.changeOwnPassword(of: adminID, current: current, new: newPassword, hasher: hasher) }
+    }
+
     private func open(_ admin: AdminUser) {
         currentAdmin = admin
         screen = .main
@@ -123,6 +135,7 @@ class AdminSessionViewModel: ObservableObject {
         case .lastOwner: return "The last owner cannot be removed"
         case .invalidDomain: return "The domain is not valid"
         case .wrongSignInMethod: return "This administrator signs in with Apple"
+        case .wrongCurrentPassword: return "The current password is wrong"
         case nil: return "The administrators could not be saved"
         }
     }

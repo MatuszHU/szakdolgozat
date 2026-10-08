@@ -1,15 +1,14 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (L1–L3, L5 kör kész)
+> Utolsó frissítés: 2026-10-08 (L6 kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `l1-admin-access` (a `master` @ `6b73a2a`-ról). **L-feladatok, 1. kör kész:** L2, L3, L5 ✅; L1 ⚠️ (Vapor + valódi SIWA hátra); L6 ⚠️ (csak domain).
-- SharedKit: `AdminDirectory.swift` (`PasswordHashing`, `PBKDF2PasswordHasher` 600k, `AdminCredential`, `AdminDirectory`), `AdminUser` (`username`, `appleID`; az `email` mező megszűnt), `AdminRole.displayName/canManageAdmins`, `AdminDirectoryTests` (17) → 140/140
-- Manager: `AdminAccess.feature` (7), `AdminManagement.feature` (6), `AdminAccessSteps.swift`, `AdminSessionViewModel` + `AdminDirectoryStoring` (`admins.json`), `AdminAccessViews.swift` (gyökér: setup / sign-in / change password / main), `AdminsView`, `AdminSettingsView`; a `ContentView` session-t kap, kijelentkezés az oldalsávban → Manager BDD 214/214
-- CucumberSwift-buktató: `@` a lépésszövegben címkének számít (Teszttervben rögzítve).
-- **L-terv (felhasználó kérte: „jöjjenek az L feladatok”):** következő a Vapor hitelesítési szolgáltatás (L1, task #12), aztán L6 funkciókapcsolók, L8 kérelmek, L10 készlet, L9 útmutató (task #13).
+**Aktív ág:** `l6-settings` (az `l1-admin-access`-re épül; az utóbbi már a `master`-ben: `5d2089a`). **L6 kész** ✅.
+- SharedKit: `WorkerFeature`, `AdminDirectory.enabledWorkerFeatures` (tűrő dekódolás a régi `admins.json`-hoz), `setWorkerFeature`, `changeOwnPassword`, `CompanySettingsTests` (6) → 146/146
+- Manager: `CompanySettings.feature` (4), `CompanySettingsSteps.swift` (az AdminAccess session-jét használja), ViewModel- és Beállítások-nézet bővítés.
+- **L-terv további sorrendje** (a felhasználónak jelezve): L10 készlet, L8 kérelmek, L9 útmutató, végül a Vapor hitelesítési szolgáltatás (aszinkron átalakítás miatt a végére).
 
 ## 2. Git / push állapot
 
@@ -23,6 +22,7 @@
 - 2026-10-08: annotációk (`0178448`) zöld CI után (run 37829559325; a SharedKit-job a runneren is lefordította a makrókat) fast-forwarddal a `master`-be. `master` = `0178448`. A munkafában a felhasználó Xcode-ja által módosított `NightlifeManager.xcscheme` maradt (nem Claude-é, nincs commitolva).
 - 2026-10-08: K2 Debug-bejelentkezés (`bb3c0f7`) és M1–M3, M6 (`67140c3`) zöld CI után a `master`-be (run 37832278044; a vendég-job a várt SDK-ok miatt nem futtatható). `master` = `67140c3`.
 - 2026-10-08: M5 (`26e4031`) zöld CI után (run 37835384547) a `master`-be. `master` = `26e4031`.
+- 2026-10-08: L1, L2, L3, L5 (`5d2089a`) zöld CI után (run 37839858225) a `master`-be.
 - 2026-10-08: M4 (`6b73a2a`) zöld CI után (run 37838427883) a `master`-be. `master` = `6b73a2a`.
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
@@ -35,7 +35,7 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → 140/140
+- SharedKit: `cd SharedKit && swift test` → 146/146
 - Vendég BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 90 BDD + 3 egységteszt
 - Worker BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 147/147 BDD + 7 egységteszt (K14 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
@@ -44,7 +44,7 @@
 ## 5. Követelmények állapota (lefedettségi mátrix szerint)
 
 - ✅ K1, K2, K4, K14 (Authentication, SignOut), M1, M2, M3, M6 (GuestAuthentication)
-- ✅ L2, L3, L5, L7, L11
+- ✅ L2, L3, L5, L6, L7, L11
 - ⚠️ M4 (jegyvásárlás; Apple Pay/Wallet/CloudKit hiányzik), M5 (vendég térkép; CloudKit hiányzik), L4 (admin térkép; CloudKit hiányzik), K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
 - Következő jelöltek: lásd az 1. fejezetet.
 
