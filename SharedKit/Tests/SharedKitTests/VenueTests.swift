@@ -1,4 +1,5 @@
 import Foundation
+import CoreGraphics
 import Testing
 @testable import SharedKit
 
@@ -158,5 +159,20 @@ struct VenueTests {
         }
         let decoded = try JSONDecoder().decode(Venue.self, from: JSONEncoder().encode(venue))
         #expect(decoded == venue)
+    }
+}
+
+@Suite("Floor plan geometry")
+struct FloorPlanGeometryTests {
+
+    @Test func pointMapsToCell() {
+        #expect(FloorPlanView.cell(at: CGPoint(x: 0, y: 0), cellSize: 32) == GridCell(row: 0, column: 0))
+        #expect(FloorPlanView.cell(at: CGPoint(x: 70, y: 33), cellSize: 32) == GridCell(row: 1, column: 2))
+        #expect(FloorPlanView.cell(at: CGPoint(x: -1, y: 5), cellSize: 32) == GridCell(row: 0, column: -1))
+    }
+
+    @Test func everyKindHasASymbol() {
+        let kinds: [POIKind] = [.bar, .toilet, .stage, .entrance, .emergencyExit, .cloakroom, .custom("x")]
+        #expect(kinds.allSatisfy { !$0.symbolName.isEmpty })
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct GridCell: Codable, Hashable {
+public struct GridCell: Codable, Hashable, Sendable {
     public var row: Int
     public var column: Int
 

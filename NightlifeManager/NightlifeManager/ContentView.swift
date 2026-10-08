@@ -6,54 +6,32 @@
 //
 
 import SwiftUI
-import SwiftData
+import SharedKit
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    enum Section: Hashable {
+        case designer
+        case zoneCodes
+    }
+
+    @StateObject private var designer: VenueDesignerViewModel = {
+        let store = LocalVenueStore()
+        return VenueDesignerViewModel(venue: store.load() ?? Venue(name: "Helyszín"), store: store)
+    }()
+    @State private var section: Section? = .designer
 
     var body: some View {
         NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
+            List(selection: $section) {
+                Label("Helyszíntervező", systemImage: "square.grid.3x3").tag(Section.designer)
+                Label("Zónakódok", systemImage: "qrcode").tag(Section.zoneCodes)
             }
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-            .toolbar {
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
         } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            switch section {
+            case .zoneCodes: ZoneCodeSheetView(viewModel: designer)
+            default: VenueDesignerView(viewModel: designer)
             }
         }
     }
-}
-
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
