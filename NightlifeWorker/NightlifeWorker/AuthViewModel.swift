@@ -8,16 +8,24 @@
 import Foundation
 import Combine
 
+/// Sign in with Apple, remembered sign-in and sign out (K1, K2, K4, K14).
 class AuthViewModel: ObservableObject {
-    @Published var isAuthenticated: Bool
-    @Published var showWelcome: Bool
+    @Published private(set) var isAuthenticated = false
+    @Published private(set) var showWelcome = true
+    private let store: CredentialStoring
 
-    init(authenticated: Bool = false) {
-        self.isAuthenticated = authenticated
-        self.showWelcome = !authenticated
+    init(store: CredentialStoring) {
+        self.store = store
     }
 
-    func signInWithApple() {
+    /// Restores a remembered sign-in at launch.
+    func checkAuthState() {
+        isAuthenticated = store.load() != nil
+        showWelcome = !isAuthenticated
+    }
+
+    func signInWithApple(userID: String) {
+        try? store.save(userID)
         isAuthenticated = true
         showWelcome = false
     }
@@ -27,7 +35,9 @@ class AuthViewModel: ObservableObject {
         showWelcome = true
     }
 
-    func checkAuthState() {
-        showWelcome = !isAuthenticated
+    func signOut() {
+        try? store.delete()
+        isAuthenticated = false
+        showWelcome = true
     }
 }

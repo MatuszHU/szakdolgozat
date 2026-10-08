@@ -25,8 +25,12 @@ struct WelcomeView: View {
                 request.requestedScopes = [.fullName, .email]
             } onCompletion: { result in
                 switch result {
-                case .success:
-                    viewModel.signInWithApple()
+                case .success(let authorization):
+                    if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
+                        viewModel.signInWithApple(userID: credential.user)
+                    } else {
+                        viewModel.cancelSignIn()
+                    }
                 case .failure:
                     viewModel.cancelSignIn()
                 }

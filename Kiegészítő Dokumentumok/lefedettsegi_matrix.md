@@ -12,7 +12,7 @@ A mátrix a követelményspecifikáció funkcionális követelményeit köti ös
 | K1 | Üdvözlőképernyő | M | Authentication | Authentication: Successful login, Failed login | – | ✅ |
 | K2 | Bejelentkezés | M | Authentication | Authentication: Successful login, Failed login | – | ✅ |
 | K3 | Töltőképernyő | C | – | – | – | – |
-| K4 | Kezdőképernyő | M | Authentication | Authentication: Already logged in | – | ✅ |
+| K4 | Kezdőképernyő | M | Authentication, SignOut | Authentication: Already logged in; SignOut: A sign-in is remembered until signing out | AuthViewModelTests | ✅ |
 | K5 | Beosztások | M | – | – | – | – |
 | K6 | Térkép | M | VenueMap | VenueMap: 4 forgatókönyv | SharedKit: MapPositionTests, VenueTests | ⚠️ |
 | K7 | Kódolvasó/jegykezelő | M | CodeReader | CodeReader: 6 forgatókönyv | SharedKit: ScannedCodeTests, TicketAdmissionTests | ⚠️ |
@@ -22,7 +22,7 @@ A mátrix a követelményspecifikáció funkcionális követelményeit köti ös
 | K11 | Nyelv | S | – | – | – | – |
 | K12 | Összesítés | S | – | – | – | – |
 | K13 | Értesítések | S | – | – | – | – |
-| K14 | Kijelentkezés | M | – | – | – | – |
+| K14 | Kijelentkezés | M | SignOut | SignOut: 3 forgatókönyv | AuthViewModelTests, KeychainCredentialStoreTests | ✅ |
 | K15 | Dokumentáció és útmutató | C | – | – | – | – |
 | K16 | Zóna-bejelentkezés | M | ZoneCheckIn | ZoneCheckIn: 5 forgatókönyv | SharedKit: ZoneTests, WorkerPositionTests | ⚠️ |
 | K17 | Készletkérés | S | – | – | – | – |
@@ -63,14 +63,15 @@ A mátrix a követelményspecifikáció funkcionális követelményeit köti ös
 
 | | Összes | M | Lefedett (✅) | Részleges (⚠️) |
 |---|---|---|---|---|
-| Munkavállaló | 17 | 9 | 3 | 4 |
+| Munkavállaló | 17 | 9 | 4 | 4 |
 | Adminisztrátor | 11 | 6 | 2 | 2 |
 | Vendég | 11 | 5 | 0 | 0 |
-| **Összesen** | **39** | **20** | **5** | **6** |
+| **Összesen** | **39** | **20** | **6** | **6** |
 
 ## Nyitott tételek
 
 * **L3:** a munkatársak felvétele, a műszakok létrehozása (idő, zóna, létszám), a hozzárendelés (betelt műszak, ütközés, ismételt hozzárendelés elutasítása), az eltávolítás és a feladatkiosztás kész (BDD + TDD + felület a Manager appban, helyi JSON-mentés). Az ütközési forgatókönyvek átkerültek a Manager tesztcéljába. Hátravan: **további adminisztrátorok felvétele jogosultsági szinttel** — ez az L1-gyel (jelszavas belépés, Vapor) együtt készül.
+* **K1, K2, K4, K14:** a bejelentkezés a Keychainben megmarad két indítás között, a kijelentkezés törli. A valódi Sign in with Apple folyamat fizetős Apple fejlesztői tagság nélkül nem próbálható ki (manuális teszt, ld. Tesztterv).
 * **K6:** a térkép logikája (szintválasztás, a munkaterület kiemelése, a munkatársak a legutóbbi zóna-bejelentkezésük zónájában, a be nem jelentkezettek külön listában) és a felülete (`VenueMapView`, a közös `FloorPlanView`-val) készen van; a helyszín és a bejelentkezések valós adatforrása (CloudKit, N2) hátravan, addig a térkép üres állapotot mutat.
 * **L4:** a személyzeti térkép logikája (a munkatársak a legutóbbi zóna-bejelentkezésük zónájában; kiválasztáskor az aktív műszakból a munkaterület és a saját feladatok, valamint az aktuális pozíció; a be nem jelentkezettek listája; szintváltás) és a felülete (`StaffMapView`) készen van. A munkatársak, műszakok és bejelentkezések a Macre CloudKit (N2) nélkül nem jutnak el, addig a lista üres. A közös számítás (`StaffMap`) a K6-tal megosztott.
 * **L11:** kész (események címmel, leírással, időponttal, helyszínnel és férőhellyel; jegytípusok árral és opcionális kerettel, a keretek összege nem lépheti túl a férőhelyet; nyereményjáték nyereménnyel; helyi JSON-mentés). Az események eljuttatása a vendég appba (M4, M7) a CloudKittől (N2) függ.

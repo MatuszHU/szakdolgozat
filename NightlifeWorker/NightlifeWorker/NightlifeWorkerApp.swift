@@ -8,14 +8,19 @@ import SwiftUI
 
 @main
 struct NightlifeWorkerApp: App {
-    @StateObject private var authViewModel = AuthViewModel()
+    @StateObject private var authViewModel = AuthViewModel(store: KeychainCredentialStore())
 
     var body: some Scene {
         WindowGroup {
-            if authViewModel.isAuthenticated {
-                HomeView(viewModel: authViewModel)
-            } else {
-                WelcomeView(viewModel: authViewModel)
+            Group {
+                if authViewModel.isAuthenticated {
+                    HomeView(viewModel: authViewModel)
+                } else {
+                    WelcomeView(viewModel: authViewModel)
+                }
+            }
+            .task {
+                authViewModel.checkAuthState()
             }
         }
     }

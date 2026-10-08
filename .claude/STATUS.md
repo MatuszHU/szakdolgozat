@@ -1,16 +1,15 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (L11 kész)
+> Utolsó frissítés: 2026-10-08 (K14 kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `l11-event-management` = `master` @ `2d1ea83`. **L11 kész** ✅.
-- SharedKit `EventCatalog.swift` (EventCatalog, TicketOffer, Raffle; az `Event` kapott `ticketOffers`-t és `raffle`-t; `Ticket`/`TicketType` Hashable) → 100/100
-- Manager: `EventManagement.feature` (9), `EventManagementSteps.swift`, `EventManagerViewModel` + `EventCatalogStoring`, `EventsView` (oldalsáv: „Események”), `LocalJSONStore` → `events.json` → Manager BDD 157/157
-- Mutációs ellenőrzés OK. A felhasználó egy Manager-példányt futtat az Xcode-ból — az ellenőrző indításnál csak a saját PID-et szabad leállítani.
+**Aktív ág:** `k14-sign-out` (a `master` @ `2d1ea83`-ról). **K14 kész** ✅ (és a K4 valódi tartalmat kapott).
+- Worker: `CredentialStoring` + `KeychainCredentialStore`, `AuthViewModel(store:)` (`checkAuthState`, `signInWithApple(userID:)`, `signOut()`), `WelcomeView` az Apple user ID-t adja át, az app induláskor `checkAuthState`, `HomeView`-ban kijelentkezés gomb megerősítéssel.
+- Tesztek: `SignOut.feature` (3), `SignOutSteps.swift`, `TestDoubles.swift` (`InMemoryCredentialStore`), `AuthViewModelTests.swift` (Swift Testing, 7, köztük valódi Keychain-teszt) → Worker BDD 147/147, mutációs ellenőrzés OK.
 
-**Következő jelöltek (fiók nélkül):** K14 kijelentkezés (kicsi, K2-höz), K5 beosztások (logika kész, adat CloudKit nélkül nincs), M1–M3 vendég app alapjai (üdvözlő, bejelentkezés, kezdőképernyő — mint a Workernél), M5 vendég térkép (`FloorPlanView`), L1+L3 adminok (Vapor nélkül csak a modell), K17/L10 készlet.
+**Következő jelöltek (fiók nélkül):** M1–M3 vendég app alapjai (BDD-környezet + üdvözlő/bejelentkezés/kezdőképernyő, a Worker mintájára), M5 vendég térkép, K5 beosztások, K17/L10 készlet, K9/K11 beállítások és nyelv.
 
 ## 2. Git / push állapot
 
@@ -32,13 +31,13 @@
 ## 4. Tesztek (utolsó ismert állapot)
 
 - SharedKit: `cd SharedKit && swift test` → 100/100
-- Worker BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 137/137 (L3 után; a ShiftConflict átkerült a Managerbe)
+- Worker BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 147/147 BDD + 7 egységteszt (K14 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
 - UI tesztek: 2/2 (lassú, ~45 s)
 
 ## 5. Követelmények állapota (lefedettségi mátrix szerint)
 
-- ✅ K1, K2, K4 (Authentication)
+- ✅ K1, K2, K4, K14 (Authentication, SignOut)
 - ✅ L7 (helyszíntervező), L11 (eseménykezelés)
 - ⚠️ L4 (admin térkép; CloudKit hiányzik), K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
 - Következő jelöltek: lásd az 1. fejezetet.

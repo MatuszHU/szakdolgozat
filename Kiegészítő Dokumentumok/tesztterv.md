@@ -40,7 +40,7 @@ Egy követelmény akkor tekinthető késznek, ha:
 
 | Szint | Mit tesztel | Eszköz | Hol található |
 |-------|-------------|--------|---------------|
-| Egységteszt (TDD) | A SharedKit modelljeinek üzleti logikája (pl. műszakütközés, létszámkorlát, készletminimum), a ViewModellek állapotváltásai, a hitelesítési szolgáltatás logikája | Swift Testing (`@Test`, `#expect`) | `SharedKit/Tests/SharedKitTests/`, `<App>Tests/` |
+| Egységteszt (TDD) | A SharedKit modelljeinek üzleti logikája (pl. műszakütközés, létszámkorlát, készletminimum), az app-szintű logika és szolgáltatások (pl. `AuthViewModel`, Keychain-tároló), a hitelesítési szolgáltatás logikája | Swift Testing (`@Test`, `#expect`) | `SharedKit/Tests/SharedKitTests/`, `<App>Tests/` (az XCTest-alapú BDD mellett, ugyanabban a tesztcélban) |
 | Elfogadási teszt (BDD) | A követelmények viselkedése a ViewModell rétegen keresztül, felhasználói nézőpontból megfogalmazva | CucumberSwift + XCTest | `NightlifeWorkerTests/` és `NightlifeManagerTests/` (`Features/*.feature`, lépésdefiníciók) |
 | UI teszt | Kritikus folyamatok végigkattintása a valódi felületen (indítás, bejelentkezés, pánik mód) | XCUITest | `<App>UITests/` |
 | Manuális teszt | Automatizáltan nem vagy nehezen tesztelhető funkciók valós eszközön | Ellenőrzőlista | Tesztjegyzőkönyv |
@@ -49,7 +49,8 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 
 ### Manuálisan tesztelendő funkciók
 
-* Valódi Sign in with Apple folyamat (K2, M2, L1)
+* Valódi Sign in with Apple folyamat (K2, M2, L1) — fizetős Apple fejlesztői tagság szükséges
+* Kijelentkezés megerősítő kérdéssel, majd újraindítás után az üdvözlőképernyő (K14)
 * Jelszavas bejelentkezés a futó hitelesítési szolgáltatással (L1)
 * Push értesítések kézbesítése és hangja (K8, N5)
 * Kamerás kódolvasás és QR-kódos zóna-bejelentkezés (K7, K16)
@@ -157,4 +158,6 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | 8b635da | CI (GitHub Actions), `l3-shift-planning` | Sikeres | SharedKit zöld; a Manager- és a Worker-job iOS/macOS 27 SDK hiányában nem futtatható. |
 | 2026-10-08 | – | SharedKitTests | 100/100 sikeres | L11: EventCatalogTests (16 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | 157/157 sikeres | L11: EventManagement, 9 forgatókönyv; mutációs ellenőrzés OK. |
+| 2026-10-08 | 2d1ea83 | CI (GitHub Actions), `l11-event-management` | Sikeres | SharedKit zöld; a Manager- és a Worker-job nem futtatható (SDK). |
+| 2026-10-08 | – | NightlifeWorkerTests | 147/147 BDD + 7/7 egységteszt sikeres | K14: SignOut, 3 forgatókönyv; AuthViewModel- és Keychain-tesztek (előbb sikertelenek); mutációs ellenőrzés OK. |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |
