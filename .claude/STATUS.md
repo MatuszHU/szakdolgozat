@@ -5,7 +5,7 @@
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `m5-guest-map` (a `master` @ `67140c3`-ról). **M5 kész** (⚠️: tervrajz CloudKit nélkül nincs a vendég telefonján).
+**Aktív ág:** `m5-guest-map` = `master` @ `26e4031`. **M5 kész** (⚠️: tervrajz CloudKit nélkül nincs a vendég telefonján).
 - SharedKit: `POIKind.isGuestRelevant`, `Floor.forGuests`, `Venue.forGuests`, `Venue.groundFloor` (`POIKind` Sendable), `GuestVenueTests` (6) → 112/112
 - Vendég: `VenueGuide.feature` (5), `VenueGuideSteps.swift`, `GuestMapViewModel`, `GuestMapView` (tervrajz + helylista + szintváltó), link a `GuestHomeView`-ban → vendég BDD 47/47; mutációs ellenőrzés OK.
 - Döntés (a felhasználó jóváhagyásával indult): a vendég nem látja a zónákat és az egyéni (belső) POI-kat.
@@ -23,6 +23,7 @@
 - 2026-10-08: K14 (`5066a2a`) zöld CI után (run 37827705628) fast-forwarddal a `master`-be. `master` = `5066a2a`.
 - 2026-10-08: annotációk (`0178448`) zöld CI után (run 37829559325; a SharedKit-job a runneren is lefordította a makrókat) fast-forwarddal a `master`-be. `master` = `0178448`. A munkafában a felhasználó Xcode-ja által módosított `NightlifeManager.xcscheme` maradt (nem Claude-é, nincs commitolva).
 - 2026-10-08: K2 Debug-bejelentkezés (`bb3c0f7`) és M1–M3, M6 (`67140c3`) zöld CI után a `master`-be (run 37832278044; a vendég-job a várt SDK-ok miatt nem futtatható). `master` = `67140c3`.
+- 2026-10-08: M5 (`26e4031`) zöld CI után (run 37835384547) a `master`-be. `master` = `26e4031`.
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
 - Az origin-on van egy `web` ág (Svelte webes felület, „log in page”) — nem Claude-é, nem nyúlni hozzá.
