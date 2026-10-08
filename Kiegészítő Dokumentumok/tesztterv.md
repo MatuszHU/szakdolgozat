@@ -60,6 +60,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * Jegyvásárlás és a „Jegyeim” QR-kódjának beolvasása a munkavállalói kódolvasóval (M4, K7)
 * Helyszíntervező: zóna rajzolása húzással, POI lerakása, szintváltás, zónakódok nyomtatása (L7)
 * Térkép megjelenítése valós adatokkal (K6, L4, M5; CloudKit után)
+* Súgó → Adminisztrátori útmutató: a link megnyitja az útmutatót (L9)
 * Készlet: tétel felvétele, mennyiség módosítása, alacsony készlet figyelmeztetés, kérés jóváhagyása és elutasítása (L10)
 * Eseménykezelő: esemény létrehozása, jegytípus hozzáadása árral és kerettel, nyereményjáték meghirdetése (L11)
 * Műszaktervező: munkatárs felvétele, műszak létrehozása, hozzárendelés, feladat hozzáadása, a személyzeti térképen a munkaterület és a feladat megjelenése (L3, L4)
@@ -183,4 +184,5 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | NightlifeManagerTests | sikeres | L10: StockManagement, 7 forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-08 | – | SharedKitTests | 161/161 sikeres | L8: RequestLogTests (5 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | sikeres | L8: RequestLog, 4 forgatókönyv; az első futás a lépésdefiníció időformázási hibáját mutatta (nem a termékkódét), javítás után zöld; mutációs ellenőrzés OK. |
+| 2026-10-08 | – | NightlifeManager (build) | Sikeres | L9: Súgó-menü link; az útmutató URL-jének ellenőrzése közben derült ki, hogy az ékezetes útvonalat a Foundation duplán kódolná (`%2520`) — előkódolt URL-lel javítva, a cél elérhetősége ellenőrizve. |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

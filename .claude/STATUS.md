@@ -1,14 +1,12 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (L8 kész)
+> Utolsó frissítés: 2026-10-08 (L9 kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `l8-requests` (a `master` @ `681cca9`-ra épül). **L8 kész** (⚠️: pánikjelzések CloudKit nélkül nincsenek a Macen).
-- SharedKit: `RequestLog.swift`, `RequestLogTests` (5) → 161/161
-- Manager: `RequestLog.feature` (4), `RequestLogSteps.swift` (a Készlet-lépések ViewModeljét használja), `RequestLogViewModel`, `RequestLogView` (oldalsáv: „Kérelmek”); az `InventoryViewModel.receiveRequest` időpontot is kap.
-- **Hátravan az L-körből:** L9 útmutató, végül a Vapor hitelesítési szolgáltatás (L1 befejezése).
+**Aktív ág:** `l9-admin-guide` (az `l8-requests`-re épül). **L9 kész** ✅: `Kiegészítő Dokumentumok/adminisztratori_utmutato.md`, Súgó-menü link az admin appban (előkódolt URL, mert az ékezetes útvonalat a Foundation duplán kódolná).
+- **Az L-körből hátravan:** a Vapor hitelesítési szolgáltatás (L1 befejezése) — a felhasználóval előbb egyeztetni kell (aszinkron átalakítás a Managerben).
 
 ## 2. Git / push állapot
 
@@ -45,7 +43,7 @@
 ## 5. Követelmények állapota (lefedettségi mátrix szerint)
 
 - ✅ K1, K2, K4, K14 (Authentication, SignOut), M1, M2, M3, M6 (GuestAuthentication)
-- ✅ L2, L3, L5, L6, L7, L10, L11
+- ✅ L2, L3, L5, L6, L7, L9, L10, L11
 - ⚠️ L8 (kérelmek; CloudKit), M4 (jegyvásárlás; Apple Pay/Wallet/CloudKit hiányzik), M5 (vendég térkép; CloudKit hiányzik), L4 (admin térkép; CloudKit hiányzik), K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
 - Következő jelöltek: lásd az 1. fejezetet.
 

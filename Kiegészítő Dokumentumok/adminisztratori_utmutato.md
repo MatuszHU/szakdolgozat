@@ -1,0 +1,78 @@
+# Nightlife Manager – Adminisztrátori útmutató
+### Majoros Máté
+ ----
+Ez az útmutató a Nightlife Manager macOS-alkalmazás használatát írja le (L9). Az alkalmazásból a **Súgó → Adminisztrátori útmutató** menüponttal nyitható meg.
+
+## 1. Első indítás: a tulajdonos létrehozása
+
+Ha még nincs adminisztrátor, az alkalmazás a **Tulajdonos létrehozása** képernyővel indul. Add meg a nevedet, a felhasználónevedet és egy legalább 8 karakteres jelszót. A felhasználónév kisbetűkből, számjegyekből, pontból, kötőjelből és aláhúzásból állhat (ez az e-mail-cím @ előtti része). Az így létrehozott fiók **tulajdonosi** jogosultságú.
+
+## 2. Bejelentkezés és kijelentkezés
+
+- **Bejelentkezés:** a felhasználónevet és a jelszót kell megadni. Ha a vállalati domain be van állítva, a mező mellett látszik (pl. `@clubneon.hu`), azt nem kell beírni.
+- **Hibás adatok:** hibás jelszó és ismeretlen felhasználónév esetén ugyanaz az üzenet jelenik meg, így kívülről nem derül ki, létezik-e egy felhasználónév.
+- **Ideiglenes jelszó:** ha egy másik adminisztrátor hozta létre a fiókodat vagy állította vissza a jelszavadat, az első bejelentkezéskor új jelszót kell választanod.
+- **Kijelentkezés:** az oldalsáv alján, a neved alatt.
+
+## 3. Jogosultsági szintek
+
+| Szint | Mit tehet |
+|-------|-----------|
+| Tulajdonos | Minden; tulajdonost csak tulajdonos vehet fel vagy törölhet; a vállalati domaint csak tulajdonos állíthatja. |
+| Felhasználó-adminisztrátor | Adminisztrátorokat vehet fel és törölhet (tulajdonost nem), jelszót állíthat vissza. |
+| Üzletvezető | A helyszín, a műszakok, az események és a készlet kezelése; adminisztrátorokat nem kezelhet. |
+
+Az utolsó tulajdonos nem törölhető.
+
+## 4. Helyszíntervező (L7)
+
+1. **Új szint:** a `+` gombbal adj meg nevet, szintszámot (pl. 0 = földszint, −1 = pince) és rácsméretet. Egy szintszám csak egyszer szerepelhet.
+2. **Zóna rajzolása:** az **Eszköz** kapcsolót állítsd **Zóna** állásba, és húzd át az egeret a kívánt cellákon, majd add meg a zóna nevét. A zónák nem fedhetik egymást, és a rácson belül kell lenniük; a név szintenként egyedi.
+3. **Pont (POI) elhelyezése:** az Eszközt állítsd **Pont** állásba, kattints a cellára, és válaszd ki a típust (bár, mosdó, színpad, bejárat, vészkijárat, ruhatár). Egy cellán egy pont lehet.
+4. **Törlés:** a jobb oldali listában a kuka ikonnal.
+
+## 5. Zónakódok (K16)
+
+A **Zónakódok** menüpont minden zónához QR-kódot mutat „Szint – Zóna” felirattal. A **Nyomtatás** gombbal kinyomtathatók; a kódot az adott zónában kell kihelyezni. A munkavállalók ezt beolvasva jelentkeznek be a zónába.
+
+## 6. Személyzet térképe (L4)
+
+A tervrajzon a munkatársak a legutóbbi zóna-bejelentkezésük helyén jelennek meg. Egy munkatársat kiválasztva látszik a munkaterülete, a pozíciója és a feladatai; a térkép arra a szintre vált, ahol tartózkodik. A be nem jelentkezett munkatársak külön jelölést kapnak.
+
+## 7. Műszakok (L3)
+
+- **Munkatárs felvétele:** a bal oldali lista **Új munkatárs** gombjával (név, munkakör).
+- **Új műszak:** a `+` gombbal (kezdés, vég, zóna, létszám).
+- **Hozzárendelés:** a műszakot kiválasztva a **Munkatárs hozzáadása** menüből. Betelt műszakhoz és egy munkatárs számára átfedő műszakhoz a rendszer nem enged hozzárendelést (az egymást közvetlenül követő műszakok megengedettek).
+- **Feladat:** a **Feladatok** részben, csak a műszakon lévő munkatársnak adható.
+- **Eltávolítás:** a munkatárs a műszak feladatairól is lekerül.
+
+## 8. Események és jegyek (L11)
+
+- **Új esemény:** cím, helyszín, kezdés, vég, férőhely.
+- **Jegytípusok:** Standard, VIP vagy egyéni néven, árral és opcionális kerettel. Egy jegytípus eseményenként egyszer szerepelhet, az ár nem lehet negatív, a keretek összege nem haladhatja meg a férőhelyet.
+- **Nyereményjáték:** megnevezés és nyeremény megadásával hirdethető meg.
+
+## 9. Készlet (L10)
+
+- **Új tétel:** megnevezés, kategória, mennyiség, mértékegység, minimális mennyiség. A megnevezés egyedi.
+- **Mennyiség módosítása:** a tétel sorában írd át a mennyiséget, és nyomj Entert.
+- **Alacsony készlet:** a minimum alatti tételek narancssárgán, külön listában jelennek meg; ha egy művelet a minimum alá viszi a tételt, figyelmeztetés jelenik meg.
+- **Készletkérések:** a **Függő kérések** részben jóváhagyhatók (a mennyiség levonódik a készletből) vagy elutasíthatók. A készletnél nagyobb kérés nem hagyható jóvá.
+
+## 10. Kérelmek (L8)
+
+A munkavállalók pánikjelzései és készletkérései kategóriánként, a legfrissebb elöl. A **Csak a nyitottak** kapcsolóval a még el nem intézett tételek szűrhetők (nem nyugtázott pánikjelzés, függő készletkérés).
+
+## 11. Adminisztrátorok és beállítások (L3, L6)
+
+- **Adminisztrátorok:** új adminisztrátor felvétele (név, felhasználónév, jogosultság, bejelentkezési mód; jelszavas módnál ideiglenes jelszóval), jelszó visszaállítása (kulcs ikon), törlés.
+- **Beállítások:**
+  - **Munkavállalói funkciók:** a profilkép, az összesítés, az útmutató és a készletkérés központilag ki- és bekapcsolható.
+  - **Saját jelszó:** a jelenlegi jelszó megadásával módosítható.
+  - **Vállalati domain:** csak tulajdonos állíthatja.
+
+## 12. Jelenlegi korlátok
+
+- Az adatok (helyszín, műszakok, események, készlet, adminisztrátorok) jelenleg csak ezen a Macen, helyben tárolódnak. A munkavállalói és a vendég alkalmazással való megosztáshoz CloudKit-szinkron szükséges, ami fizetős Apple fejlesztői tagságot igényel.
+- A jelszavas bejelentkezés jelenleg helyben, hash-elt jelszavakkal működik; a tervezett saját hitelesítési szolgáltatás elkészültével a jelszavak a szerveren kerülnek ellenőrzésre.
