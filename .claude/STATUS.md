@@ -5,7 +5,7 @@
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `l11-event-management` (a `master` @ `8b635da`-ról). **L11 kész** ✅.
+**Aktív ág:** `l11-event-management` = `master` @ `2d1ea83`. **L11 kész** ✅.
 - SharedKit `EventCatalog.swift` (EventCatalog, TicketOffer, Raffle; az `Event` kapott `ticketOffers`-t és `raffle`-t; `Ticket`/`TicketType` Hashable) → 100/100
 - Manager: `EventManagement.feature` (9), `EventManagementSteps.swift`, `EventManagerViewModel` + `EventCatalogStoring`, `EventsView` (oldalsáv: „Események”), `LocalJSONStore` → `events.json` → Manager BDD 157/157
 - Mutációs ellenőrzés OK. A felhasználó egy Manager-példányt futtat az Xcode-ból — az ellenőrző indításnál csak a saját PID-et szabad leállítani.
@@ -19,6 +19,7 @@
 - 2026-10-08: K7 (`64ced58`) a `k7-code-reader` ágon zöld CI után (run 37799064412) fast-forwarddal a `master`-be került. `master` = `64ced58`.
 - 2026-10-08: L7 + K6 + L4 + CI-javítás (`8f27ea8`) zöld CI után (run 37804152553) fast-forwarddal a `master`-be. `master` = `8f27ea8`. A Manager CI-job a várt módon nem futtatható (Xcode 26.6, macOS 27 SDK nincs).
 - 2026-10-08: L3 műszaktervezés (`8b635da`) zöld CI után (run 37805409167) fast-forwarddal a `master`-be. `master` = `8b635da`.
+- 2026-10-08: L11 (`2d1ea83`) zöld CI után (run 37807232776) fast-forwarddal a `master`-be. `master` = `2d1ea83`.
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
 - Az origin-on van egy `web` ág (Svelte webes felület, „log in page”) — nem Claude-é, nem nyúlni hozzá.
