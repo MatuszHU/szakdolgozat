@@ -5,7 +5,7 @@
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `l3-shift-planning` (a `master` @ `8f27ea8`-ról). **L3 (műszaktervezés) kész** — ⚠️ marad: további adminok felvétele jogosultsági szinttel az L1-gyel együtt.
+**Aktív ág:** `l3-shift-planning` = `master` @ `8b635da`. **L3 (műszaktervezés) kész** — ⚠️ marad: további adminok felvétele jogosultsági szinttel az L1-gyel együtt.
 - SharedKit `ShiftPlan.swift` (staff, shifts, szabályok), `Shift.freePlaces`; a modellek `Hashable`-k → 84/84
 - Manager: `ShiftPlanning.feature` (8), `ShiftConflict.feature` (4, a Workerből átköltöztetve), `ShiftPlanningSteps.swift`, `ShiftPlannerViewModel` + `ShiftPlanStoring`, `ShiftPlannerView` (oldalsáv: „Műszakok”), közös `LocalJSONStore<Value>` (venue.json, shift-plan.json) → Manager BDD 127/127
 - L4: a `StaffMapView` a műszakterv munkatársait és műszakjait kapja (bejelentkezések továbbra sincsenek CloudKit nélkül).
@@ -19,6 +19,7 @@
 - A workflow minden ágra (`**`) pushra és a `master`-re nyitott PR-ra fut (2026-10-08 óta).
 - 2026-10-08: K7 (`64ced58`) a `k7-code-reader` ágon zöld CI után (run 37799064412) fast-forwarddal a `master`-be került. `master` = `64ced58`.
 - 2026-10-08: L7 + K6 + L4 + CI-javítás (`8f27ea8`) zöld CI után (run 37804152553) fast-forwarddal a `master`-be. `master` = `8f27ea8`. A Manager CI-job a várt módon nem futtatható (Xcode 26.6, macOS 27 SDK nincs).
+- 2026-10-08: L3 műszaktervezés (`8b635da`) zöld CI után (run 37805409167) fast-forwarddal a `master`-be. `master` = `8b635da`.
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
 - Az origin-on van egy `web` ág (Svelte webes felület, „log in page”) — nem Claude-é, nem nyúlni hozzá.
