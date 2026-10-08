@@ -4,7 +4,7 @@ import SharedKit
 @main
 @K1 @K4
 struct NightlifeWorkerApp: App {
-    @StateObject private var authViewModel = AuthViewModel(store: KeychainCredentialStore())
+    @StateObject private var authViewModel = AuthViewModel(store: KeychainCredentialStore(service: "hu.matusz.nightlife.worker.signin"))
 
     var body: some Scene {
         WindowGroup {

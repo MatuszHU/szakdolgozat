@@ -49,7 +49,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 
 ### Manuálisan tesztelendő funkciók
 
-* Valódi Sign in with Apple folyamat (K2, M2, L1) — fizetős Apple fejlesztői tagság szükséges. Addig a munkavállalói app **Debug** buildjében a bejelentkezés gomb („Belépés (teszt)”) a valódi folyamat nélkül, egy rögzített tesztazonosítóval jelentkeztet be; a Release build a valódi Sign in with Apple gombot tartalmazza.
+* Valódi Sign in with Apple folyamat (K2, M2, L1) — fizetős Apple fejlesztői tagság szükséges. Addig a munkavállalói és a vendég app **Debug** buildjében a bejelentkezés gomb („Belépés (teszt)”) a valódi folyamat nélkül, egy rögzített tesztazonosítóval jelentkeztet be; a Release build a valódi Sign in with Apple gombot tartalmazza.
 * Kijelentkezés megerősítő kérdéssel, majd újraindítás után az üdvözlőképernyő (K14)
 * Jelszavas bejelentkezés a futó hitelesítési szolgáltatással (L1)
 * Push értesítések kézbesítése és hangja (K8, N5)
@@ -70,6 +70,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 | Egységteszt | Swift Testing, XCTest |
 | BDD | CucumberSwift (helyi, javított változat: `LocalPackages/CucumberSwiftPatched`) |
 | Szimulátor | iPhone 17 Pro, iOS 27 |
+| Vendég alkalmazás | iOS 27; BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` (megosztott séma, párhuzamosítás kikapcsolva) |
 | Adminisztrátori alkalmazás | macOS 27; BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeManager -only-testing:NightlifeManagerTests -destination 'platform=macOS'` (megosztott séma, párhuzamosítás kikapcsolva; a feature fájlokat a tesztcél `Info.plist`-jének `FeaturesPath` kulcsa alapján találja meg) |
 | Tesztterv (Xcode) | `NightlifeWorker.xctestplan`: betűrendes végrehajtás, párhuzamosítás kikapcsolva |
 | CI | GitHub Actions (`.github/workflows/ios.yml`): SharedKit-tesztek kötelezők; a Worker-teszttervet a hosztolt runner iOS 27 SDK hiányában jelenleg nem tudja futtatni, ezért az helyben fut |
@@ -162,4 +163,7 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | 2d1ea83 | CI (GitHub Actions), `l11-event-management` | Sikeres | SharedKit zöld; a Manager- és a Worker-job nem futtatható (SDK). |
 | 2026-10-08 | – | NightlifeWorkerTests | 147/147 BDD + 7/7 egységteszt sikeres | K14: SignOut, 3 forgatókönyv; AuthViewModel- és Keychain-tesztek (előbb sikertelenek); mutációs ellenőrzés OK. |
 | 2026-10-08 | – | Minden tesztcél | SharedKit 100/100, Worker 147/147 BDD + 7/7 egység + UI, Manager 157/157 sikeres | Kommentek eltávolítása (476) és követelmény-annotációk (127) után; a vendég app is lefordul. |
+| 2026-10-08 | – | SharedKitTests | 106/106 sikeres | A bejelentkezés logikája a SharedKitbe költözött; AuthenticationTests (6), előbb sikertelenek. |
+| 2026-10-08 | – | NightlifeTests (vendég) | 19/19 sikeres | Első vendég BDD: GuestAuthentication, 6 forgatókönyv (M1, M2, M3, M6); mutációs ellenőrzés OK. |
+| 2026-10-08 | – | NightlifeWorkerTests | 147/147 BDD + 2/2 Keychain-teszt sikeres | A Worker a közös SharedKit-bejelentkezést használja; a forgatókönyvek változatlanul sikeresek (regresszió OK). |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

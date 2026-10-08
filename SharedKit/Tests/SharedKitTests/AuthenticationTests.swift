@@ -1,11 +1,10 @@
 import Foundation
 import Testing
-import SharedKit
-@testable import NightlifeWorker
+@testable import SharedKit
 
 @Suite("AuthViewModel")
-@K4 @K14
-struct AuthViewModelTests {
+@K1 @K2 @K4 @K14 @M1 @M2 @M3 @M6
+struct AuthenticationTests {
 
     @Test func withoutStoredSignInTheWelcomeScreenIsShown() {
         let viewModel = AuthViewModel(store: InMemoryCredentialStore())
@@ -25,7 +24,7 @@ struct AuthViewModelTests {
         let store = InMemoryCredentialStore()
         let viewModel = AuthViewModel(store: store)
         viewModel.signInWithApple(userID: "apple-id")
-        #expect(store.userID == "apple-id")
+        #expect(store.load() == "apple-id")
         #expect(viewModel.isAuthenticated)
     }
 
@@ -34,7 +33,7 @@ struct AuthViewModelTests {
         let viewModel = AuthViewModel(store: store)
         viewModel.checkAuthState()
         viewModel.signOut()
-        #expect(store.userID == nil)
+        #expect(store.load() == nil)
         #expect(!viewModel.isAuthenticated)
         #expect(viewModel.showWelcome)
     }
@@ -43,29 +42,16 @@ struct AuthViewModelTests {
         let store = InMemoryCredentialStore()
         let viewModel = AuthViewModel(store: store)
         viewModel.cancelSignIn()
-        #expect(store.userID == nil)
+        #expect(store.load() == nil)
         #expect(viewModel.showWelcome)
     }
-}
 
-@Suite("KeychainCredentialStore", .serialized)
-@K4 @K14 @N3
-struct KeychainCredentialStoreTests {
-
-    private let store = KeychainCredentialStore(service: "hu.matusz.nightlife.tests.\(UUID().uuidString)")
-
-    @Test func savesLoadsAndDeletesTheUser() throws {
-        #expect(store.load() == nil)
-        try store.save("apple-id")
-        #expect(store.load() == "apple-id")
-        try store.save("other-id")
-        #expect(store.load() == "other-id")
-        try store.delete()
-        #expect(store.load() == nil)
-    }
-
-    @Test func deletingWithoutStoredUserIsFine() throws {
-        try store.delete()
-        #expect(store.load() == nil)
+    @Test func separateStoresDoNotShareTheSignIn() {
+        let worker = InMemoryCredentialStore(userID: "worker-id")
+        let guest = InMemoryCredentialStore()
+        let guestApp = AuthViewModel(store: guest)
+        guestApp.checkAuthState()
+        #expect(!guestApp.isAuthenticated)
+        #expect(worker.load() == "worker-id")
     }
 }

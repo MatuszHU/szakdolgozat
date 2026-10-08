@@ -1,25 +1,23 @@
 import SwiftUI
-import SwiftData
+import SharedKit
 
 @main
+@M1 @M3
 struct NightlifeApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    @StateObject private var authViewModel = AuthViewModel(store: KeychainCredentialStore(service: "hu.matusz.nightlife.guest.signin"))
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Group {
+                if authViewModel.isAuthenticated {
+                    GuestHomeView(viewModel: authViewModel)
+                } else {
+                    GuestWelcomeView(viewModel: authViewModel)
+                }
+            }
+            .task {
+                authViewModel.checkAuthState()
+            }
         }
-        .modelContainer(sharedModelContainer)
     }
 }

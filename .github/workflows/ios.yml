@@ -40,6 +40,41 @@ jobs:
             -only-testing:NightlifeManagerTests \
             -destination 'platform=macOS'
 
+  guest:
+    name: Nightlife (guest) BDD tests
+    runs-on: macos-latest
+    # Same limitation as the Worker job: the hosted runner has no iOS 27 SDK yet.
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Select newest Xcode
+        run: |
+          XCODE=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+      - name: Pick iPhone simulator
+        run: |
+          DEVICE_ID=$(xcrun simctl list devices available -j | python3 -c '
+          import sys, json
+          runtimes = json.load(sys.stdin)["devices"]
+          ios = sorted((r for r in runtimes if "iOS" in r), key=lambda r: [int(x) for x in r.split("iOS-")[-1].split("-")])
+          for runtime in reversed(ios):
+              phones = [d for d in runtimes[runtime] if d["name"].startswith("iPhone")]
+              if phones:
+                  print(runtime, phones[0]["name"], file=sys.stderr)
+                  print(phones[0]["udid"])
+                  break
+          ')
+          echo "DEVICE_ID=$DEVICE_ID" >> "$GITHUB_ENV"
+      - name: Run BDD tests
+        run: |
+          xcodebuild test -skipMacroValidation \
+            -workspace NightLifeApps.xcworkspace \
+            -scheme Nightlife \
+            -only-testing:NightlifeTests \
+            -destination "id=$DEVICE_ID"
+
   worker:
     name: NightlifeWorker BDD + UI tests
     runs-on: macos-latest

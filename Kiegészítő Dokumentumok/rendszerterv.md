@@ -123,7 +123,7 @@ Az `AdminCredential` kizárólag a hitelesítési szolgáltatás adatbázisában
 
 | Kliens | Módszer |
 |--------|---------|
-| Munkavállaló, Vendég | Sign in with Apple; az Apple-felhasználóazonosító a `CredentialStoring` protokoll mögött, élesben a Keychainben (`KeychainCredentialStore`, csak ezen az eszközön, az első feloldás után elérhető) tárolódik; indításkor a tárolt bejelentkezés visszatöltődik, kijelentkezéskor törlődik (K2, K4, K14, M2, M3). |
+| Munkavállaló, Vendég | Sign in with Apple; a közös SharedKit-logika (`AuthViewModel`) az Apple-felhasználóazonosítót a `CredentialStoring` protokoll mögött, élesben a Keychainben (`KeychainCredentialStore`, appokként külön szolgáltatásnévvel, csak ezen az eszközön, az első feloldás után elérhető) tárolja; indításkor a tárolt bejelentkezés visszatöltődik, kijelentkezéskor törlődik (K2, K4, K14, M2, M3). |
 | Adminisztrátor | Sign in with Apple **vagy** jelszavas bejelentkezés; a felhasználónév az e-mail-cím helyi része, a domain a `CompanySettings`-ből jön (L1, L6). |
 
 A CloudKit nem biztosít saját jelszavas fiókkezelést, ezért a jelszavas bejelentkezéshez külön megoldás szükséges:

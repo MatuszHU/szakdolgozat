@@ -1,5 +1,7 @@
 import XCTest
+import SharedKit
 
+@N8
 final class NightlifeUITests: XCTestCase {
 
     override func setUpWithError() throws {

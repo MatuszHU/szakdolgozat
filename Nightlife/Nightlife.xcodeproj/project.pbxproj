@@ -10,6 +10,7 @@
 		59DEC6E02FDEDEE400D8FAFF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59DEC6DF2FDEDEE400D8FAFF /* SharedKit */; };
 		59DEC6E32FDEDEEA00D8FAFF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59DEC6E22FDEDEEA00D8FAFF /* SharedKit */; };
 		59DEC6E52FDEDEEF00D8FAFF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 59DEC6E42FDEDEEF00D8FAFF /* SharedKit */; };
+		AB00000100000000000000B1 /* CucumberSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB00000100000000000000B2 /* CucumberSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,13 @@
 			);
 			target = 5969469D2FDEC1DB00EB2C58 /* Nightlife */;
 		};
+		AB00000100000000000000B4 /* Exceptions for "NightlifeTests" folder in "NightlifeTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 596946AE2FDEC1DE00EB2C58 /* NightlifeTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -56,6 +64,9 @@
 		};
 		596946B22FDEC1DE00EB2C58 /* NightlifeTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AB00000100000000000000B4 /* Exceptions for "NightlifeTests" folder in "NightlifeTests" target */,
+			);
 			path = NightlifeTests;
 			sourceTree = "<group>";
 		};
@@ -80,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59DEC6E32FDEDEEA00D8FAFF /* SharedKit in Frameworks */,
+				AB00000100000000000000B1 /* CucumberSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +171,7 @@
 			name = NightlifeTests;
 			packageProductDependencies = (
 				59DEC6E22FDEDEEA00D8FAFF /* SharedKit */,
+				AB00000100000000000000B2 /* CucumberSwift */,
 			);
 			productName = NightlifeTests;
 			productReference = 596946AF2FDEC1DE00EB2C58 /* NightlifeTests.xctest */;
@@ -222,6 +235,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				59DEC6DE2FDEDEE400D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */,
+				AB00000100000000000000B3 /* XCLocalSwiftPackageReference "../LocalPackages/CucumberSwiftPatched" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5969469F2FDEC1DB00EB2C58 /* Products */;
@@ -495,6 +509,7 @@
 				DEVELOPMENT_TEAM = A22X7HR8RY;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NightlifeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeTests;
@@ -518,6 +533,7 @@
 				DEVELOPMENT_TEAM = A22X7HR8RY;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NightlifeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hu.matusz.szakdologozat.NightlifeTests;
@@ -622,8 +638,11 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../SharedKit;
 		};
+		AB00000100000000000000B3 /* XCLocalSwiftPackageReference "../LocalPackages/CucumberSwiftPatched" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../LocalPackages/CucumberSwiftPatched;
+		};
 /* End XCLocalSwiftPackageReference section */
-
 
 /* Begin XCSwiftPackageProductDependency section */
 		59DEC6DF2FDEDEE400D8FAFF /* SharedKit */ = {
@@ -640,6 +659,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 59DEC6DE2FDEDEE400D8FAFF /* XCLocalSwiftPackageReference "../SharedKit" */;
 			productName = SharedKit;
+		};
+		AB00000100000000000000B2 /* CucumberSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB00000100000000000000B3 /* XCLocalSwiftPackageReference "../LocalPackages/CucumberSwiftPatched" */;
+			productName = CucumberSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

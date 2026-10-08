@@ -1,20 +1,16 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (annotációk)
+> Utolsó frissítés: 2026-10-08 (M1–M3, M6 kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `n8-requirement-annotations` = `master` @ `0178448`. **Kommentek eltávolítva, követelmény-annotációk bevezetve.**
-- SharedKit: `RequirementMacros` makró-cél (swift-syntax 604, no-op peer macro), `Requirements.swift`: 47 makró (K1–K17, L1–L11, M1–M11, N1–N8). `Package.swift`: platforms iOS 17 / macOS 14.
-- 476 komment eltávolítva (a `Package.swift` első sora kivétel: a SwiftPM tools-version jelölője). 127 annotáció; a mátrix minden ✅/⚠️ követelménye szerepel a kódban.
-- **Minden `xcodebuild` hívásnál kell: `-skipMacroValidation`** (CI-ban is). Az Xcode első megnyitáskor kéri a makró jóváhagyását („Trust & Enable”).
-- Eszközök (ideiglenes, nem a repóban): `/private/tmp/claude-501/strip/strip_comments.py` (kommentszűrő tokenizáló, `--write`), `annotate.py`.
-- **Szabály mostantól:** új kódban nincs komment; minden követelményhez kötődő deklaráció `@Kx`/`@Lx`/`@Mx`/`@Nx` annotációt kap.
+**Aktív ág:** `m1-m3-guest-auth` (a `master` @ `bb3c0f7`-ról). **M1, M2, M3, M6 kész** ✅.
+- A bejelentkezés közös: SharedKit `Authentication.swift` (`CredentialStoring`, `KeychainCredentialStore(service:)`, `InMemoryCredentialStore`, `AuthViewModel`), `AuthenticationTests` (6) → SharedKit 106/106. Worker: saját példányok törölve, szolgáltatásnév `hu.matusz.nightlife.worker.signin`; a Keychain-teszt a `KeychainCredentialStoreTests.swift`-ben maradt.
+- Vendég app: BDD-környezet (CucumberSwift, `NightlifeTests/Info.plist`, megosztott `Nightlife.xcscheme`), `GuestAuthentication.feature` (6), `GuestAuthenticationSteps.swift`; `NightlifeApp` (szolgáltatásnév `hu.matusz.nightlife.guest.signin`), `GuestWelcomeView` (Debug: „Belépés (teszt)”), `GuestHomeView` (kijelentkezés); a SwiftData-sablon törölve → vendég BDD 19/19.
+- CI: új vendég-job (nem kötelező, SDK).
 
-- 2026-10-08: a Worker `WelcomeView` **Debug** buildben „Belépés (teszt)” gombot mutat, ami Sign in with Apple nélkül, `debug-worker` azonosítóval beléptet (fizetős fiók hiányában, kézi teszteléshez); Release-ben marad a valódi gomb. A felhasználó Xcode-ja által módosított `NightlifeManager.xcscheme`-et a felhasználó kérésére megtartottuk és commitoltuk.
-
-**Következő jelöltek:** M1–M3 vendég app alapjai (javasolva), M5, K5, K17/L10, K9/K11.
+**Következő jelöltek:** M5 vendég térkép (`FloorPlanView`, vendég POI-k), M4 jegyvásárlás (Apple Pay/Wallet fiók nélkül csak logika), K5 beosztások, K17/L10 készlet, K9/K11.
 
 ## 2. Git / push állapot
 
@@ -37,14 +33,15 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → 100/100
+- SharedKit: `cd SharedKit && swift test` → 106/106
+- Vendég BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 19/19
 - Worker BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 147/147 BDD + 7 egységteszt (K14 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
 - UI tesztek: 2/2 (lassú, ~45 s)
 
 ## 5. Követelmények állapota (lefedettségi mátrix szerint)
 
-- ✅ K1, K2, K4, K14 (Authentication, SignOut)
+- ✅ K1, K2, K4, K14 (Authentication, SignOut), M1, M2, M3, M6 (GuestAuthentication)
 - ✅ L7 (helyszíntervező), L11 (eseménykezelés)
 - ⚠️ L4 (admin térkép; CloudKit hiányzik), K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
 - Következő jelöltek: lásd az 1. fejezetet.
