@@ -76,6 +76,7 @@ public final class InMemoryCredentialStore: CredentialStoring {
 public final class AuthViewModel: ObservableObject {
     @Published public private(set) var isAuthenticated = false
     @Published public private(set) var showWelcome = true
+    @Published public private(set) var userID: String?
     private let store: CredentialStoring
 
     public init(store: CredentialStoring) {
@@ -83,12 +84,14 @@ public final class AuthViewModel: ObservableObject {
     }
 
     public func checkAuthState() {
-        isAuthenticated = store.load() != nil
+        userID = store.load()
+        isAuthenticated = userID != nil
         showWelcome = !isAuthenticated
     }
 
     public func signInWithApple(userID: String) {
         try? store.save(userID)
+        self.userID = userID
         isAuthenticated = true
         showWelcome = false
     }
@@ -100,6 +103,7 @@ public final class AuthViewModel: ObservableObject {
 
     public func signOut() {
         try? store.delete()
+        userID = nil
         isAuthenticated = false
         showWelcome = true
     }

@@ -1,16 +1,17 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (M5 kész)
+> Utolsó frissítés: 2026-10-08 (M4 kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `m5-guest-map` = `master` @ `26e4031`. **M5 kész** (⚠️: tervrajz CloudKit nélkül nincs a vendég telefonján).
-- SharedKit: `POIKind.isGuestRelevant`, `Floor.forGuests`, `Venue.forGuests`, `Venue.groundFloor` (`POIKind` Sendable), `GuestVenueTests` (6) → 112/112
-- Vendég: `VenueGuide.feature` (5), `VenueGuideSteps.swift`, `GuestMapViewModel`, `GuestMapView` (tervrajz + helylista + szintváltó), link a `GuestHomeView`-ban → vendég BDD 47/47; mutációs ellenőrzés OK.
-- Döntés (a felhasználó jóváhagyásával indult): a vendég nem látja a zónákat és az egyéni (belső) POI-kat.
+**Aktív ág:** `m4-ticket-purchase` (a `master` @ `26e4031`-ról). **M4 kész** (⚠️: Apple Pay, Wallet, CloudKit hiányzik).
+- SharedKit: `EventCatalog` értékesítés (`checkAvailability`, `price`, `purchase`, `tickets(of:)`, új hibakódok), `GuestUser.stableID(forAppleID:)`, `AuthViewModel.userID`; `TicketSalesTests` (10) → 123/123
+- Vendég: `TicketPurchase.feature` (8, egy `@K7` végponttól végpontig), `TicketPurchaseSteps.swift` (`RecordingPayment`), `TicketShopViewModel` + `PaymentProcessing` (`TestPaymentProcessor` Debug, `UnavailablePaymentProcessor` Release), `TicketShopView`, `MyTicketsView` (QR), linkek a `GuestHomeView`-ban; `TicketShopViewModelTests` (3) → vendég 92/92 + 3/3
+- Manager: az új hibakódok üzenetei az `EventManagerViewModel`-ben.
+- Eltérés: a 3 egységteszt a ViewModellel egy lépésben készült (nem előbb) → kódmutációval ellenőrizve.
 
-**Következő jelöltek:** M4 jegyvásárlás (Wallet/Apple Pay fiók nélkül csak a logika és a felület), M7 nyereményjáték (vendég oldal), K5 beosztások, K17/L10 készlet, K9/K11 beállítások és nyelv.
+**Következő jelöltek:** M7 nyereményjáték (vendég jelentkezés), K5 beosztások, K17/L10 készlet, K9/K11, L1+L3 adminok.
 
 ## 2. Git / push állapot
 
@@ -35,8 +36,8 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → 112/112
-- Vendég BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 47/47
+- SharedKit: `cd SharedKit && swift test` → 123/123
+- Vendég BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 90 BDD + 3 egységteszt
 - Worker BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 147/147 BDD + 7 egységteszt (K14 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
 - UI tesztek: 2/2 (lassú, ~45 s)
@@ -45,7 +46,7 @@
 
 - ✅ K1, K2, K4, K14 (Authentication, SignOut), M1, M2, M3, M6 (GuestAuthentication)
 - ✅ L7 (helyszíntervező), L11 (eseménykezelés)
-- ⚠️ M5 (vendég térkép; CloudKit hiányzik), L4 (admin térkép; CloudKit hiányzik), K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
+- ⚠️ M4 (jegyvásárlás; Apple Pay/Wallet/CloudKit hiányzik), M5 (vendég térkép; CloudKit hiányzik), L4 (admin térkép; CloudKit hiányzik), K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
 - Következő jelöltek: lásd az 1. fejezetet.
 
 ## 6. Módszertan (Tesztterv szerint)

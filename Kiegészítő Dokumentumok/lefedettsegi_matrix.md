@@ -52,7 +52,7 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 | M1 | Üdvözlőképernyő | M | GuestAuthentication | GuestAuthentication: First launch shows the welcome screen | AuthenticationTests | ✅ |
 | M2 | Bejelentkezés | M | GuestAuthentication | GuestAuthentication: Signing in, Cancelling the sign-in | AuthenticationTests | ✅ |
 | M3 | Kezdőképernyő | M | GuestAuthentication | GuestAuthentication: Signing in, A remembered sign-in | AuthenticationTests | ✅ |
-| M4 | Jegyvásárlás | M | – | – | – | – |
+| M4 | Jegyvásárlás | M | TicketPurchase | TicketPurchase: 8 forgatókönyv (vendég) | SharedKit: TicketSalesTests; TicketShopViewModelTests | ⚠️ |
 | M5 | Térkép | S | VenueGuide | VenueGuide: 5 forgatókönyv (vendég) | SharedKit: GuestVenueTests | ⚠️ |
 | M6 | Kijelentkezés | M | GuestAuthentication | GuestAuthentication: 2 kijelentkezési forgatókönyv | AuthenticationTests | ✅ |
 | M7 | Nyereményjáték | C | – | – | – | – |
@@ -67,13 +67,14 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 |---|---|---|---|---|
 | Munkavállaló | 17 | 9 | 4 | 4 |
 | Adminisztrátor | 11 | 6 | 2 | 2 |
-| Vendég | 11 | 5 | 4 | 1 |
-| **Összesen** | **39** | **20** | **10** | **7** |
+| Vendég | 11 | 5 | 4 | 2 |
+| **Összesen** | **39** | **20** | **10** | **8** |
 
 ## Nyitott tételek
 
 * **L3:** a munkatársak felvétele, a műszakok létrehozása (idő, zóna, létszám), a hozzárendelés (betelt műszak, ütközés, ismételt hozzárendelés elutasítása), az eltávolítás és a feladatkiosztás kész (BDD + TDD + felület a Manager appban, helyi JSON-mentés). Az ütközési forgatókönyvek átkerültek a Manager tesztcéljába. Hátravan: **további adminisztrátorok felvétele jogosultsági szinttel** — ez az L1-gyel (jelszavas belépés, Vapor) együtt készül.
 * **K1, K2, K4, K14, M1, M2, M3, M6:** a bejelentkezés logikája (`AuthViewModel`, `CredentialStoring`, `KeychainCredentialStore`) a SharedKitben közös a munkavállalói és a vendég app között, külön Keychain-szolgáltatásnévvel. A bejelentkezés a Keychainben megmarad két indítás között, a kijelentkezés törli. A valódi Sign in with Apple folyamat fizetős Apple fejlesztői tagság nélkül nem próbálható ki (manuális teszt, ld. Tesztterv).
+* **M4:** a jegyvásárlás logikája (csak meghirdetett jegytípus; a keret és a férőhely nem léphető túl; véget ért eseményre nincs vásárlás; 1–10 jegy egyszerre; elutasított fizetésnél nincs jegy; egyedi sorozatszám; a jegyeim eseménydátum szerint), a jegyek QR-kódja és felülete kész. A megvett jegyet a K7 kódolvasó logikája felismeri és egyszer beengedi (`@K7` forgatókönyv). Hátravan: valódi fizetés (Apple Pay) és Apple Tárca (fizetős fejlesztői tagság), valamint az események CloudKit-szinkronja (N2). Debug buildben tesztfizetés, Release-ben „a fizetés még nem elérhető”.
 * **M5:** a vendég térkép logikája (a vendég csak a neki szóló POI-kat látja: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár; az egyéni pontok és a személyzeti zónák rejtettek; a földszinten nyílik; szintváltás; tervrajz nélkül tájékoztató üzenet) és felülete kész. A tervrajz eljuttatása a vendég appba a CloudKittől (N2) függ.
 * **K6:** a térkép logikája (szintválasztás, a munkaterület kiemelése, a munkatársak a legutóbbi zóna-bejelentkezésük zónájában, a be nem jelentkezettek külön listában) és a felülete (`VenueMapView`, a közös `FloorPlanView`-val) készen van; a helyszín és a bejelentkezések valós adatforrása (CloudKit, N2) hátravan, addig a térkép üres állapotot mutat.
 * **L4:** a személyzeti térkép logikája (a munkatársak a legutóbbi zóna-bejelentkezésük zónájában; kiválasztáskor az aktív műszakból a munkaterület és a saját feladatok, valamint az aktuális pozíció; a be nem jelentkezettek listája; szintváltás) és a felülete (`StaffMapView`) készen van. A munkatársak, műszakok és bejelentkezések a Macre CloudKit (N2) nélkül nem jutnak el, addig a lista üres. A közös számítás (`StaffMap`) a K6-tal megosztott.

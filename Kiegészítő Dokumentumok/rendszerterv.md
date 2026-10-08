@@ -92,6 +92,7 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `Schedule` | ✅ | workerID, shifts, payPeriod | → `Shift` |
 | `Task` | ✅ | title, description, isCompleted, assignedWorkerIDs, workstation | |
 | `Event` | ✅ | title, description, startTime, endTime, location, capacity, ticketOffers, raffle | → `Ticket`, → `TicketOffer`, → `Raffle` |
+| `EventCatalog` (értékesítés) | ✅ | `checkAvailability`, `price`, `purchase`, `tickets(of:)`; szabályok: meghirdetett jegytípus, keret és férőhely, az esemény még nem ért véget, 1–10 jegy; a jegyek egyedi `NL-…` sorozatszámot kapnak (M4) | → `Event`, → `Ticket` |
 | `TicketOffer` | ✅ | type (`TicketType`), price (Ft), quota (opcionális) (L11, M4) | → `Event` |
 | `EventCatalog` | ✅ | events (kezdés szerint rendezve); szabályok: cím kell, a vége a kezdés után, férőhely legalább 1, jegytípus eseményenként egyszer, ár nem negatív, a keretek összege legfeljebb a férőhely (L11) | → `Event` |
 | `Ticket` | ✅ | eventID, guestID, ticketType, price, serialNumber, isUsed | → `Event` |
@@ -152,6 +153,7 @@ A CloudKit nem biztosít saját jelszavas fiókkezelést, ezért a jelszavas bej
 * A vendég térkép (M5) a helyszín vendégeknek szűrt változatát kapja (`Venue.forGuests`): a zónák (a személyzet munkaterületei) és az egyéni típusú, belső pontok (pl. raktár) nem jelennek meg, csak a bár, mosdó, színpad, bejárat, vészkijárat és ruhatár. A térkép a földszinten (0. szint, ennek hiányában a hozzá legközelebbi szinten) nyílik (`Venue.groundFloor`).
 * A zónakódlap a zónák QR-kódjait szint és név szerint rendezve, „Szint – Zóna” felirattal, nyomtatható formában jeleníti meg.
 * A zóna QR-kódjának tartalma a zóna azonosítója egy alkalmazásspecifikus formátumban (pl. `nightlife://zone/<zoneID>`); a kódolvasó (K7) a formátum alapján különbözteti meg a zóna-, jegy- és egyéb kódokat.
+* A jegyvásárlás a fizetést a `PaymentProcessing` protokollon keresztül végzi: előbb a rendelkezésre állás ellenőrzése, majd a terhelés, végül a jegyek kiadása; elutasított fizetésnél nem keletkezik jegy. Amíg nincs Apple Pay (fizetős fiók), Debug buildben tesztfizetés, Release-ben „a fizetés még nem elérhető” működik. A vendég azonosítója az Apple-felhasználóazonosítóból képzett stabil UUID (`GuestUser.stableID`, SHA-256).
 * A jegyek QR-kódja a jegy sorozatszámát tartalmazza (`nightlife://ticket/<sorozatszám>`); beléptetéskor a rendszer ellenőrzi, hogy a jegy létezik-e, a megfelelő eseményhez tartozik-e, és nincs-e már felhasználva (`Ticket.admit(toEvent:)`).
 * A beolvasott kód jelentését a SharedKit `ScannedCode` típusa határozza meg (zóna, jegy, ismeretlen); a kódolvasó (K7) ez alapján irányítja a beolvasást a beléptetéshez vagy a zóna-bejelentkezéshez.
 * A jegyek és vendégek elérése a `TicketRepository` protokoll mögött történik; amíg a CloudKit-szinkron (N2) nem készül el, a `LocalTicketRepository` memóriabeli megvalósítás szolgálja ki az appot és a teszteket.

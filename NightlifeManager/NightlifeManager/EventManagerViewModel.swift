@@ -75,6 +75,11 @@ class EventManagerViewModel: ObservableObject {
         case .invalidQuota: return "A quota needs at least one place"
         case .duplicateTicketType(let type): return "\(type.displayName) tickets are already offered"
         case .quotaExceedsCapacity(let capacity): return "Ticket quotas exceed the capacity of \(capacity)"
+        case .notOffered: return "This ticket type is not offered"
+        case .soldOut(let type): return "\(type.displayName) tickets are sold out"
+        case .eventFull: return "The event is full"
+        case .eventOver: return "The event is over"
+        case .invalidQuantity: return "You can buy 1 to 10 tickets at once"
         }
     }
 }

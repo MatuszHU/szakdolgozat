@@ -46,6 +46,17 @@ struct AuthenticationTests {
         #expect(viewModel.showWelcome)
     }
 
+    @Test func signedInUserIsExposedAndClearedOnSignOut() {
+        let viewModel = AuthViewModel(store: InMemoryCredentialStore(userID: "apple-id"))
+        #expect(viewModel.userID == nil)
+        viewModel.checkAuthState()
+        #expect(viewModel.userID == "apple-id")
+        viewModel.signOut()
+        #expect(viewModel.userID == nil)
+        viewModel.signInWithApple(userID: "other-id")
+        #expect(viewModel.userID == "other-id")
+    }
+
     @Test func separateStoresDoNotShareTheSignIn() {
         let worker = InMemoryCredentialStore(userID: "worker-id")
         let guest = InMemoryCredentialStore()

@@ -55,7 +55,8 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * Push értesítések kézbesítése és hangja (K8, N5)
 * Kamerás kódolvasás és QR-kódos zóna-bejelentkezés (K7, K16)
 * CloudKit-szinkronizáció több eszköz között (N2)
-* Apple Tárcába helyezett jegy (M4)
+* Apple Tárcába helyezett jegy és valódi fizetés (M4) — fizetős Apple fejlesztői tagság szükséges; addig Debug buildben tesztfizetés
+* Jegyvásárlás és a „Jegyeim” QR-kódjának beolvasása a munkavállalói kódolvasóval (M4, K7)
 * Helyszíntervező: zóna rajzolása húzással, POI lerakása, szintváltás, zónakódok nyomtatása (L7)
 * Térkép megjelenítése valós adatokkal (K6, L4, M5; CloudKit után)
 * Eseménykezelő: esemény létrehozása, jegytípus hozzáadása árral és kerettel, nyereményjáték meghirdetése (L11)
@@ -168,4 +169,6 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | NightlifeWorkerTests | 147/147 BDD + 2/2 Keychain-teszt sikeres | A Worker a közös SharedKit-bejelentkezést használja; a forgatókönyvek változatlanul sikeresek (regresszió OK). |
 | 2026-10-08 | – | SharedKitTests | 112/112 sikeres | M5: GuestVenueTests (6 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeTests (vendég) | 47/47 sikeres | M5: VenueGuide, 5 forgatókönyv; mutációs ellenőrzés OK. |
+| 2026-10-08 | – | SharedKitTests | 123/123 sikeres | M4: TicketSalesTests (10 új) és az `AuthViewModel.userID` tesztje, előbb sikertelenek. |
+| 2026-10-08 | – | NightlifeTests (vendég) | 92/92 BDD + UI, 3/3 egységteszt sikeres | M4: TicketPurchase, 8 forgatókönyv; mutációs ellenőrzés a feature fájlban és a kódban (a nem elérhető fizetés) is OK. A 3 egységteszt a ViewModellel egy lépésben készült, ezért utólagos kódmutációval lett ellenőrizve. |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

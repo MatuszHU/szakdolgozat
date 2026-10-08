@@ -44,6 +44,11 @@ public struct EventCatalog: Codable, Hashable {
         case invalidQuota
         case duplicateTicketType(TicketType)
         case quotaExceedsCapacity(Int)
+        case notOffered
+        case soldOut(TicketType)
+        case eventFull
+        case eventOver
+        case invalidQuantity
     }
 
     public private(set) var events: [Event] = []
@@ -96,6 +101,61 @@ public struct EventCatalog: Codable, Hashable {
 
     public mutating func removeRaffle(fromEvent eventID: UUID) throws {
         try edit(eventID) { $0.raffle = nil }
+    }
+
+    @M4
+    public func price(of type: TicketType, quantity: Int, forEvent eventID: UUID) throws -> Double {
+        guard let event = events.first(where: { $0.id == eventID }) else { throw CatalogError.unknownEvent }
+        guard let offer = event.ticketOffers.first(where: { $0.type == type }) else { throw CatalogError.notOffered }
+        return offer.price * Double(quantity)
+    }
+
+    @M4
+    public func checkAvailability(_ type: TicketType, quantity: Int, forEvent eventID: UUID, at date: Date) throws {
+        guard (1...10).contains(quantity) else { throw CatalogError.invalidQuantity }
+        guard let event = events.first(where: { $0.id == eventID }) else { throw CatalogError.unknownEvent }
+        guard date < event.endTime else { throw CatalogError.eventOver }
+        guard let offer = event.ticketOffers.first(where: { $0.type == type }) else { throw CatalogError.notOffered }
+        if let quota = offer.quota, event.tickets.filter({ $0.ticketType == type }).count + quantity > quota {
+            throw CatalogError.soldOut(type)
+        }
+        guard event.tickets.count + quantity <= event.capacity else { throw CatalogError.eventFull }
+    }
+
+    @M4 @K7
+    @discardableResult
+    public mutating func purchase(_ type: TicketType, quantity: Int, forEvent eventID: UUID,
+                                  guestID: UUID, at date: Date) throws -> [Ticket] {
+        try checkAvailability(type, quantity: quantity, forEvent: eventID, at: date)
+        let price = try price(of: type, quantity: 1, forEvent: eventID)
+        let serials = newSerialNumbers(quantity)
+        var issued: [Ticket] = []
+        try edit(eventID) { event in
+            for serial in serials {
+                let ticket = Ticket(eventID: eventID, guestID: guestID, purchaseDate: date, passTypeIdentifier: "",
+                                    serialNumber: serial, price: price, ticketType: type, entrance: "")
+                event.tickets.append(ticket)
+                issued.append(ticket)
+            }
+        }
+        return issued
+    }
+
+    @M4
+    public func tickets(of guestID: UUID) -> [(event: Event, ticket: Ticket)] {
+        events.flatMap { event in
+            event.tickets.filter { $0.guestID == guestID }.map { (event: event, ticket: $0) }
+        }
+    }
+
+    private func newSerialNumbers(_ count: Int) -> [String] {
+        var used = Set(events.flatMap(\.tickets).map(\.serialNumber))
+        var serials: [String] = []
+        while serials.count < count {
+            let serial = "NL-" + UUID().uuidString.prefix(8)
+            if used.insert(serial).inserted { serials.append(serial) }
+        }
+        return serials
     }
 
     private mutating func edit(_ eventID: UUID, _ change: (inout Event) throws -> Void) throws {
