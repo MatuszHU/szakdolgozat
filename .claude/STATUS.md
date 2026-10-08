@@ -17,7 +17,7 @@
 ## 2. Git / push állapot
 
 - 2026-10-08: a push-jog rendben (a felhasználó javította a tokent). Pusholva: `k16-zone-checkin`, `k8-panic-mode`, `k7-code-reader` (ez utóbbin csak a STATUS commit). A `master` fast-forward → `04fdd15` (K16 + Cucumber-próba + Cucumber expression + K8 + STATUS), pusholva.
-- A workflow csak `master` / `bdd-setup` pushra és `master`-re nyitott PR-ra fut, a feature-ágakra nem → a CI a `master`-en ellenőriz.
+- A workflow minden ágra (`**`) pushra és a `master`-re nyitott PR-ra fut (2026-10-08 óta).
 - 2026-10-08: K7 (`64ced58`) a `k7-code-reader` ágon zöld CI után (run 37799064412) fast-forwarddal a `master`-be került. `master` = `64ced58`.
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
