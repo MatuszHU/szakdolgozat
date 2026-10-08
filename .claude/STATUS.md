@@ -5,7 +5,7 @@
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `m1-m3-guest-auth` (a `master` @ `bb3c0f7`-ról). **M1, M2, M3, M6 kész** ✅.
+**Aktív ág:** `m1-m3-guest-auth` = `master` @ `67140c3`. **M1, M2, M3, M6 kész** ✅.
 - A bejelentkezés közös: SharedKit `Authentication.swift` (`CredentialStoring`, `KeychainCredentialStore(service:)`, `InMemoryCredentialStore`, `AuthViewModel`), `AuthenticationTests` (6) → SharedKit 106/106. Worker: saját példányok törölve, szolgáltatásnév `hu.matusz.nightlife.worker.signin`; a Keychain-teszt a `KeychainCredentialStoreTests.swift`-ben maradt.
 - Vendég app: BDD-környezet (CucumberSwift, `NightlifeTests/Info.plist`, megosztott `Nightlife.xcscheme`), `GuestAuthentication.feature` (6), `GuestAuthenticationSteps.swift`; `NightlifeApp` (szolgáltatásnév `hu.matusz.nightlife.guest.signin`), `GuestWelcomeView` (Debug: „Belépés (teszt)”), `GuestHomeView` (kijelentkezés); a SwiftData-sablon törölve → vendég BDD 19/19.
 - CI: új vendég-job (nem kötelező, SDK).
@@ -22,6 +22,7 @@
 - 2026-10-08: L11 (`2d1ea83`) zöld CI után (run 37807232776) fast-forwarddal a `master`-be. `master` = `2d1ea83`.
 - 2026-10-08: K14 (`5066a2a`) zöld CI után (run 37827705628) fast-forwarddal a `master`-be. `master` = `5066a2a`.
 - 2026-10-08: annotációk (`0178448`) zöld CI után (run 37829559325; a SharedKit-job a runneren is lefordította a makrókat) fast-forwarddal a `master`-be. `master` = `0178448`. A munkafában a felhasználó Xcode-ja által módosított `NightlifeManager.xcscheme` maradt (nem Claude-é, nincs commitolva).
+- 2026-10-08: K2 Debug-bejelentkezés (`bb3c0f7`) és M1–M3, M6 (`67140c3`) zöld CI után a `master`-be (run 37832278044; a vendég-job a várt SDK-ok miatt nem futtatható). `master` = `67140c3`.
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
 - Az origin-on van egy `web` ág (Svelte webes felület, „log in page”) — nem Claude-é, nem nyúlni hozzá.
