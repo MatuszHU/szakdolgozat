@@ -10,10 +10,12 @@ struct GuestMapView: View {
             if let floor = viewModel.selectedFloor {
                 List {
                     Section {
-                        ScrollView([.horizontal, .vertical]) {
-                            FloorPlanView(floor: floor, cellSize: 36).padding()
+                        GeometryReader { proxy in
+                            FloorPlanView(floor: floor,
+                                          scale: FloorPlanView.fittingScale(for: floor, in: CGSize(width: proxy.size.width,
+                                                                                                   height: .infinity)))
                         }
-                        .frame(minHeight: 280)
+                        .aspectRatio(floor.width / floor.height, contentMode: .fit)
                     }
                     Section("Helyek") {
                         ForEach(viewModel.places) { place in

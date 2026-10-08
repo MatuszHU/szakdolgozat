@@ -1,16 +1,5 @@
 import Foundation
 
-@L7
-public struct GridCell: Codable, Hashable, Sendable {
-    public var row: Int
-    public var column: Int
-
-    public init(row: Int, column: Int) {
-        self.row = row
-        self.column = column
-    }
-}
-
 @L7 @K16
 public struct Zone: Identifiable, Codable, Hashable {
     public static let qrPrefix = "nightlife://zone/"
@@ -18,15 +7,38 @@ public struct Zone: Identifiable, Codable, Hashable {
     public let id: UUID
     public var floorID: UUID?
     public var name: String
-    public var cells: Set<GridCell>
+    public var outline: [PlanPoint]
 
     public var qrPayload: String { Zone.qrPrefix + id.uuidString }
+    public var area: Double { PlanGeometry.area(of: outline) }
+    public var center: PlanPoint { PlanGeometry.centroid(of: outline) }
 
-    public init(id: UUID = UUID(), floorID: UUID? = nil, name: String, cells: Set<GridCell> = []) {
+    public init(id: UUID = UUID(), floorID: UUID? = nil, name: String, outline: [PlanPoint] = []) {
         self.id = id
         self.floorID = floorID
         self.name = name
-        self.cells = cells
+        self.outline = outline
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case id, floorID, name, outline, cells
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        floorID = try container.decodeIfPresent(UUID.self, forKey: .floorID)
+        name = try container.decode(String.self, forKey: .name)
+        outline = try container.decodeIfPresent([PlanPoint].self, forKey: .outline)
+            ?? LegacyGridCell.outline(of: container.decodeIfPresent([LegacyGridCell].self, forKey: .cells) ?? [])
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encodeIfPresent(floorID, forKey: .floorID)
+        try container.encode(name, forKey: .name)
+        try container.encode(outline, forKey: .outline)
     }
 
     public static func zoneID(fromQRPayload payload: String) -> UUID? {

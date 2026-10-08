@@ -16,13 +16,37 @@ public struct POI: Identifiable, Codable, Hashable {
     public let id: UUID
     public var name: String
     public var kind: POIKind
-    public var cell: GridCell
+    public var outline: [PlanPoint]
 
-    public init(id: UUID = UUID(), name: String, kind: POIKind, cell: GridCell) {
+    public var area: Double { PlanGeometry.area(of: outline) }
+    public var center: PlanPoint { PlanGeometry.centroid(of: outline) }
+
+    public init(id: UUID = UUID(), name: String, kind: POIKind, outline: [PlanPoint]) {
         self.id = id
         self.name = name
         self.kind = kind
-        self.cell = cell
+        self.outline = outline
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case id, name, kind, outline, cell
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        kind = try container.decode(POIKind.self, forKey: .kind)
+        outline = try container.decodeIfPresent([PlanPoint].self, forKey: .outline)
+            ?? LegacyGridCell.outline(of: container.decodeIfPresent(LegacyGridCell.self, forKey: .cell).map { [$0] } ?? [])
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(kind, forKey: .kind)
+        try container.encode(outline, forKey: .outline)
     }
 }
 
@@ -30,22 +54,26 @@ public struct POI: Identifiable, Codable, Hashable {
 public struct Floor: Identifiable, Codable, Hashable {
     public enum EditError: Error, Equatable {
         case emptyName
-        case noCells
-        case outsideGrid
-        case overlaps(zoneName: String)
+        case tooFewPoints
+        case noArea
+        case wallTooShort
+        case outsideSheet
         case duplicateZoneName(String)
-        case cellOccupied(by: String)
+        case unknownShape
     }
+
+    public static let gridSpacing = 1.0
 
     public let id: UUID
     public var name: String
     public var level: Int
-    public var width: Int
-    public var height: Int
+    public var width: Double
+    public var height: Double
     public private(set) var zones: [Zone] = []
     public private(set) var pointsOfInterest: [POI] = []
+    public private(set) var walls: [Wall] = []
 
-    public init(id: UUID = UUID(), name: String, level: Int, width: Int, height: Int) {
+    public init(id: UUID = UUID(), name: String, level: Int, width: Double, height: Double) {
         self.id = id
         self.name = name
         self.level = level
@@ -53,62 +81,139 @@ public struct Floor: Identifiable, Codable, Hashable {
         self.height = height
     }
 
-    public static func cells(from first: GridCell, to second: GridCell) -> Set<GridCell> {
-        var cells = Set<GridCell>()
-        for row in min(first.row, second.row)...max(first.row, second.row) {
-            for column in min(first.column, second.column)...max(first.column, second.column) {
-                cells.insert(GridCell(row: row, column: column))
-            }
-        }
-        return cells
+    private enum CodingKeys: String, CodingKey {
+        case id, name, level, width, height, zones, pointsOfInterest, walls
     }
 
-    public func contains(_ cell: GridCell) -> Bool {
-        (0..<width).contains(cell.column) && (0..<height).contains(cell.row)
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        level = try container.decode(Int.self, forKey: .level)
+        width = try container.decode(Double.self, forKey: .width)
+        height = try container.decode(Double.self, forKey: .height)
+        zones = try container.decodeIfPresent([Zone].self, forKey: .zones) ?? []
+        pointsOfInterest = try container.decodeIfPresent([POI].self, forKey: .pointsOfInterest) ?? []
+        walls = try container.decodeIfPresent([Wall].self, forKey: .walls) ?? []
     }
 
-    public func zone(at cell: GridCell) -> Zone? {
-        zones.first { $0.cells.contains(cell) }
+    public func contains(_ point: PlanPoint) -> Bool {
+        (0...width).contains(point.x) && (0...height).contains(point.y)
     }
 
-    public func pointOfInterest(at cell: GridCell) -> POI? {
-        pointsOfInterest.first { $0.cell == cell }
+    public func clamped(_ point: PlanPoint) -> PlanPoint {
+        PlanPoint(x: min(max(point.x, 0), width), y: min(max(point.y, 0), height))
+    }
+
+    public func snapped(_ point: PlanPoint) -> PlanPoint {
+        let spacing = Self.gridSpacing
+        return clamped(PlanPoint(x: (point.x / spacing).rounded() * spacing, y: (point.y / spacing).rounded() * spacing))
     }
 
     @discardableResult
-    public mutating func addZone(named name: String, cells: Set<GridCell>) throws -> Zone {
-        let name = name.trimmingCharacters(in: .whitespaces)
-        guard !name.isEmpty else { throw EditError.emptyName }
-        guard !cells.isEmpty else { throw EditError.noCells }
-        guard cells.allSatisfy(contains) else { throw EditError.outsideGrid }
+    public mutating func addZone(named name: String, outline: [PlanPoint]) throws -> Zone {
+        let name = try validName(name)
+        try validateArea(outline)
         guard !zones.contains(where: { $0.name == name }) else { throw EditError.duplicateZoneName(name) }
-        if let overlapped = zones.first(where: { !$0.cells.isDisjoint(with: cells) }) {
-            throw EditError.overlaps(zoneName: overlapped.name)
-        }
-        let zone = Zone(floorID: id, name: name, cells: cells)
+        let zone = Zone(floorID: id, name: name, outline: outline)
         zones.append(zone)
         return zone
     }
 
-    public mutating func removeZone(id: UUID) {
-        zones.removeAll { $0.id == id }
-    }
-
     @discardableResult
-    public mutating func addPointOfInterest(named name: String, kind: POIKind, at cell: GridCell) throws -> POI {
-        let name = name.trimmingCharacters(in: .whitespaces)
-        guard !name.isEmpty else { throw EditError.emptyName }
-        guard contains(cell) else { throw EditError.outsideGrid }
-        if let occupant = pointOfInterest(at: cell) {
-            throw EditError.cellOccupied(by: occupant.name)
-        }
-        let poi = POI(name: name, kind: kind, cell: cell)
+    public mutating func addPointOfInterest(named name: String, kind: POIKind, outline: [PlanPoint]) throws -> POI {
+        let name = try validName(name)
+        try validateArea(outline)
+        let poi = POI(name: name, kind: kind, outline: outline)
         pointsOfInterest.append(poi)
         return poi
     }
 
-    public mutating func removePointOfInterest(id: UUID) {
-        pointsOfInterest.removeAll { $0.id == id }
+    @discardableResult
+    public mutating func addWall(through points: [PlanPoint]) throws -> Wall {
+        try validateWall(points)
+        let wall = Wall(points: points)
+        walls.append(wall)
+        return wall
+    }
+
+    public func item(at point: PlanPoint, tolerance: Double = 0.3) -> PlanItem? {
+        if let wall = walls.last(where: { PlanGeometry.distance(from: point, toLine: $0.points) <= tolerance }) {
+            return .wall(wall.id)
+        }
+        if let poi = pointsOfInterest.last(where: { PlanGeometry.contains(point, in: $0.outline) }) {
+            return .pointOfInterest(poi.id)
+        }
+        return zones.last { PlanGeometry.contains(point, in: $0.outline) }.map { .zone($0.id) }
+    }
+
+    public func name(of item: PlanItem) -> String? {
+        switch item {
+        case .zone(let id): return zones.first { $0.id == id }?.name
+        case .pointOfInterest(let id): return pointsOfInterest.first { $0.id == id }?.name
+        case .wall(let id): return walls.contains { $0.id == id } ? "Wall" : nil
+        }
+    }
+
+    public func points(of item: PlanItem) -> [PlanPoint]? {
+        switch item {
+        case .zone(let id): return zones.first { $0.id == id }?.outline
+        case .pointOfInterest(let id): return pointsOfInterest.first { $0.id == id }?.outline
+        case .wall(let id): return walls.first { $0.id == id }?.points
+        }
+    }
+
+    public mutating func move(_ item: PlanItem, dx: Double, dy: Double) throws {
+        guard let points = points(of: item) else { throw EditError.unknownShape }
+        try replacePoints(of: item, with: points.map { $0.translated(dx: dx, dy: dy) })
+    }
+
+    public mutating func movePoint(_ index: Int, of item: PlanItem, to point: PlanPoint) throws {
+        guard var points = points(of: item), points.indices.contains(index) else { throw EditError.unknownShape }
+        points[index] = point
+        try replacePoints(of: item, with: points)
+    }
+
+    public mutating func remove(_ item: PlanItem) {
+        switch item {
+        case .zone(let id): zones.removeAll { $0.id == id }
+        case .pointOfInterest(let id): pointsOfInterest.removeAll { $0.id == id }
+        case .wall(let id): walls.removeAll { $0.id == id }
+        }
+    }
+
+    private mutating func replacePoints(of item: PlanItem, with points: [PlanPoint]) throws {
+        switch item {
+        case .zone(let id):
+            try validateArea(points)
+            guard let index = zones.firstIndex(where: { $0.id == id }) else { throw EditError.unknownShape }
+            zones[index].outline = points
+        case .pointOfInterest(let id):
+            try validateArea(points)
+            guard let index = pointsOfInterest.firstIndex(where: { $0.id == id }) else { throw EditError.unknownShape }
+            pointsOfInterest[index].outline = points
+        case .wall(let id):
+            try validateWall(points)
+            guard let index = walls.firstIndex(where: { $0.id == id }) else { throw EditError.unknownShape }
+            walls[index].points = points
+        }
+    }
+
+    private func validName(_ name: String) throws -> String {
+        let name = name.trimmingCharacters(in: .whitespaces)
+        guard !name.isEmpty else { throw EditError.emptyName }
+        return name
+    }
+
+    private func validateArea(_ outline: [PlanPoint]) throws {
+        guard Set(outline).count >= 3 else { throw EditError.tooFewPoints }
+        guard outline.allSatisfy(contains) else { throw EditError.outsideSheet }
+        guard PlanGeometry.area(of: outline) > 1e-9 else { throw EditError.noArea }
+    }
+
+    private func validateWall(_ points: [PlanPoint]) throws {
+        guard Set(points).count >= 2 else { throw EditError.wallTooShort }
+        guard points.allSatisfy(contains) else { throw EditError.outsideSheet }
     }
 }
 
@@ -140,7 +245,7 @@ public struct Venue: Identifiable, Codable, Hashable {
     }
 
     @discardableResult
-    public mutating func addFloor(named name: String, level: Int, width: Int, height: Int) throws -> Floor {
+    public mutating func addFloor(named name: String, level: Int, width: Double, height: Double) throws -> Floor {
         let name = name.trimmingCharacters(in: .whitespaces)
         guard !name.isEmpty else { throw EditError.emptyName }
         guard width > 0, height > 0 else { throw EditError.invalidSize }

@@ -1,13 +1,13 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (Vapor hitelesítési szolgáltatás kész)
+> Utolsó frissítés: 2026-10-08 (L7 átdolgozva: szabad rajzolás)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `l1-auth-service`. **Vapor-szolgáltatás kész** ✅ (L1 jelszavas ága): `AuthService/` (Vapor 4, Bcrypt, `LocalAdminBackend` HTTP mögött, lejáró Bearer tokenek). A SharedKit `AdminCore` célja Foundation-only (Linuxon is fordul). A Manager `AdminBackend`-en keresztül, aszinkron működik; a „Hitelesítés → Módosítás” beállításban helyi mód vagy szolgáltatás-URL (`AuthServiceURL` UserDefaults). A `Task` modell `ShiftTask`-ra átnevezve.
-- Futtatás: `cd AuthService && swift run Run` → `http://127.0.0.1:8080`; env: `HOST`, `PORT`, `AUTH_DATA_FILE` (alap `data/admins.json`). Teszt: `swift test` (5).
-- Az L1 ⚠️ marad: valódi Sign in with Apple (fizetős fiók) és éles HTTPS-telepítés hátravan.
+**Aktív ág:** `l7-freeform-designer`. **L7 átdolgozva** ✅ a felhasználó kérésére (2026-10-08): a cellarács helyett méterben megadott lap Freeform-szerű pontráccsal; eszközök: kijelölés, sokszög, fal; a pontok a rácshoz illeszkednek (kikapcsolható); a POI is sokszög (terület, ikon a súlypontban); bármi fedhet bármit; kijelölés (legfelső), mozgatás, sarokpont-húzás, törlés. SharedKit: `PlanPoint`, `PlanGeometry`, `PlanItem`, `Wall`; `Zone.outline`, `POI.outline`; a régi cellás mentés befoglaló téglalapként töltődik be. A rajzolási állapot a `VenueDesignerViewModel`-ben (BDD-vel lefedve, 18 forgatókönyv).
+- A tervező felületét (gesztusok, nagyítás) a felhasználónak kézzel kell kipróbálnia (Tesztterv – manuális lista).
+- Az L1 ⚠️ marad: valódi Sign in with Apple (fizetős fiók) és éles HTTPS-telepítés hátravan. Vapor: `cd AuthService && swift run Run`.
 - **Következő:** a felhasználóval egyeztetni (K5, K9–K13, K15, K17, M7–M11 stb.).
 
 ## 2. Git / push állapot
@@ -38,9 +38,9 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → SharedKit 142 + AdminCore 34
+- SharedKit: `cd SharedKit && swift test` → SharedKit 162 + AdminCore 34
 - AuthService: `cd AuthService && swift test` → 5/5 (CI: Linux, `swift:6.4-noble`)
-- Manager BDD → 296/296
+- Manager BDD → 359/359
 - Vendég BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 90 BDD + 3 egységteszt
 - Worker BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 147/147 BDD + 7 egységteszt (K14 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)

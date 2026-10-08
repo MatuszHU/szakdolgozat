@@ -8,12 +8,15 @@ struct VenueMapView: View {
     var body: some View {
         Group {
             if let floor = viewModel.selectedFloor {
-                ScrollView([.horizontal, .vertical]) {
-                    FloorPlanView(floor: floor,
-                                  highlightedZoneID: viewModel.workAreaZoneID,
-                                  zoneBadges: viewModel.zoneBadges,
-                                  cellSize: 36)
-                        .padding()
+                GeometryReader { proxy in
+                    ScrollView([.horizontal, .vertical]) {
+                        FloorPlanView(floor: floor,
+                                      scale: FloorPlanView.fittingScale(for: floor, in: CGSize(width: proxy.size.width - 32,
+                                                                                               height: .infinity)),
+                                      highlightedZoneID: viewModel.workAreaZoneID,
+                                      zoneBadges: viewModel.zoneBadges)
+                            .padding()
+                    }
                 }
                 .safeAreaInset(edge: .bottom) {
                     if !viewModel.colleaguesWithoutPosition.isEmpty {

@@ -14,7 +14,7 @@ Jelenleg nincs a piacon olyan szoftver, amely a szórakoztatóiparban – azon b
 Az alkalmazás jövőbeli verziói nemcsak a szórakoztatóiparban, hanem a vendéglátás egyéb területein is ki tudják szolgálni a vállalkozások igényeit. További tervezett bővítések:
 
 * Az adminisztrátori funkciók webes (React) felületen is elérhetők.
-* A helyszíntervezőben meglévő alaprajz (kép) feltölthető és a rácshoz kalibrálható.
+* A helyszíntervezőben meglévő alaprajz (kép) feltölthető, és a lap méretarányához igazítható.
 * Beltéri helymeghatározás (pl. Bluetooth-jeladók) a QR-kódos zóna-bejelentkezés kiegészítésére.
 
 ## Prioritások
@@ -61,7 +61,7 @@ Az adminisztrátori kliens macOS alkalmazás (SwiftUI). A webes elérés későb
 | Felület | L4 | Térkép | M | Az adminisztrátor megtekintheti a helyszín tervrajzát (ld. L7) szintenként, rajta a munkavállalók hozzávetőleges pozíciójával (utolsó zóna-bejelentkezés, ld. K16), feladatával és munkaterületével. |
 | Jogosultság | L5 | Kijelentkezés | M | Az adminisztrátor kijelentkezhet; ezután az alkalmazás a bejelentkező képernyőre tér vissza. |
 | Felület | L6 | Beállítások | S | Az adminisztrátor beállíthatja a saját beállításait, valamint központilag engedélyezheti vagy tilthatja a munkavállalók számára elérhető nem alapfunkciókat. Megfelelő jogosultsággal itt állítható be a hagyományos bejelentkezéshez használt vállalati domain (ld. L1). |
-| Felület | L7 | Helyszíntervező | M | Az adminisztrátor rácsalapú szerkesztőben készítheti el a helyszín (épület, rendezvényhelyszín) tájékozódást segítő tervrajzát. A rács celláiból helyiségeket, zónákat és munkaterületeket jelölhet ki, és POI-kat helyezhet el (bár, mosdó, színpad, bejárat, vészkijárat stb.). Egy helyszín több szintből állhat, mindegyiknek saját tervrajza van. A rendszer minden zónához egyedi, nyomtatható QR-kódot generál (ld. K16). Az elkészült tervrajz jelenik meg a K6, L4 és M5 nézetekben. |
+| Felület | L7 | Helyszíntervező | M | Az adminisztrátor egy egyszerű rajzoló szerkesztőben készítheti el a helyszín (épület, rendezvényhelyszín) tájékozódást segítő tervrajzát. Minden szint egy méterben megadott méretű lap pontráccsal; a sokszög eszközzel tetszőleges alakú zónákat (munkaterületeket) és POI-kat (bár, mosdó, színpad, bejárat, vészkijárat stb., saját kiterjedéssel) rajzolhat, a fal eszközzel falakat húzhat. A pontok a rácshoz illeszkednek, ez kikapcsolható. Az alakzatok kijelölhetők, mozgathatók, a sarokpontjaik áthelyezhetők, és törölhetők. Egy helyszín több szintből állhat, mindegyiknek saját tervrajza van. A rendszer minden zónához egyedi, nyomtatható QR-kódot generál (ld. K16). Az elkészült tervrajz jelenik meg a K6, L4 és M5 nézetekben. |
 | Statisztika | L8 | Kérelmek | S | A munkavállalók által leadott kérések és jelzések (pánikjelzések, készletkérések) tételesen, csoportosítva és kategorizálva megtekinthetők. |
 | Felület | L9 | Dokumentáció és útmutató | C | Külső dokumentáció és útmutató az adminisztrátori funkciók használatához. |
 | Felület | L10 | Készletkezelés | S | Az adminisztrátor nyilvántarthatja a készletet (megnevezés, kategória, mennyiség, mértékegység, minimális mennyiség), a minimum alá csökkenő tételekről értesítést kap, és a munkavállalók készletkéréseit (K17) jóváhagyhatja vagy elutasíthatja. |
@@ -128,10 +128,10 @@ Az adminisztrátorok eligazodását külső dokumentáció és útmutató segít
 
 A zárójelben szereplő angol kifejezések a user storykban, a forgatókönyvekben és a forráskódban használt megfelelők.
 
-* **POI** (*Point of Interest*) » A tervrajzon elhelyezett pont, amely egy felhasználói kör számára kiemelten fontos lehet (bár, mosdó, színpad stb.).
-* **Tervrajz** (*Floor plan*) » A helyszín egy szintjének sematikus, rácsalapú rajza, amelyet az adminisztrátor a helyszíntervezőben (L7) készít. Nem földrajzi térkép.
+* **POI** (*Point of Interest*) » A tervrajz egy megjelölt területe, amely egy felhasználói kör számára kiemelten fontos lehet (bár, mosdó, színpad stb.); kiterjedése van, a közepén ikon jelzi a típusát.
+* **Tervrajz** (*Floor plan*) » A helyszín egy szintjének sematikus, méretarányos rajza (zónák, POI-k, falak), amelyet az adminisztrátor a helyszíntervezőben (L7) készít. Nem földrajzi térkép.
 * **Szint** (*Floor*) » A helyszín egy emelete; minden szintnek saját tervrajza van.
-* **Zóna** (*Zone*) » A tervrajz kijelölt cellacsoportja (pl. pult, bejárat, VIP), amelyhez munkavállaló, feladat és QR-kód tartozik.
+* **Zóna** (*Zone*) » A tervrajz sokszöggel kijelölt területe (pl. pult, bejárat, VIP), amelyhez munkavállaló, feladat és QR-kód tartozik.
 * **Zóna-bejelentkezés** (*Zone check-in*) » A zóna QR-kódjának beolvasása, amely a munkavállaló hozzávetőleges pozícióját rögzíti.
 * **Műszak** (*Shift*) » Egy időintervallum adott zónában, létszámkorláttal és feladatokkal, amelyhez munkavállalók rendelhetők.
 * **Beosztás** (*Schedule*) » Egy munkavállaló műszakjainak összessége egy elszámolási időszakban.

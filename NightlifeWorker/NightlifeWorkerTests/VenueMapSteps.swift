@@ -44,8 +44,8 @@ extension Cucumber {
             let names = try match.allParameters(\.string)
             let floor = try venue.addFloor(named: names[0], level: try match.first(\.int), width: 10, height: 8)
             try venue.editFloor(id: floor.id) {
-                try $0.addZone(named: names[1], cells: [GridCell(row: 0, column: 0)])
-                try $0.addZone(named: names[2], cells: [GridCell(row: 1, column: 1)])
+                try $0.addZone(named: names[1], outline: [PlanPoint(x: 0, y: 0), PlanPoint(x: 1, y: 0), PlanPoint(x: 1, y: 1), PlanPoint(x: 0, y: 1)])
+                try $0.addZone(named: names[2], outline: [PlanPoint(x: 1, y: 1), PlanPoint(x: 2, y: 1), PlanPoint(x: 2, y: 2), PlanPoint(x: 1, y: 2)])
             }
         }
 
@@ -54,7 +54,7 @@ extension Cucumber {
             let floorID = try XCTUnwrap(venue.floors.first { $0.name == texts[0] }?.id)
             let kind: POIKind = texts[1] == "toilet" ? .toilet : .custom(texts[1])
             try venue.editFloor(id: floorID) {
-                try $0.addPointOfInterest(named: texts[2], kind: kind, at: GridCell(row: 7, column: 9))
+                try $0.addPointOfInterest(named: texts[2], kind: kind, outline: [PlanPoint(x: 9, y: 7), PlanPoint(x: 10, y: 7), PlanPoint(x: 10, y: 8), PlanPoint(x: 9, y: 8)])
             }
         }
 

@@ -35,8 +35,8 @@ A követelményspecifikáció alapján a rendszer három külön kliensből áll
 ### Push értesítések, pánik mód, pozíció és tervrajz
 
 * **Munkavállalói alkalmazás:** pánik mód push értesítéssel, a munkavállaló utolsó ismert zónájának elküldésével a biztonsági személyzetnek.
-* **Minden kliens:** a helyszín rácsalapú tervrajza zónákkal és POI-kkal; a munkavállalói és az adminisztrátori oldalon a munkavállalók hozzávetőleges pozíciója (QR-kódos zóna-bejelentkezés alapján).
-* **Swift:** közvetlen UserNotifications- és CloudKit-támogatás (feliratkozás alapú push), a tervrajz SwiftUI-jal (Grid / Canvas) rajzolható, a QR-kódok olvasása a kamerakeretrendszerrel natívan megoldható.
+* **Minden kliens:** a helyszín méretarányos tervrajza zónákkal, POI-kkal és falakkal; a munkavállalói és az adminisztrátori oldalon a munkavállalók hozzávetőleges pozíciója (QR-kódos zóna-bejelentkezés alapján).
+* **Swift:** közvetlen UserNotifications- és CloudKit-támogatás (feliratkozás alapú push), a tervrajz SwiftUI-jal (Canvas) rajzolható, a QR-kódok olvasása a kamerakeretrendszerrel natívan megoldható.
 * **Flutter / React Native:** csomagolókönyvtárakra és natív modulokra támaszkodnak, ami a valós idejű és adatvédelmi szempontból kritikus funkcióknál (pánik mód, pozíció) többletkomplexitást jelent.
 
 ### Apple Tárca jegykezelés

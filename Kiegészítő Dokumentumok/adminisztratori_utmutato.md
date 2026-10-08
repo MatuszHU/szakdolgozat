@@ -27,10 +27,16 @@ Az utolsó tulajdonos nem törölhető.
 
 ## 4. Helyszíntervező (L7)
 
-1. **Új szint:** a `+` gombbal adj meg nevet, szintszámot (pl. 0 = földszint, −1 = pince) és rácsméretet. Egy szintszám csak egyszer szerepelhet.
-2. **Zóna rajzolása:** az **Eszköz** kapcsolót állítsd **Zóna** állásba, és húzd át az egeret a kívánt cellákon, majd add meg a zóna nevét. A zónák nem fedhetik egymást, és a rácson belül kell lenniük; a név szintenként egyedi.
-3. **Pont (POI) elhelyezése:** az Eszközt állítsd **Pont** állásba, kattints a cellára, és válaszd ki a típust (bár, mosdó, színpad, bejárat, vészkijárat, ruhatár). Egy cellán egy pont lehet.
-4. **Törlés:** a jobb oldali listában a kuka ikonnal.
+Minden szint egy lap, a halvány szürke pontok egymástól 1 méterre vannak.
+
+1. **Új szint:** a `+` gombbal adj meg nevet, szintszámot (pl. 0 = földszint, −1 = pince) és a lap méretét méterben. Egy szintszám csak egyszer szerepelhet.
+2. **Zóna vagy hely rajzolása:** válaszd a **Sokszög** eszközt, és kattints sorban az alakzat sarokpontjaira. Az alakzat az első pontra kattintva vagy az **Enter** (Kész) gombbal zárul. Ezután válaszd ki a típusát: **Zóna** (munkaterület, saját QR-kóddal), illetve bár, mosdó, színpad, bejárat, vészkijárat, ruhatár vagy egyéb (ezt csak a személyzet látja), és add meg a nevét. A zónanév szintenként egyedi. Rajzolás közben az **Utolsó pont visszavonása** gomb az utolsó pontot törli, az **Esc** (Mégse) az egész rajzot.
+3. **Fal rajzolása:** válaszd a **Fal** eszközt, kattints a fal töréspontjaira, majd nyomj **Entert**.
+4. **Illesztés:** alapból minden pont a legközelebbi rácsponthoz illeszkedik. A pontrács gombbal ez kikapcsolható, ilyenkor szabadon lehet rajzolni.
+5. **Kijelölés és szerkesztés:** a **Kijelölés** eszközzel kattints egy alakzatra (vagy válaszd ki a jobb oldali listában). Húzással mozgatható, a sarokpontjait (kis négyzetek) húzva átformálható. A **Törlés** gomb vagy a Delete billentyű törli. Az alakzatok fedhetik egymást (pl. a bárpult a bár zónáján belül); ilyenkor a legfelső, legutóbb rajzolt alakzat jelölődik ki.
+6. **Nagyítás:** a nagyító gombokkal.
+
+Az alakzatoknak a lapon kell maradniuk; a lapról lelógó mozgatást az alkalmazás nem engedi.
 
 ## 5. Zónakódok (K16)
 

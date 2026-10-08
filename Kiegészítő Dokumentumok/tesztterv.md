@@ -58,7 +58,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * CloudKit-szinkronizáció több eszköz között (N2)
 * Apple Tárcába helyezett jegy és valódi fizetés (M4) — fizetős Apple fejlesztői tagság szükséges; addig Debug buildben tesztfizetés
 * Jegyvásárlás és a „Jegyeim” QR-kódjának beolvasása a munkavállalói kódolvasóval (M4, K7)
-* Helyszíntervező: zóna rajzolása húzással, POI lerakása, szintváltás, zónakódok nyomtatása (L7)
+* Helyszíntervező: sokszög rajzolása kattintásokkal és lezárása, fal rajzolása, illesztés ki- és bekapcsolása, kijelölés, mozgatás húzással, sarokpont húzása, törlés (Delete), nagyítás, szintváltás, zónakódok nyomtatása (L7)
 * Térkép megjelenítése valós adatokkal (K6, L4, M5; CloudKit után)
 * Súgó → Adminisztrátori útmutató: a link megnyitja az útmutatót (L9)
 * Készlet: tétel felvétele, mennyiség módosítása, alacsony készlet figyelmeztetés, kérés jóváhagyása és elutasítása (L10)
@@ -189,4 +189,7 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | AdminCoreTests | 34/34 sikeres (SharedKit 142/142) | L1: `LocalAdminBackendTests` (11 új: tokenkiadás, lejárat, ideiglenes jelszó, kijelentkezés, jogosultság), előbb sikertelenek. Az `AdminCore` cél leválasztása után; a `Task` modell `ShiftTask`-ra átnevezve, mert eltakarta a Swift Concurrency `Task` típusát. |
 | 2026-10-08 | – | AuthServiceTests | 5/5 sikeres | L1: Vapor-szolgáltatás; a `RemoteAdminBackend` egy véletlen porton futó valódi szerver ellen. Mutációs ellenőrzés: a hibás jelszóra adott 401 400-ra rontva a teszt elbukott (várt). Kézi próba `curl`-lel: `/status`, `/setup`, token nélküli `/directory` → 401. |
 | 2026-10-08 | – | NightlifeManagerTests, NightlifeWorkerTests, NightlifeTests | 296/296, 147/147, 92/92 sikeres | A Manager aszinkron `AdminBackend`-re állítva; a `ShiftTask`-átnevezés után mindhárom app regressziómentes. |
+| 2026-10-08 | – | SharedKitTests | 162/162 sikeres | L7 átdolgozás (szabad rajzolás): PlanGeometryTests, FloorTests, VenueTests, FloorPlanViewGeometryTests újraírva (sokszög, fal, illesztés, legfelső alakzat, mozgatás, sarokpont, régi rácsos mentés betöltése), előbb sikertelenek (fordítási hiba). Mutációs ellenőrzés: a kijelölés sorrendjének megfordításánál (zóna a POI előtt) a teszt elbukott. |
+| 2026-10-08 | – | NightlifeManagerTests | 359/359 sikeres | L7: VenueDesigner, 18 forgatókönyv (a rajzolás a ViewModellen keresztül: kattintások, lezárás, illesztés, fal, kijelölés, mozgatás, sarokpont-húzás, törlés). Mutációs ellenőrzés: kikapcsolt illesztésnél a „Points snap to the dot grid” forgatókönyv elbukott. |
+| 2026-10-08 | – | NightlifeWorkerTests, NightlifeTests | 147/147, 92/92 sikeres | A K6 és M5 térkép az új tervrajzmodellel, változatlan forgatókönyvekkel (regresszió OK). |
 | 2026-10-07 | d8ef516 | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

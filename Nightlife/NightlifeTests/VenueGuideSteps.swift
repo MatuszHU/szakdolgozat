@@ -33,7 +33,7 @@ extension Cucumber {
             let rows = Array(step.dataTable?.rows.dropFirst() ?? [])
             try venue.editFloor(id: floor.id) { plan in
                 for (index, row) in rows.enumerated() {
-                    try plan.addPointOfInterest(named: row[0], kind: kind(row[1]), at: GridCell(row: 0, column: index))
+                    try plan.addPointOfInterest(named: row[0], kind: kind(row[1]), outline: [PlanPoint(x: Double(index), y: 0), PlanPoint(x: Double(index) + 1, y: 0), PlanPoint(x: Double(index) + 1, y: 1), PlanPoint(x: Double(index), y: 1)])
                 }
             }
         }
@@ -41,7 +41,7 @@ extension Cucumber {
         Given("the floor {string} has the staff zone {string}") { match, _ in
             let names = try match.allParameters(\.string)
             let floorID = try XCTUnwrap(venue.floors.first { $0.name == names[0] }?.id)
-            try venue.editFloor(id: floorID) { try $0.addZone(named: names[1], cells: [GridCell(row: 5, column: 5)]) }
+            try venue.editFloor(id: floorID) { try $0.addZone(named: names[1], outline: [PlanPoint(x: 5, y: 5), PlanPoint(x: 6, y: 5), PlanPoint(x: 6, y: 6), PlanPoint(x: 5, y: 6)]) }
         }
 
         Given("the venue has no floor plan yet") { _, _ in
