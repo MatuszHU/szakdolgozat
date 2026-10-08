@@ -181,4 +181,6 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | NightlifeManagerTests | sikeres | L6: CompanySettings, 4 forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-08 | – | SharedKitTests | 156/156 sikeres | L10: InventoryTests (10 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | sikeres | L10: StockManagement, 7 forgatókönyv; mutációs ellenőrzés OK. |
+| 2026-10-08 | – | SharedKitTests | 161/161 sikeres | L8: RequestLogTests (5 új), előbb sikertelenek. |
+| 2026-10-08 | – | NightlifeManagerTests | sikeres | L8: RequestLog, 4 forgatókönyv; az első futás a lépésdefiníció időformázási hibáját mutatta (nem a termékkódét), javítás után zöld; mutációs ellenőrzés OK. |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

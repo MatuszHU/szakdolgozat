@@ -33,9 +33,9 @@ class InventoryViewModel: ObservableObject {
     }
 
     @discardableResult
-    func receiveRequest(from workerID: UUID, itemID: UUID, quantity: Double) -> UUID? {
+    func receiveRequest(from workerID: UUID, itemID: UUID, quantity: Double, at date: Date = Date()) -> UUID? {
         var created: SupplyRequest?
-        apply { created = try $0.receiveRequest(from: workerID, itemID: itemID, quantity: quantity) }
+        apply { created = try $0.receiveRequest(from: workerID, itemID: itemID, quantity: quantity, at: date) }
         return created?.id
     }
 

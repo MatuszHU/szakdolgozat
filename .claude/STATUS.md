@@ -1,14 +1,14 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (L10 kész)
+> Utolsó frissítés: 2026-10-08 (L8 kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `l10-stock` (az `l6-settings`-re épül). **L10 kész** ✅. Az L6 (`b576fd3`) CI-ja fut, merge utána; az L10 a saját CI-ja után.
-- SharedKit: `Inventory.swift` (`Inventory`, `SupplyRequestStatus.displayName`; a Supply modellek Hashable), `InventoryTests` (10) → 156/156
-- Manager: `StockManagement.feature` (7), `StockManagementSteps.swift`, `InventoryViewModel` + `InventoryStoring` (`inventory.json`), `InventoryView` (oldalsáv: „Készlet”).
-- **Hátravan az L-körből:** L8 kérelmek, L9 útmutató, végül a Vapor hitelesítési szolgáltatás (L1 befejezése).
+**Aktív ág:** `l8-requests` (a `master` @ `681cca9`-ra épül). **L8 kész** (⚠️: pánikjelzések CloudKit nélkül nincsenek a Macen).
+- SharedKit: `RequestLog.swift`, `RequestLogTests` (5) → 161/161
+- Manager: `RequestLog.feature` (4), `RequestLogSteps.swift` (a Készlet-lépések ViewModeljét használja), `RequestLogViewModel`, `RequestLogView` (oldalsáv: „Kérelmek”); az `InventoryViewModel.receiveRequest` időpontot is kap.
+- **Hátravan az L-körből:** L9 útmutató, végül a Vapor hitelesítési szolgáltatás (L1 befejezése).
 
 ## 2. Git / push állapot
 
@@ -22,6 +22,7 @@
 - 2026-10-08: annotációk (`0178448`) zöld CI után (run 37829559325; a SharedKit-job a runneren is lefordította a makrókat) fast-forwarddal a `master`-be. `master` = `0178448`. A munkafában a felhasználó Xcode-ja által módosított `NightlifeManager.xcscheme` maradt (nem Claude-é, nincs commitolva).
 - 2026-10-08: K2 Debug-bejelentkezés (`bb3c0f7`) és M1–M3, M6 (`67140c3`) zöld CI után a `master`-be (run 37832278044; a vendég-job a várt SDK-ok miatt nem futtatható). `master` = `67140c3`.
 - 2026-10-08: M5 (`26e4031`) zöld CI után (run 37835384547) a `master`-be. `master` = `26e4031`.
+- 2026-10-08: L6 (`b576fd3`) és L10 (`681cca9`) zöld CI után a `master`-be.
 - 2026-10-08: L1, L2, L3, L5 (`5d2089a`) zöld CI után (run 37839858225) a `master`-be.
 - 2026-10-08: M4 (`6b73a2a`) zöld CI után (run 37838427883) a `master`-be. `master` = `6b73a2a`.
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
@@ -35,7 +36,7 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → 156/156
+- SharedKit: `cd SharedKit && swift test` → 161/161
 - Vendég BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 90 BDD + 3 egységteszt
 - Worker BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 147/147 BDD + 7 egységteszt (K14 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
@@ -45,7 +46,7 @@
 
 - ✅ K1, K2, K4, K14 (Authentication, SignOut), M1, M2, M3, M6 (GuestAuthentication)
 - ✅ L2, L3, L5, L6, L7, L10, L11
-- ⚠️ M4 (jegyvásárlás; Apple Pay/Wallet/CloudKit hiányzik), M5 (vendég térkép; CloudKit hiányzik), L4 (admin térkép; CloudKit hiányzik), K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
+- ⚠️ L8 (kérelmek; CloudKit), M4 (jegyvásárlás; Apple Pay/Wallet/CloudKit hiányzik), M5 (vendég térkép; CloudKit hiányzik), L4 (admin térkép; CloudKit hiányzik), K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
 - Következő jelöltek: lásd az 1. fejezetet.
 
 ## 6. Módszertan (Tesztterv szerint)

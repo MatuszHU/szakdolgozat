@@ -31,6 +31,8 @@ extension Cucumber {
             requestID = nil
         }
 
+        setupRequestLogSteps { viewModel }
+
         Given("the stock has:") { _, step in
             for row in step.dataTable?.rows.dropFirst() ?? [] {
                 viewModel.addItem(named: row[0], category: row[1], quantity: Double(row[2])!, unit: row[3],

@@ -12,6 +12,7 @@ struct ContentView: View {
         case shiftPlanner
         case events
         case inventory
+        case requests
         case admins
         case settings
     }
@@ -43,6 +44,7 @@ struct ContentView: View {
                 Label("Műszakok", systemImage: "calendar.badge.clock").tag(Section.shiftPlanner)
                 Label("Események", systemImage: "ticket").tag(Section.events)
                 Label("Készlet", systemImage: "shippingbox").tag(Section.inventory)
+                Label("Kérelmek", systemImage: "tray.full").tag(Section.requests)
                 Label("Adminisztrátorok", systemImage: "person.2").tag(Section.admins)
                 Label("Beállítások", systemImage: "gearshape").tag(Section.settings)
             }
@@ -65,6 +67,7 @@ struct ContentView: View {
             case .shiftPlanner: ShiftPlannerView(viewModel: planner, venue: designer.venue)
             case .events: EventsView(viewModel: events, defaultLocation: designer.venue.name)
             case .inventory: InventoryView(viewModel: inventory)
+            case .requests: RequestLogView(inventory: inventory.inventory, staff: planner.plan.staff).id([inventory.inventory.hashValue, planner.plan.hashValue])
             case .admins: AdminsView(session: session)
             case .settings: AdminSettingsView(session: session)
             default: VenueDesignerView(viewModel: designer)
