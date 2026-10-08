@@ -5,7 +5,7 @@
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `m4-ticket-purchase` (a `master` @ `26e4031`-ról). **M4 kész** (⚠️: Apple Pay, Wallet, CloudKit hiányzik).
+**Aktív ág:** `m4-ticket-purchase` = `master` @ `6b73a2a`. **M4 kész** (⚠️: Apple Pay, Wallet, CloudKit hiányzik).
 - SharedKit: `EventCatalog` értékesítés (`checkAvailability`, `price`, `purchase`, `tickets(of:)`, új hibakódok), `GuestUser.stableID(forAppleID:)`, `AuthViewModel.userID`; `TicketSalesTests` (10) → 123/123
 - Vendég: `TicketPurchase.feature` (8, egy `@K7` végponttól végpontig), `TicketPurchaseSteps.swift` (`RecordingPayment`), `TicketShopViewModel` + `PaymentProcessing` (`TestPaymentProcessor` Debug, `UnavailablePaymentProcessor` Release), `TicketShopView`, `MyTicketsView` (QR), linkek a `GuestHomeView`-ban; `TicketShopViewModelTests` (3) → vendég 92/92 + 3/3
 - Manager: az új hibakódok üzenetei az `EventManagerViewModel`-ben.
@@ -25,6 +25,7 @@
 - 2026-10-08: annotációk (`0178448`) zöld CI után (run 37829559325; a SharedKit-job a runneren is lefordította a makrókat) fast-forwarddal a `master`-be. `master` = `0178448`. A munkafában a felhasználó Xcode-ja által módosított `NightlifeManager.xcscheme` maradt (nem Claude-é, nincs commitolva).
 - 2026-10-08: K2 Debug-bejelentkezés (`bb3c0f7`) és M1–M3, M6 (`67140c3`) zöld CI után a `master`-be (run 37832278044; a vendég-job a várt SDK-ok miatt nem futtatható). `master` = `67140c3`.
 - 2026-10-08: M5 (`26e4031`) zöld CI után (run 37835384547) a `master`-be. `master` = `26e4031`.
+- 2026-10-08: M4 (`6b73a2a`) zöld CI után (run 37838427883) a `master`-be. `master` = `6b73a2a`.
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
 - Az origin-on van egy `web` ág (Svelte webes felület, „log in page”) — nem Claude-é, nem nyúlni hozzá.
