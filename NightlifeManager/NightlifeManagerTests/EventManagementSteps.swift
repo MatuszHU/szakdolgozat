@@ -1,18 +1,10 @@
-//
-//  EventManagementSteps.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import XCTest
 import CucumberSwift
 import CucumberSwiftExpressions
 import SharedKit
 @testable import NightlifeManager
 
-/// Keeps the saved event catalog in memory instead of a file.
+@L11
 final class InMemoryEventCatalogStore: EventCatalogStoring {
     private(set) var saved: EventCatalog?
 
@@ -25,10 +17,10 @@ final class InMemoryEventCatalogStore: EventCatalogStoring {
 
 extension Cucumber {
 
+    @L11
     func setupEventManagementSteps() {
         var viewModel: EventManagerViewModel!
 
-        /// October `day` of 2026 at the given time; hours before noon belong to the next day.
         func time(day: Int, _ hour: Int, _ minute: Int) -> Date {
             let date = Calendar.current.date(from: DateComponents(year: 2026, month: 10, day: day))!
             let shifted = hour < 12 ? Calendar.current.date(byAdding: .day, value: 1, to: date)! : date

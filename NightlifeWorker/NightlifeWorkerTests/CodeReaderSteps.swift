@@ -1,11 +1,3 @@
-//
-//  CodeReaderSteps.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 07..
-//
-
-
 import XCTest
 import CucumberSwift
 import CucumberSwiftExpressions
@@ -14,6 +6,7 @@ import SharedKit
 
 extension Cucumber {
 
+    @K7 @M4
     func setupCodeReaderSteps() {
         var events: [String: Event] = [:]
         var tonight: Event!

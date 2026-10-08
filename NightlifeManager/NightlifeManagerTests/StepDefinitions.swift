@@ -1,17 +1,10 @@
-//
-//  StepDefinitions.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import XCTest
 import CucumberSwift
 import CucumberSwiftExpressions
 import SharedKit
 @testable import NightlifeManager
 
+@N8
 class NightlifeManagerCucumberTest: CucumberTest { }
 
 extension Cucumber: @retroactive StepImplementation {
@@ -19,6 +12,7 @@ extension Cucumber: @retroactive StepImplementation {
         return Bundle(for: NightlifeManagerCucumberTest.self)
     }
 
+    @N8
     public func setupSteps() {
         setupVenueDesignerSteps()
         setupStaffMapSteps()

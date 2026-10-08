@@ -1,19 +1,11 @@
-//
-//  HomeView.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 06. 27..
-//
-
-
 import SwiftUI
 import SharedKit
 
+@K4 @K14
 struct HomeView: View {
     @ObservedObject var viewModel: AuthViewModel
     @State private var confirmingSignOut = false
 
-    // Until CloudKit sync (N2) there is no real event, ticket or zone data on the device.
     @StateObject private var codeReader = CodeReaderViewModel(
         eventID: UUID(),
         tickets: LocalTicketRepository(),

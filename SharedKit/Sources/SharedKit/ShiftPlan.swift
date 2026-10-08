@@ -1,18 +1,11 @@
-//
-//  ShiftPlan.swift
-//
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 
 extension Shift {
+    @L3
     public var freePlaces: Int { max(capacity - workerIDs.count, 0) }
 }
 
-/// The administrator's staff and shift plan with its assignment rules (L3).
+@L3
 public struct ShiftPlan: Codable, Hashable {
     public enum PlanError: Error, Equatable {
         case emptyName
@@ -69,7 +62,6 @@ public struct ShiftPlan: Codable, Hashable {
         _ = shifts[index].assign(workerID: workerID)
     }
 
-    /// Removes the worker from the shift and from its tasks.
     public mutating func unassign(workerID: UUID, fromShift shiftID: UUID) {
         guard let index = shifts.firstIndex(where: { $0.id == shiftID }) else { return }
         shifts[index].workerIDs.removeAll { $0 == workerID }
@@ -90,7 +82,6 @@ public struct ShiftPlan: Codable, Hashable {
         return task
     }
 
-    /// A worker's shifts, earliest first.
     public func shifts(for workerID: UUID) -> [Shift] {
         shifts.filter { $0.workerIDs.contains(workerID) }.sorted { $0.startTime < $1.startTime }
     }

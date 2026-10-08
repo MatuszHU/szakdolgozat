@@ -1,10 +1,3 @@
-//
-//  Item.swift
-//  Nightlife
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
 import Foundation
 import SwiftData
 

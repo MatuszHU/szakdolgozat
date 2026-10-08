@@ -1,15 +1,18 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (K14 kész)
+> Utolsó frissítés: 2026-10-08 (annotációk)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `k14-sign-out` = `master` @ `5066a2a`. **K14 kész** ✅ (és a K4 valódi tartalmat kapott).
-- Worker: `CredentialStoring` + `KeychainCredentialStore`, `AuthViewModel(store:)` (`checkAuthState`, `signInWithApple(userID:)`, `signOut()`), `WelcomeView` az Apple user ID-t adja át, az app induláskor `checkAuthState`, `HomeView`-ban kijelentkezés gomb megerősítéssel.
-- Tesztek: `SignOut.feature` (3), `SignOutSteps.swift`, `TestDoubles.swift` (`InMemoryCredentialStore`), `AuthViewModelTests.swift` (Swift Testing, 7, köztük valódi Keychain-teszt) → Worker BDD 147/147, mutációs ellenőrzés OK.
+**Aktív ág:** `n8-requirement-annotations` (a `master` @ `5066a2a`-ról). **Kommentek eltávolítva, követelmény-annotációk bevezetve.**
+- SharedKit: `RequirementMacros` makró-cél (swift-syntax 604, no-op peer macro), `Requirements.swift`: 47 makró (K1–K17, L1–L11, M1–M11, N1–N8). `Package.swift`: platforms iOS 17 / macOS 14.
+- 476 komment eltávolítva (a `Package.swift` első sora kivétel: a SwiftPM tools-version jelölője). 127 annotáció; a mátrix minden ✅/⚠️ követelménye szerepel a kódban.
+- **Minden `xcodebuild` hívásnál kell: `-skipMacroValidation`** (CI-ban is). Az Xcode első megnyitáskor kéri a makró jóváhagyását („Trust & Enable”).
+- Eszközök (ideiglenes, nem a repóban): `/private/tmp/claude-501/strip/strip_comments.py` (kommentszűrő tokenizáló, `--write`), `annotate.py`.
+- **Szabály mostantól:** új kódban nincs komment; minden követelményhez kötődő deklaráció `@Kx`/`@Lx`/`@Mx`/`@Nx` annotációt kap.
 
-**Következő jelöltek (fiók nélkül):** M1–M3 vendég app alapjai (BDD-környezet + üdvözlő/bejelentkezés/kezdőképernyő, a Worker mintájára), M5 vendég térkép, K5 beosztások, K17/L10 készlet, K9/K11 beállítások és nyelv.
+**Következő jelöltek:** M1–M3 vendég app alapjai (javasolva), M5, K5, K17/L10, K9/K11.
 
 ## 2. Git / push állapot
 
@@ -32,7 +35,7 @@
 ## 4. Tesztek (utolsó ismert állapot)
 
 - SharedKit: `cd SharedKit && swift test` → 100/100
-- Worker BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 147/147 BDD + 7 egységteszt (K14 után)
+- Worker BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 147/147 BDD + 7 egységteszt (K14 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
 - UI tesztek: 2/2 (lassú, ~45 s)
 

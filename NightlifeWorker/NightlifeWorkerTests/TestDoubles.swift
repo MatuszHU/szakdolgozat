@@ -1,15 +1,8 @@
-//
-//  TestDoubles.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
+import SharedKit
 @testable import NightlifeWorker
 
-/// Keeps the signed-in Apple user ID in memory instead of the Keychain.
+@K4 @K14
 final class InMemoryCredentialStore: CredentialStoring {
     private(set) var userID: String?
 

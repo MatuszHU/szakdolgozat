@@ -34,7 +34,7 @@ jobs:
           xcodebuild -version
       - name: Run BDD tests
         run: |
-          xcodebuild test \
+          xcodebuild test -skipMacroValidation \
             -workspace NightLifeApps.xcworkspace \
             -scheme NightlifeManager \
             -only-testing:NightlifeManagerTests \
@@ -73,7 +73,7 @@ jobs:
           echo "DEVICE_ID=$DEVICE_ID" >> "$GITHUB_ENV"
       - name: Run test plan
         run: |
-          xcodebuild test \
+          xcodebuild test -skipMacroValidation \
             -workspace NightLifeApps.xcworkspace \
             -scheme NightlifeWorker \
             -testPlan NightlifeWorker \

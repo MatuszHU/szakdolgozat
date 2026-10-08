@@ -3,6 +3,7 @@ import Testing
 @testable import SharedKit
 
 @Suite("EventCatalog")
+@L11
 struct EventCatalogTests {
 
     private let friday = Date(timeIntervalSince1970: 1_800_000_000)

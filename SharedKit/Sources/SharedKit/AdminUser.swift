@@ -1,24 +1,19 @@
-//
-//  Admin.swift
-//  
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
-
 import Foundation
 
+@L1 @L3
 public enum AdminRole: Codable {
     case userAdmin
     case businessManager
     case owner
 }
 
+@L1
 public enum SignInMethod: Codable, Equatable {
     case apple
     case password
 }
 
+@L1 @L3
 public struct AdminUser: Identifiable, Codable {
     public let id: UUID
     public let email: String

@@ -1,13 +1,6 @@
-//
-//  GuestUser.swift
-//  
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
-
 import Foundation
 
+@M2 @M4
 public struct GuestUser: Identifiable, Codable {
     public let id: UUID
     public let appleID: String

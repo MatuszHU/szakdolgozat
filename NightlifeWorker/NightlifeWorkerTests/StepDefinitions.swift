@@ -1,17 +1,10 @@
-//
-//  StepDefinitions.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 06. 16..
-//
-
-
 import XCTest
 import CucumberSwift
 import CucumberSwiftExpressions
 import SharedKit
 @testable import NightlifeWorker
 
+@N8
 class NightlifeWorkerCucumberTest: CucumberTest { }
 
 extension Cucumber: @retroactive StepImplementation {
@@ -19,6 +12,7 @@ extension Cucumber: @retroactive StepImplementation {
         return Bundle(for: NightlifeWorkerCucumberTest.self)
     }
 
+    @K1 @K2 @K4
     public func setupSteps() {
         var viewModel: AuthViewModel!
 

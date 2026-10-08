@@ -1,22 +1,15 @@
-//
-//  KeychainCredentialStore.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 import Security
+import SharedKit
 
-/// Remembers the signed-in Apple user between launches (K4, K14).
+@K4 @K14
 protocol CredentialStoring {
     func load() -> String?
     func save(_ userID: String) throws
     func delete() throws
 }
 
-/// Stores the Apple user ID in the Keychain (N3).
+@K4 @K14 @N3
 struct KeychainCredentialStore: CredentialStoring {
     struct KeychainError: Error {
         let status: OSStatus

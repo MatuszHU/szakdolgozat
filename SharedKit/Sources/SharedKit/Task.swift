@@ -1,13 +1,6 @@
-//
-//  Task.swift
-//  
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
-
 import Foundation
 
+@L3 @K5
 public struct Task: Identifiable, Codable, Hashable {
     public let id: UUID
     public var title: String

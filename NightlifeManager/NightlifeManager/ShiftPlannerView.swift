@@ -1,15 +1,7 @@
-//
-//  ShiftPlannerView.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import SwiftUI
 import SharedKit
 
-/// Staff, shifts, assignments and tasks (L3).
+@L3
 struct ShiftPlannerView: View {
     @ObservedObject var viewModel: ShiftPlannerViewModel
     let venue: Venue
@@ -146,6 +138,7 @@ struct ShiftPlannerView: View {
     }
 }
 
+@L3
 private struct NewShiftSheet: View {
     let zones: [Zone]
     let onSave: (Date, Date, UUID?, Int) -> Void
@@ -178,6 +171,7 @@ private struct NewShiftSheet: View {
     }
 }
 
+@L3
 private struct NewWorkerSheet: View {
     static let roles: [(role: WorkerRole, title: String)] = [(.bartender, "Pultos"), (.security, "Biztonsági")]
 

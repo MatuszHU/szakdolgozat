@@ -1,22 +1,14 @@
-//
-//  EventManagerViewModel.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 import Combine
 import SharedKit
 
-/// Persists the event catalog (production: CloudKit; until then a local file).
+@L11
 protocol EventCatalogStoring {
     func load() -> EventCatalog?
     func save(_ catalog: EventCatalog) throws
 }
 
-/// Events, ticket offers and raffles (L11).
+@L11
 class EventManagerViewModel: ObservableObject {
     @Published private(set) var catalog: EventCatalog
     @Published private(set) var errorMessage: String?
@@ -58,7 +50,6 @@ class EventManagerViewModel: ObservableObject {
         apply { try $0.removeRaffle(fromEvent: eventID) }
     }
 
-    /// Runs an edit on a copy; publishes and saves it only if it succeeds.
     private func apply(_ edit: (inout EventCatalog) throws -> Void) {
         var edited = catalog
         do {

@@ -1,14 +1,6 @@
-//
-//  EventCatalog.swift
-//
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 
-/// A ticket type sold for an event, with its price (HUF) and an optional quota (L11, M4).
+@L11 @M4
 public struct TicketOffer: Identifiable, Codable, Hashable {
     public let id: UUID
     public var type: TicketType
@@ -23,7 +15,7 @@ public struct TicketOffer: Identifiable, Codable, Hashable {
     }
 }
 
-/// A raffle announced for an event (L11, M7).
+@L11 @M7
 public struct Raffle: Identifiable, Codable, Hashable {
     public let id: UUID
     public var title: String
@@ -40,7 +32,7 @@ public struct Raffle: Identifiable, Codable, Hashable {
     }
 }
 
-/// The administrator's events with their ticket offers and raffles (L11).
+@L11
 public struct EventCatalog: Codable, Hashable {
     public enum CatalogError: Error, Equatable {
         case emptyTitle

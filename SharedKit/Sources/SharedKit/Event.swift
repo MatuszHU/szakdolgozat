@@ -1,13 +1,6 @@
-//
-//  Event.swift
-//  
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
-
 import Foundation
 
+@L11 @M4
 public struct Event: Identifiable, Codable, Hashable {
     public let id: UUID
     public var title: String

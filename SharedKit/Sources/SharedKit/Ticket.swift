@@ -1,19 +1,13 @@
-//
-//  Ticket.swift
-//  
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
-
 import Foundation
 
+@L11 @M4
 public enum TicketType: Codable, Hashable {
     case standard
     case vip
     case custom(String)
 }
 
+@M4 @K7
 public struct Ticket: Identifiable, Codable, Hashable {
     public let id: UUID
     public let eventID: UUID
@@ -41,6 +35,7 @@ public struct Ticket: Identifiable, Codable, Hashable {
 }
 
 extension TicketType {
+    @L11 @M4
     public var displayName: String {
         switch self {
         case .standard: return "Standard"
@@ -51,17 +46,20 @@ extension TicketType {
 }
 
 extension Ticket {
+    @K7 @M4
     public static let qrPrefix = "nightlife://ticket/"
 
+    @K7 @M4
     public enum AdmissionResult: Equatable {
         case admitted
         case alreadyUsed
         case wrongEvent
     }
 
+    @K7 @M4
     public var qrPayload: String { Ticket.qrPrefix + serialNumber }
 
-    /// Admits the ticket's holder to the given event; a ticket can be used only once (K7, M4).
+    @K7 @M4
     public mutating func admit(toEvent eventID: UUID) -> AdmissionResult {
         guard self.eventID == eventID else { return .wrongEvent }
         guard !isUsed else { return .alreadyUsed }

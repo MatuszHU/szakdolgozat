@@ -1,22 +1,14 @@
-//
-//  VenueDesignerViewModel.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 import Combine
 import SharedKit
 
-/// Persists the venue (production: CloudKit; until then a local file).
+@L7
 protocol VenueStoring {
     func load() -> Venue?
     func save(_ venue: Venue) throws
 }
 
-/// Grid-based venue designer: floors, zones, points of interest and zone codes (L7).
+@L7
 class VenueDesignerViewModel: ObservableObject {
     @Published private(set) var venue: Venue
     @Published private(set) var errorMessage: String?
@@ -53,7 +45,6 @@ class VenueDesignerViewModel: ObservableObject {
         apply { try $0.editFloor(id: floorID) { $0.removePointOfInterest(id: id) } }
     }
 
-    /// Runs an edit on a copy; publishes and saves it only if it succeeds.
     private func apply(_ edit: (inout Venue) throws -> Void) {
         var edited = venue
         do {

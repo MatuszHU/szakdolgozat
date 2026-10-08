@@ -8,6 +8,7 @@ private func cell(_ column: Int, _ row: Int) -> GridCell {
 }
 
 @Suite("Floor editing")
+@L7
 struct FloorTests {
 
     private func makeFloor() -> Floor {
@@ -102,6 +103,7 @@ struct FloorTests {
 }
 
 @Suite("Venue")
+@L7
 struct VenueTests {
 
     @Test func floorsAreOrderedByLevel() throws {
@@ -163,6 +165,7 @@ struct VenueTests {
 }
 
 @Suite("Floor plan geometry")
+@L7
 struct FloorPlanGeometryTests {
 
     @Test func pointMapsToCell() {
@@ -178,6 +181,7 @@ struct FloorPlanGeometryTests {
 }
 
 @Suite("Map positions")
+@K6 @L4
 struct MapPositionTests {
 
     @Test func latestCheckInWinsPerWorker() {

@@ -1,14 +1,6 @@
-//
-//  StaffMap.swift
-//
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 
-/// Where the staff are (latest check-in) and what they should do (active shift), at a moment (K6, L4).
+@K6 @L4
 public struct StaffMap {
     public struct Entry {
         public let worker: WorkerUser
@@ -42,12 +34,10 @@ public struct StaffMap {
         entries.filter { $0.positionZoneID == zoneID }.map(\.worker.name)
     }
 
-    /// Staff who have not checked in to any zone yet.
     public var withoutPosition: [WorkerUser] {
         entries.filter { $0.positionZoneID == nil }.map(\.worker)
     }
 
-    /// Names per zone of a floor, for the floor plan badges.
     public func badges(on floor: Floor) -> [UUID: [String]] {
         Dictionary(uniqueKeysWithValues: floor.zones.map { ($0.id, names(inZone: $0.id)) })
     }

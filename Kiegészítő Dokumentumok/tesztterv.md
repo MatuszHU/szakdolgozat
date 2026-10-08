@@ -110,6 +110,7 @@ A CucumberSwift működését 2026-10-07-én ideiglenes próba-forgatókönyvekk
 * A lépésdefiníciók a tesztelt alkalmazás kódját hívják (`@testable import`), tesztbeli másolatot nem használnak.
 * Több feature által használt lépés csak egyszer, a `CommonSteps.swift`-ben definiálható, a közös állapot a `World` objektumban van (a CucumberSwift az azonos szövegű definíciók közül az utolsót használja, figyelmeztetés nélkül).
 * Új forgatókönyv elkészülte után mutációs ellenőrzés: egy elvárt érték ideiglenes elrontásával meggyőződni arról, hogy a forgatókönyv valóban elbukik.
+* A saját Swift-kódban nincs komment. A követelményhez kötődő deklarációk (típusok, függvények, tulajdonságok, tesztcsomagok, lépésdefiníciós függvények) a követelmény azonosítójával annotáltak, a SharedKit semmit sem generáló makróival (`@K7`, `@L3`, `@M4`, `@N8` …). Az elírt azonosító fordítási hiba; egy követelmény kódja így kereshető: `grep -rn "@K7" --include=*.swift`. Kiterjesztésre (extension) a makró nem tehető, ott a tagjai annotáltak.
 * Egységteszt-elnevezés: a vizsgált viselkedést írja le (pl. `adjacentShiftsDoNotConflict`).
 * Paraméter nélküli lépés: egyszerű szöveg, regex-jelek nélkül (Cucumber expressionként pontos egyezéssel illeszkedik).
 * Paraméteres lépés: Cucumber expression (`{int}`, `{string}`, `{word}`, `{float}`), az értékek a `match.first(\.int)`, illetve `match.allParameters(\.string)` hívással érhetők el; regex literál (`#/…/#`) csak akkor, ha a Cucumber expression nem elég. Szöveges regex-definíció nem készül, mert az részlegesen illeszkedhet (a meglévők 2026-10-07-én átírásra kerültek).
@@ -121,7 +122,7 @@ Xcode-ban: `⌘U` a `NightlifeWorker` sémán.
 
 Parancssorból:
 
-    xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker \
+    xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker \
       -testPlan NightlifeWorker -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
 
 ## Hibakezelés
@@ -160,4 +161,5 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | NightlifeManagerTests | 157/157 sikeres | L11: EventManagement, 9 forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-08 | 2d1ea83 | CI (GitHub Actions), `l11-event-management` | Sikeres | SharedKit zöld; a Manager- és a Worker-job nem futtatható (SDK). |
 | 2026-10-08 | – | NightlifeWorkerTests | 147/147 BDD + 7/7 egységteszt sikeres | K14: SignOut, 3 forgatókönyv; AuthViewModel- és Keychain-tesztek (előbb sikertelenek); mutációs ellenőrzés OK. |
+| 2026-10-08 | – | Minden tesztcél | SharedKit 100/100, Worker 147/147 BDD + 7/7 egység + UI, Manager 157/157 sikeres | Kommentek eltávolítása (476) és követelmény-annotációk (127) után; a vendég app is lefordul. |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

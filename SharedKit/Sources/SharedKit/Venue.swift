@@ -1,13 +1,6 @@
-//
-//  Venue.swift
-//
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 
+@L7
 public enum POIKind: Codable, Hashable {
     case bar
     case toilet
@@ -18,7 +11,7 @@ public enum POIKind: Codable, Hashable {
     case custom(String)
 }
 
-/// A point of interest placed on one cell of a floor plan.
+@L7
 public struct POI: Identifiable, Codable, Hashable {
     public let id: UUID
     public var name: String
@@ -33,7 +26,7 @@ public struct POI: Identifiable, Codable, Hashable {
     }
 }
 
-/// One level of a venue: a grid with zones and points of interest (L7).
+@L7
 public struct Floor: Identifiable, Codable, Hashable {
     public enum EditError: Error, Equatable {
         case emptyName
@@ -60,7 +53,6 @@ public struct Floor: Identifiable, Codable, Hashable {
         self.height = height
     }
 
-    /// The rectangle of cells between two corners, in any order.
     public static func cells(from first: GridCell, to second: GridCell) -> Set<GridCell> {
         var cells = Set<GridCell>()
         for row in min(first.row, second.row)...max(first.row, second.row) {
@@ -120,7 +112,7 @@ public struct Floor: Identifiable, Codable, Hashable {
     }
 }
 
-/// A printable zone QR code with its label (L7, K16).
+@L7 @K16
 public struct ZoneCode: Hashable {
     public let floorName: String
     public let zoneName: String
@@ -129,7 +121,7 @@ public struct ZoneCode: Hashable {
     public var label: String { "\(floorName) – \(zoneName)" }
 }
 
-/// The venue with its floors, ordered by level (L7).
+@L7
 public struct Venue: Identifiable, Codable, Hashable {
     public enum EditError: Error, Equatable {
         case emptyName
@@ -163,7 +155,6 @@ public struct Venue: Identifiable, Codable, Hashable {
         floors.removeAll { $0.id == id }
     }
 
-    /// Applies an edit to one floor; the floor is unchanged if the edit throws.
     public mutating func editFloor(id: UUID, _ edit: (inout Floor) throws -> Void) throws {
         guard let index = floors.firstIndex(where: { $0.id == id }) else { throw EditError.unknownFloor }
         var floor = floors[index]
@@ -171,11 +162,11 @@ public struct Venue: Identifiable, Codable, Hashable {
         floors[index] = floor
     }
 
+    @K6 @L4
     public func floor(containingZone zoneID: UUID) -> Floor? {
         floors.first { floor in floor.zones.contains { $0.id == zoneID } }
     }
 
-    /// All zone codes, by floor level and zone name.
     public var zoneCodes: [ZoneCode] {
         floors.flatMap { floor in
             floor.zones

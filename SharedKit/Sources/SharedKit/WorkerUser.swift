@@ -1,13 +1,6 @@
-//
-//  Worker.swift
-//  
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
-
 import Foundation
 
+@L3 @K8
 public enum WorkerRole: Codable, Hashable {
     case bartender
     case security
@@ -22,6 +15,7 @@ public enum WorkerRole: Codable, Hashable {
     }
 }
 
+@L3 @K12
 public enum PayPeriod: Codable, Hashable {
     case weekly
     case biweekly
@@ -29,6 +23,7 @@ public enum PayPeriod: Codable, Hashable {
     case custom(Int)
 }
 
+@L3
 public struct WorkerUser: Identifiable, Codable, Hashable {
     public let id: UUID
     public let appleID: String

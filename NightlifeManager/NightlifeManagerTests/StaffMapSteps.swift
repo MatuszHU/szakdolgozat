@@ -1,11 +1,3 @@
-//
-//  StaffMapSteps.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import XCTest
 import CucumberSwift
 import CucumberSwiftExpressions
@@ -14,6 +6,7 @@ import SharedKit
 
 extension Cucumber {
 
+    @L4
     func setupStaffMapSteps() {
         let tonight = Calendar.current.date(from: DateComponents(year: 2026, month: 10, day: 10, hour: 18))!
         let now = tonight.addingTimeInterval(4 * 3600)

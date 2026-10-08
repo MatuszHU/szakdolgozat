@@ -1,16 +1,10 @@
-//
-//  AuthViewModelTests.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 import Testing
+import SharedKit
 @testable import NightlifeWorker
 
 @Suite("AuthViewModel")
+@K4 @K14
 struct AuthViewModelTests {
 
     @Test func withoutStoredSignInTheWelcomeScreenIsShown() {
@@ -55,6 +49,7 @@ struct AuthViewModelTests {
 }
 
 @Suite("KeychainCredentialStore", .serialized)
+@K4 @K14 @N3
 struct KeychainCredentialStoreTests {
 
     private let store = KeychainCredentialStore(service: "hu.matusz.nightlife.tests.\(UUID().uuidString)")

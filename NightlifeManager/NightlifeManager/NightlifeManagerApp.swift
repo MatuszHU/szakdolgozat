@@ -1,13 +1,8 @@
-//
-//  NightlifeManagerApp.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
 import SwiftUI
+import SharedKit
 
 @main
+@L2
 struct NightlifeManagerApp: App {
     var body: some Scene {
         WindowGroup {

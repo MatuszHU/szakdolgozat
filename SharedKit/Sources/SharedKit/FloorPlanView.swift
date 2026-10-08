@@ -1,15 +1,7 @@
-//
-//  FloorPlanView.swift
-//
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import SwiftUI
 
 extension POIKind {
-    /// SF Symbol shown on the floor plan.
+    @L7 @K6
     public var symbolName: String {
         switch self {
         case .bar: return "wineglass"
@@ -23,9 +15,8 @@ extension POIKind {
     }
 }
 
-/// Draws one floor: grid, zones, points of interest, an optional selection and per-zone badges.
-/// Used by the designer (L7, editable through gestures added by the caller) and the maps (K6, M5).
 @available(iOS 17.0, macOS 14.0, *)
+@L7 @K6 @L4 @M5
 public struct FloorPlanView: View {
     public static let palette: [Color] = [.orange, .blue, .green, .purple, .pink, .teal, .yellow, .indigo]
 
@@ -47,7 +38,6 @@ public struct FloorPlanView: View {
         self.cellSize = cellSize
     }
 
-    /// The grid cell under a point of the view (may be outside the floor).
     nonisolated public static func cell(at point: CGPoint, cellSize: CGFloat) -> GridCell {
         GridCell(row: Int((point.y / cellSize).rounded(.down)),
                  column: Int((point.x / cellSize).rounded(.down)))

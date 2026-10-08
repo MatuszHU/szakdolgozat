@@ -3,6 +3,7 @@ import Testing
 @testable import SharedKit
 
 @Suite("Panic mode")
+@K8
 struct PanicTests {
 
     private let anna = WorkerUser(appleID: "a", name: "Anna", role: .bartender, payPeriod: .weekly)

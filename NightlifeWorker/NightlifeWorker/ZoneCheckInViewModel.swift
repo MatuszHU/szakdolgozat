@@ -1,14 +1,7 @@
-//
-//  ZoneCheckInViewModel.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 07..
-//
-
-
 import Foundation
 import SharedKit
 
+@K16
 class ZoneCheckInViewModel {
     private(set) var position: WorkerPosition
     private(set) var lastError: WorkerPosition.CheckInError?

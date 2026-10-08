@@ -1,15 +1,7 @@
-//
-//  VenueMapView.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import SwiftUI
 import SharedKit
 
-/// Read-only floor plan with the worker's area and colleagues' zones (K6).
+@K6
 struct VenueMapView: View {
     @ObservedObject var viewModel: VenueMapViewModel
 

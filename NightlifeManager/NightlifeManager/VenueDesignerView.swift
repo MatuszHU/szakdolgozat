@@ -1,15 +1,7 @@
-//
-//  VenueDesignerView.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import SwiftUI
 import SharedKit
 
-/// Grid editor: drag to draw a zone, click to place a point of interest (L7).
+@L7
 struct VenueDesignerView: View {
     enum Tool: String, CaseIterable, Identifiable {
         case zone = "Zóna"
@@ -161,6 +153,7 @@ struct VenueDesignerView: View {
     }
 }
 
+@L7
 private struct NameSheet: View {
     let title: String
     let onSave: (String) -> Void
@@ -183,6 +176,7 @@ private struct NameSheet: View {
     }
 }
 
+@L7
 private struct NewFloorSheet: View {
     let onSave: (String, Int, Int, Int) -> Void
     @State private var name = ""
@@ -210,6 +204,7 @@ private struct NewFloorSheet: View {
     }
 }
 
+@L7
 private struct NewPointSheet: View {
     static let kinds: [(kind: POIKind, title: String)] = [
         (.bar, "Bár"), (.toilet, "Mosdó"), (.stage, "Színpad"), (.entrance, "Bejárat"),

@@ -1,19 +1,13 @@
-//
-//  Supply.swift
-//  
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
-
 import Foundation
 
+@K17 @L10
 public enum SupplyRequestStatus: Codable {
     case pending
     case approved
     case rejected
 }
 
+@L10
 public struct SupplyItem: Identifiable, Codable {
     public let id: UUID
     public var name: String
@@ -36,6 +30,7 @@ public struct SupplyItem: Identifiable, Codable {
     }
 }
 
+@K17 @L10
 public struct SupplyRequest: Identifiable, Codable {
     public let id: UUID
     public let workerID: UUID

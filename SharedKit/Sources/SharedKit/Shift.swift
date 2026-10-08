@@ -1,17 +1,10 @@
-//
-//  Shift.swift
-//  
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
-
 import Foundation
 
+@L3 @K5
 public struct Shift: Identifiable, Codable, Hashable {
     public let id: UUID
-    public var workerIDs: [UUID]      // több worker
-    public var capacity: Int           // max létszám, default 1
+    public var workerIDs: [UUID]
+    public var capacity: Int
     public var startTime: Date
     public var endTime: Date
     public var zoneID: UUID?
@@ -42,6 +35,7 @@ public struct Shift: Identifiable, Codable, Hashable {
     
 }
 
+@L3 @K5
 public struct Schedule: Identifiable, Codable {
     public let id: UUID
     public let workerID: UUID
@@ -59,4 +53,3 @@ public struct Schedule: Identifiable, Codable {
         shifts.contains { $0.workerIDs.contains(workerID) && $0.overlaps(with: newShift) }
     }
 }
-

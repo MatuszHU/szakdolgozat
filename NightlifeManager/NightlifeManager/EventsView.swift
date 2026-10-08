@@ -1,15 +1,7 @@
-//
-//  EventsView.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import SwiftUI
 import SharedKit
 
-/// Events with their ticket offers and raffle (L11).
+@L11
 struct EventsView: View {
     @ObservedObject var viewModel: EventManagerViewModel
     let defaultLocation: String
@@ -59,6 +51,7 @@ struct EventsView: View {
     }
 }
 
+@L11 @M4 @M7
 private struct EventDetailView: View {
     @ObservedObject var viewModel: EventManagerViewModel
     let event: Event
@@ -133,6 +126,7 @@ private struct EventDetailView: View {
     }
 }
 
+@L11
 private struct NewEventSheet: View {
     let onSave: (String, String, Date, Date, Int) -> Void
     @State private var title = ""

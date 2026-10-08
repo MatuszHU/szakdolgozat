@@ -8,6 +8,7 @@ private func makeTicket(eventID: UUID, used: Bool = false, type: TicketType = .s
 }
 
 @Suite("ScannedCode")
+@K7 @K16
 struct ScannedCodeTests {
 
     @Test func recognisesZoneCode() {
@@ -33,6 +34,7 @@ struct ScannedCodeTests {
 }
 
 @Suite("Ticket admission")
+@K7 @M4
 struct TicketAdmissionTests {
 
     private let tonight = UUID()

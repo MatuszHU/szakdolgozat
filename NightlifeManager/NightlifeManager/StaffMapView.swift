@@ -1,20 +1,11 @@
-//
-//  StaffMapView.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import SwiftUI
 import SharedKit
 
-/// Floor plan with staff positions; selecting a worker shows their work area, position and tasks (L4).
+@L4
 struct StaffMapView: View {
     @StateObject private var viewModel: StaffMapViewModel
 
     init(venue: Venue, plan: ShiftPlan) {
-        // Check-ins come from the workers' phones, which needs CloudKit sync (N2); until then there are none.
         _viewModel = StateObject(wrappedValue: StaffMapViewModel(venue: venue, staff: plan.staff, checkIns: [],
                                                                  shifts: plan.shifts))
     }

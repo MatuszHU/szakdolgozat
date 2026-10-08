@@ -1,15 +1,7 @@
-//
-//  LocalTicketRepository.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 import SharedKit
 
-/// In-memory tickets and guests; used by tests and until CloudKit sync (N2) is implemented.
+@K7
 final class LocalTicketRepository: TicketRepository {
     var tickets: [Ticket]
     var guests: [GuestUser]

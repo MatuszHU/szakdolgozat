@@ -1,13 +1,7 @@
-//
-//  ContentView.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
 import SwiftUI
 import SharedKit
 
+@L2
 struct ContentView: View {
     enum Section: Hashable {
         case designer

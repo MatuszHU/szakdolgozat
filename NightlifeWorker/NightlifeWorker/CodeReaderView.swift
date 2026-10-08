@@ -1,15 +1,8 @@
-//
-//  CodeReaderView.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import SwiftUI
 import VisionKit
+import SharedKit
 
-/// Camera code reader for tickets and zone codes (K7). Verified manually on a device.
+@K7
 struct CodeReaderView: View {
     @ObservedObject var viewModel: CodeReaderViewModel
 
@@ -38,7 +31,7 @@ struct CodeReaderView: View {
     }
 }
 
-/// Wraps VisionKit's scanner and reports each newly recognised 1D/2D code once.
+@K7
 private struct BarcodeScanner: UIViewControllerRepresentable {
     let onCode: (String) -> Void
 

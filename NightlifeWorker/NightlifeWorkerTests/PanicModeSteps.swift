@@ -1,18 +1,10 @@
-//
-//  PanicModeSteps.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 07..
-//
-
-
 import XCTest
 import CucumberSwift
 import CucumberSwiftExpressions
 import SharedKit
 @testable import NightlifeWorker
 
-/// Records sent panic alerts instead of sending push notifications.
+@K8
 final class RecordingPanicAlertSender: PanicAlertSending {
     private(set) var sent: [(alert: PanicAlert, message: String, recipientIDs: [UUID])] = []
 
@@ -23,6 +15,7 @@ final class RecordingPanicAlertSender: PanicAlertSending {
 
 extension Cucumber {
 
+    @K8
     func setupPanicModeSteps() {
         var staff: [String: WorkerUser] = [:]
         var positions: [String: WorkerPosition] = [:]

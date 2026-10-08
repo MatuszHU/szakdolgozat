@@ -73,7 +73,7 @@ flowchart TB
 
 | Komponens | Felelősség |
 |-----------|------------|
-| **SharedKit** | A kliensek és a hitelesítési szolgáltatás közös adatmodellje és üzleti logikája (pl. műszakütközés, létszámkorlát, készletminimum). Felülettől független, ezért egységtesztekkel teljesen lefedhető. |
+| **SharedKit** | A követelmény-annotációk makrói (`RequirementMacros` makró-cél, swift-syntax; a makrók nem generálnak kódot, csak jelölnek). A kliensek és a hitelesítési szolgáltatás közös adatmodellje és üzleti logikája (pl. műszakütközés, létszámkorlát, készletminimum). Felülettől független, ezért egységtesztekkel teljesen lefedhető. |
 | **Kliensek** | MVVM felépítés: a nézetek (SwiftUI View) csak megjelenítenek, az állapotot és a műveleteket a ViewModellek kezelik, az üzleti szabályokat a SharedKit adja. |
 | **Szolgáltatásréteg** | A külső függőségek (hitelesítés, CloudKit, értesítések, kamera) protokollok mögött érhetők el, a ViewModellek ezeket konstruktoron keresztül kapják meg. Tesztben valódi szolgáltatás helyett tesztpéldány (fake) adható át, így a BDD-forgatókönyvek hálózat és Apple-fiók nélkül is futnak. |
 | **CloudKit** | Közös adattárolás és szinkronizáció; a nyilvános adatbázis a helyszín- és eseményadatoké, a változásokról (pl. pánikjelzés) feliratkozás alapú push értesítés érkezik. |

@@ -1,17 +1,9 @@
-//
-//  ZoneCodeSheetView.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import SwiftUI
 import AppKit
 import CoreImage.CIFilterBuiltins
 import SharedKit
 
-/// Printable QR codes of every zone, labelled with floor and zone name (L7, K16).
+@L7 @K16
 struct ZoneCodeSheetView: View {
     @ObservedObject var viewModel: VenueDesignerViewModel
 
@@ -42,6 +34,7 @@ struct ZoneCodeSheetView: View {
     }
 }
 
+@L7 @K16
 private struct CodeGrid: View {
     let codes: [ZoneCode]
 
@@ -62,6 +55,7 @@ private struct CodeGrid: View {
     }
 }
 
+@L7 @K16
 enum QRCodeImage {
     static func make(from text: String) -> NSImage? {
         let filter = CIFilter.qrCodeGenerator()

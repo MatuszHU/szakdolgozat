@@ -1,18 +1,10 @@
-//
-//  VenueDesignerSteps.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import XCTest
 import CucumberSwift
 import CucumberSwiftExpressions
 import SharedKit
 @testable import NightlifeManager
 
-/// Keeps the saved venue in memory instead of a file.
+@L7
 final class InMemoryVenueStore: VenueStoring {
     private(set) var saved: Venue?
 
@@ -25,6 +17,7 @@ final class InMemoryVenueStore: VenueStoring {
 
 extension Cucumber {
 
+    @L7
     func setupVenueDesignerSteps() {
         var viewModel: VenueDesignerViewModel!
         var codeSheet: [ZoneCode] = []

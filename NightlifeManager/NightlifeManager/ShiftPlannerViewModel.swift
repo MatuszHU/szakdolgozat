@@ -1,22 +1,14 @@
-//
-//  ShiftPlannerViewModel.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 import Combine
 import SharedKit
 
-/// Persists the staff and shift plan (production: CloudKit; until then a local file).
+@L3
 protocol ShiftPlanStoring {
     func load() -> ShiftPlan?
     func save(_ plan: ShiftPlan) throws
 }
 
-/// Staff, shifts, assignments and tasks (L3).
+@L3
 class ShiftPlannerViewModel: ObservableObject {
     @Published private(set) var plan: ShiftPlan
     @Published private(set) var errorMessage: String?
@@ -54,7 +46,6 @@ class ShiftPlannerViewModel: ObservableObject {
         apply { try $0.addTask(titled: title, toShift: shiftID, for: workerID) }
     }
 
-    /// Runs an edit on a copy; publishes and saves it only if it succeeds.
     private func apply(_ edit: (inout ShiftPlan) throws -> Void) {
         var edited = plan
         do {

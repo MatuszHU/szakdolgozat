@@ -1,13 +1,6 @@
-//
-//  Zone.swift
-//
-//
-//  Created by Majoros Máté on 2026. 10. 07..
-//
-
-
 import Foundation
 
+@L7
 public struct GridCell: Codable, Hashable, Sendable {
     public var row: Int
     public var column: Int
@@ -18,6 +11,7 @@ public struct GridCell: Codable, Hashable, Sendable {
     }
 }
 
+@L7 @K16
 public struct Zone: Identifiable, Codable, Hashable {
     public static let qrPrefix = "nightlife://zone/"
 
@@ -41,6 +35,7 @@ public struct Zone: Identifiable, Codable, Hashable {
     }
 }
 
+@K16
 public struct ZoneCheckIn: Identifiable, Codable {
     public let id: UUID
     public let workerID: UUID
@@ -55,6 +50,7 @@ public struct ZoneCheckIn: Identifiable, Codable {
     }
 }
 
+@K16 @N4
 public struct WorkerPosition {
     public enum CheckInError: Error, Equatable {
         case invalidCode
@@ -87,7 +83,7 @@ public struct WorkerPosition {
 }
 
 extension ZoneCheckIn {
-    /// Each worker's zone from their most recent check-in (K6, K16).
+    @K6 @L4
     public static func latestZones(from checkIns: [ZoneCheckIn]) -> [UUID: UUID] {
         var latest: [UUID: ZoneCheckIn] = [:]
         for checkIn in checkIns where latest[checkIn.workerID].map({ $0.timestamp < checkIn.timestamp }) ?? true {

@@ -1,18 +1,10 @@
-//
-//  ShiftPlanningSteps.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import XCTest
 import CucumberSwift
 import CucumberSwiftExpressions
 import SharedKit
 @testable import NightlifeManager
 
-/// Keeps the saved plan in memory instead of a file.
+@L3
 final class InMemoryShiftPlanStore: ShiftPlanStoring {
     private(set) var saved: ShiftPlan?
 
@@ -25,12 +17,12 @@ final class InMemoryShiftPlanStore: ShiftPlanStoring {
 
 extension Cucumber {
 
+    @L3
     func setupShiftPlanningSteps() {
         let evening = Calendar.current.date(from: DateComponents(year: 2026, month: 10, day: 10))!
         var zones: [Zone] = []
         var viewModel: ShiftPlannerViewModel!
 
-        /// Night-time clock: hours before noon belong to the next day.
         func time(_ hour: Int, _ minute: Int) -> Date {
             let day = hour < 12 ? Calendar.current.date(byAdding: .day, value: 1, to: evening)! : evening
             return Calendar.current.date(bySettingHour: hour, minute: minute, second: 0, of: day)!

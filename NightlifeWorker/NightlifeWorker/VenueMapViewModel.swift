@@ -1,16 +1,8 @@
-//
-//  VenueMapViewModel.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 import Combine
 import SharedKit
 
-/// Worker's venue map: floors, work area and colleagues' latest zones (K6).
+@K6
 class VenueMapViewModel: ObservableObject {
     let venue: Venue
     let workAreaZoneID: UUID?
@@ -37,14 +29,12 @@ class VenueMapViewModel: ObservableObject {
         colleagues.names(inZone: zoneID)
     }
 
-    /// Colleagues without a check-in to a zone of this venue.
     var colleaguesWithoutPosition: [WorkerUser] {
         colleagues.entries
             .filter { $0.positionZoneID.flatMap(venue.floor(containingZone:)) == nil }
             .map(\.worker)
     }
 
-    /// Colleague names per zone of the selected floor, for the floor plan.
     var zoneBadges: [UUID: [String]] {
         selectedFloor.map(colleagues.badges(on:)) ?? [:]
     }

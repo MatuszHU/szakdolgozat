@@ -1,14 +1,6 @@
-//
-//  ScannedCode.swift
-//
-//
-//  Created by Majoros Máté on 2026. 10. 07..
-//
-
-
 import Foundation
 
-/// The meaning of a code read by the worker's code reader (K7).
+@K7 @K16
 public enum ScannedCode: Equatable {
     case zone(UUID)
     case ticket(serialNumber: String)

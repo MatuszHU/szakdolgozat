@@ -1,10 +1,3 @@
-//
-//  NightlifeApp.swift
-//  Nightlife
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
 import SwiftUI
 import SwiftData
 

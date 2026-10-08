@@ -1,18 +1,9 @@
-//
-//  CommonSteps.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 07..
-//
-
-
 import XCTest
 import CucumberSwift
 import CucumberSwiftExpressions
 import SharedKit
 
-/// Shared scenario state ("World") for steps used by more than one feature.
-/// Every step text may be defined only once, so shared steps live here.
+@K16
 enum World {
     static var zones: [Zone] = []
 
@@ -27,6 +18,7 @@ enum World {
 
 extension Cucumber {
 
+    @K16
     func setupCommonSteps() {
         BeforeScenario { _ in
             World.zones = []

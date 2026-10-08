@@ -3,6 +3,7 @@ import Testing
 @testable import SharedKit
 
 @Suite("StaffMap")
+@K6 @L4
 struct StaffMapTests {
 
     private let tonight = Date(timeIntervalSince1970: 1_800_000_000)

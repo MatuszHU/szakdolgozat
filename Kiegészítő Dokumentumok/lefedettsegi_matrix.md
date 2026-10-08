@@ -3,6 +3,8 @@
  ----
 A mátrix a követelményspecifikáció funkcionális követelményeit köti össze a user storykkal, az elfogadási forgatókönyvekkel és az egységtesztekkel (ld. Tesztterv).
 
+A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotáltak (pl. `@K7`), így a mátrix minden sora a kódig követhető: `grep -rn "@K7" --include=*.swift`.
+
 **Állapot:** ✅ sikeres · ⚠️ részleges / javítandó · ❌ sikertelen · – még nincs
 
 ## Munkavállaló

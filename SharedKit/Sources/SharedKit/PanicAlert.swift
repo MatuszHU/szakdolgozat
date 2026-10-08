@@ -1,12 +1,6 @@
-//
-//  PanicAlert.swift
-//  
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
-
 import Foundation
 
+@K8 @N4
 public struct PanicAlert: Identifiable, Codable {
     public let id: UUID
     public let workerID: UUID
@@ -29,7 +23,7 @@ public struct PanicAlert: Identifiable, Codable {
 
 extension PanicAlert {
 
-    /// Staff members who receive the alert: everyone on shift with a notified role, except the sender (K8).
+    @K8
     public static func recipients(for sender: WorkerUser,
                                   among staff: [WorkerUser],
                                   notifying roles: Set<WorkerRole> = [.security]) -> [UUID] {
@@ -38,12 +32,12 @@ extension PanicAlert {
             .map(\.id)
     }
 
-    /// Notification text: name, role and last known zone of the worker (K8).
+    @K8
     public static func message(for worker: WorkerUser, zone: Zone?) -> String {
         "\(worker.name) (\(worker.role.displayName)) – \(zone?.name ?? "unknown location")"
     }
 
-    /// Records the first acknowledgement; later ones and the sender's own are ignored.
+    @K8
     public mutating func acknowledge(by responderID: UUID, at date: Date = Date()) -> Bool {
         guard !isAcknowledged, responderID != workerID else { return false }
         isAcknowledged = true

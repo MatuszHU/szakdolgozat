@@ -1,14 +1,8 @@
-//
-//  WelcomeView.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 06. 27..
-//
-
-
 import SwiftUI
 import AuthenticationServices
+import SharedKit
 
+@K1 @K2
 struct WelcomeView: View {
     @ObservedObject var viewModel: AuthViewModel
 

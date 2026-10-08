@@ -1,14 +1,8 @@
-//
-//  AuthViewModel.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 06. 22..
-//
-
 import Foundation
 import Combine
+import SharedKit
 
-/// Sign in with Apple, remembered sign-in and sign out (K1, K2, K4, K14).
+@K1 @K2 @K4 @K14
 class AuthViewModel: ObservableObject {
     @Published private(set) var isAuthenticated = false
     @Published private(set) var showWelcome = true
@@ -18,7 +12,6 @@ class AuthViewModel: ObservableObject {
         self.store = store
     }
 
-    /// Restores a remembered sign-in at launch.
     func checkAuthState() {
         isAuthenticated = store.load() != nil
         showWelcome = !isAuthenticated

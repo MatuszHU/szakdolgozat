@@ -3,6 +3,7 @@ import Testing
 @testable import SharedKit
 
 @Suite("Zone")
+@K16
 struct ZoneTests {
 
     @Test func qrPayloadContainsZoneID() {
@@ -27,6 +28,7 @@ struct ZoneTests {
 }
 
 @Suite("WorkerPosition")
+@K16 @N4
 struct WorkerPositionTests {
 
     private let bar = Zone(name: "Bar")

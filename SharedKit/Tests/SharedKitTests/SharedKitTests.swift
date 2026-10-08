@@ -12,6 +12,7 @@ private func makeShift(fromHour start: Double, toHour end: Double, capacity: Int
 }
 
 @Suite("Shift")
+@L3
 struct ShiftTests {
 
     @Test func overlappingShiftsOverlap() {
@@ -58,6 +59,7 @@ struct ShiftTests {
 }
 
 @Suite("Schedule")
+@L3
 struct ScheduleTests {
 
     private func schedule(with existing: Shift, assigned: Bool = true) -> Schedule {
@@ -84,6 +86,7 @@ struct ScheduleTests {
 }
 
 @Suite("PanicAlert")
+@K8
 struct PanicAlertTests {
 
     @Test func storesLastKnownZone() {
@@ -95,6 +98,7 @@ struct PanicAlertTests {
 }
 
 @Suite("Users")
+@L1 @L3
 struct UserTests {
 
     @Test func adminDefaultsToAppleSignIn() {

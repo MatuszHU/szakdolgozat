@@ -1,11 +1,3 @@
-//
-//  VenueMapSteps.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import XCTest
 import CucumberSwift
 import CucumberSwiftExpressions
@@ -14,6 +6,7 @@ import SharedKit
 
 extension Cucumber {
 
+    @K6
     func setupVenueMapSteps() {
         var venue = Venue(name: "Club Neon")
         var me: WorkerUser!

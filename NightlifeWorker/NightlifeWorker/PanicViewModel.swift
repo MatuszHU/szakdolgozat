@@ -1,20 +1,12 @@
-//
-//  PanicViewModel.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 07..
-//
-
-
 import Foundation
 import SharedKit
 
-/// Delivers a panic alert to the recipients' devices (production: CloudKit record + push notification).
+@K8
 protocol PanicAlertSending {
     func send(_ alert: PanicAlert, message: String, to recipientIDs: [UUID])
 }
 
-/// Sender side of panic mode (K8).
+@K8
 class PanicViewModel {
     private(set) var activeAlert: PanicAlert?
     private let worker: WorkerUser
@@ -42,7 +34,7 @@ class PanicViewModel {
     }
 }
 
-/// Recipient side of panic mode: received alerts and their acknowledgement (K8).
+@K8
 class PanicInboxViewModel {
     let user: WorkerUser
     private(set) var alerts: [PanicAlert] = []
@@ -59,7 +51,6 @@ class PanicInboxViewModel {
         }
     }
 
-    /// Returns the updated alert if this acknowledgement was accepted.
     func acknowledge(alertID: UUID, at date: Date = Date()) -> PanicAlert? {
         guard let index = alerts.firstIndex(where: { $0.id == alertID }),
               alerts[index].acknowledge(by: user.id, at: date) else { return nil }

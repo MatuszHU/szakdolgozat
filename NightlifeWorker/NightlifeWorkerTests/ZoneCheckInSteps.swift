@@ -1,11 +1,3 @@
-//
-//  ZoneCheckInSteps.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 07..
-//
-
-
 import XCTest
 import CucumberSwift
 import CucumberSwiftExpressions
@@ -14,6 +6,7 @@ import SharedKit
 
 extension Cucumber {
 
+    @K16
     func setupZoneCheckInSteps() {
         var viewModel: ZoneCheckInViewModel!
 

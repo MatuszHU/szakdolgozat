@@ -1,12 +1,8 @@
-//
-//  NightlifeWorkerApp.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 06. 14..
-//
 import SwiftUI
+import SharedKit
 
 @main
+@K1 @K4
 struct NightlifeWorkerApp: App {
     @StateObject private var authViewModel = AuthViewModel(store: KeychainCredentialStore())
 

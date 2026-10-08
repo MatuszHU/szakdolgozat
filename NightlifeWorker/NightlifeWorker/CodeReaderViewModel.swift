@@ -1,23 +1,15 @@
-//
-//  CodeReaderViewModel.swift
-//  NightlifeWorker
-//
-//  Created by Majoros Máté on 2026. 10. 07..
-//
-
-
 import Foundation
 import Combine
 import SharedKit
 
-/// Access to tickets and their holders (production: CloudKit).
+@K7 @M4
 protocol TicketRepository: AnyObject {
     func ticket(serialNumber: String) -> Ticket?
     func guest(id: UUID) -> GuestUser?
     func save(_ ticket: Ticket)
 }
 
-/// Routes every scanned code to ticket admission or zone check-in (K7, K16).
+@K7 @K16 @M4
 class CodeReaderViewModel: ObservableObject {
     enum Result: Equatable {
         case admitted(guestName: String, ticketType: String)

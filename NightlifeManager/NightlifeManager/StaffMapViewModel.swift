@@ -1,16 +1,8 @@
-//
-//  StaffMapViewModel.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 import Combine
 import SharedKit
 
-/// Administrator's floor plan with staff positions, work areas and tasks (L4).
+@L4
 class StaffMapViewModel: ObservableObject {
     struct Details: Equatable {
         let name: String
@@ -40,7 +32,6 @@ class StaffMapViewModel: ObservableObject {
         selectedFloorID = id
     }
 
-    /// Selects a worker and shows the floor they are on.
     func selectWorker(id: UUID) {
         selectedWorkerID = id
         if let zoneID = staffMap.entry(for: id)?.positionZoneID, let floor = venue.floor(containingZone: zoneID) {

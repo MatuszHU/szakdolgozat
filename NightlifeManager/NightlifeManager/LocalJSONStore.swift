@@ -1,15 +1,7 @@
-//
-//  LocalJSONStore.swift
-//  NightlifeManager
-//
-//  Created by Majoros Máté on 2026. 10. 08..
-//
-
-
 import Foundation
 import SharedKit
 
-/// Saves a value as JSON in Application Support, until CloudKit sync (N2) is available.
+@L3 @L7 @L11
 struct LocalJSONStore<Value: Codable> {
     private let fileURL: URL
 
