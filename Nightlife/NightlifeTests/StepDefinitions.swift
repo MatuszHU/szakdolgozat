@@ -15,5 +15,6 @@ extension Cucumber: @retroactive StepImplementation {
     @N8
     public func setupSteps() {
         setupGuestAuthenticationSteps()
+        setupVenueGuideSteps()
     }
 }

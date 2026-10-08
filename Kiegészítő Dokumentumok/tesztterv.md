@@ -57,7 +57,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * CloudKit-szinkronizáció több eszköz között (N2)
 * Apple Tárcába helyezett jegy (M4)
 * Helyszíntervező: zóna rajzolása húzással, POI lerakása, szintváltás, zónakódok nyomtatása (L7)
-* Térkép megjelenítése valós adatokkal (K6, L4; CloudKit után)
+* Térkép megjelenítése valós adatokkal (K6, L4, M5; CloudKit után)
 * Eseménykezelő: esemény létrehozása, jegytípus hozzáadása árral és kerettel, nyereményjáték meghirdetése (L11)
 * Műszaktervező: munkatárs felvétele, műszak létrehozása, hozzárendelés, feladat hozzáadása, a személyzeti térképen a munkaterület és a feladat megjelenése (L3, L4)
 * A macOS UI-tesztekhez a gépen engedélyezni kell az Xcode számára az akadálymentességi (Accessibility) hozzáférést; enélkül „Not authorized for performing UI testing actions” hibával leállnak
@@ -166,4 +166,6 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | SharedKitTests | 106/106 sikeres | A bejelentkezés logikája a SharedKitbe költözött; AuthenticationTests (6), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeTests (vendég) | 19/19 sikeres | Első vendég BDD: GuestAuthentication, 6 forgatókönyv (M1, M2, M3, M6); mutációs ellenőrzés OK. |
 | 2026-10-08 | – | NightlifeWorkerTests | 147/147 BDD + 2/2 Keychain-teszt sikeres | A Worker a közös SharedKit-bejelentkezést használja; a forgatókönyvek változatlanul sikeresek (regresszió OK). |
+| 2026-10-08 | – | SharedKitTests | 112/112 sikeres | M5: GuestVenueTests (6 új), előbb sikertelenek. |
+| 2026-10-08 | – | NightlifeTests (vendég) | 47/47 sikeres | M5: VenueGuide, 5 forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

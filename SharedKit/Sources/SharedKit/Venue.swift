@@ -1,7 +1,7 @@
 import Foundation
 
 @L7
-public enum POIKind: Codable, Hashable {
+public enum POIKind: Codable, Hashable, Sendable {
     case bar
     case toilet
     case stage
@@ -173,5 +173,37 @@ public struct Venue: Identifiable, Codable, Hashable {
                 .sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
                 .map { ZoneCode(floorName: floor.name, zoneName: $0.name, payload: $0.qrPayload) }
         }
+    }
+}
+
+extension POIKind {
+    @M5
+    public var isGuestRelevant: Bool {
+        if case .custom = self { return false }
+        return true
+    }
+}
+
+extension Floor {
+    @M5
+    public var forGuests: Floor {
+        var floor = self
+        floor.zones = []
+        floor.pointsOfInterest = pointsOfInterest.filter(\.kind.isGuestRelevant)
+        return floor
+    }
+}
+
+extension Venue {
+    @M5
+    public var forGuests: Venue {
+        var venue = self
+        venue.floors = floors.map(\.forGuests)
+        return venue
+    }
+
+    @M5 @K6
+    public var groundFloor: Floor? {
+        floors.min { (abs($0.level), $0.level) < (abs($1.level), $1.level) }
     }
 }
