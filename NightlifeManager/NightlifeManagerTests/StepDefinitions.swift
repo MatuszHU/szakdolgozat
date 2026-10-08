@@ -19,5 +19,6 @@ extension Cucumber: @retroactive StepImplementation {
         setupShiftPlanningSteps()
         setupEventManagementSteps()
         setupAdminAccessSteps()
+        setupStockManagementSteps()
     }
 }

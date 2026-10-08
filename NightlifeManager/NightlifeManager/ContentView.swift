@@ -11,6 +11,7 @@ struct ContentView: View {
         case staffMap
         case shiftPlanner
         case events
+        case inventory
         case admins
         case settings
     }
@@ -27,6 +28,10 @@ struct ContentView: View {
         let store = LocalJSONStore<EventCatalog>(fileName: "events.json")
         return EventManagerViewModel(catalog: store.load() ?? EventCatalog(), store: store)
     }()
+    @StateObject private var inventory: InventoryViewModel = {
+        let store = LocalJSONStore<Inventory>(fileName: "inventory.json")
+        return InventoryViewModel(inventory: store.load() ?? Inventory(), store: store)
+    }()
     @State private var section: Section? = .designer
 
     var body: some View {
@@ -37,6 +42,7 @@ struct ContentView: View {
                 Label("Személyzet térképe", systemImage: "person.2.badge.gearshape").tag(Section.staffMap)
                 Label("Műszakok", systemImage: "calendar.badge.clock").tag(Section.shiftPlanner)
                 Label("Események", systemImage: "ticket").tag(Section.events)
+                Label("Készlet", systemImage: "shippingbox").tag(Section.inventory)
                 Label("Adminisztrátorok", systemImage: "person.2").tag(Section.admins)
                 Label("Beállítások", systemImage: "gearshape").tag(Section.settings)
             }
@@ -58,6 +64,7 @@ struct ContentView: View {
             case .staffMap: StaffMapView(venue: designer.venue, plan: planner.plan).id([designer.venue.hashValue, planner.plan.hashValue])
             case .shiftPlanner: ShiftPlannerView(viewModel: planner, venue: designer.venue)
             case .events: EventsView(viewModel: events, defaultLocation: designer.venue.name)
+            case .inventory: InventoryView(viewModel: inventory)
             case .admins: AdminsView(session: session)
             case .settings: AdminSettingsView(session: session)
             default: VenueDesignerView(viewModel: designer)

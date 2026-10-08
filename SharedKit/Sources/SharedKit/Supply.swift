@@ -1,14 +1,14 @@
 import Foundation
 
 @K17 @L10
-public enum SupplyRequestStatus: Codable {
+public enum SupplyRequestStatus: Codable, Hashable, Sendable {
     case pending
     case approved
     case rejected
 }
 
 @L10
-public struct SupplyItem: Identifiable, Codable {
+public struct SupplyItem: Identifiable, Codable, Hashable {
     public let id: UUID
     public var name: String
     public var category: String
@@ -31,7 +31,7 @@ public struct SupplyItem: Identifiable, Codable {
 }
 
 @K17 @L10
-public struct SupplyRequest: Identifiable, Codable {
+public struct SupplyRequest: Identifiable, Codable, Hashable {
     public let id: UUID
     public let workerID: UUID
     public let itemID: UUID

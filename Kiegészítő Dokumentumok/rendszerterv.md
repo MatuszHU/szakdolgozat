@@ -98,6 +98,7 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `Ticket` | ✅ | eventID, guestID, ticketType, price, serialNumber, isUsed | → `Event` |
 | `PanicAlert` | ✅ | workerID, timestamp, zoneID, isAcknowledged, acknowledgedByID; szabályok: címzettek (jogosult szerepkör, a küldő nélkül), üzenet (név, munkakör, zóna), nyugtázás (csak az első, a sajátját nem) (K8) | → `Zone` |
 | `SupplyItem` | ✅ | name, category, quantity, unit, minimumQuantity | |
+| `Inventory` | ✅ | items (név szerint), requests; szabályok: egyedi név, nem negatív mennyiség; alacsony készlet = minimum alatt; jóváhagyás levonja a kért mennyiséget, a készletnél nagyobb kérés nem hagyható jóvá; csak függő kérés bírálható el (L10, K17) | → `SupplyItem`, → `SupplyRequest` |
 | `SupplyRequest` | ✅ | workerID, itemID, quantity, status | → `SupplyItem` |
 | `Venue` | ✅ | name, floors (szint szerint rendezve); szabály: egyedi szintszám, pozitív rácsméret; `zoneCodes`, `floor(containingZone:)` (L7) | → `Floor` |
 | `Floor` | ✅ | name, level, width, height, zones, pointsOfInterest; szabályok: a zóna a rácson belül, nem fedhet másikat, egyedi név; egy cellán egy POI (L7) | → `Zone`, → `POI` |

@@ -60,6 +60,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * Jegyvásárlás és a „Jegyeim” QR-kódjának beolvasása a munkavállalói kódolvasóval (M4, K7)
 * Helyszíntervező: zóna rajzolása húzással, POI lerakása, szintváltás, zónakódok nyomtatása (L7)
 * Térkép megjelenítése valós adatokkal (K6, L4, M5; CloudKit után)
+* Készlet: tétel felvétele, mennyiség módosítása, alacsony készlet figyelmeztetés, kérés jóváhagyása és elutasítása (L10)
 * Eseménykezelő: esemény létrehozása, jegytípus hozzáadása árral és kerettel, nyereményjáték meghirdetése (L11)
 * Műszaktervező: munkatárs felvétele, műszak létrehozása, hozzárendelés, feladat hozzáadása, a személyzeti térképen a munkaterület és a feladat megjelenése (L3, L4)
 * A macOS UI-tesztekhez a gépen engedélyezni kell az Xcode számára az akadálymentességi (Accessibility) hozzáférést; enélkül „Not authorized for performing UI testing actions” hibával leállnak
@@ -178,4 +179,6 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | 5d2089a | CI (GitHub Actions), `l1-admin-access` | Sikeres | SharedKit zöld; az app-jobok SDK hiányában nem futtathatók. |
 | 2026-10-08 | – | SharedKitTests | 146/146 sikeres | L6: CompanySettingsTests (6 új), köztük a régebbi `admins.json` adatvesztés nélküli betöltése. |
 | 2026-10-08 | – | NightlifeManagerTests | sikeres | L6: CompanySettings, 4 forgatókönyv; mutációs ellenőrzés OK. |
+| 2026-10-08 | – | SharedKitTests | 156/156 sikeres | L10: InventoryTests (10 új), előbb sikertelenek. |
+| 2026-10-08 | – | NightlifeManagerTests | sikeres | L10: StockManagement, 7 forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

@@ -42,7 +42,7 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 | L7 | Helyszíntervező | M | VenueDesigner | VenueDesigner: 8 forgatókönyv (Manager) | SharedKit: FloorTests, VenueTests, FloorPlanGeometryTests | ✅ |
 | L8 | Kérelmek | S | – | – | – | – |
 | L9 | Dokumentáció és útmutató | C | – | – | – | – |
-| L10 | Készletkezelés | S | – | – | – | – |
+| L10 | Készletkezelés | S | StockManagement | StockManagement: 7 forgatókönyv (Manager) | SharedKit: InventoryTests | ✅ |
 | L11 | Eseménykezelés | M | EventManagement | EventManagement: 9 forgatókönyv (Manager) | SharedKit: EventCatalogTests | ✅ |
 
 ## Vendég
@@ -66,9 +66,9 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 | | Összes | M | Lefedett (✅) | Részleges (⚠️) |
 |---|---|---|---|---|
 | Munkavállaló | 17 | 9 | 4 | 4 |
-| Adminisztrátor | 11 | 6 | 6 | 2 |
+| Adminisztrátor | 11 | 6 | 7 | 2 |
 | Vendég | 11 | 5 | 4 | 2 |
-| **Összesen** | **39** | **20** | **14** | **8** |
+| **Összesen** | **39** | **20** | **15** | **8** |
 
 ## Nyitott tételek
 
@@ -80,6 +80,7 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 * **M5:** a vendég térkép logikája (a vendég csak a neki szóló POI-kat látja: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár; az egyéni pontok és a személyzeti zónák rejtettek; a földszinten nyílik; szintváltás; tervrajz nélkül tájékoztató üzenet) és felülete kész. A tervrajz eljuttatása a vendég appba a CloudKittől (N2) függ.
 * **K6:** a térkép logikája (szintválasztás, a munkaterület kiemelése, a munkatársak a legutóbbi zóna-bejelentkezésük zónájában, a be nem jelentkezettek külön listában) és a felülete (`VenueMapView`, a közös `FloorPlanView`-val) készen van; a helyszín és a bejelentkezések valós adatforrása (CloudKit, N2) hátravan, addig a térkép üres állapotot mutat.
 * **L4:** a személyzeti térkép logikája (a munkatársak a legutóbbi zóna-bejelentkezésük zónájában; kiválasztáskor az aktív műszakból a munkaterület és a saját feladatok, valamint az aktuális pozíció; a be nem jelentkezettek listája; szintváltás) és a felülete (`StaffMapView`) készen van. A munkatársak, műszakok és bejelentkezések a Macre CloudKit (N2) nélkül nem jutnak el, addig a lista üres. A közös számítás (`StaffMap`) a K6-tal megosztott.
+* **L10:** kész: készlettételek (egyedi név, nem negatív mennyiség és minimum), a minimum alatti tételek kiemelése és figyelmeztetés, a készletkérések jóváhagyása (levonás a készletből; nagyobb kérés a készletnél nem hagyható jóvá) és elutasítása; helyi JSON-mentés. A kérések a munkavállalói appból (K17) CloudKit-szinkronnal (N2) érkeznek majd.
 * **L11:** kész (események címmel, leírással, időponttal, helyszínnel és férőhellyel; jegytípusok árral és opcionális kerettel, a keretek összege nem lépheti túl a férőhelyet; nyereményjáték nyereménnyel; helyi JSON-mentés). Az események eljuttatása a vendég appba (M4, M7) a CloudKittől (N2) függ.
 * **L7:** kész (rácsszerkesztő a macOS appban, zónák, POI-k, szintek, nyomtatható zónakódok, helyi JSON-mentés). A tervrajz eljuttatása a munkavállalói és vendég appba a CloudKittől (N2) függ.
 * **K7:** a kódfelismerés (jegy, zóna, ismeretlen kód), a beléptetés szabálya (csak a mai eseményre, csak egyszer) és a kamerás felület (VisionKit, kamerahasználati engedély, kezdőképernyő-link) készen van; a jegyek és zónák valós adatforrása (CloudKit, N2) és a parkolójegy-érvényesítés (nincs specifikálva) hátravan. A kamerás olvasás eszközön, manuálisan ellenőrizendő. Az M4 beléptetési része (`@M4`) ezzel előkészítve.
