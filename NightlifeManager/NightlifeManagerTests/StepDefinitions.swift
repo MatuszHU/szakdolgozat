@@ -22,5 +22,6 @@ extension Cucumber: @retroactive StepImplementation {
     public func setupSteps() {
         setupVenueDesignerSteps()
         setupStaffMapSteps()
+        setupShiftPlanningSteps()
     }
 }

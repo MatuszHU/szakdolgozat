@@ -63,29 +63,6 @@ extension Cucumber: @retroactive StepImplementation {
             XCTAssertTrue(viewModel.showWelcome)
         }
 
-
-        var shiftViewModel: ShiftConflictViewModel!
-
-        Given("the worker has a shift from {int}:{int} to {int}:{int}") { match, _ in
-            let time = try match.allParameters(\.int)
-            shiftViewModel = ShiftConflictViewModel(workerID: UUID())
-            shiftViewModel.addShift(startHour: time[0], startMinute: time[1], endHour: time[2], endMinute: time[3])
-        }
-
-        When("a shift from {int}:{int} to {int}:{int} is assigned") { match, _ in
-            let time = try match.allParameters(\.int)
-            shiftViewModel.addShift(startHour: time[0], startMinute: time[1], endHour: time[2], endMinute: time[3])
-        }
-
-        Then("a shift conflict error is shown") { _, _ in
-            XCTAssertTrue(shiftViewModel.conflictDetected)
-        }
-
-        Then("the shift is assigned successfully") { _, _ in
-            XCTAssertFalse(shiftViewModel.conflictDetected)
-            XCTAssertNotNil(shiftViewModel.lastAddedShift)
-        }
-
         setupCommonSteps()
         setupZoneCheckInSteps()
         setupPanicModeSteps()

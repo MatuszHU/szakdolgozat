@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Shift: Identifiable, Codable {
+public struct Shift: Identifiable, Codable, Hashable {
     public let id: UUID
     public var workerIDs: [UUID]      // több worker
     public var capacity: Int           // max létszám, default 1

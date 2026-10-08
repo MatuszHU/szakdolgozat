@@ -102,6 +102,7 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `POI` | ✅ | name, kind (`POIKind`: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár, egyéni), cell | → `Floor` |
 | `ZoneCheckIn` | ✅ | workerID, zoneID, timestamp | → `WorkerUser`, → `Zone` |
 | `WorkerPosition` | ✅ | workerID, isOnShift, currentZoneID, checkIns; szabályok: csak műszak alatt, csak ismert zónába (K16, N4) | → `Zone`, → `ZoneCheckIn` |
+| `ShiftPlan` | ✅ | staff, shifts; szabályok: a műszak vége a kezdés után, létszám legalább 1, betelt műszakra és átfedő műszakra nincs hozzárendelés, feladat csak a műszakon lévő munkatársnak, eltávolításkor a feladatokról is lekerül (L3) | → `WorkerUser`, `Shift`, `Task` |
 | `StaffMap` | ✅ | a munkatársak pozíciója (legutóbbi zóna-bejelentkezés), munkaterülete és saját feladatai az adott időpontban aktív műszakból; a K6 és az L4 közös számítása | → `WorkerUser`, `ZoneCheckIn`, `Shift`, `Task` |
 | `Raffle` | 🆕 | eventID, title, description, participants | → `Event` |
 | `CompanySettings` | 🆕 | companyDomain | |
@@ -145,7 +146,7 @@ A CloudKit nem biztosít saját jelszavas fiókkezelést, ezért a jelszavas bej
 * Minden szint egy `gridWidth × gridHeight` méretű rács; a zónák rácscellák halmazai, a POI-k egy-egy cellán helyezkednek el.
 * A megjelenítés a SharedKit `FloorPlanView` nézetével (SwiftUI Canvas) történik, amelyet a szerkesztő (L7) és a térképek (K6, később L4, M5) közösen használnak; MapKit nem szükséges.
 * A szerkesztőben a zóna húzással (téglalap), a POI kattintással kerül a rácsra; a hibás szerkesztés (átfedés, rácson kívül, ismétlődő név) elutasításra kerül, és a helyszín változatlan marad.
-* A helyszín mentése a `VenueStoring` protokoll mögött történik; amíg nincs CloudKit (N2), a `LocalVenueStore` JSON-fájlba ment (Application Support).
+* A helyszín és a műszakterv mentése a `VenueStoring`, illetve a `ShiftPlanStoring` protokoll mögött történik; amíg nincs CloudKit (N2), a közös `LocalJSONStore` JSON-fájlba ment (Application Support: `venue.json`, `shift-plan.json`). A személyzeti térkép (L4) a műszakterv munkatársait és műszakjait használja.
 * A zónakódlap a zónák QR-kódjait szint és név szerint rendezve, „Szint – Zóna” felirattal, nyomtatható formában jeleníti meg.
 * A zóna QR-kódjának tartalma a zóna azonosítója egy alkalmazásspecifikus formátumban (pl. `nightlife://zone/<zoneID>`); a kódolvasó (K7) a formátum alapján különbözteti meg a zóna-, jegy- és egyéb kódokat.
 * A jegyek QR-kódja a jegy sorozatszámát tartalmazza (`nightlife://ticket/<sorozatszám>`); beléptetéskor a rendszer ellenőrzi, hogy a jegy létezik-e, a megfelelő eseményhez tartozik-e, és nincs-e már felhasználva (`Ticket.admit(toEvent:)`).

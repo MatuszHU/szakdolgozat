@@ -1,7 +1,7 @@
 # Shift Conflict
 
 **Requirements:** L3
-**Feature file:** [`NightlifeWorker/NightlifeWorkerTests/Features/ShiftConflict.feature`](../../../NightlifeWorker/NightlifeWorkerTests/Features/ShiftConflict.feature)
+**Feature file:** [`NightlifeManager/NightlifeManagerTests/Features/ShiftConflict.feature`](../../../NightlifeManager/NightlifeManagerTests/Features/ShiftConflict.feature)
 
 ## User Story
 As an administrator

@@ -1,24 +1,24 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (L4 kész)
+> Utolsó frissítés: 2026-10-08 (L3 műszaktervezés kész)
 
 ## 1. Hol tartunk most
 
-**Ágak:** `k6-l7-venue-map` (pusholva, CI 37803385402 — a Manager-job a GitHub-kapacitás miatt sokáig sorban állt; ha zöld: fast-forward a `master`-be) → erre épül az `l4-staff-map`.
-**L4 kész** (⚠️: adat CloudKit nélkül nincs a Macen).
-- SharedKit `StaffMap.swift` (pozíció = legutóbbi check-in, munkaterület + saját feladatok = aktív műszak), 6 új teszt → 67/67
-- Manager: `StaffMap.feature` (4), `StaffMapSteps.swift`, `StaffMapViewModel`, `StaffMapView` (oldalsáv: „Személyzet térképe”) → Manager BDD 61/61
-- A Worker `VenueMapViewModel` a közös `StaffMap`-re átállítva → Worker BDD 149/149 (regresszió OK)
-- Mutációs ellenőrzés OK.
+**Aktív ág:** `l3-shift-planning` (a `master` @ `8f27ea8`-ról). **L3 (műszaktervezés) kész** — ⚠️ marad: további adminok felvétele jogosultsági szinttel az L1-gyel együtt.
+- SharedKit `ShiftPlan.swift` (staff, shifts, szabályok), `Shift.freePlaces`; a modellek `Hashable`-k → 84/84
+- Manager: `ShiftPlanning.feature` (8), `ShiftConflict.feature` (4, a Workerből átköltöztetve), `ShiftPlanningSteps.swift`, `ShiftPlannerViewModel` + `ShiftPlanStoring`, `ShiftPlannerView` (oldalsáv: „Műszakok”), közös `LocalJSONStore<Value>` (venue.json, shift-plan.json) → Manager BDD 127/127
+- L4: a `StaffMapView` a műszakterv munkatársait és műszakjait kapja (bejelentkezések továbbra sincsenek CloudKit nélkül).
+- Worker: a `ShiftConflictViewModel` és a műszak-lépések törölve → Worker BDD 137/137.
 
-**Következő jelöltek (fiók nélkül):** L3 többi része (műszak létrehozása, munkavállaló hozzárendelése, feladatkiosztás az admin appban — erre épül az L4 adata), L11 eseménykezelés, K5 beosztások, K14 kijelentkezés, M5 vendég térkép.
+**Következő jelöltek (fiók nélkül):** K5 beosztások (a dolgozó saját műszakjai — a `ShiftPlan.shifts(for:)` kész hozzá, de az adat CloudKit nélkül nem jut el), L11 eseménykezelés, K14 kijelentkezés, M5 vendég térkép, L1+L3 adminok (Vapor nélkül csak a modell).
 
 ## 2. Git / push állapot
 
 - 2026-10-08: a push-jog rendben (a felhasználó javította a tokent). Pusholva: `k16-zone-checkin`, `k8-panic-mode`, `k7-code-reader` (ez utóbbin csak a STATUS commit). A `master` fast-forward → `04fdd15` (K16 + Cucumber-próba + Cucumber expression + K8 + STATUS), pusholva.
 - A workflow minden ágra (`**`) pushra és a `master`-re nyitott PR-ra fut (2026-10-08 óta).
 - 2026-10-08: K7 (`64ced58`) a `k7-code-reader` ágon zöld CI után (run 37799064412) fast-forwarddal a `master`-be került. `master` = `64ced58`.
+- 2026-10-08: L7 + K6 + L4 + CI-javítás (`8f27ea8`) zöld CI után (run 37804152553) fast-forwarddal a `master`-be. `master` = `8f27ea8`. A Manager CI-job a várt módon nem futtatható (Xcode 26.6, macOS 27 SDK nincs).
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
 - Az origin-on van egy `web` ág (Svelte webes felület, „log in page”) — nem Claude-é, nem nyúlni hozzá.
@@ -30,8 +30,8 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → 67/67
-- Worker BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 149/149 (K6 után)
+- SharedKit: `cd SharedKit && swift test` → 84/84
+- Worker BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 137/137 (L3 után; a ShiftConflict átkerült a Managerbe)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
 - UI tesztek: 2/2 (lassú, ~45 s)
 

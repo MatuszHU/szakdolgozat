@@ -13,9 +13,10 @@ import SharedKit
 struct StaffMapView: View {
     @StateObject private var viewModel: StaffMapViewModel
 
-    init(venue: Venue) {
-        // Until CloudKit sync (N2) there are no staff, shifts or check-ins on the Mac.
-        _viewModel = StateObject(wrappedValue: StaffMapViewModel(venue: venue, staff: [], checkIns: [], shifts: []))
+    init(venue: Venue, plan: ShiftPlan) {
+        // Check-ins come from the workers' phones, which needs CloudKit sync (N2); until then there are none.
+        _viewModel = StateObject(wrappedValue: StaffMapViewModel(venue: venue, staff: plan.staff, checkIns: [],
+                                                                 shifts: plan.shifts))
     }
 
     var body: some View {
@@ -57,7 +58,7 @@ struct StaffMapView: View {
                                 set: { if let id = $0 { viewModel.selectWorker(id: id) } })) {
             Section("Munkatársak") {
                 if viewModel.entries.isEmpty {
-                    Text("Nincs műszakban lévő munkatárs.").foregroundStyle(.secondary)
+                    Text("Még nincs munkatárs a műszaktervben.").foregroundStyle(.secondary)
                 }
                 ForEach(viewModel.entries, id: \.worker.id) { entry in
                     Label(entry.worker.name,

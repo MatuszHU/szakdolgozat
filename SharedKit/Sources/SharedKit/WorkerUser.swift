@@ -22,14 +22,14 @@ public enum WorkerRole: Codable, Hashable {
     }
 }
 
-public enum PayPeriod: Codable {
+public enum PayPeriod: Codable, Hashable {
     case weekly
     case biweekly
     case monthly
     case custom(Int)
 }
 
-public struct WorkerUser: Identifiable, Codable {
+public struct WorkerUser: Identifiable, Codable, Hashable {
     public let id: UUID
     public let appleID: String
     public var name: String

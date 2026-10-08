@@ -33,7 +33,7 @@ A mátrix a követelményspecifikáció funkcionális követelményeit köti ös
 |----|-----|------|------------|------------------|-------------|---------|
 | L1 | Bejelentkezés | M | – | – | – | – |
 | L2 | Főképernyő | M | – | – | – | – |
-| L3 | Felhasználó- és beosztáskezelő | M | ShiftConflict | ShiftConflict: 4 forgatókönyv (csak az ütközés-ellenőrzés) | SharedKit: ShiftTests, ScheduleTests | ⚠️ |
+| L3 | Felhasználó- és beosztáskezelő | M | ShiftConflict, ShiftPlanning | ShiftConflict: 4, ShiftPlanning: 8 forgatókönyv (Manager) | SharedKit: ShiftTests, ScheduleTests, ShiftPlanTests | ⚠️ |
 | L4 | Térkép | M | StaffMap | StaffMap: 4 forgatókönyv (Manager) | SharedKit: StaffMapTests | ⚠️ |
 | L5 | Kijelentkezés | M | – | – | – | – |
 | L6 | Beállítások | S | – | – | – | – |
@@ -70,7 +70,7 @@ A mátrix a követelményspecifikáció funkcionális követelményeit köti ös
 
 ## Nyitott tételek
 
-* **L3:** az ütközés-ellenőrzés kész (BDD + TDD), de a követelmény többi része (adminisztrátorok felvétele, műszak létrehozása, létszámkorlát a felületen, feladatkiosztás) még nincs megvalósítva; a forgatókönyvek jelenleg a munkavállalói alkalmazás tesztcéljában futnak, az adminisztrátori alkalmazás elkészültével oda kerülnek át.
+* **L3:** a munkatársak felvétele, a műszakok létrehozása (idő, zóna, létszám), a hozzárendelés (betelt műszak, ütközés, ismételt hozzárendelés elutasítása), az eltávolítás és a feladatkiosztás kész (BDD + TDD + felület a Manager appban, helyi JSON-mentés). Az ütközési forgatókönyvek átkerültek a Manager tesztcéljába. Hátravan: **további adminisztrátorok felvétele jogosultsági szinttel** — ez az L1-gyel (jelszavas belépés, Vapor) együtt készül.
 * **K6:** a térkép logikája (szintválasztás, a munkaterület kiemelése, a munkatársak a legutóbbi zóna-bejelentkezésük zónájában, a be nem jelentkezettek külön listában) és a felülete (`VenueMapView`, a közös `FloorPlanView`-val) készen van; a helyszín és a bejelentkezések valós adatforrása (CloudKit, N2) hátravan, addig a térkép üres állapotot mutat.
 * **L4:** a személyzeti térkép logikája (a munkatársak a legutóbbi zóna-bejelentkezésük zónájában; kiválasztáskor az aktív műszakból a munkaterület és a saját feladatok, valamint az aktuális pozíció; a be nem jelentkezettek listája; szintváltás) és a felülete (`StaffMapView`) készen van. A munkatársak, műszakok és bejelentkezések a Macre CloudKit (N2) nélkül nem jutnak el, addig a lista üres. A közös számítás (`StaffMap`) a K6-tal megosztott.
 * **L7:** kész (rácsszerkesztő a macOS appban, zónák, POI-k, szintek, nyomtatható zónakódok, helyi JSON-mentés). A tervrajz eljuttatása a munkavállalói és vendég appba a CloudKittől (N2) függ.
