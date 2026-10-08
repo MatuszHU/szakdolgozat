@@ -5,7 +5,7 @@
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `k14-sign-out` (a `master` @ `2d1ea83`-ról). **K14 kész** ✅ (és a K4 valódi tartalmat kapott).
+**Aktív ág:** `k14-sign-out` = `master` @ `5066a2a`. **K14 kész** ✅ (és a K4 valódi tartalmat kapott).
 - Worker: `CredentialStoring` + `KeychainCredentialStore`, `AuthViewModel(store:)` (`checkAuthState`, `signInWithApple(userID:)`, `signOut()`), `WelcomeView` az Apple user ID-t adja át, az app induláskor `checkAuthState`, `HomeView`-ban kijelentkezés gomb megerősítéssel.
 - Tesztek: `SignOut.feature` (3), `SignOutSteps.swift`, `TestDoubles.swift` (`InMemoryCredentialStore`), `AuthViewModelTests.swift` (Swift Testing, 7, köztük valódi Keychain-teszt) → Worker BDD 147/147, mutációs ellenőrzés OK.
 
@@ -19,6 +19,7 @@
 - 2026-10-08: L7 + K6 + L4 + CI-javítás (`8f27ea8`) zöld CI után (run 37804152553) fast-forwarddal a `master`-be. `master` = `8f27ea8`. A Manager CI-job a várt módon nem futtatható (Xcode 26.6, macOS 27 SDK nincs).
 - 2026-10-08: L3 műszaktervezés (`8b635da`) zöld CI után (run 37805409167) fast-forwarddal a `master`-be. `master` = `8b635da`.
 - 2026-10-08: L11 (`2d1ea83`) zöld CI után (run 37807232776) fast-forwarddal a `master`-be. `master` = `2d1ea83`.
+- 2026-10-08: K14 (`5066a2a`) zöld CI után (run 37827705628) fast-forwarddal a `master`-be. `master` = `5066a2a`.
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
 - Az origin-on van egy `web` ág (Svelte webes felület, „log in page”) — nem Claude-é, nem nyúlni hozzá.
