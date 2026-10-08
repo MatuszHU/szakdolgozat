@@ -176,3 +176,33 @@ struct FloorPlanGeometryTests {
         #expect(kinds.allSatisfy { !$0.symbolName.isEmpty })
     }
 }
+
+@Suite("Map positions")
+struct MapPositionTests {
+
+    @Test func latestCheckInWinsPerWorker() {
+        let anna = UUID(), bela = UUID(), bar = UUID(), entrance = UUID()
+        let base = Date(timeIntervalSince1970: 1_800_000_000)
+        let checkIns = [
+            ZoneCheckIn(workerID: anna, zoneID: bar, timestamp: base.addingTimeInterval(120)),
+            ZoneCheckIn(workerID: anna, zoneID: entrance, timestamp: base),
+            ZoneCheckIn(workerID: bela, zoneID: entrance, timestamp: base.addingTimeInterval(60)),
+        ]
+        #expect(ZoneCheckIn.latestZones(from: checkIns) == [anna: bar, bela: entrance])
+    }
+
+    @Test func noCheckInsMeansNoPositions() {
+        #expect(ZoneCheckIn.latestZones(from: []).isEmpty)
+    }
+
+    @Test func findsTheFloorOfAZone() throws {
+        var venue = Venue(name: "Club Neon")
+        let ground = try venue.addFloor(named: "Ground floor", level: 0, width: 4, height: 4)
+        let gallery = try venue.addFloor(named: "Gallery", level: 1, width: 4, height: 4)
+        var lounge: Zone!
+        try venue.editFloor(id: gallery.id) { lounge = try $0.addZone(named: "Lounge", cells: [GridCell(row: 0, column: 0)]) }
+        #expect(venue.floor(containingZone: lounge.id)?.id == gallery.id)
+        #expect(venue.floor(containingZone: UUID()) == nil)
+        #expect(venue.floors.first?.id == ground.id)
+    }
+}

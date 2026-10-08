@@ -96,10 +96,10 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `PanicAlert` | ✅ | workerID, timestamp, zoneID, isAcknowledged, acknowledgedByID; szabályok: címzettek (jogosult szerepkör, a küldő nélkül), üzenet (név, munkakör, zóna), nyugtázás (csak az első, a sajátját nem) (K8) | → `Zone` |
 | `SupplyItem` | ✅ | name, category, quantity, unit, minimumQuantity | |
 | `SupplyRequest` | ✅ | workerID, itemID, quantity, status | → `SupplyItem` |
-| `Venue` | 🆕 | name, address | → `Floor` |
-| `Floor` | 🆕 | name, level, gridWidth, gridHeight | → `Zone`, → `POI` |
+| `Venue` | ✅ | name, floors (szint szerint rendezve); szabály: egyedi szintszám, pozitív rácsméret; `zoneCodes`, `floor(containingZone:)` (L7) | → `Floor` |
+| `Floor` | ✅ | name, level, width, height, zones, pointsOfInterest; szabályok: a zóna a rácson belül, nem fedhet másikat, egyedi név; egy cellán egy POI (L7) | → `Zone`, → `POI` |
 | `Zone` | ✅ | name, cells (`GridCell` halmaz), qrPayload (`nightlife://zone/<id>`) | → `Floor` |
-| `POI` | 🆕 | name, type (bár, mosdó, színpad…), cell | → `Floor` |
+| `POI` | ✅ | name, kind (`POIKind`: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár, egyéni), cell | → `Floor` |
 | `ZoneCheckIn` | ✅ | workerID, zoneID, timestamp | → `WorkerUser`, → `Zone` |
 | `WorkerPosition` | ✅ | workerID, isOnShift, currentZoneID, checkIns; szabályok: csak műszak alatt, csak ismert zónába (K16, N4) | → `Zone`, → `ZoneCheckIn` |
 | `Raffle` | 🆕 | eventID, title, description, participants | → `Event` |
@@ -142,7 +142,10 @@ A CloudKit nem biztosít saját jelszavas fiókkezelést, ezért a jelszavas bej
 ## Helyszíntervező és QR-kódok
 
 * Minden szint egy `gridWidth × gridHeight` méretű rács; a zónák rácscellák halmazai, a POI-k egy-egy cellán helyezkednek el.
-* A megjelenítés és a szerkesztés SwiftUI-jal (Grid / Canvas) történik, MapKit nem szükséges.
+* A megjelenítés a SharedKit `FloorPlanView` nézetével (SwiftUI Canvas) történik, amelyet a szerkesztő (L7) és a térképek (K6, később L4, M5) közösen használnak; MapKit nem szükséges.
+* A szerkesztőben a zóna húzással (téglalap), a POI kattintással kerül a rácsra; a hibás szerkesztés (átfedés, rácson kívül, ismétlődő név) elutasításra kerül, és a helyszín változatlan marad.
+* A helyszín mentése a `VenueStoring` protokoll mögött történik; amíg nincs CloudKit (N2), a `LocalVenueStore` JSON-fájlba ment (Application Support).
+* A zónakódlap a zónák QR-kódjait szint és név szerint rendezve, „Szint – Zóna” felirattal, nyomtatható formában jeleníti meg.
 * A zóna QR-kódjának tartalma a zóna azonosítója egy alkalmazásspecifikus formátumban (pl. `nightlife://zone/<zoneID>`); a kódolvasó (K7) a formátum alapján különbözteti meg a zóna-, jegy- és egyéb kódokat.
 * A jegyek QR-kódja a jegy sorozatszámát tartalmazza (`nightlife://ticket/<sorozatszám>`); beléptetéskor a rendszer ellenőrzi, hogy a jegy létezik-e, a megfelelő eseményhez tartozik-e, és nincs-e már felhasználva (`Ticket.admit(toEvent:)`).
 * A beolvasott kód jelentését a SharedKit `ScannedCode` típusa határozza meg (zóna, jegy, ismeretlen); a kódolvasó (K7) ez alapján irányítja a beolvasást a beléptetéshez vagy a zóna-bejelentkezéshez.

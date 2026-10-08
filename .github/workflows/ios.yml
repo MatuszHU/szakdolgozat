@@ -19,6 +19,27 @@ jobs:
         working-directory: SharedKit
         run: swift test
 
+  manager:
+    name: NightlifeManager BDD tests
+    runs-on: macos-latest
+    # Same limitation as the Worker job: the hosted runner has no macOS 27 SDK yet.
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Select newest Xcode
+        run: |
+          XCODE=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+      - name: Run BDD tests
+        run: |
+          xcodebuild test \
+            -workspace NightLifeApps.xcworkspace \
+            -scheme NightlifeManager \
+            -only-testing:NightlifeManagerTests \
+            -destination 'platform=macOS'
+
   worker:
     name: NightlifeWorker BDD + UI tests
     runs-on: macos-latest

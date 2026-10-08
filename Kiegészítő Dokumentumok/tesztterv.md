@@ -41,7 +41,7 @@ Egy követelmény akkor tekinthető késznek, ha:
 | Szint | Mit tesztel | Eszköz | Hol található |
 |-------|-------------|--------|---------------|
 | Egységteszt (TDD) | A SharedKit modelljeinek üzleti logikája (pl. műszakütközés, létszámkorlát, készletminimum), a ViewModellek állapotváltásai, a hitelesítési szolgáltatás logikája | Swift Testing (`@Test`, `#expect`) | `SharedKit/Tests/SharedKitTests/`, `<App>Tests/` |
-| Elfogadási teszt (BDD) | A követelmények viselkedése a ViewModell rétegen keresztül, felhasználói nézőpontból megfogalmazva | CucumberSwift + XCTest | `<App>Tests/Features/*.feature`, lépésdefiníciók: `<App>Tests/` |
+| Elfogadási teszt (BDD) | A követelmények viselkedése a ViewModell rétegen keresztül, felhasználói nézőpontból megfogalmazva | CucumberSwift + XCTest | `NightlifeWorkerTests/` és `NightlifeManagerTests/` (`Features/*.feature`, lépésdefiníciók) |
 | UI teszt | Kritikus folyamatok végigkattintása a valódi felületen (indítás, bejelentkezés, pánik mód) | XCUITest | `<App>UITests/` |
 | Manuális teszt | Automatizáltan nem vagy nehezen tesztelhető funkciók valós eszközön | Ellenőrzőlista | Tesztjegyzőkönyv |
 
@@ -55,6 +55,9 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * Kamerás kódolvasás és QR-kódos zóna-bejelentkezés (K7, K16)
 * CloudKit-szinkronizáció több eszköz között (N2)
 * Apple Tárcába helyezett jegy (M4)
+* Helyszíntervező: zóna rajzolása húzással, POI lerakása, szintváltás, zónakódok nyomtatása (L7)
+* Térkép megjelenítése valós adatokkal (K6; CloudKit után)
+* A macOS UI-tesztekhez a gépen engedélyezni kell az Xcode számára az akadálymentességi (Accessibility) hozzáférést; enélkül „Not authorized for performing UI testing actions” hibával leállnak
 
 ## Eszközök és környezet
 
@@ -64,7 +67,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 | Egységteszt | Swift Testing, XCTest |
 | BDD | CucumberSwift (helyi, javított változat: `LocalPackages/CucumberSwiftPatched`) |
 | Szimulátor | iPhone 17 Pro, iOS 27 |
-| Adminisztrátori alkalmazás | macOS 27 |
+| Adminisztrátori alkalmazás | macOS 27; BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeManager -only-testing:NightlifeManagerTests -destination 'platform=macOS'` (megosztott séma, párhuzamosítás kikapcsolva; a feature fájlokat a tesztcél `Info.plist`-jének `FeaturesPath` kulcsa alapján találja meg) |
 | Tesztterv (Xcode) | `NightlifeWorker.xctestplan`: betűrendes végrehajtás, párhuzamosítás kikapcsolva |
 | CI | GitHub Actions (`.github/workflows/ios.yml`): SharedKit-tesztek kötelezők; a Worker-teszttervet a hosztolt runner iOS 27 SDK hiányában jelenleg nem tudja futtatni, ezért az helyben fut |
 
@@ -139,4 +142,7 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | SharedKitTests | 39/39 sikeres | K7: ScannedCode és jegybeléptetés tesztjei (7 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeWorkerTests, NightlifeWorkerUITests | 113/113 + 2/2 sikeres | K7: CodeReader feature, 6 forgatókönyv; mutációs ellenőrzés: a használt jegyre adott hibás elvárásnál a forgatókönyv elbukott (várt). |
 | 2026-10-08 | 04fdd15 | CI (GitHub Actions), `master` | Sikeres | SharedKit zöld; Worker-job iOS 27 SDK hiányában nem futtatható (nem kötelező). |
+| 2026-10-08 | – | SharedKitTests | 61/61 sikeres | L7 + K6: Venue, Floor, POI, ZoneCode, térképpozíciók, rácsgeometria (22 új), előbb sikertelenek. |
+| 2026-10-08 | – | NightlifeManagerTests | 33/33 sikeres | Első Manager BDD: VenueDesigner, 8 forgatókönyv; mutációs ellenőrzés OK. A Manager UI-teszt az Accessibility-engedély hiánya miatt nem indult. |
+| 2026-10-08 | – | NightlifeWorkerTests | 149/149 sikeres | K6: VenueMap, 4 forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

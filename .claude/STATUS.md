@@ -1,14 +1,18 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (L7 logika kész)
+> Utolsó frissítés: 2026-10-08 (K6 + L7 kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `k6-l7-venue-map` (a `master` @ `64ced58`-ról). **Folyamatban: K6 + L7** (térkép és helyszíntervező).
-- ✅ Manager BDD-környezet: CucumberSwift a `NightlifeManagerTests`-ben, `NightlifeManagerTests/Info.plist` (`FeaturesPath`), megosztott séma `NightlifeManager.xcscheme` (párhuzamosítás ki). Futtatás: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeManager -only-testing:NightlifeManagerTests -destination 'platform=macOS'`
-- ✅ L7 logika: story `User_Admin/VenueDesigner.md`, `VenueDesigner.feature` (8 forgatókönyv), `VenueDesignerSteps.swift`; SharedKit `Venue.swift` (Venue, Floor, POI, POIKind, ZoneCode; 17 új teszt → 56/56); Manager `VenueDesignerViewModel` + `VenueStoring` protokoll → Manager BDD 33/33, mutációs ellenőrzés OK.
-- ⏳ Hátravan: L7 felület (rácsszerkesztő a macOS appban, helyi fájlos `VenueStoring`, kódlap nézet); K6 Worker térkép (story, feature, `VenueMapViewModel`, nézet); dokumentáció; CI a Manager sémára; push, merge.
+**Aktív ág:** `k6-l7-venue-map`. **K6 + L7 kész** (L7 ✅, K6 ⚠️: valós adat CloudKit nélkül nincs a telefonon).
+- Manager BDD-környezet: CucumberSwift a `NightlifeManagerTests`-ben, `Info.plist` (`FeaturesPath`), megosztott séma `NightlifeManager.xcscheme` (párhuzamosítás ki). Futtatás: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeManager -only-testing:NightlifeManagerTests -destination 'platform=macOS'` → 33/33
+- L7: `VenueDesigner.feature` (8), SharedKit `Venue.swift` (Venue, Floor, POI, ZoneCode), `FloorPlanView.swift` (közös rácsrajzoló), Manager `VenueDesignerViewModel` + `VenueStoring`, `LocalVenueStore` (JSON), `VenueDesignerView` (húzás = zóna, kattintás = POI), `ZoneCodeSheetView` (QR + nyomtatás). A SwiftData-sablon törölve.
+- K6: `VenueMap.feature` (4), `ZoneCheckIn.latestZones`, `Venue.floor(containingZone:)`, Worker `VenueMapViewModel` + `VenueMapView`, link a `HomeView`-ban.
+- Tesztek: SharedKit 61/61, Worker BDD 149/149, Manager BDD 33/33. A macOS UI-teszt Accessibility-engedély nélkül nem indul (a felhasználó engedélyezheti).
+- Ismert: hibás teszt után az `xcodebuild` néha percekig nem zár le (mutációs ellenőrzésnél) — várni kell, nem kell leállítani.
+
+**Következő jelöltek (fiók nélkül megvalósíthatók):** L4 admin térkép (a `FloorPlanView` újrahasznosításával), L3 többi része (műszak létrehozás, feladatkiosztás az admin appban), L11 eseménykezelés, K5 beosztások, K14 kijelentkezés, M5 vendég térkép.
 
 ## 2. Git / push állapot
 
@@ -21,21 +25,22 @@
 
 ## 3. CI
 
-- `.github/workflows/ios.yml`: SharedKit job (kötelező, zöld); Worker job `continue-on-error: true`, mert a GitHub runner legújabb Xcode-ja 26.6, iOS 27 SDK nincs (naplóból megerősítve: „Unable to find a destination”). Ha a runner Xcode 27-et kap, a sor törlendő.
+- `.github/workflows/ios.yml`: SharedKit job (kötelező, zöld); Manager BDD job és Worker job `continue-on-error: true`, mert a GitHub runner legújabb Xcode-ja 26.6, iOS 27 SDK nincs (naplóból megerősítve: „Unable to find a destination”). Ha a runner Xcode 27-et kap, a sor törlendő.
 - Utolsó futás: 2026-10-08, `master` @ `04fdd15`, run 37648508478 → **sikeres** (SharedKit zöld, Worker a várt módon nem futtatható).
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → 39/39
-- Worker BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 113/113 (K7 után)
+- SharedKit: `cd SharedKit && swift test` → 61/61
+- Worker BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 149/149 (K6 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
 - UI tesztek: 2/2 (lassú, ~45 s)
 
 ## 5. Követelmények állapota (lefedettségi mátrix szerint)
 
 - ✅ K1, K2, K4 (Authentication)
-- ⚠️ L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
-- Következő jelöltek: K6 Térkép + L7 Helyszíntervező (Floor, rács, POI adatmodell); K5 Beosztások; K14 Kijelentkezés.
+- ✅ L7 (helyszíntervező)
+- ⚠️ K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
+- Következő jelöltek: lásd az 1. fejezetet.
 
 ## 6. Módszertan (Tesztterv szerint)
 

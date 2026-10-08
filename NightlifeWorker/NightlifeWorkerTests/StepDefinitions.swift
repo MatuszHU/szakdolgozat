@@ -90,5 +90,6 @@ extension Cucumber: @retroactive StepImplementation {
         setupZoneCheckInSteps()
         setupPanicModeSteps()
         setupCodeReaderSteps()
+        setupVenueMapSteps()
     }
 }

@@ -171,6 +171,10 @@ public struct Venue: Identifiable, Codable, Hashable {
         floors[index] = floor
     }
 
+    public func floor(containingZone zoneID: UUID) -> Floor? {
+        floors.first { floor in floor.zones.contains { $0.id == zoneID } }
+    }
+
     /// All zone codes, by floor level and zone name.
     public var zoneCodes: [ZoneCode] {
         floors.flatMap { floor in

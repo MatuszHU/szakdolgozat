@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import SharedKit
 
 struct HomeView: View {
     @ObservedObject var viewModel: AuthViewModel
@@ -16,6 +17,12 @@ struct HomeView: View {
         eventID: UUID(),
         tickets: LocalTicketRepository(),
         zoneCheckIn: ZoneCheckInViewModel(workerID: UUID(), zones: [], isOnShift: false))
+    @StateObject private var venueMap = VenueMapViewModel(
+        venue: Venue(name: ""),
+        me: WorkerUser(appleID: "", name: "", role: .bartender, payPeriod: .weekly),
+        colleagues: [],
+        checkIns: [],
+        assignedZoneID: nil)
 
     var body: some View {
         NavigationStack {
@@ -24,6 +31,11 @@ struct HomeView: View {
                     CodeReaderView(viewModel: codeReader)
                 } label: {
                     Label("Kódolvasó", systemImage: "qrcode.viewfinder")
+                }
+                NavigationLink {
+                    VenueMapView(viewModel: venueMap)
+                } label: {
+                    Label("Térkép", systemImage: "map")
                 }
             }
             .navigationTitle("Nightlife Worker")

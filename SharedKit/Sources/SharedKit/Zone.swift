@@ -85,3 +85,14 @@ public struct WorkerPosition {
         currentZoneID = nil
     }
 }
+
+extension ZoneCheckIn {
+    /// Each worker's zone from their most recent check-in (K6, K16).
+    public static func latestZones(from checkIns: [ZoneCheckIn]) -> [UUID: UUID] {
+        var latest: [UUID: ZoneCheckIn] = [:]
+        for checkIn in checkIns where latest[checkIn.workerID].map({ $0.timestamp < checkIn.timestamp }) ?? true {
+            latest[checkIn.workerID] = checkIn
+        }
+        return latest.mapValues(\.zoneID)
+    }
+}
