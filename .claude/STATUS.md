@@ -1,24 +1,20 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (K7 kész)
+> Utolsó frissítés: 2026-10-08 (L7 logika kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `k7-code-reader`. **K7 – Kódolvasó/jegykezelő: kész** (⚠️ a mátrixban: CloudKit-adatforrás és parkolójegy hiányzik).
-- Story `CodeReader.md`, feature `CodeReader.feature` (6 forgatókönyv), lépések `CodeReaderSteps.swift`
-- SharedKit: `ScannedCode`, `Ticket.qrPayload/admit(toEvent:)`, `TicketType.displayName` (39/39)
-- Worker: `CodeReaderViewModel` + `TicketRepository` protokoll, `LocalTicketRepository` (app + teszt közös), `CodeReaderView` (VisionKit), `NSCameraUsageDescription`, link a `HomeView`-ban
-- A `CodeReader.feature` 24. sora a felhasználó engedélyével visszaállítva (`"Ticket already used"`).
-- BDD 113/113, UI 2/2. A workflow most a `k*` ágakra is fut.
-- A VM üzenetei angolok (pl. „Ticket already used”), a felület magyar → K11 (nyelv) lokalizációnál rendezendő.
-
-**Következő jelöltek:** K6 Térkép + L7 Helyszíntervező (Floor, rács, POI adatmodell); K5 Beosztások; K14 Kijelentkezés; N2 CloudKit-adatforrás (ez zárná le a K7/K8/K16 ⚠️-eit).
+**Aktív ág:** `k6-l7-venue-map` (a `master` @ `64ced58`-ról). **Folyamatban: K6 + L7** (térkép és helyszíntervező).
+- ✅ Manager BDD-környezet: CucumberSwift a `NightlifeManagerTests`-ben, `NightlifeManagerTests/Info.plist` (`FeaturesPath`), megosztott séma `NightlifeManager.xcscheme` (párhuzamosítás ki). Futtatás: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeManager -only-testing:NightlifeManagerTests -destination 'platform=macOS'`
+- ✅ L7 logika: story `User_Admin/VenueDesigner.md`, `VenueDesigner.feature` (8 forgatókönyv), `VenueDesignerSteps.swift`; SharedKit `Venue.swift` (Venue, Floor, POI, POIKind, ZoneCode; 17 új teszt → 56/56); Manager `VenueDesignerViewModel` + `VenueStoring` protokoll → Manager BDD 33/33, mutációs ellenőrzés OK.
+- ⏳ Hátravan: L7 felület (rácsszerkesztő a macOS appban, helyi fájlos `VenueStoring`, kódlap nézet); K6 Worker térkép (story, feature, `VenueMapViewModel`, nézet); dokumentáció; CI a Manager sémára; push, merge.
 
 ## 2. Git / push állapot
 
 - 2026-10-08: a push-jog rendben (a felhasználó javította a tokent). Pusholva: `k16-zone-checkin`, `k8-panic-mode`, `k7-code-reader` (ez utóbbin csak a STATUS commit). A `master` fast-forward → `04fdd15` (K16 + Cucumber-próba + Cucumber expression + K8 + STATUS), pusholva.
 - A workflow csak `master` / `bdd-setup` pushra és `master`-re nyitott PR-ra fut, a feature-ágakra nem → a CI a `master`-en ellenőriz.
+- 2026-10-08: K7 (`64ced58`) a `k7-code-reader` ágon zöld CI után (run 37799064412) fast-forwarddal a `master`-be került. `master` = `64ced58`.
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
 - Az origin-on van egy `web` ág (Svelte webes felület, „log in page”) — nem Claude-é, nem nyúlni hozzá.
@@ -67,6 +63,12 @@
 - Storyk és `.feature` angolul, dokumentumok magyarul. Platform: iOS/macOS 27.
 - L7: rácsalapú helyszíntervező, több szint; pozíció = QR-os zóna-bejelentkezés.
 - Commit üzenet vége: `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` (+ a rendszer által adott `Claude-Session:` sor, ha van).
+
+## 8/b. Korlát: nincs fizetős Apple fejlesztői fiók (2026-10-08)
+
+- Nem érhető el: CloudKit (N2), push értesítés (K8 tényleges kézbesítése), valódi Sign in with Apple (K2), Wallet-jegy aláírás (M4).
+- Ezért: fiókfüggetlen munka előnyben (SharedKit-logika, felületek, helyi adat, tesztek); a fiókfüggő szolgáltatások protokoll mögött maradnak (`PanicAlertSending`, `TicketRepository`), később köthetők be.
+- Az admin→worker adatáramlás (helyszín, jegyek, műszakok) CloudKit nélkül nem működik a készülékek között → a következő munka az admin oldali funkciók logikája és felülete (pl. L7).
 
 ## 9. Felvetett, még nem döntött ötletek
 
