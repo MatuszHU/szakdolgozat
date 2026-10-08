@@ -30,3 +30,4 @@ struct LocalJSONStore<Value: Codable> {
 
 extension LocalJSONStore: VenueStoring where Value == Venue {}
 extension LocalJSONStore: ShiftPlanStoring where Value == ShiftPlan {}
+extension LocalJSONStore: EventCatalogStoring where Value == EventCatalog {}

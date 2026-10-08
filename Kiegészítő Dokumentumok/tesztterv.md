@@ -57,6 +57,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * Apple Tárcába helyezett jegy (M4)
 * Helyszíntervező: zóna rajzolása húzással, POI lerakása, szintváltás, zónakódok nyomtatása (L7)
 * Térkép megjelenítése valós adatokkal (K6, L4; CloudKit után)
+* Eseménykezelő: esemény létrehozása, jegytípus hozzáadása árral és kerettel, nyereményjáték meghirdetése (L11)
 * Műszaktervező: munkatárs felvétele, műszak létrehozása, hozzárendelés, feladat hozzáadása, a személyzeti térképen a munkaterület és a feladat megjelenése (L3, L4)
 * A macOS UI-tesztekhez a gépen engedélyezni kell az Xcode számára az akadálymentességi (Accessibility) hozzáférést; enélkül „Not authorized for performing UI testing actions” hibával leállnak
 
@@ -153,4 +154,7 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | SharedKitTests | 84/84 sikeres | L3: ShiftPlanTests (17 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | 127/127 sikeres | L3: ShiftPlanning (8) és az átköltöztetett ShiftConflict (4) forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-08 | – | NightlifeWorkerTests | 137/137 sikeres | A ShiftConflict forgatókönyvek és a `ShiftConflictViewModel` átkerültek az admin appba (−12 lépés). |
+| 2026-10-08 | 8b635da | CI (GitHub Actions), `l3-shift-planning` | Sikeres | SharedKit zöld; a Manager- és a Worker-job iOS/macOS 27 SDK hiányában nem futtatható. |
+| 2026-10-08 | – | SharedKitTests | 100/100 sikeres | L11: EventCatalogTests (16 új), előbb sikertelenek. |
+| 2026-10-08 | – | NightlifeManagerTests | 157/157 sikeres | L11: EventManagement, 9 forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

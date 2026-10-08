@@ -8,13 +8,13 @@
 
 import Foundation
 
-public enum TicketType: Codable {
+public enum TicketType: Codable, Hashable {
     case standard
     case vip
     case custom(String)
 }
 
-public struct Ticket: Identifiable, Codable {
+public struct Ticket: Identifiable, Codable, Hashable {
     public let id: UUID
     public let eventID: UUID
     public let guestID: UUID

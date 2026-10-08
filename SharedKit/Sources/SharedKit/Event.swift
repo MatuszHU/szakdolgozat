@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Event: Identifiable, Codable {
+public struct Event: Identifiable, Codable, Hashable {
     public let id: UUID
     public var title: String
     public var description: String
@@ -17,6 +17,8 @@ public struct Event: Identifiable, Codable {
     public var location: String
     public var capacity: Int
     public var tickets: [Ticket]
+    public var ticketOffers: [TicketOffer] = []
+    public var raffle: Raffle?
     
     public init(id: UUID = UUID(), title: String, description: String, startTime: Date, endTime: Date, location: String, capacity: Int, tickets: [Ticket] = []) {
         self.id = id

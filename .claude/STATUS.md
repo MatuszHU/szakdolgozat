@@ -1,17 +1,16 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08 (L3 műszaktervezés kész)
+> Utolsó frissítés: 2026-10-08 (L11 kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `l3-shift-planning` = `master` @ `8b635da`. **L3 (műszaktervezés) kész** — ⚠️ marad: további adminok felvétele jogosultsági szinttel az L1-gyel együtt.
-- SharedKit `ShiftPlan.swift` (staff, shifts, szabályok), `Shift.freePlaces`; a modellek `Hashable`-k → 84/84
-- Manager: `ShiftPlanning.feature` (8), `ShiftConflict.feature` (4, a Workerből átköltöztetve), `ShiftPlanningSteps.swift`, `ShiftPlannerViewModel` + `ShiftPlanStoring`, `ShiftPlannerView` (oldalsáv: „Műszakok”), közös `LocalJSONStore<Value>` (venue.json, shift-plan.json) → Manager BDD 127/127
-- L4: a `StaffMapView` a műszakterv munkatársait és műszakjait kapja (bejelentkezések továbbra sincsenek CloudKit nélkül).
-- Worker: a `ShiftConflictViewModel` és a műszak-lépések törölve → Worker BDD 137/137.
+**Aktív ág:** `l11-event-management` (a `master` @ `8b635da`-ról). **L11 kész** ✅.
+- SharedKit `EventCatalog.swift` (EventCatalog, TicketOffer, Raffle; az `Event` kapott `ticketOffers`-t és `raffle`-t; `Ticket`/`TicketType` Hashable) → 100/100
+- Manager: `EventManagement.feature` (9), `EventManagementSteps.swift`, `EventManagerViewModel` + `EventCatalogStoring`, `EventsView` (oldalsáv: „Események”), `LocalJSONStore` → `events.json` → Manager BDD 157/157
+- Mutációs ellenőrzés OK. A felhasználó egy Manager-példányt futtat az Xcode-ból — az ellenőrző indításnál csak a saját PID-et szabad leállítani.
 
-**Következő jelöltek (fiók nélkül):** K5 beosztások (a dolgozó saját műszakjai — a `ShiftPlan.shifts(for:)` kész hozzá, de az adat CloudKit nélkül nem jut el), L11 eseménykezelés, K14 kijelentkezés, M5 vendég térkép, L1+L3 adminok (Vapor nélkül csak a modell).
+**Következő jelöltek (fiók nélkül):** K14 kijelentkezés (kicsi, K2-höz), K5 beosztások (logika kész, adat CloudKit nélkül nincs), M1–M3 vendég app alapjai (üdvözlő, bejelentkezés, kezdőképernyő — mint a Workernél), M5 vendég térkép (`FloorPlanView`), L1+L3 adminok (Vapor nélkül csak a modell), K17/L10 készlet.
 
 ## 2. Git / push állapot
 
@@ -31,7 +30,7 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → 84/84
+- SharedKit: `cd SharedKit && swift test` → 100/100
 - Worker BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 137/137 (L3 után; a ShiftConflict átkerült a Managerbe)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
 - UI tesztek: 2/2 (lassú, ~45 s)
@@ -39,7 +38,7 @@
 ## 5. Követelmények állapota (lefedettségi mátrix szerint)
 
 - ✅ K1, K2, K4 (Authentication)
-- ✅ L7 (helyszíntervező)
+- ✅ L7 (helyszíntervező), L11 (eseménykezelés)
 - ⚠️ L4 (admin térkép; CloudKit hiányzik), K6 (térkép; CloudKit hiányzik), L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
 - Következő jelöltek: lásd az 1. fejezetet.
 

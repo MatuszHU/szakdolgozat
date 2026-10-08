@@ -23,5 +23,6 @@ extension Cucumber: @retroactive StepImplementation {
         setupVenueDesignerSteps()
         setupStaffMapSteps()
         setupShiftPlanningSteps()
+        setupEventManagementSteps()
     }
 }
