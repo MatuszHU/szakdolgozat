@@ -10,19 +10,20 @@
 
 ## 2. Git / push állapot
 
-- 2026-10-08: a push-jog rendben (a felhasználó javította a tokent). Pusholva: `k16-zone-checkin`, `k8-panic-mode`, `k7-code-reader` (ez utóbbin csak a STATUS commit). A `master` fast-forward → `04fdd15` (K16 + Cucumber-próba + Cucumber expression + K8 + STATUS), pusholva.
+- 2026-10-08: a push-jog rendben (a felhasználó javította a tokent). Pusholva: `k16-zone-checkin`, `k8-panic-mode`, `k7-code-reader` (ez utóbbin csak a STATUS commit). A `master` fast-forward → `9d6dc50` (K16 + Cucumber-próba + Cucumber expression + K8 + STATUS), pusholva.
 - A workflow minden ágra (`**`) pushra és a `master`-re nyitott PR-ra fut (2026-10-08 óta).
-- 2026-10-08: K7 (`64ced58`) a `k7-code-reader` ágon zöld CI után (run 37799064412) fast-forwarddal a `master`-be került. `master` = `64ced58`.
-- 2026-10-08: L7 + K6 + L4 + CI-javítás (`8f27ea8`) zöld CI után (run 37804152553) fast-forwarddal a `master`-be. `master` = `8f27ea8`. A Manager CI-job a várt módon nem futtatható (Xcode 26.6, macOS 27 SDK nincs).
-- 2026-10-08: L3 műszaktervezés (`8b635da`) zöld CI után (run 37805409167) fast-forwarddal a `master`-be. `master` = `8b635da`.
-- 2026-10-08: L11 (`2d1ea83`) zöld CI után (run 37807232776) fast-forwarddal a `master`-be. `master` = `2d1ea83`.
-- 2026-10-08: K14 (`5066a2a`) zöld CI után (run 37827705628) fast-forwarddal a `master`-be. `master` = `5066a2a`.
-- 2026-10-08: annotációk (`0178448`) zöld CI után (run 37829559325; a SharedKit-job a runneren is lefordította a makrókat) fast-forwarddal a `master`-be. `master` = `0178448`. A munkafában a felhasználó Xcode-ja által módosított `NightlifeManager.xcscheme` maradt (nem Claude-é, nincs commitolva).
-- 2026-10-08: K2 Debug-bejelentkezés (`bb3c0f7`) és M1–M3, M6 (`67140c3`) zöld CI után a `master`-be (run 37832278044; a vendég-job a várt SDK-ok miatt nem futtatható). `master` = `67140c3`.
-- 2026-10-08: M5 (`26e4031`) zöld CI után (run 37835384547) a `master`-be. `master` = `26e4031`.
-- 2026-10-08: L6 (`b576fd3`) és L10 (`681cca9`) zöld CI után a `master`-be.
-- 2026-10-08: L1, L2, L3, L5 (`5d2089a`) zöld CI után (run 37839858225) a `master`-be.
-- 2026-10-08: M4 (`6b73a2a`) zöld CI után (run 37838427883) a `master`-be. `master` = `6b73a2a`.
+- 2026-10-08: K7 (`9df2f5b`) a `k7-code-reader` ágon zöld CI után (run 37799064412) fast-forwarddal a `master`-be került. `master` = `9df2f5b`.
+- 2026-10-08: L7 + K6 + L4 + CI-javítás (`d994126`) zöld CI után (run 37804152553) fast-forwarddal a `master`-be. `master` = `d994126`. A Manager CI-job a várt módon nem futtatható (Xcode 26.6, macOS 27 SDK nincs).
+- 2026-10-08: L3 műszaktervezés (`6e7c2f6`) zöld CI után (run 37805409167) fast-forwarddal a `master`-be. `master` = `6e7c2f6`.
+- 2026-10-08: L11 (`2a82a36`) zöld CI után (run 37807232776) fast-forwarddal a `master`-be. `master` = `2a82a36`.
+- 2026-10-08: K14 (`aaf2012`) zöld CI után (run 37827705628) fast-forwarddal a `master`-be. `master` = `aaf2012`.
+- 2026-10-08: annotációk (`ef57cad`) zöld CI után (run 37829559325; a SharedKit-job a runneren is lefordította a makrókat) fast-forwarddal a `master`-be. `master` = `ef57cad`. A munkafában a felhasználó Xcode-ja által módosított `NightlifeManager.xcscheme` maradt (nem Claude-é, nincs commitolva).
+- 2026-10-08: K2 Debug-bejelentkezés (`6cbcd7d`) és M1–M3, M6 (`24b7ac6`) zöld CI után a `master`-be (run 37832278044; a vendég-job a várt SDK-ok miatt nem futtatható). `master` = `24b7ac6`.
+- 2026-10-08: M5 (`f43bf48`) zöld CI után (run 37835384547) a `master`-be. `master` = `f43bf48`.
+- 2026-10-08: L6 (`9582495`) és L10 (`4acc0e0`) zöld CI után a `master`-be.
+- 2026-10-08: L1, L2, L3, L5 (`0728b7e`) zöld CI után (run 37839858225) a `master`-be.
+- 2026-10-08: M4 (`0bed548`) zöld CI után (run 37838427883) a `master`-be. `master` = `0bed548`.
+- 2026-10-08: **Történet-átírás** a felhasználó kérésére: 35 commit üzenetéből kikerültek a `Co-Authored-By: Claude` és `Claude-Session:` sorok (`git filter-branch --msg-filter`), mind a 20 ág (a `web` kivételével) force-pusholva, ágak nem törölve. A fájltartalom minden ágon bitre azonos maradt. A dokumentációban a commit-azonosítók az új történetre frissítve. **Biztonsági mentés a régi történetről:** `/Users/matusz/szakdolgozat-history-backup-20261008.bundle`. Más gépen lévő klónban: `git fetch && git reset --hard origin/master`.
 - `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
 - Az origin-on van egy `web` ág (Svelte webes felület, „log in page”) — nem Claude-é, nem nyúlni hozzá.
@@ -30,7 +31,7 @@
 ## 3. CI
 
 - `.github/workflows/ios.yml`: SharedKit job (kötelező, zöld); Manager BDD job és Worker job `continue-on-error: true`, mert a GitHub runner legújabb Xcode-ja 26.6, iOS 27 SDK nincs (naplóból megerősítve: „Unable to find a destination”). Ha a runner Xcode 27-et kap, a sor törlendő.
-- Utolsó futás: 2026-10-08, `master` @ `04fdd15`, run 37648508478 → **sikeres** (SharedKit zöld, Worker a várt módon nem futtatható).
+- Utolsó futás: 2026-10-08, `master` @ `9d6dc50`, run 37648508478 → **sikeres** (SharedKit zöld, Worker a várt módon nem futtatható).
 
 ## 4. Tesztek (utolsó ismert állapot)
 

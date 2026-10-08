@@ -140,7 +140,7 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | Dátum | Commit | Teszt cél | Eredmény | Megjegyzés |
 |-------|--------|-----------|----------|------------|
 | 2026-10-04 | – | NightlifeWorkerTests | Megszakítva | A futás megszakadt, teszt nem futott le. |
-| 2026-10-07 | a1fa231 | NightlifeWorkerTests | 19/19 sikeres | 6 forgatókönyv (Authentication 3, ShiftConflict 3), 18 lépés + CucumberSwift futtató. |
+| 2026-10-07 | 0f96fb6 | NightlifeWorkerTests | 19/19 sikeres | 6 forgatókönyv (Authentication 3, ShiftConflict 3), 18 lépés + CucumberSwift futtató. |
 | 2026-10-07 | – | SharedKitTests | 14/14 sikeres | Első TDD-egységtesztek (Shift, Schedule, PanicAlert, felhasználók); a modellmódosítások előtt sikertelenek voltak (red → green). |
 | 2026-10-07 | – | NightlifeWorkerTests, NightlifeWorkerUITests | 22/22 + 2/2 sikeres | 7 forgatókönyv (Authentication 3, ShiftConflict 4, angol nyelvű, címkézett); a lépésdefiníciók `@testable import`-tal az alkalmazás kódját hívják. |
 | 2026-10-07 | – | SharedKitTests | 23/23 sikeres | K16: Zone és WorkerPosition egységtesztek (9 új), előbb sikertelenek (red → green). |
@@ -151,21 +151,21 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-07 | – | NightlifeWorkerTests | 75/75 sikeres | K8: PanicMode feature, 5 forgatókönyv; közös lépések a `World`-be szervezve. Mutációs ellenőrzés: az elrontott elvárt üzenetnél a forgatókönyv elbukott (várt). |
 | 2026-10-08 | – | SharedKitTests | 39/39 sikeres | K7: ScannedCode és jegybeléptetés tesztjei (7 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeWorkerTests, NightlifeWorkerUITests | 113/113 + 2/2 sikeres | K7: CodeReader feature, 6 forgatókönyv; mutációs ellenőrzés: a használt jegyre adott hibás elvárásnál a forgatókönyv elbukott (várt). |
-| 2026-10-08 | 04fdd15 | CI (GitHub Actions), `master` | Sikeres | SharedKit zöld; Worker-job iOS 27 SDK hiányában nem futtatható (nem kötelező). |
+| 2026-10-08 | 9d6dc50 | CI (GitHub Actions), `master` | Sikeres | SharedKit zöld; Worker-job iOS 27 SDK hiányában nem futtatható (nem kötelező). |
 | 2026-10-08 | – | SharedKitTests | 61/61 sikeres | L7 + K6: Venue, Floor, POI, ZoneCode, térképpozíciók, rácsgeometria (22 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | 33/33 sikeres | Első Manager BDD: VenueDesigner, 8 forgatókönyv; mutációs ellenőrzés OK. A Manager UI-teszt az Accessibility-engedély hiánya miatt nem indult. |
 | 2026-10-08 | – | NightlifeWorkerTests | 149/149 sikeres | K6: VenueMap, 4 forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-08 | – | SharedKitTests | 67/67 sikeres | L4: StaffMapTests (6 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | 61/61 sikeres | L4: StaffMap, 4 forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-08 | – | NightlifeWorkerTests | 149/149 sikeres | A K6 ViewModell a közös `StaffMap`-re átállítva; a K6 forgatókönyvei változatlanul sikeresek (regressziós ellenőrzés). |
-| 2026-10-08 | 8f27ea8 | CI (GitHub Actions), `l4-staff-map` | Sikeres | SharedKit zöld; a Manager- és a Worker-job iOS/macOS 27 SDK hiányában nem futtatható (nem kötelező). A workflow ezután minden ágra fut. |
+| 2026-10-08 | d994126 | CI (GitHub Actions), `l4-staff-map` | Sikeres | SharedKit zöld; a Manager- és a Worker-job iOS/macOS 27 SDK hiányában nem futtatható (nem kötelező). A workflow ezután minden ágra fut. |
 | 2026-10-08 | – | SharedKitTests | 84/84 sikeres | L3: ShiftPlanTests (17 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | 127/127 sikeres | L3: ShiftPlanning (8) és az átköltöztetett ShiftConflict (4) forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-08 | – | NightlifeWorkerTests | 137/137 sikeres | A ShiftConflict forgatókönyvek és a `ShiftConflictViewModel` átkerültek az admin appba (−12 lépés). |
-| 2026-10-08 | 8b635da | CI (GitHub Actions), `l3-shift-planning` | Sikeres | SharedKit zöld; a Manager- és a Worker-job iOS/macOS 27 SDK hiányában nem futtatható. |
+| 2026-10-08 | 6e7c2f6 | CI (GitHub Actions), `l3-shift-planning` | Sikeres | SharedKit zöld; a Manager- és a Worker-job iOS/macOS 27 SDK hiányában nem futtatható. |
 | 2026-10-08 | – | SharedKitTests | 100/100 sikeres | L11: EventCatalogTests (16 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | 157/157 sikeres | L11: EventManagement, 9 forgatókönyv; mutációs ellenőrzés OK. |
-| 2026-10-08 | 2d1ea83 | CI (GitHub Actions), `l11-event-management` | Sikeres | SharedKit zöld; a Manager- és a Worker-job nem futtatható (SDK). |
+| 2026-10-08 | 2a82a36 | CI (GitHub Actions), `l11-event-management` | Sikeres | SharedKit zöld; a Manager- és a Worker-job nem futtatható (SDK). |
 | 2026-10-08 | – | NightlifeWorkerTests | 147/147 BDD + 7/7 egységteszt sikeres | K14: SignOut, 3 forgatókönyv; AuthViewModel- és Keychain-tesztek (előbb sikertelenek); mutációs ellenőrzés OK. |
 | 2026-10-08 | – | Minden tesztcél | SharedKit 100/100, Worker 147/147 BDD + 7/7 egység + UI, Manager 157/157 sikeres | Kommentek eltávolítása (476) és követelmény-annotációk (127) után; a vendég app is lefordul. |
 | 2026-10-08 | – | SharedKitTests | 106/106 sikeres | A bejelentkezés logikája a SharedKitbe költözött; AuthenticationTests (6), előbb sikertelenek. |
@@ -177,7 +177,7 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | NightlifeTests (vendég) | 92/92 BDD + UI, 3/3 egységteszt sikeres | M4: TicketPurchase, 8 forgatókönyv; mutációs ellenőrzés a feature fájlban és a kódban (a nem elérhető fizetés) is OK. A 3 egységteszt a ViewModellel egy lépésben készült, ezért utólagos kódmutációval lett ellenőrizve. |
 | 2026-10-08 | – | SharedKitTests | 140/140 sikeres | L1, L3: AdminDirectoryTests (17 új, PBKDF2 és jogosultságok), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | 214/214 sikeres | L1, L2, L3, L5, L6: AdminAccess (7), AdminManagement (6). Mutációs ellenőrzés: az első választott mutáció (adminlista) a hibás művelet után is igaz maradt, ezért nem buktatott — a hibaüzenetre irányuló második mutációt a forgatókönyv elkapta. |
-| 2026-10-08 | 5d2089a | CI (GitHub Actions), `l1-admin-access` | Sikeres | SharedKit zöld; az app-jobok SDK hiányában nem futtathatók. |
+| 2026-10-08 | 0728b7e | CI (GitHub Actions), `l1-admin-access` | Sikeres | SharedKit zöld; az app-jobok SDK hiányában nem futtathatók. |
 | 2026-10-08 | – | SharedKitTests | 146/146 sikeres | L6: CompanySettingsTests (6 új), köztük a régebbi `admins.json` adatvesztés nélküli betöltése. |
 | 2026-10-08 | – | NightlifeManagerTests | sikeres | L6: CompanySettings, 4 forgatókönyv; mutációs ellenőrzés OK. |
 | 2026-10-08 | – | SharedKitTests | 156/156 sikeres | L10: InventoryTests (10 új), előbb sikertelenek. |
@@ -185,4 +185,4 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | SharedKitTests | 161/161 sikeres | L8: RequestLogTests (5 új), előbb sikertelenek. |
 | 2026-10-08 | – | NightlifeManagerTests | sikeres | L8: RequestLog, 4 forgatókönyv; az első futás a lépésdefiníció időformázási hibáját mutatta (nem a termékkódét), javítás után zöld; mutációs ellenőrzés OK. |
 | 2026-10-08 | – | NightlifeManager (build) | Sikeres | L9: Súgó-menü link; az útmutató URL-jének ellenőrzése közben derült ki, hogy az ékezetes útvonalat a Foundation duplán kódolná (`%2520`) — előkódolt URL-lel javítva, a cél elérhetősége ellenőrizve. |
-| 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |
+| 2026-10-07 | d8ef516 | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |
