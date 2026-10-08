@@ -136,4 +136,7 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-07 | – | NightlifeWorkerTests | 47/47 sikeres | A szöveges regex-lépésdefiníciók átírva Cucumber expressionre; nincs deprecation-figyelmeztetés, nincs nem definiált lépés. |
 | 2026-10-07 | – | SharedKitTests | 32/32 sikeres | K8: PanicTests (9 új), előbb sikertelenek (red → green). |
 | 2026-10-07 | – | NightlifeWorkerTests | 75/75 sikeres | K8: PanicMode feature, 5 forgatókönyv; közös lépések a `World`-be szervezve. Mutációs ellenőrzés: az elrontott elvárt üzenetnél a forgatókönyv elbukott (várt). |
+| 2026-10-08 | – | SharedKitTests | 39/39 sikeres | K7: ScannedCode és jegybeléptetés tesztjei (7 új), előbb sikertelenek. |
+| 2026-10-08 | – | NightlifeWorkerTests, NightlifeWorkerUITests | 113/113 + 2/2 sikeres | K7: CodeReader feature, 6 forgatókönyv; mutációs ellenőrzés: a használt jegyre adott hibás elvárásnál a forgatókönyv elbukott (várt). |
+| 2026-10-08 | 04fdd15 | CI (GitHub Actions), `master` | Sikeres | SharedKit zöld; Worker-job iOS 27 SDK hiányában nem futtatható (nem kötelező). |
 | 2026-10-07 | b86a7bc | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

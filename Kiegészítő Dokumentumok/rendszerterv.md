@@ -144,7 +144,10 @@ A CloudKit nem biztosít saját jelszavas fiókkezelést, ezért a jelszavas bej
 * Minden szint egy `gridWidth × gridHeight` méretű rács; a zónák rácscellák halmazai, a POI-k egy-egy cellán helyezkednek el.
 * A megjelenítés és a szerkesztés SwiftUI-jal (Grid / Canvas) történik, MapKit nem szükséges.
 * A zóna QR-kódjának tartalma a zóna azonosítója egy alkalmazásspecifikus formátumban (pl. `nightlife://zone/<zoneID>`); a kódolvasó (K7) a formátum alapján különbözteti meg a zóna-, jegy- és egyéb kódokat.
-* A jegyek QR-kódja a jegy sorozatszámát tartalmazza; beléptetéskor a rendszer ellenőrzi, hogy a jegy létezik-e, a megfelelő eseményhez tartozik-e, és nincs-e már felhasználva.
+* A jegyek QR-kódja a jegy sorozatszámát tartalmazza (`nightlife://ticket/<sorozatszám>`); beléptetéskor a rendszer ellenőrzi, hogy a jegy létezik-e, a megfelelő eseményhez tartozik-e, és nincs-e már felhasználva (`Ticket.admit(toEvent:)`).
+* A beolvasott kód jelentését a SharedKit `ScannedCode` típusa határozza meg (zóna, jegy, ismeretlen); a kódolvasó (K7) ez alapján irányítja a beolvasást a beléptetéshez vagy a zóna-bejelentkezéshez.
+* A jegyek és vendégek elérése a `TicketRepository` protokoll mögött történik; amíg a CloudKit-szinkron (N2) nem készül el, a `LocalTicketRepository` memóriabeli megvalósítás szolgálja ki az appot és a teszteket.
+* A kamerás olvasás a VisionKit `DataScannerViewController`-ével történik (egy- és kétdimenziós kódok).
 
 ## Tesztarchitektúra
 

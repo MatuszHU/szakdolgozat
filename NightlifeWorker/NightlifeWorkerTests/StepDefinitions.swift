@@ -89,5 +89,6 @@ extension Cucumber: @retroactive StepImplementation {
         setupCommonSteps()
         setupZoneCheckInSteps()
         setupPanicModeSteps()
+        setupCodeReaderSteps()
     }
 }

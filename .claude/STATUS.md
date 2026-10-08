@@ -1,50 +1,44 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-08
+> Utolsó frissítés: 2026-10-08 (K7 kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `k7-code-reader` (a `k8-panic-mode`-ra épül, az a `k16-zone-checkin`-re, az a `master`-re).
+**Aktív ág:** `k7-code-reader`. **K7 – Kódolvasó/jegykezelő: kész** (⚠️ a mátrixban: CloudKit-adatforrás és parkolójegy hiányzik).
+- Story `CodeReader.md`, feature `CodeReader.feature` (6 forgatókönyv), lépések `CodeReaderSteps.swift`
+- SharedKit: `ScannedCode`, `Ticket.qrPayload/admit(toEvent:)`, `TicketType.displayName` (39/39)
+- Worker: `CodeReaderViewModel` + `TicketRepository` protokoll, `LocalTicketRepository` (app + teszt közös), `CodeReaderView` (VisionKit), `NSCameraUsageDescription`, link a `HomeView`-ban
+- A `CodeReader.feature` 24. sora a felhasználó engedélyével visszaállítva (`"Ticket already used"`).
+- BDD 113/113, UI 2/2. A workflow most a `k*` ágakra is fut.
+- A VM üzenetei angolok (pl. „Ticket already used”), a felület magyar → K11 (nyelv) lokalizációnál rendezendő.
 
-**Folyamatban: K7 – Kódolvasó/jegykezelő** (nincs commitolva, munkafában van)
-- ✅ Story: `Kiegészítő Dokumentumok/User Stories/User_Munkavállaló/CodeReader.md`
-- ✅ Feature: `NightlifeWorker/NightlifeWorkerTests/Features/CodeReader.feature` (6 forgatókönyv, `@K7`, egyes `@M4`/`@K16`)
-- ✅ Lépések: `NightlifeWorkerTests/CodeReaderSteps.swift` (+ `InMemoryTicketRepository` fake)
-- ✅ SharedKit (TDD, előbb piros): `ScannedCode.swift`, `Ticket` bővítés (`qrPrefix`, `qrPayload`, `admit(toEvent:)`, `TicketType.displayName`), tesztek: `TicketTests.swift` → SharedKit 39/39 zöld
-- ✅ Worker: `CodeReaderViewModel.swift` + `TicketRepository` protokoll → BDD zöld volt
-- ⚠️ **NYITOTT KÉRDÉS a felhasználónak:** a `CodeReader.feature` 24. sora jelenleg
-  `Then the code reader shows "Admitted: Nagy Éva – Standard"` — ezt NEM Claude írta (mutációs ellenőrzés közben változott meg, valószínűleg a felhasználó). Az eredeti: `Then the code reader shows "Ticket already used"`. **Engedély nélkül nem szabad visszaírni** — rá kell kérdezni.
-- ⏳ Hátravan a K7-ből:
-  1. a 24. sor tisztázása / visszaállítása, majd teljes tesztfuttatás
-  2. kamerás felület: `CodeReaderView` (VisionKit `DataScannerViewController`), `NSCameraUsageDescription` a `NightlifeWorker/Info.plist`-be, bekötés a `HomeView`-ba (szimulátoron a szkenner nem elérhető → tájékoztató szöveg)
-  3. dokumentáció: mátrix (K7 ⚠️: parkolójegy nincs specifikálva, CloudKit-tároló hiányzik), tesztjegyzőkönyv, Rendszerterv (`ScannedCode`, `TicketRepository`)
-  4. helyi commit a `k7-code-reader` ágra
-- Kimaradt szándékosan: parkolójegy-érvényesítés (nincs adatmodell/formátum) → nyitott kérdés a felhasználónak.
+**Következő jelöltek:** K6 Térkép + L7 Helyszíntervező (Floor, rács, POI adatmodell); K5 Beosztások; K14 Kijelentkezés; N2 CloudKit-adatforrás (ez zárná le a K7/K8/K16 ⚠️-eit).
 
 ## 2. Git / push állapot
 
-- `master` = `origin/master` = `b86a7bc`.
-- **Nincs pusholva** (a felhasználó kérésére helyben maradunk, vonaton van): `54d5fcc` K16, `cf6d168` Cucumber-próba docs, `10a67d0` Cucumber expression átírás, `68f08b2` K8.
-- **A push 403-mal elutasítva:** a `gh` fine-grained tokenből (github_pat_…) hiányzik a repóra a *Contents: write* és *Workflows: write* jog. A felhasználónak kell rendeznie (token jogosultság, vagy `gh auth login -w -s workflow` + `gh auth setup-git`). `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
+- 2026-10-08: a push-jog rendben (a felhasználó javította a tokent). Pusholva: `k16-zone-checkin`, `k8-panic-mode`, `k7-code-reader` (ez utóbbin csak a STATUS commit). A `master` fast-forward → `04fdd15` (K16 + Cucumber-próba + Cucumber expression + K8 + STATUS), pusholva.
+- A workflow csak `master` / `bdd-setup` pushra és `master`-re nyitott PR-ra fut, a feature-ágakra nem → a CI a `master`-en ellenőriz.
+- `gh` elérési út: `/opt/homebrew/bin/gh` (a shell PATH-jában nincs).
 - Merge módja: zöld CI után fast-forward a `master`-be. Ágak követelményenként (`kNN-…`).
 - Az origin-on van egy `web` ág (Svelte webes felület, „log in page”) — nem Claude-é, nem nyúlni hozzá.
 
 ## 3. CI
 
 - `.github/workflows/ios.yml`: SharedKit job (kötelező, zöld); Worker job `continue-on-error: true`, mert a GitHub runner legújabb Xcode-ja 26.6, iOS 27 SDK nincs (naplóból megerősítve: „Unable to find a destination”). Ha a runner Xcode 27-et kap, a sor törlendő.
+- Utolsó futás: 2026-10-08, `master` @ `04fdd15`, run 37648508478 → **sikeres** (SharedKit zöld, Worker a várt módon nem futtatható).
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → 39/39 (K7-tel)
-- Worker BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → K8 után 75/75; K7-tel 6 forgatókönyv került hozzá
+- SharedKit: `cd SharedKit && swift test` → 39/39
+- Worker BDD: `xcodebuild test -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 113/113 (K7 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
 - UI tesztek: 2/2 (lassú, ~45 s)
 
 ## 5. Követelmények állapota (lefedettségi mátrix szerint)
 
 - ✅ K1, K2, K4 (Authentication)
-- ⚠️ L3 (csak műszakütközés), K16 (zóna-bejelentkezés logika; kamera + CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (folyamatban)
+- ⚠️ L3 (csak műszakütközés), K16 (logika + kamera kész; CloudKit hiányzik), K8 (pánik logika; CloudKit/push, hang, UI hiányzik), K7 (logika + kamera kész; CloudKit, parkolójegy hiányzik)
 - Következő jelöltek: K6 Térkép + L7 Helyszíntervező (Floor, rács, POI adatmodell); K5 Beosztások; K14 Kijelentkezés.
 
 ## 6. Módszertan (Tesztterv szerint)

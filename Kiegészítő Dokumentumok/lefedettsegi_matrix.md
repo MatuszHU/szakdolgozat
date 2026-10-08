@@ -15,7 +15,7 @@ A mátrix a követelményspecifikáció funkcionális követelményeit köti ös
 | K4 | Kezdőképernyő | M | Authentication | Authentication: Already logged in | – | ✅ |
 | K5 | Beosztások | M | – | – | – | – |
 | K6 | Térkép | M | – | – | – | – |
-| K7 | Kódolvasó/jegykezelő | M | – | – | – | – |
+| K7 | Kódolvasó/jegykezelő | M | CodeReader | CodeReader: 6 forgatókönyv | SharedKit: ScannedCodeTests, TicketAdmissionTests | ⚠️ |
 | K8 | Pánik mód | M | PanicMode | PanicMode: 5 forgatókönyv | SharedKit: PanicTests | ⚠️ |
 | K9 | Beállítások | S | – | – | – | – |
 | K10 | Profilkép | C | – | – | – | – |
@@ -63,14 +63,15 @@ A mátrix a követelményspecifikáció funkcionális követelményeit köti ös
 
 | | Összes | M | Lefedett (✅) | Részleges (⚠️) |
 |---|---|---|---|---|
-| Munkavállaló | 17 | 9 | 3 | 2 |
+| Munkavállaló | 17 | 9 | 3 | 3 |
 | Adminisztrátor | 11 | 6 | 0 | 1 |
 | Vendég | 11 | 5 | 0 | 0 |
-| **Összesen** | **39** | **20** | **3** | **3** |
+| **Összesen** | **39** | **20** | **3** | **4** |
 
 ## Nyitott tételek
 
 * **L3:** az ütközés-ellenőrzés kész (BDD + TDD), de a követelmény többi része (adminisztrátorok felvétele, műszak létrehozása, létszámkorlát a felületen, feladatkiosztás) még nincs megvalósítva; a forgatókönyvek jelenleg a munkavállalói alkalmazás tesztcéljában futnak, az adminisztrátori alkalmazás elkészültével oda kerülnek át.
+* **K7:** a kódfelismerés (jegy, zóna, ismeretlen kód), a beléptetés szabálya (csak a mai eseményre, csak egyszer) és a kamerás felület (VisionKit, kamerahasználati engedély, kezdőképernyő-link) készen van; a jegyek és zónák valós adatforrása (CloudKit, N2) és a parkolójegy-érvényesítés (nincs specifikálva) hátravan. A kamerás olvasás eszközön, manuálisan ellenőrizendő. Az M4 beléptetési része (`@M4`) ezzel előkészítve.
 * **K8:** a pánikjelzés üzleti logikája (címzettek: a jogosult szerepkörű, műszakban lévő munkatársak a küldő nélkül; üzenet névvel, munkakörrel és utolsó ismert zónával, zóna nélkül is; nyugtázás: csak az első számít, a saját riasztás nem nyugtázható) és az elfogadási forgatókönyvek készen vannak. Hátravan: a `PanicAlertSending` éles (CloudKit + push) megvalósítása, a megkülönböztethető értesítési hang, a felület, valamint az N5 kézbesítési idő manuális mérése.
-* **K16:** a zóna-bejelentkezés üzleti logikája (QR-tartalom értelmezése, csak műszak alatt, csak ismert zónába, műszak végén a pozíció törlődik) és az elfogadási forgatókönyvek készen vannak; a kamerás kódolvasó felület (K7) és a pozíció CloudKitbe mentése még hátravan.
+* **K16:** a zóna-bejelentkezés üzleti logikája (QR-tartalom értelmezése, csak műszak alatt, csak ismert zónába, műszak végén a pozíció törlődik), az elfogadási forgatókönyvek és a kamerás beolvasás (K7) készen vannak; a zónák valós adatforrása és a pozíció CloudKitbe mentése még hátravan.
 * **L1:** két forgatókönyv-csoport szükséges (Sign in with Apple és jelszavas bejelentkezés); a jelszavas ág a hitelesítési szolgáltatás tesztpéldányával fut.

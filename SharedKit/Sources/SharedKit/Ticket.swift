@@ -39,3 +39,33 @@ public struct Ticket: Identifiable, Codable {
         self.entrance = entrance
     }
 }
+
+extension TicketType {
+    public var displayName: String {
+        switch self {
+        case .standard: return "Standard"
+        case .vip: return "VIP"
+        case .custom(let name): return name
+        }
+    }
+}
+
+extension Ticket {
+    public static let qrPrefix = "nightlife://ticket/"
+
+    public enum AdmissionResult: Equatable {
+        case admitted
+        case alreadyUsed
+        case wrongEvent
+    }
+
+    public var qrPayload: String { Ticket.qrPrefix + serialNumber }
+
+    /// Admits the ticket's holder to the given event; a ticket can be used only once (K7, M4).
+    public mutating func admit(toEvent eventID: UUID) -> AdmissionResult {
+        guard self.eventID == eventID else { return .wrongEvent }
+        guard !isUsed else { return .alreadyUsed }
+        isUsed = true
+        return .admitted
+    }
+}
