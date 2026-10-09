@@ -94,6 +94,7 @@ A modellek a SharedKit csomagban találhatók. ✅ = létezik, 🔄 = módosíta
 | `Event` | ✅ | title, description, startTime, endTime, location, capacity, ticketOffers, raffle | → `Ticket`, → `TicketOffer`, → `Raffle` |
 | `EventCatalog` (értékesítés) | ✅ | `checkAvailability`, `price`, `purchase`, `tickets(of:)`; szabályok: meghirdetett jegytípus, keret és férőhely, az esemény még nem ért véget, 1–10 jegy; a jegyek egyedi `NL-…` sorozatszámot kapnak (M4) | → `Event`, → `Ticket` |
 | `TicketOffer` | ✅ | type (`TicketType`), price (Ft), quota (opcionális) (L11, M4) | → `Event` |
+| `EventCatalog` (nyereményjáték) | ✅ | `currentRaffles(at:)` (a még véget nem ért események nyereményjátékai), `enterRaffle` (vendégenként egyszer, az esemény végéig), `hasEnteredRaffle` (M7) | → `Raffle` |
 | `EventCatalog` | ✅ | events (kezdés szerint rendezve); szabályok: cím kell, a vége a kezdés után, férőhely legalább 1, jegytípus eseményenként egyszer, ár nem negatív, a keretek összege legfeljebb a férőhely (L11) | → `Event` |
 | `Ticket` | ✅ | eventID, guestID, ticketType, price, serialNumber, isUsed | → `Event` |
 | `PanicAlert` | ✅ | workerID, timestamp, zoneID, isAcknowledged, acknowledgedByID; szabályok: címzettek (jogosult szerepkör, a küldő nélkül), üzenet (név, munkakör, zóna), nyugtázás (csak az első, a sajátját nem) (K8) | → `Zone` |

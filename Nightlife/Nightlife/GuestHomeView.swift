@@ -1,11 +1,12 @@
 import SwiftUI
 import SharedKit
 
-@M3 @M4 @M6
+@M3 @M4 @M6 @M7
 struct GuestHomeView: View {
     @ObservedObject var viewModel: AuthViewModel
     @StateObject private var guestMap = GuestMapViewModel(venue: Venue(name: ""))
     @StateObject private var ticketShop: TicketShopViewModel
+    @StateObject private var raffle: RaffleViewModel
     @State private var confirmingSignOut = false
 
     init(viewModel: AuthViewModel) {
@@ -19,6 +20,9 @@ struct GuestHomeView: View {
             catalog: EventCatalog(),
             guestID: GuestUser.stableID(forAppleID: viewModel.userID ?? ""),
             payment: payment))
+        _raffle = StateObject(wrappedValue: RaffleViewModel(
+            catalog: EventCatalog(),
+            guestID: GuestUser.stableID(forAppleID: viewModel.userID ?? "")))
     }
 
     var body: some View {
@@ -33,6 +37,11 @@ struct GuestHomeView: View {
                     MyTicketsView(viewModel: ticketShop)
                 } label: {
                     Label("Jegyeim", systemImage: "ticket")
+                }
+                NavigationLink {
+                    RaffleView(viewModel: raffle)
+                } label: {
+                    Label("Nyereményjáték", systemImage: "gift")
                 }
                 NavigationLink {
                     GuestMapView(viewModel: guestMap)

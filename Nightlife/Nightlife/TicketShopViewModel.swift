@@ -76,6 +76,8 @@ class TicketShopViewModel: ObservableObject {
         case .eventFull: return "The event is full"
         case .eventOver: return "The event is over"
         case .invalidQuantity: return "You can buy 1 to 10 tickets at once"
+        case .noRaffle: return "There is no raffle for this event"
+        case .alreadyEntered: return "You are already registered for this raffle"
         case .unknownEvent: return "The event no longer exists"
         default: return "The purchase failed"
         }

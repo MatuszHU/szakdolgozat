@@ -49,6 +49,8 @@ public struct EventCatalog: Codable, Hashable {
         case eventFull
         case eventOver
         case invalidQuantity
+        case noRaffle
+        case alreadyEntered
     }
 
     public private(set) var events: [Event] = []
@@ -101,6 +103,29 @@ public struct EventCatalog: Codable, Hashable {
 
     public mutating func removeRaffle(fromEvent eventID: UUID) throws {
         try edit(eventID) { $0.raffle = nil }
+    }
+
+    @M7
+    public func currentRaffles(at date: Date) -> [(event: Event, raffle: Raffle)] {
+        events
+            .filter { $0.endTime > date }
+            .compactMap { event in event.raffle.map { (event, $0) } }
+    }
+
+    @M7
+    public func hasEnteredRaffle(ofEvent eventID: UUID, guestID: UUID) -> Bool {
+        events.first { $0.id == eventID }?.raffle?.participantIDs.contains(guestID) ?? false
+    }
+
+    @M7
+    public mutating func enterRaffle(ofEvent eventID: UUID, guestID: UUID, at date: Date) throws {
+        try edit(eventID) { event in
+            guard var raffle = event.raffle else { throw CatalogError.noRaffle }
+            guard date < event.endTime else { throw CatalogError.eventOver }
+            guard !raffle.participantIDs.contains(guestID) else { throw CatalogError.alreadyEntered }
+            raffle.participantIDs.append(guestID)
+            event.raffle = raffle
+        }
     }
 
     @M4

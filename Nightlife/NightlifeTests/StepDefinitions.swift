@@ -17,5 +17,6 @@ extension Cucumber: @retroactive StepImplementation {
         setupGuestAuthenticationSteps()
         setupVenueGuideSteps()
         setupTicketPurchaseSteps()
+        setupRaffleSteps()
     }
 }

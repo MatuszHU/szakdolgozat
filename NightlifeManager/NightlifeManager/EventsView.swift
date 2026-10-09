@@ -111,6 +111,7 @@ private struct EventDetailView: View {
             Section("Nyereményjáték") {
                 if let raffle = event.raffle {
                     LabeledContent(raffle.title, value: raffle.prize)
+                    LabeledContent("Jelentkezők", value: "\(raffle.participantIDs.count)")
                     Button("Nyereményjáték törlése", role: .destructive) { viewModel.removeRaffle(fromEvent: event.id) }
                 } else {
                     TextField("Megnevezés", text: $raffleTitle)

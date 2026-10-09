@@ -1,11 +1,12 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-09 (K3 töltőképernyő kész — minden K-követelmény feldolgozva)
+> Utolsó frissítés: 2026-10-09 (M7 nyereményjáték kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `k3-loading-screen`. **K3 ✅**: `LoadingTracker` (SharedKit), `LoadingViewModel` + `LoadingScreen` fedőréteg, profilkép-betöltés bekötve. **A „k-kal” kör kész.** Következő: egyeztetni (M7–M11, illetve a ⚠️ tételek CloudKit nélkül nem zárhatók).
+**Aktív ág:** `m7-raffle`. **A felhasználó kérése (2026-10-09): „jöjjenek az M feladatok”** → M7 ✅ (⚠️ N2), M8+M9, M10 (8 nyelv), M11. `EventCatalog.currentRaffles/enterRaffle/hasEnteredRaffle`, vendég `RaffleViewModel` + `RaffleView`, Manager: jelentkezők száma.
+- Korábban: `k3-loading-screen`. **K3 ✅**: `LoadingTracker` (SharedKit), `LoadingViewModel` + `LoadingScreen` fedőréteg, profilkép-betöltés bekötve. **A „k-kal” kör kész.** Következő: egyeztetni (M7–M11, illetve a ⚠️ tételek CloudKit nélkül nem zárhatók).
 - Korábban: `k11-language`. **K11 ✅**: `Localizable.xcstrings` (96 szöveg, hu/en/pt-PT), `AppLanguage`/`LanguageSettings` (UserDefaults `AppLanguage`), `.environment(\.locale)` a gyökérben, VM-üzenetek `LocalizedStringResource`-ként, a lépések `english(_:)`-szel hasonlítanak. Új UI-szövegnél a catalogot bővíteni kell (a kulcsok a DerivedData `.stringsdata` fájljaiból). Hátravan: K3.
 - Korábban ezen a körön: `k9-settings`. **K9 ✅, K10 ⚠️, K15 ✅ kész**: `SettingsViewModel` (fogaskerék a kezdőképernyőn, kijelentkezés ide költözött), `ProfilePicture` (SharedKit, ImageIO) + `ProfilePictureViewModel` + fájltároló, `GuideViewModel` (útmutató gomb). Hátravan: K11 nyelv (hu/en/pt-PT), K3 töltőképernyő.
 - K13 (kész, master): `NotificationInbox` (system/user/admin, dedup eseményazonosítóval), Worker `NotificationsViewModel` + `NotificationSources` + `NotificationsView`, kezdőképernyő-jelvény.
@@ -56,7 +57,7 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → SharedKit 208 + AdminCore 34
+- SharedKit: `cd SharedKit && swift test` → SharedKit 213 + AdminCore 34
 - AuthService: `cd AuthService && swift test` → 5/5 (CI: Linux, `swift:6.4-noble`)
 - Manager BDD → 359/359
 - Vendég BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 90 BDD + 3 egységteszt
