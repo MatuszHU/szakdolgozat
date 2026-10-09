@@ -54,6 +54,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * Kijelentkezés megerősítő kérdéssel, majd újraindítás után az üdvözlőképernyő (K14)
 * Jelszavas bejelentkezés a futó hitelesítési szolgáltatással (L1)
 * Beosztás megnyitása a kezdőképernyőről, frissítés lehúzással (K5; valós adatokkal a CloudKit után)
+* Készletkérés küldése a telefonról, a kérés állapotának követése (K17; a Macen a CloudKit után)
 * Push értesítések kézbesítése és hangja (K8, N5)
 * Kamerás kódolvasás és QR-kódos zóna-bejelentkezés (K7, K16)
 * CloudKit-szinkronizáció több eszköz között (N2)
@@ -107,6 +108,7 @@ A CucumberSwift működését 2026-10-07-én ideiglenes próba-forgatókönyvekk
 | Szövegként megadott lépés, a closure paramétereit nem használva (`{ _, _ in }`) | ⚠️ A fordító ilyenkor Cucumber expressionként értelmezi (pontos egyezés), így a `^`, `$` és egyéb regex-jelek szó szerint értendők, és a lépés nem illeszkedik. |
 | Sikertelen lépés utáni lépések | ⚠️ Nem futnak le, de az Xcode-riportban **sikeresként** jelennek meg. |
 | `@` jel a lépés szövegében | ⚠️ A lexer címke kezdetének tekinti, a `@` utáni rész elveszik (pl. e-mail-cím). A forgatókönyvekben e-mail-cím helyett a részeit kell megadni. |
+| A lépés kulcsszava | ⚠️ A `Given`, `When` és `Then` definíciók külön tartoznak: egy `When`-ként regisztrált szöveg egy `Given` (vagy az utána álló `And`) lépésre nem illeszkedik, hanem nem definiált lépés lesz (2026-10-09, K17). Ha egy lépés előfeltételként és műveletként is szerepel, mindkét kulcsszóval regisztrálni kell. |
 | Nem definiált lépés | ⚠️ A lépés saját tesztmetódusa sikeres, a hibát a `CucumberTest.testGherkin` jelzi (a javasolt lépésdefiníció kódjával). A futás így összességében sikertelen. |
 
 ## Konvenciók
@@ -195,4 +197,7 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-08 | – | NightlifeWorkerTests, NightlifeTests | 147/147, 92/92 sikeres | A K6 és M5 térkép az új tervrajzmodellel, változatlan forgatókönyvekkel (regresszió OK). |
 | 2026-10-09 | – | SharedKitTests | 171/171 sikeres | K5: WorkerScheduleTests (9 új), előbb sikertelenek (fordítási hiba). Mutációs ellenőrzés: a műszak végének határesetét elrontva (`<=` helyett `<`) a teszt elbukott. |
 | 2026-10-09 | – | NightlifeWorkerTests | 192/192 sikeres | K5: Schedule, 6 forgatókönyv. Mutációs ellenőrzés: ha a beosztás a kolléga feladatait is mutatja, az „Only my tasks are shown” forgatókönyv elbukott. Az Xcode először nem látta az új SharedKit-fájlt (elavult csomagfájllista a szimulátoros inkrementális buildben); egy `generic/platform=iOS Simulator` build után rendben. |
+| 2026-10-09 | – | SharedKitTests | 179/179 sikeres | K17: SupplyRequestTests (8 új: sürgősség, zóna, tételenként egy nyitott kérés, saját kérések, kategóriák, régi mentés betöltése, sürgős jelölés a naplóban), előbb sikertelenek. Mutációs ellenőrzés: a nyitott kérés szabályát kivéve a teszt elbukott. |
+| 2026-10-09 | – | NightlifeWorkerTests | 234/234 sikeres | K17: SupplyRequest, 8 forgatókönyv. Az első futásban a `testGherkin` nem definiált lépést jelzett: a `Given` utáni `And` lépés csak `When`-ként volt regisztrálva (ld. A CucumberSwift ellenőrzött viselkedése). Mutációs ellenőrzés: ha a kezdőképernyő a kikapcsolt funkciót is felkínálja, a „Turned off by the administrator” forgatókönyv elbukott. |
+| 2026-10-09 | – | NightlifeManagerTests, NightlifeTests | sikeres, 92/92 | A készletkérés új mezői (sürgősség, megjegyzés) a Manager készletkezelőjében és kérelemnaplójában; regresszió OK. |
 | 2026-10-07 | d8ef516 | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

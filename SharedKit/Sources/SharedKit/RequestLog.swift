@@ -21,6 +21,7 @@ public struct RequestLog {
         public let workerName: String
         public let details: String
         public let isOpen: Bool
+        public var isUrgent = false
     }
 
     public let entries: [Entry]
@@ -39,7 +40,8 @@ public struct RequestLog {
             return Entry(id: request.id, category: .supplyRequest, date: request.requestDate,
                          workerName: name(of: request.workerID),
                          details: "\(amount) \(item?.unit ?? "") \(item?.name ?? "")",
-                         isOpen: request.status == .pending)
+                         isOpen: request.status == .pending,
+                         isUrgent: request.urgency == .outOfStock)
         }
         entries = (alertEntries + supplyEntries).sorted { $0.date > $1.date }
     }

@@ -78,6 +78,7 @@ class InventoryViewModel: ObservableObject {
         case .unknownRequest: return "The request no longer exists"
         case .alreadyDecided: return "The request has already been decided"
         case .notEnoughStock(let name): return "Not enough \(name) in stock"
+        case .openRequestExists(let name): return "There is already an open request for \(name)"
         }
     }
 }

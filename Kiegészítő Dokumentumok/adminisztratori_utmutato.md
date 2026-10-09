@@ -65,7 +65,7 @@ A tervrajzon a munkatársak a legutóbbi zóna-bejelentkezésük helyén jelenne
 - **Új tétel:** megnevezés, kategória, mennyiség, mértékegység, minimális mennyiség. A megnevezés egyedi.
 - **Mennyiség módosítása:** a tétel sorában írd át a mennyiséget, és nyomj Entert.
 - **Alacsony készlet:** a minimum alatti tételek narancssárgán, külön listában jelennek meg; ha egy művelet a minimum alá viszi a tételt, figyelmeztetés jelenik meg.
-- **Készletkérések:** a **Függő kérések** részben jóváhagyhatók (a mennyiség levonódik a készletből) vagy elutasíthatók. A készletnél nagyobb kérés nem hagyható jóvá.
+- **Készletkérések:** a munkavállalók a telefonos appból kérnek (K17). A **Függő kérések** részben jóváhagyhatók (a mennyiség levonódik a készletből) vagy elutasíthatók. A készletnél nagyobb kérés nem hagyható jóvá. Az **Elfogyott** jelzésű kérések már hiányt jeleznek, a többi előre szól; a munkavállaló megjegyzése a tétel alatt látszik. Egy munkavállalónak tételenként egy nyitott kérése lehet.
 
 ## 10. Kérelmek (L8)
 

@@ -25,7 +25,15 @@ struct InventoryView: View {
                 }
                 ForEach(viewModel.inventory.pendingRequests) { request in
                     HStack {
-                        Text("\(viewModel.item(for: request)?.name ?? "?") · \(Self.amount(request.quantity)) \(viewModel.item(for: request)?.unit ?? "")")
+                        VStack(alignment: .leading) {
+                            Text("\(viewModel.item(for: request)?.name ?? "?") · \(Self.amount(request.quantity)) \(viewModel.item(for: request)?.unit ?? "")")
+                            if let note = request.note {
+                                Text(note).font(.caption).foregroundStyle(.secondary)
+                            }
+                        }
+                        if request.urgency == .outOfStock {
+                            Text("Elfogyott").font(.caption.bold()).foregroundStyle(.red)
+                        }
                         Spacer()
                         Button("Elutasítás") { viewModel.rejectRequest(id: request.id) }
                         Button("Jóváhagyás") { viewModel.approveRequest(id: request.id) }

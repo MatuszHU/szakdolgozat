@@ -66,5 +66,6 @@ extension Cucumber: @retroactive StepImplementation {
         setupVenueMapSteps()
         setupSignOutSteps()
         setupScheduleSteps()
+        setupSupplyRequestSteps()
     }
 }

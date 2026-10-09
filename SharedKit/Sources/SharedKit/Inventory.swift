@@ -21,6 +21,14 @@ public struct Inventory: Codable, Hashable {
         case unknownRequest
         case alreadyDecided
         case notEnoughStock(String)
+        case openRequestExists(String)
+    }
+
+    public struct Category: Identifiable, Hashable {
+        public let name: String
+        public let items: [SupplyItem]
+
+        public var id: String { name }
     }
 
     public private(set) var items: [SupplyItem] = []
@@ -34,6 +42,18 @@ public struct Inventory: Codable, Hashable {
 
     public var pendingRequests: [SupplyRequest] {
         requests.filter { $0.status == .pending }
+    }
+
+    @K17
+    public var categories: [Category] {
+        Dictionary(grouping: items, by: \.category)
+            .map { Category(name: $0.key, items: $0.value) }
+            .sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
+    }
+
+    @K17
+    public func requests(of workerID: UUID) -> [SupplyRequest] {
+        requests.filter { $0.workerID == workerID }.sorted { $0.requestDate > $1.requestDate }
     }
 
     @discardableResult
@@ -65,10 +85,15 @@ public struct Inventory: Codable, Hashable {
 
     @discardableResult
     public mutating func receiveRequest(from workerID: UUID, itemID: UUID, quantity: Double,
+                                        urgency: SupplyUrgency = .runningLow, zoneID: UUID? = nil,
                                         note: String? = nil, at date: Date = Date()) throws -> SupplyRequest {
         guard quantity > 0 else { throw InventoryError.negativeAmount }
-        guard items.contains(where: { $0.id == itemID }) else { throw InventoryError.unknownItem }
-        let request = SupplyRequest(workerID: workerID, itemID: itemID, quantity: quantity, requestDate: date, note: note)
+        guard let item = items.first(where: { $0.id == itemID }) else { throw InventoryError.unknownItem }
+        guard !pendingRequests.contains(where: { $0.workerID == workerID && $0.itemID == itemID }) else {
+            throw InventoryError.openRequestExists(item.name)
+        }
+        let request = SupplyRequest(workerID: workerID, itemID: itemID, quantity: quantity, requestDate: date,
+                                    note: note, urgency: urgency, zoneID: zoneID)
         requests.append(request)
         return request
     }

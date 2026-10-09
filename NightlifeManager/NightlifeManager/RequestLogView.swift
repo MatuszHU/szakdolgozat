@@ -25,6 +25,9 @@ struct RequestLogView: View {
                                 Text(entry.workerName).font(.headline)
                                 if !entry.details.isEmpty { Text(entry.details) }
                             }
+                            if entry.isUrgent {
+                                Text("Elfogyott").font(.caption.bold()).foregroundStyle(.red)
+                            }
                             Spacer()
                             Text(entry.date.formatted(date: .abbreviated, time: .shortened)).foregroundStyle(.secondary)
                         }
