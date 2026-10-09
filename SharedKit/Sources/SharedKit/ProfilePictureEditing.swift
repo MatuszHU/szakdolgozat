@@ -1,51 +1,50 @@
 import Foundation
 import Combine
-import SharedKit
 
-@K10
-protocol ProfilePictureStoring {
+@K10 @M9
+public protocol ProfilePictureStoring {
     func load() -> Data?
     func save(_ data: Data) throws
     func delete() throws
 }
 
-@K10
-struct FileProfilePictureStore: ProfilePictureStoring {
-    let fileURL: URL
+@K10 @M9
+public struct FileProfilePictureStore: ProfilePictureStoring {
+    public let fileURL: URL
 
-    init(fileName: String = "profile-picture.jpg") {
+    public init(fileName: String = "profile-picture.jpg") {
         let folder = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
         try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
         fileURL = folder.appendingPathComponent(fileName)
     }
 
-    func load() -> Data? {
+    public func load() -> Data? {
         try? Data(contentsOf: fileURL)
     }
 
-    func save(_ data: Data) throws {
+    public func save(_ data: Data) throws {
         try data.write(to: fileURL, options: [.atomic, .completeFileProtection])
     }
 
-    func delete() throws {
+    public func delete() throws {
         if FileManager.default.fileExists(atPath: fileURL.path) {
             try FileManager.default.removeItem(at: fileURL)
         }
     }
 }
 
-@K10
-class ProfilePictureViewModel: ObservableObject {
-    @Published private(set) var imageData: Data?
-    @Published private(set) var errorMessage: LocalizedStringResource?
+@K10 @M9
+public class ProfilePictureViewModel: ObservableObject {
+    @Published public private(set) var imageData: Data?
+    @Published public private(set) var errorMessage: LocalizedStringResource?
     private let store: ProfilePictureStoring
 
-    init(store: ProfilePictureStoring) {
+    public init(store: ProfilePictureStoring) {
         self.store = store
         imageData = store.load()
     }
 
-    func choose(_ data: Data) {
+    public func choose(_ data: Data) {
         do {
             let prepared = try ProfilePicture.prepare(data)
             try store.save(prepared)
@@ -60,7 +59,7 @@ class ProfilePictureViewModel: ObservableObject {
         }
     }
 
-    func remove() {
+    public func remove() {
         do {
             try store.delete()
             imageData = nil

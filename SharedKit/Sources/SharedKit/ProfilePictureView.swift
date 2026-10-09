@@ -1,14 +1,18 @@
+#if os(iOS)
 import SwiftUI
 import PhotosUI
-import SharedKit
 
-@K10
-struct ProfilePictureView: View {
+@K10 @M9
+public struct ProfilePictureView: View {
     @ObservedObject var viewModel: ProfilePictureViewModel
     @State private var selection: PhotosPickerItem?
     @EnvironmentObject private var loading: LoadingViewModel
 
-    var body: some View {
+    public init(viewModel: ProfilePictureViewModel) {
+        self.viewModel = viewModel
+    }
+
+    public var body: some View {
         Form {
             Section {
                 HStack {
@@ -47,12 +51,17 @@ struct ProfilePictureView: View {
     }
 }
 
-@K10
-struct ProfileImage: View {
+@K10 @M9
+public struct ProfileImage: View {
     let data: Data?
     let size: CGFloat
 
-    var body: some View {
+    public init(data: Data?, size: CGFloat) {
+        self.data = data
+        self.size = size
+    }
+
+    public var body: some View {
         Group {
             if let data, let image = UIImage(data: data) {
                 Image(uiImage: image).resizable().scaledToFill()
@@ -65,3 +74,4 @@ struct ProfileImage: View {
         .accessibilityLabel(Text("Profilkép"))
     }
 }
+#endif

@@ -2,9 +2,10 @@ import SwiftUI
 import SharedKit
 
 @main
-@M1 @M3
+@M1 @M3 @M9
 struct NightlifeApp: App {
     @StateObject private var authViewModel = AuthViewModel(store: KeychainCredentialStore(service: "hu.matusz.nightlife.guest.signin"))
+    @StateObject private var loading = LoadingViewModel()
 
     var body: some Scene {
         WindowGroup {
@@ -15,8 +16,15 @@ struct NightlifeApp: App {
                     GuestWelcomeView(viewModel: authViewModel)
                 }
             }
+            .overlay {
+                if loading.showsLoadingScreen {
+                    LoadingScreen()
+                }
+            }
+            .animation(.easeInOut(duration: 0.2), value: loading.showsLoadingScreen)
+            .environmentObject(loading)
             .task {
-                authViewModel.checkAuthState()
+                await loading.run { authViewModel.checkAuthState() }
             }
         }
     }

@@ -56,8 +56,8 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 | M5 | Térkép | S | VenueGuide | VenueGuide: 5 forgatókönyv (vendég) | SharedKit: GuestVenueTests | ⚠️ |
 | M6 | Kijelentkezés | M | GuestAuthentication | GuestAuthentication: 2 kijelentkezési forgatókönyv | AuthenticationTests | ✅ |
 | M7 | Nyereményjáték | C | Raffle | Raffle: 5 forgatókönyv (vendég) | SharedKit: RaffleEntryTests | ⚠️ |
-| M8 | Beállítások | S | – | – | – | – |
-| M9 | Profilkép | C | – | – | – | – |
+| M8 | Beállítások | S | GuestSettings | GuestSettings: 3 forgatókönyv (vendég) | – | ✅ |
+| M9 | Profilkép | C | GuestProfilePicture | GuestProfilePicture: 3 forgatókönyv (vendég) | SharedKit: ProfilePictureTests | ⚠️ |
 | M10 | Nyelv | S | – | – | – | – |
 | M11 | Útmutató | C | – | – | – | – |
 
@@ -67,8 +67,8 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 |---|---|---|---|---|
 | Munkavállaló | 17 | 9 | 8 | 9 |
 | Adminisztrátor | 11 | 6 | 8 | 3 |
-| Vendég | 11 | 5 | 4 | 3 |
-| **Összesen** | **39** | **20** | **20** | **15** |
+| Vendég | 11 | 5 | 5 | 4 |
+| **Összesen** | **39** | **20** | **21** | **16** |
 
 ## Nyitott tételek
 
@@ -77,6 +77,8 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 * **L6:** kész: vállalati domain (csak tulajdonos), saját jelszó módosítása a jelenlegi jelszó megerősítésével, a munkavállalói nem alapfunkciók (profilkép K10, összesítés K12, útmutató K15, készletkérés K17) központi ki- és bekapcsolása. A munkavállalói app kezdőképernyője (`HomeMenuViewModel`) a kikapcsolt funkciókat nem kínálja fel (készletkérés K17, összesítés K12, profilkép K10 és útmutató K15 a beállításokban is); a beállítások a CloudKit-szinkronnal (N2) jutnak el a telefonra.
 * **K1, K2, K4, K14, M1, M2, M3, M6:** a bejelentkezés logikája (`AuthViewModel`, `CredentialStoring`, `KeychainCredentialStore`) a SharedKitben közös a munkavállalói és a vendég app között, külön Keychain-szolgáltatásnévvel. A bejelentkezés a Keychainben megmarad két indítás között, a kijelentkezés törli. A valódi Sign in with Apple folyamat fizetős Apple fejlesztői tagság nélkül nem próbálható ki (manuális teszt, ld. Tesztterv).
 * **M4:** a jegyvásárlás logikája (csak meghirdetett jegytípus; a keret és a férőhely nem léphető túl; véget ért eseményre nincs vásárlás; 1–10 jegy egyszerre; elutasított fizetésnél nincs jegy; egyedi sorozatszám; a jegyeim eseménydátum szerint), a jegyek QR-kódja és felülete kész. A megvett jegyet a K7 kódolvasó logikája felismeri és egyszer beengedi (`@K7` forgatókönyv). Hátravan: valódi fizetés (Apple Pay) és Apple Tárca (fizetős fejlesztői tagság), valamint az események CloudKit-szinkronja (N2). Debug buildben tesztfizetés, Release-ben „a fizetés még nem elérhető”.
+* **M8:** kész: a vendég beállításai egy nézetben (profilkép, névjegy a bejelentkezett névvel és a verzióval, kijelentkezés megerősítéssel), a kezdőképernyő fogaskerék gombjával; a kijelentkezés ide költözött (M6).
+* **M9:** a profilkép kiválasztása, cseréje és törlése kész, a munkavállalói appal közös SharedKit-kóddal (`ProfilePicture`, `ProfilePictureViewModel`, `ProfilePictureView`); a töltőképernyő (K3) a vendég appban is megjelenik. A feltöltés a CloudKittől (N2) függ.
 * **M7:** a nyereményjáték logikája (a még véget nem ért események nyereményjátékai az események sorrendjében; részletek; vendégenként egy jelentkezés; az esemény után nincs jelentkezés) és a felülete kész; a Macen az eseménykezelő mutatja a jelentkezők számát (L11). A nyereményjátékok és a jelentkezések átvitele a CloudKittől (N2) függ.
 * **M5:** a vendég térkép logikája (a vendég csak a neki szóló POI-kat látja: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár; az egyéni pontok és a személyzeti zónák rejtettek; a földszinten nyílik; szintváltás; tervrajz nélkül tájékoztató üzenet) és felülete kész. A tervrajz eljuttatása a vendég appba a CloudKittől (N2) függ.
 * **K5:** a beosztás logikája (`WorkerSchedule`: csak a saját műszakok időrendben, a kezdés napja szerint csoportosítva; szint és zóna; csak a nekem kiosztott feladatok; az aktuális és a következő műszak; a lezárult műszakok külön, a legfrissebb elöl) és a felülete (`ScheduleView`, kezdőképernyő-link) kész. A műszakterv a Macről CloudKit-szinkronnal (N2) jut el a telefonra; addig a beosztás üres.

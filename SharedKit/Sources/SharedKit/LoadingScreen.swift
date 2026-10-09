@@ -1,9 +1,11 @@
 import SwiftUI
-import SharedKit
 
-@K3
-struct LoadingScreen: View {
-    var body: some View {
+@available(iOS 17.0, macOS 14.0, *)
+@K3 @M9
+public struct LoadingScreen: View {
+    public init() {}
+
+    public var body: some View {
         VStack(spacing: 20) {
             Image(systemName: "moon.stars.fill")
                 .font(.system(size: 64))

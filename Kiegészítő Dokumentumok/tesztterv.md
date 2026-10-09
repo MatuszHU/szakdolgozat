@@ -61,6 +61,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * Nyelvváltás a beállításokban: a felület szövegei, dátumai és számai a választott nyelven (K11)
 * Töltőképernyő nagy fotó profilképként való betöltésekor (K3)
 * Nyereményjáték: jelentkezés a vendég appban, a jelentkezők száma a Macen (M7, L11; CloudKit után)
+* Vendég app: beállítások és profilkép kiválasztása a Fotókból (M8, M9)
 * Push értesítések kézbesítése és hangja (K8, N5)
 * Kamerás kódolvasás és QR-kódos zóna-bejelentkezés (K7, K16)
 * CloudKit-szinkronizáció több eszköz között (N2)
@@ -218,4 +219,5 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-09 | – | NightlifeWorkerTests | 406/406 sikeres | K3: LoadingScreen, 3 forgatókönyv. Az első futásban a `testGherkin` „duplicate step” hibát jelzett (ld. A CucumberSwift ellenőrzött viselkedése). Mutációs ellenőrzés: ha a betöltés vége nem frissíti az állapotot, két forgatókönyv elbukott. |
 | 2026-10-09 | – | SharedKitTests | 213/213 sikeres | M7: RaffleEntryTests (5 új), előbb sikertelenek. Mutációs ellenőrzés: az egyszeri jelentkezés szabálya nélkül a teszt elbukott. |
 | 2026-10-09 | – | NightlifeTests (vendég), NightlifeManagerTests | 116/116, sikeres | M7: Raffle, 5 forgatókönyv. Mutációs ellenőrzés: ha a lista a lejárt események nyereményjátékait is mutatja, a forgatókönyv elbukott. |
+| 2026-10-09 | – | NightlifeTests (vendég), NightlifeWorkerTests | 139/139, 406/406 sikeres | M8: GuestSettings (3), M9: GuestProfilePicture (3) forgatókönyv. A profilkép- és betöltéskód a SharedKitbe került; a Worker forgatókönyvei változatlanul sikeresek (regresszió OK). Mutációs ellenőrzés: ha a beállításokból indított kijelentkezés nem hat, a forgatókönyv elbukott. |
 | 2026-10-07 | d8ef516 | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

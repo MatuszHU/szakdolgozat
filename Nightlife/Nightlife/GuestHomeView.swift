@@ -1,13 +1,13 @@
 import SwiftUI
 import SharedKit
 
-@M3 @M4 @M6 @M7
+@M3 @M4 @M6 @M7 @M8 @M9
 struct GuestHomeView: View {
     @ObservedObject var viewModel: AuthViewModel
     @StateObject private var guestMap = GuestMapViewModel(venue: Venue(name: ""))
     @StateObject private var ticketShop: TicketShopViewModel
     @StateObject private var raffle: RaffleViewModel
-    @State private var confirmingSignOut = false
+    @StateObject private var profilePicture = ProfilePictureViewModel(store: FileProfilePictureStore())
 
     init(viewModel: AuthViewModel) {
         self.viewModel = viewModel
@@ -51,12 +51,12 @@ struct GuestHomeView: View {
             }
             .navigationTitle("Nightlife")
             .toolbar {
-                Button("Kijelentkezés", systemImage: "rectangle.portrait.and.arrow.right") {
-                    confirmingSignOut = true
+                NavigationLink {
+                    GuestSettingsView(viewModel: GuestSettingsViewModel(auth: viewModel, guestName: nil),
+                                      profilePicture: profilePicture)
+                } label: {
+                    Label("Beállítások", systemImage: "gearshape")
                 }
-            }
-            .confirmationDialog("Biztosan kijelentkezel?", isPresented: $confirmingSignOut, titleVisibility: .visible) {
-                Button("Kijelentkezés", role: .destructive) { viewModel.signOut() }
             }
         }
     }
