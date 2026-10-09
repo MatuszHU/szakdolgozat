@@ -11,9 +11,7 @@ extension Cucumber {
         var desk: LocalSupplyDesk!
         var me: WorkerUser!
         var zone: Zone!
-        var features = Set(WorkerFeature.allCases)
         var viewModel: SupplyRequestViewModel!
-        var home: HomeMenuViewModel!
 
         func item(named name: String) throws -> SupplyItem {
             try XCTUnwrap(desk.inventory.items.first { $0.name == name }, "Unknown item in scenario: \(name)")
@@ -26,7 +24,7 @@ extension Cucumber {
         func openRequest() {
             if viewModel == nil {
                 viewModel = SupplyRequestViewModel(workerID: me.id, zoneID: zone.id, desk: desk,
-                                                   isEnabled: features.contains(.supplyRequests))
+                                                   isEnabled: World.enabledFeatures.contains(.supplyRequests))
             }
         }
 
@@ -37,25 +35,13 @@ extension Cucumber {
                               urgency: urgency(texts[1]))
         }
 
-        func homeItem(_ name: String) -> HomeItem? {
-            switch name {
-            case "Schedule": return .schedule
-            case "Code reader": return .codeReader
-            case "Map": return .map
-            case "Supply request": return .supplyRequest
-            default: return nil
-            }
-        }
-
         BeforeScenario { _ in
             var tick = Date(timeIntervalSince1970: 1_800_000_000)
             desk = LocalSupplyDesk(now: {
                 tick = tick.addingTimeInterval(60)
                 return tick
             })
-            features = Set(WorkerFeature.allCases)
             viewModel = nil
-            home = nil
         }
 
         Given("the stock list has:") { _, step in
@@ -81,10 +67,6 @@ extension Cucumber {
             XCTAssertEqual(viewModel.message, "Request sent")
         }
 
-        Given("the administrator turned off supply requests") { _, _ in
-            features.remove(.supplyRequests)
-        }
-
         When("I open the supply request") { _, _ in
             openRequest()
         }
@@ -108,10 +90,6 @@ extension Cucumber {
 
         When("the administrator rejects the request for {string}") { match, _ in
             try decide(match, approve: false)
-        }
-
-        When("I open the home screen") { _, _ in
-            home = HomeMenuViewModel(enabledFeatures: features)
         }
 
         Then("I can choose from {string}") { match, _ in
@@ -147,16 +125,6 @@ extension Cucumber {
             let expected = (step.dataTable?.rows.dropFirst() ?? []).map { $0.joined(separator: " | ") }
             let actual = viewModel.myRequests.map { [$0.itemName, $0.amount, $0.status.displayName].joined(separator: " | ") }
             XCTAssertEqual(actual, Array(expected))
-        }
-
-        Then("the home screen does not offer {string}") { match, _ in
-            let item = try XCTUnwrap(homeItem(try match.first(\.string)))
-            XCTAssertFalse(home.items.contains(item))
-        }
-
-        Then("the home screen offers {string}") { match, _ in
-            let item = try XCTUnwrap(homeItem(try match.first(\.string)))
-            XCTAssertTrue(home.items.contains(item))
         }
     }
 }

@@ -53,7 +53,7 @@ Feature: Supply Request
 
   @L6
   Scenario: Turned off by the administrator
-    Given the administrator turned off supply requests
+    Given the administrator turned off "supply requests"
     When I open the home screen
     Then the home screen does not offer "Supply request"
     And the home screen offers "Schedule"

@@ -6,7 +6,7 @@ import SharedKit
 
 extension Cucumber {
 
-    @K5
+    @K5 @K12
     func setupScheduleSteps() {
         var venue = Venue(name: "Club Neon")
         var people: [WorkerUser] = []
@@ -14,6 +14,8 @@ extension Cucumber {
         var shifts: [Shift] = []
         var clock = Date()
         var viewModel: ScheduleViewModel!
+        var payPeriod = PayPeriod.weekly
+        var summary: WorkSummaryViewModel!
 
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -49,6 +51,8 @@ extension Cucumber {
             shifts = []
             clock = Date()
             viewModel = nil
+            payPeriod = .weekly
+            summary = nil
         }
 
         Given("the schedule venue has the floor {string} at level {int} with the zones {string} and {string}") { match, _ in
@@ -89,6 +93,48 @@ extension Cucumber {
                 shifts[index].tasks.append(ShiftTask(title: row[0], description: "",
                                                      assignedWorkerIDs: [try person(named: row[1]).id], workstation: ""))
             }
+        }
+
+        Given("my pay period is {string}") { match, _ in
+            switch try match.first(\.string) {
+            case "monthly": payPeriod = .monthly
+            case "biweekly": payPeriod = .biweekly
+            default: payPeriod = .weekly
+            }
+        }
+
+        Given("the shifts have the tasks:") { _, step in
+            for row in step.dataTable?.rows.dropFirst() ?? [] {
+                let index = try XCTUnwrap(shifts.firstIndex { text($0.startTime, "yyyy-MM-dd") == row[0] },
+                                          "No shift starts on \(row[0])")
+                shifts[index].tasks.append(ShiftTask(title: row[1], description: "", isCompleted: row[3] == "yes",
+                                                     assignedWorkerIDs: [try person(named: row[2]).id], workstation: ""))
+            }
+        }
+
+        When("I open my work summary") { _, _ in
+            let now = clock
+            summary = WorkSummaryViewModel(workerID: me.id, shifts: shifts, payPeriod: payPeriod, now: { now })
+        }
+
+        Then("I worked {string} hours in this pay period") { match, _ in
+            XCTAssertEqual(summary.summary.hoursThisPeriod, Double(try match.first(\.string)))
+        }
+
+        Then("I worked {string} hours in the previous pay period") { match, _ in
+            XCTAssertEqual(summary.summary.hoursPreviousPeriod, Double(try match.first(\.string)))
+        }
+
+        Then("I worked {string} hours in total") { match, _ in
+            XCTAssertEqual(summary.summary.totalHours, Double(try match.first(\.string)))
+        }
+
+        Then("my past tasks are:") { _, step in
+            let expected = (step.dataTable?.rows.dropFirst() ?? []).map { $0.joined(separator: " | ") }
+            let actual = summary.summary.pastTasks.map {
+                [$0.task.title, text($0.shiftStart, "yyyy-MM-dd"), $0.task.isCompleted ? "yes" : "no"].joined(separator: " | ")
+            }
+            XCTAssertEqual(actual, Array(expected))
         }
 
         When("I open my schedule") { _, _ in

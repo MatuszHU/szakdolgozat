@@ -8,12 +8,14 @@ enum HomeItem: CaseIterable, Identifiable {
     case codeReader
     case map
     case supplyRequest
+    case summary
 
     var id: Self { self }
 
     var requiredFeature: WorkerFeature? {
         switch self {
         case .supplyRequest: return .supplyRequests
+        case .summary: return .statistics
         default: return nil
         }
     }

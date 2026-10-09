@@ -1,7 +1,7 @@
 import SwiftUI
 import SharedKit
 
-@K4 @K14 @K5 @K17
+@K4 @K14 @K5 @K17 @K12
 struct HomeView: View {
     @ObservedObject var viewModel: AuthViewModel
     @State private var confirmingSignOut = false
@@ -12,6 +12,7 @@ struct HomeView: View {
         zoneCheckIn: ZoneCheckInViewModel(workerID: UUID(), zones: [], isOnShift: false))
     @StateObject private var menu = HomeMenuViewModel()
     @StateObject private var schedule = ScheduleViewModel(workerID: UUID(), shifts: [], venue: Venue(name: ""))
+    @StateObject private var summary = WorkSummaryViewModel(workerID: UUID(), shifts: [], payPeriod: .weekly)
     @StateObject private var supplyRequest = SupplyRequestViewModel(workerID: UUID(), zoneID: nil, desk: LocalSupplyDesk())
     @StateObject private var venueMap = VenueMapViewModel(
         venue: Venue(name: ""),
@@ -48,6 +49,7 @@ struct HomeView: View {
         case .codeReader: CodeReaderView(viewModel: codeReader)
         case .map: VenueMapView(viewModel: venueMap)
         case .supplyRequest: SupplyRequestView(viewModel: supplyRequest)
+        case .summary: WorkSummaryView(viewModel: summary)
         }
     }
 
@@ -57,6 +59,7 @@ struct HomeView: View {
         case .codeReader: return Label("Kódolvasó", systemImage: "qrcode.viewfinder")
         case .map: return Label("Térkép", systemImage: "map")
         case .supplyRequest: return Label("Készletkérés", systemImage: "shippingbox")
+        case .summary: return Label("Összesítés", systemImage: "chart.bar")
         }
     }
 }

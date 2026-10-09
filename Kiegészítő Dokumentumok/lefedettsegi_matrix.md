@@ -22,7 +22,7 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 | K9 | Beállítások | S | – | – | – | – |
 | K10 | Profilkép | C | – | – | – | – |
 | K11 | Nyelv | S | – | – | – | – |
-| K12 | Összesítés | S | – | – | – | – |
+| K12 | Összesítés | S | WorkSummary | WorkSummary: 6 forgatókönyv | SharedKit: WorkerSummaryTests | ⚠️ |
 | K13 | Értesítések | S | – | – | – | – |
 | K14 | Kijelentkezés | M | SignOut | SignOut: 3 forgatókönyv | AuthViewModelTests, KeychainCredentialStoreTests | ✅ |
 | K15 | Dokumentáció és útmutató | C | – | – | – | – |
@@ -65,20 +65,21 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 
 | | Összes | M | Lefedett (✅) | Részleges (⚠️) |
 |---|---|---|---|---|
-| Munkavállaló | 17 | 9 | 4 | 6 |
+| Munkavállaló | 17 | 9 | 4 | 7 |
 | Adminisztrátor | 11 | 6 | 8 | 3 |
 | Vendég | 11 | 5 | 4 | 2 |
-| **Összesen** | **39** | **20** | **16** | **11** |
+| **Összesen** | **39** | **20** | **16** | **12** |
 
 ## Nyitott tételek
 
 * **L1:** az adminisztrátori fiókok szabályai (első tulajdonos; felhasználónév a rögzített domainnel; legalább 8 karakteres jelszó; sózott PBKDF2-hash, konstans idejű összehasonlítás; ugyanaz a hibaüzenet hibás jelszóra és ismeretlen felhasználóra; ideiglenes jelszó kötelező cseréje; elfelejtett jelszó visszaállítása; Apple-fiók összekapcsolása e-mail alapján) és a bejelentkező felület kész. A saját hitelesítési szolgáltatás (`AuthService/`, Vapor, Bcrypt, lejáró tokenek) elkészült, a Manager a `Hitelesítés` beállításban kapcsolható rá; cím nélkül helyi módban fut. Hátravan: a valódi Sign in with Apple (fizetős fiók) és a szolgáltatás éles telepítése HTTPS mögé.
 * **L3:** kész: munkatársak, műszakok, hozzárendelés, feladatok, valamint adminisztrátorok felvétele és eltávolítása jogosultsági szinttel (adminokat a tulajdonos és a felhasználó-adminisztrátor kezelhet, tulajdonost csak tulajdonos; az utolsó tulajdonos nem törölhető).
-* **L6:** kész: vállalati domain (csak tulajdonos), saját jelszó módosítása a jelenlegi jelszó megerősítésével, a munkavállalói nem alapfunkciók (profilkép K10, összesítés K12, útmutató K15, készletkérés K17) központi ki- és bekapcsolása. A munkavállalói app kezdőképernyője (`HomeMenuViewModel`) a kikapcsolt funkciókat nem kínálja fel (elsőként a készletkérésnél, K17); a beállítások a CloudKit-szinkronnal (N2) jutnak el a telefonra.
+* **L6:** kész: vállalati domain (csak tulajdonos), saját jelszó módosítása a jelenlegi jelszó megerősítésével, a munkavállalói nem alapfunkciók (profilkép K10, összesítés K12, útmutató K15, készletkérés K17) központi ki- és bekapcsolása. A munkavállalói app kezdőképernyője (`HomeMenuViewModel`) a kikapcsolt funkciókat nem kínálja fel (készletkérés K17, összesítés K12); a beállítások a CloudKit-szinkronnal (N2) jutnak el a telefonra.
 * **K1, K2, K4, K14, M1, M2, M3, M6:** a bejelentkezés logikája (`AuthViewModel`, `CredentialStoring`, `KeychainCredentialStore`) a SharedKitben közös a munkavállalói és a vendég app között, külön Keychain-szolgáltatásnévvel. A bejelentkezés a Keychainben megmarad két indítás között, a kijelentkezés törli. A valódi Sign in with Apple folyamat fizetős Apple fejlesztői tagság nélkül nem próbálható ki (manuális teszt, ld. Tesztterv).
 * **M4:** a jegyvásárlás logikája (csak meghirdetett jegytípus; a keret és a férőhely nem léphető túl; véget ért eseményre nincs vásárlás; 1–10 jegy egyszerre; elutasított fizetésnél nincs jegy; egyedi sorozatszám; a jegyeim eseménydátum szerint), a jegyek QR-kódja és felülete kész. A megvett jegyet a K7 kódolvasó logikája felismeri és egyszer beengedi (`@K7` forgatókönyv). Hátravan: valódi fizetés (Apple Pay) és Apple Tárca (fizetős fejlesztői tagság), valamint az események CloudKit-szinkronja (N2). Debug buildben tesztfizetés, Release-ben „a fizetés még nem elérhető”.
 * **M5:** a vendég térkép logikája (a vendég csak a neki szóló POI-kat látja: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár; az egyéni pontok és a személyzeti zónák rejtettek; a földszinten nyílik; szintváltás; tervrajz nélkül tájékoztató üzenet) és felülete kész. A tervrajz eljuttatása a vendég appba a CloudKittől (N2) függ.
 * **K5:** a beosztás logikája (`WorkerSchedule`: csak a saját műszakok időrendben, a kezdés napja szerint csoportosítva; szint és zóna; csak a nekem kiosztott feladatok; az aktuális és a következő műszak; a lezárult műszakok külön, a legfrissebb elöl) és a felülete (`ScheduleView`, kezdőképernyő-link) kész. A műszakterv a Macről CloudKit-szinkronnal (N2) jut el a telefonra; addig a beosztás üres.
+* **K12:** az összesítés logikája (`WorkerSummary`: ledolgozott órák a műszakokból az aktuális és az előző elszámolási időszakban és összesen; heti időszak hétfőtől, havi a naptári hónap, kétheti és egyedi napszámú időszak rögzített kezdőhétfőtől; az időszakhatáron átnyúló műszak megosztva, a folyamatban lévő a mostani időpontig; a lezárult műszakok saját feladatai, legfrissebb elöl) és a felülete kész; az adminisztrátor kikapcsolhatja (L6). A műszakterv a CloudKittől (N2) függ.
 * **K17:** a készletkérés logikája (készletlista kategóriánként; tétel, mennyiség, „elfogyott” vagy „hamarosan elfogy”, a munkavállaló zónája, megjegyzés; pozitív mennyiség; tételenként egy nyitott kérés; a saját kérések állapota, legfrissebb elöl; az adminisztrátor kikapcsolhatja, L6) és a felülete kész. A kérés az adminisztrátornál a készletkezelőben (L10) és a kérelemnaplóban (L8) jelenik meg; a telefon és a Mac közötti átvitel a CloudKittől (N2) függ, addig a kérés a telefonon helyben marad.
 * **K6:** a térkép logikája (szintválasztás, a munkaterület kiemelése, a munkatársak a legutóbbi zóna-bejelentkezésük zónájában, a be nem jelentkezettek külön listában) és a felülete (`VenueMapView`, a közös `FloorPlanView`-val) készen van; a helyszín és a bejelentkezések valós adatforrása (CloudKit, N2) hátravan, addig a térkép üres állapotot mutat.
 * **L4:** a személyzeti térkép logikája (a munkatársak a legutóbbi zóna-bejelentkezésük zónájában; kiválasztáskor az aktív műszakból a munkaterület és a saját feladatok, valamint az aktuális pozíció; a be nem jelentkezettek listája; szintváltás) és a felülete (`StaffMapView`) készen van. A munkatársak, műszakok és bejelentkezések a Macre CloudKit (N2) nélkül nem jutnak el, addig a lista üres. A közös számítás (`StaffMap`) a K6-tal megosztott.
