@@ -35,6 +35,7 @@
 - 2026-10-08: L6 (`9582495`) és L10 (`4acc0e0`) zöld CI után a `master`-be.
 - 2026-10-08: L1, L2, L3, L5 (`0728b7e`) zöld CI után (run 37839858225) a `master`-be.
 - 2026-10-08: M4 (`0bed548`) zöld CI után (run 37838427883) a `master`-be. `master` = `0bed548`.
+- 2026-10-09: M7 nyereményjáték (`4a425d7`) zöld CI után (run 37916967500) a `master`-be.
 - 2026-10-09: K3 töltőképernyő (`abbd52e`) zöld CI után (run 37914823710) a `master`-be.
 - 2026-10-09: CucumberSwift: azonos lépésszöveg egy forgatókönyvön belül „duplicate step” hibát ad (Tesztterv).
 - 2026-10-09: K11 nyelv (`9326763`) zöld CI után (run 37911558523) a `master`-be.
