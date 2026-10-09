@@ -57,6 +57,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * Készletkérés küldése a telefonról, a kérés állapotának követése (K17; a Macen a CloudKit után)
 * Összesítés: ledolgozott órák és korábbi feladatok (K12; valós adatokkal a CloudKit után)
 * Értesítések listája, olvasatlan jelvény a kezdőképernyőn, szűrés, olvasottra állítás (K13)
+* Beállítások, profilkép kiválasztása a Fotókból, cseréje és törlése, útmutató gomb (K9, K10, K15)
 * Push értesítések kézbesítése és hangja (K8, N5)
 * Kamerás kódolvasás és QR-kódos zóna-bejelentkezés (K7, K16)
 * CloudKit-szinkronizáció több eszköz között (N2)
@@ -206,4 +207,6 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-09 | – | NightlifeWorkerTests | 276/276 sikeres | K12: WorkSummary, 6 forgatókönyv; a kezdőképernyő és a funkciókapcsolók lépései a közös `World`-be kerültek. Mutációs ellenőrzés: kapcsoló nélküli összesítő menüpontnál a „Turned off by the administrator” forgatókönyv elbukott. |
 | 2026-10-09 | – | SharedKitTests | 198/198 sikeres | K13: NotificationInboxTests (10 új), előbb sikertelenek. Mutációs ellenőrzés: az ismétlődés-szűrés nélkül két teszt elbukott. |
 | 2026-10-09 | – | NightlifeWorkerTests | 325/325 sikeres | K13: Notifications, 6 forgatókönyv. Mutációs ellenőrzés: ha a ViewModel kihagyja a pánikjelzéseket, két forgatókönyv elbukott. |
+| 2026-10-09 | – | SharedKitTests | 204/204 sikeres | K10: ProfilePictureTests (6 új), előbb sikertelenek. Mutációs ellenőrzés: ha a négyzet a kép széléről vágódik, a teszt elbukott. |
+| 2026-10-09 | – | NightlifeWorkerTests | 369/369 sikeres | K9: Settings (4), K10: ProfilePicture (5), K15: Guide (4) forgatókönyv. Mutációs ellenőrzés: kapcsolók nélküli beállításoknál és feldolgozás nélkül mentett profilképnél a megfelelő forgatókönyvek elbuktak. |
 | 2026-10-07 | d8ef516 | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

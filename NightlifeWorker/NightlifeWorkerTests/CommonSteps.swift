@@ -76,5 +76,13 @@ extension Cucumber {
         Then("the home screen offers {string}") { match, _ in
             XCTAssertTrue(home.items.contains(try homeItem(try match.first(\.string))))
         }
+
+        Then("the home screen has a guide button") { _, _ in
+            XCTAssertTrue(home.showsGuide)
+        }
+
+        Then("the home screen has no guide button") { _, _ in
+            XCTAssertFalse(home.showsGuide)
+        }
     }
 }

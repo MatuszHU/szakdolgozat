@@ -68,5 +68,7 @@ extension Cucumber: @retroactive StepImplementation {
         setupScheduleSteps()
         setupSupplyRequestSteps()
         setupNotificationSteps()
+        setupSettingsSteps()
+        setupProfilePictureSteps()
     }
 }

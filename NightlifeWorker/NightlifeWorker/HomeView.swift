@@ -1,10 +1,10 @@
 import SwiftUI
 import SharedKit
 
-@K4 @K14 @K5 @K17 @K12 @K13
+@K4 @K14 @K5 @K17 @K12 @K13 @K9 @K15
 struct HomeView: View {
     @ObservedObject var viewModel: AuthViewModel
-    @State private var confirmingSignOut = false
+    @StateObject private var profilePicture = ProfilePictureViewModel(store: FileProfilePictureStore())
 
     @StateObject private var codeReader = CodeReaderViewModel(
         eventID: UUID(),
@@ -34,12 +34,25 @@ struct HomeView: View {
             }
             .navigationTitle("Nightlife Worker")
             .toolbar {
-                Button("Kijelentkezés", systemImage: "rectangle.portrait.and.arrow.right") {
-                    confirmingSignOut = true
+                if menu.showsGuide {
+                    ToolbarItem(placement: .topBarLeading) {
+                        NavigationLink {
+                            GuideView(viewModel: GuideViewModel(menu: menu))
+                        } label: {
+                            Label("Útmutató", systemImage: "questionmark.circle")
+                        }
+                    }
                 }
-            }
-            .confirmationDialog("Biztosan kijelentkezel?", isPresented: $confirmingSignOut, titleVisibility: .visible) {
-                Button("Kijelentkezés", role: .destructive) { viewModel.signOut() }
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        SettingsView(viewModel: SettingsViewModel(auth: viewModel, workerName: nil,
+                                                                  enabledFeatures: menu.enabledFeatures),
+                                     profilePicture: profilePicture,
+                                     guide: GuideViewModel(menu: menu))
+                    } label: {
+                        Label("Beállítások", systemImage: "gearshape")
+                    }
+                }
             }
         }
     }
@@ -57,13 +70,6 @@ struct HomeView: View {
     }
 
     private func label(for item: HomeItem) -> Label<Text, Image> {
-        switch item {
-        case .schedule: return Label("Beosztás", systemImage: "calendar")
-        case .notifications: return Label("Értesítések", systemImage: "bell")
-        case .codeReader: return Label("Kódolvasó", systemImage: "qrcode.viewfinder")
-        case .map: return Label("Térkép", systemImage: "map")
-        case .supplyRequest: return Label("Készletkérés", systemImage: "shippingbox")
-        case .summary: return Label("Összesítés", systemImage: "chart.bar")
-        }
+        Label(item.title, systemImage: item.symbol)
     }
 }

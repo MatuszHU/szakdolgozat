@@ -1,14 +1,15 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-09 (K13 értesítések kész)
+> Utolsó frissítés: 2026-10-09 (K9, K10, K15 kész)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `k13-notifications`. **K13 kész** ⚠️ (N2, push): `NotificationInbox` (system/user/admin, dedup eseményazonosítóval), Worker `NotificationsViewModel` + `NotificationSources` + `NotificationsView`, kezdőképernyő-jelvény.
+**Aktív ág:** `k9-settings`. **K9 ✅, K10 ⚠️, K15 ✅ kész**: `SettingsViewModel` (fogaskerék a kezdőképernyőn, kijelentkezés ide költözött), `ProfilePicture` (SharedKit, ImageIO) + `ProfilePictureViewModel` + fájltároló, `GuideViewModel` (útmutató gomb). Hátravan: K11 nyelv (hu/en/pt-PT), K3 töltőképernyő.
+- K13 (kész, master): `NotificationInbox` (system/user/admin, dedup eseményazonosítóval), Worker `NotificationsViewModel` + `NotificationSources` + `NotificationsView`, kezdőképernyő-jelvény.
 - K12 (kész, master): `WorkerSummary`, `PayPeriod.interval`, Worker `WorkSummaryViewModel`/`WorkSummaryView`, menüpont „Összesítés” (statistics kapcsoló). Közös BDD-lépések: `World.enabledFeatures`, „the administrator turned off {string}”, home screen lépések a `CommonSteps`-ben.
 - K17 (kész, master): `SupplyUrgency`, `SupplyRequest.urgency/zoneID`, tételenként egy nyitott kérés, `Inventory.categories`, `requests(of:)`; Worker `SupplyRequestViewModel` + `LocalSupplyDesk` + `SupplyRequestView`; `HomeMenuViewModel` (L6-kapcsolók a kezdőképernyőn). Manager: „Elfogyott” jelölés.
-- **A felhasználó kérése (2026-10-09): „k-kal”** → a hátralévő K-k sorban: K17 ✅, K12 ✅, K13 ✅, K9, K11, K10, K15, K3.
+- **A felhasználó kérése (2026-10-09): „k-kal”** → a hátralévő K-k sorban: K17 ✅, K12 ✅, K13 ✅, K9 ✅, K10 ✅, K15 ✅, K11, K3.
 - **CucumberSwift:** a lépés kulcsszava számít (Given/When külön) — `And` a Given után Given-ként keresendő.
 - **Xcode-buktató:** ha az app nem látja az új SharedKit-fájlt („cannot find … in scope”), egy `xcodebuild build -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -destination "generic/platform=iOS Simulator"` frissíti a csomag fájllistáját.
 - L7 (2026-10-08): szabad rajzolós tervező a `master`-ben.
@@ -49,11 +50,11 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → SharedKit 198 + AdminCore 34
+- SharedKit: `cd SharedKit && swift test` → SharedKit 204 + AdminCore 34
 - AuthService: `cd AuthService && swift test` → 5/5 (CI: Linux, `swift:6.4-noble`)
 - Manager BDD → 359/359
 - Vendég BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 90 BDD + 3 egységteszt
-- Worker BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 325 teszt (BDD + egységteszt, K13 után)
+- Worker BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme NightlifeWorker -testPlan NightlifeWorker -only-testing:NightlifeWorkerTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 369 teszt (BDD + egységteszt, K9/K10/K15 után)
 - Címkeszűrés: `TEST_RUNNER_CUCUMBER_TAGS=K7 xcodebuild test …` (több címke vesszővel, VAGY)
 - UI tesztek: 2/2 (lassú, ~45 s)
 

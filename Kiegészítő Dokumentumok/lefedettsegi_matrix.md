@@ -19,13 +19,13 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 | K6 | Térkép | M | VenueMap | VenueMap: 4 forgatókönyv | SharedKit: MapPositionTests, VenueTests | ⚠️ |
 | K7 | Kódolvasó/jegykezelő | M | CodeReader | CodeReader: 6 forgatókönyv | SharedKit: ScannedCodeTests, TicketAdmissionTests | ⚠️ |
 | K8 | Pánik mód | M | PanicMode | PanicMode: 5 forgatókönyv | SharedKit: PanicTests | ⚠️ |
-| K9 | Beállítások | S | – | – | – | – |
-| K10 | Profilkép | C | – | – | – | – |
+| K9 | Beállítások | S | Settings | Settings: 4 forgatókönyv | – | ✅ |
+| K10 | Profilkép | C | ProfilePicture | ProfilePicture: 5 forgatókönyv | SharedKit: ProfilePictureTests | ⚠️ |
 | K11 | Nyelv | S | – | – | – | – |
 | K12 | Összesítés | S | WorkSummary | WorkSummary: 6 forgatókönyv | SharedKit: WorkerSummaryTests | ⚠️ |
 | K13 | Értesítések | S | Notifications | Notifications: 6 forgatókönyv | SharedKit: NotificationInboxTests | ⚠️ |
 | K14 | Kijelentkezés | M | SignOut | SignOut: 3 forgatókönyv | AuthViewModelTests, KeychainCredentialStoreTests | ✅ |
-| K15 | Dokumentáció és útmutató | C | – | – | – | – |
+| K15 | Dokumentáció és útmutató | C | Guide | Guide: 4 forgatókönyv | – | ✅ |
 | K16 | Zóna-bejelentkezés | M | ZoneCheckIn | ZoneCheckIn: 5 forgatókönyv | SharedKit: ZoneTests, WorkerPositionTests | ⚠️ |
 | K17 | Készletkérés | S | SupplyRequest | SupplyRequest: 8 forgatókönyv | SharedKit: SupplyRequestTests, InventoryTests | ⚠️ |
 
@@ -65,20 +65,23 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 
 | | Összes | M | Lefedett (✅) | Részleges (⚠️) |
 |---|---|---|---|---|
-| Munkavállaló | 17 | 9 | 4 | 8 |
+| Munkavállaló | 17 | 9 | 6 | 9 |
 | Adminisztrátor | 11 | 6 | 8 | 3 |
 | Vendég | 11 | 5 | 4 | 2 |
-| **Összesen** | **39** | **20** | **16** | **13** |
+| **Összesen** | **39** | **20** | **18** | **14** |
 
 ## Nyitott tételek
 
 * **L1:** az adminisztrátori fiókok szabályai (első tulajdonos; felhasználónév a rögzített domainnel; legalább 8 karakteres jelszó; sózott PBKDF2-hash, konstans idejű összehasonlítás; ugyanaz a hibaüzenet hibás jelszóra és ismeretlen felhasználóra; ideiglenes jelszó kötelező cseréje; elfelejtett jelszó visszaállítása; Apple-fiók összekapcsolása e-mail alapján) és a bejelentkező felület kész. A saját hitelesítési szolgáltatás (`AuthService/`, Vapor, Bcrypt, lejáró tokenek) elkészült, a Manager a `Hitelesítés` beállításban kapcsolható rá; cím nélkül helyi módban fut. Hátravan: a valódi Sign in with Apple (fizetős fiók) és a szolgáltatás éles telepítése HTTPS mögé.
 * **L3:** kész: munkatársak, műszakok, hozzárendelés, feladatok, valamint adminisztrátorok felvétele és eltávolítása jogosultsági szinttel (adminokat a tulajdonos és a felhasználó-adminisztrátor kezelhet, tulajdonost csak tulajdonos; az utolsó tulajdonos nem törölhető).
-* **L6:** kész: vállalati domain (csak tulajdonos), saját jelszó módosítása a jelenlegi jelszó megerősítésével, a munkavállalói nem alapfunkciók (profilkép K10, összesítés K12, útmutató K15, készletkérés K17) központi ki- és bekapcsolása. A munkavállalói app kezdőképernyője (`HomeMenuViewModel`) a kikapcsolt funkciókat nem kínálja fel (készletkérés K17, összesítés K12); a beállítások a CloudKit-szinkronnal (N2) jutnak el a telefonra.
+* **L6:** kész: vállalati domain (csak tulajdonos), saját jelszó módosítása a jelenlegi jelszó megerősítésével, a munkavállalói nem alapfunkciók (profilkép K10, összesítés K12, útmutató K15, készletkérés K17) központi ki- és bekapcsolása. A munkavállalói app kezdőképernyője (`HomeMenuViewModel`) a kikapcsolt funkciókat nem kínálja fel (készletkérés K17, összesítés K12, profilkép K10 és útmutató K15 a beállításokban is); a beállítások a CloudKit-szinkronnal (N2) jutnak el a telefonra.
 * **K1, K2, K4, K14, M1, M2, M3, M6:** a bejelentkezés logikája (`AuthViewModel`, `CredentialStoring`, `KeychainCredentialStore`) a SharedKitben közös a munkavállalói és a vendég app között, külön Keychain-szolgáltatásnévvel. A bejelentkezés a Keychainben megmarad két indítás között, a kijelentkezés törli. A valódi Sign in with Apple folyamat fizetős Apple fejlesztői tagság nélkül nem próbálható ki (manuális teszt, ld. Tesztterv).
 * **M4:** a jegyvásárlás logikája (csak meghirdetett jegytípus; a keret és a férőhely nem léphető túl; véget ért eseményre nincs vásárlás; 1–10 jegy egyszerre; elutasított fizetésnél nincs jegy; egyedi sorozatszám; a jegyeim eseménydátum szerint), a jegyek QR-kódja és felülete kész. A megvett jegyet a K7 kódolvasó logikája felismeri és egyszer beengedi (`@K7` forgatókönyv). Hátravan: valódi fizetés (Apple Pay) és Apple Tárca (fizetős fejlesztői tagság), valamint az események CloudKit-szinkronja (N2). Debug buildben tesztfizetés, Release-ben „a fizetés még nem elérhető”.
 * **M5:** a vendég térkép logikája (a vendég csak a neki szóló POI-kat látja: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár; az egyéni pontok és a személyzeti zónák rejtettek; a földszinten nyílik; szintváltás; tervrajz nélkül tájékoztató üzenet) és felülete kész. A tervrajz eljuttatása a vendég appba a CloudKittől (N2) függ.
 * **K5:** a beosztás logikája (`WorkerSchedule`: csak a saját műszakok időrendben, a kezdés napja szerint csoportosítva; szint és zóna; csak a nekem kiosztott feladatok; az aktuális és a következő műszak; a lezárult műszakok külön, a legfrissebb elöl) és a felülete (`ScheduleView`, kezdőképernyő-link) kész. A műszakterv a Macről CloudKit-szinkronnal (N2) jut el a telefonra; addig a beosztás üres.
+* **K9:** kész: a beállítások egy nézetben (profilkép, útmutató, névjegy a bejelentkezett névvel és a verzióval, kijelentkezés megerősítéssel); a kikapcsolt funkciók beállításai nem jelennek meg (L6). A kezdőképernyőről a fogaskerék gombbal érhető el; a kijelentkezés ide költözött (K14).
+* **K10:** a profilkép feldolgozása (a kép közepéből legfeljebb 512 × 512 pixeles négyzet, JPEG, a tájolás figyelembevételével; nem kép és 20 MB feletti fájl elutasítva), cseréje, törlése és helyi mentése kész. A kollégák felé való megjelenítés (feltöltés) a CloudKittől (N2) függ.
+* **K15:** kész: külön útmutató gomb a kezdőképernyőn (és a beállításokban), funkciónként egy szakasz a kezdőképernyő sorrendjében; a kikapcsolt funkciók nem szerepelnek; az útmutató maga is kikapcsolható (L6).
 * **K13:** az értesítések logikája (`NotificationInbox`: rendszer-értesítés az elbírált készletkérésről, felhasználói a nekem szóló pánikjelzésről, adminisztrátori az új műszak-beosztásról; egy listában, legfrissebb elöl; szűrés fajta szerint; olvasatlanok száma, egyenként és egyszerre olvasottra állítás; ugyanaz az esemény egyszer; a függő kérés és a saját riasztás nem értesít) és a felülete (lista, jelvény a kezdőképernyőn) kész. A források (műszakterv, kérések, riasztások) a CloudKittől (N2), a háttérbeli push értesítés fizetős fiókkal érkezik; az olvasottsági állapot jelenleg a memóriában van.
 * **K12:** az összesítés logikája (`WorkerSummary`: ledolgozott órák a műszakokból az aktuális és az előző elszámolási időszakban és összesen; heti időszak hétfőtől, havi a naptári hónap, kétheti és egyedi napszámú időszak rögzített kezdőhétfőtől; az időszakhatáron átnyúló műszak megosztva, a folyamatban lévő a mostani időpontig; a lezárult műszakok saját feladatai, legfrissebb elöl) és a felülete kész; az adminisztrátor kikapcsolhatja (L6). A műszakterv a CloudKittől (N2) függ.
 * **K17:** a készletkérés logikája (készletlista kategóriánként; tétel, mennyiség, „elfogyott” vagy „hamarosan elfogy”, a munkavállaló zónája, megjegyzés; pozitív mennyiség; tételenként egy nyitott kérés; a saját kérések állapota, legfrissebb elöl; az adminisztrátor kikapcsolhatja, L6) és a felülete kész. A kérés az adminisztrátornál a készletkezelőben (L10) és a kérelemnaplóban (L8) jelenik meg; a telefon és a Mac közötti átvitel a CloudKittől (N2) függ, addig a kérés a telefonon helyben marad.

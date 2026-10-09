@@ -37,4 +37,7 @@ class HomeMenuViewModel: ObservableObject {
     func isEnabled(_ feature: WorkerFeature) -> Bool {
         enabledFeatures.contains(feature)
     }
+
+    @K15
+    var showsGuide: Bool { isEnabled(.guide) }
 }
