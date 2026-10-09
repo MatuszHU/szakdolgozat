@@ -3,6 +3,7 @@ import SharedKit
 
 @K12
 struct WorkSummaryView: View {
+    @Environment(\.locale) private var locale
     @ObservedObject var viewModel: WorkSummaryViewModel
 
     var body: some View {
@@ -12,7 +13,7 @@ struct WorkSummaryView: View {
                          period: viewModel.summary.currentPeriod)
                 hoursRow(title: "Előző időszak", hours: viewModel.summary.hoursPreviousPeriod,
                          period: viewModel.summary.previousPeriod)
-                LabeledContent("Összesen", value: Self.hours(viewModel.summary.totalHours))
+                LabeledContent { Text(hoursText(viewModel.summary.totalHours)) } label: { Text("Összesen") }
             } header: {
                 Text("Ledolgozott órák")
             } footer: {
@@ -28,7 +29,7 @@ struct WorkSummaryView: View {
                             .foregroundStyle(past.task.isCompleted ? .green : .secondary)
                         Text(past.task.title)
                         Spacer()
-                        Text(past.shiftStart.formatted(.dateTime.month(.abbreviated).day()))
+                        Text(past.shiftStart.formatted(.dateTime.month(.abbreviated).day().locale(locale)))
                             .foregroundStyle(.secondary)
                     }
                 }
@@ -39,17 +40,17 @@ struct WorkSummaryView: View {
         .refreshable { viewModel.refresh() }
     }
 
-    private func hoursRow(title: String, hours: Double, period: DateInterval) -> some View {
+    private func hoursRow(title: LocalizedStringKey, hours: Double, period: DateInterval) -> some View {
         LabeledContent {
-            Text(Self.hours(hours))
+            Text(hoursText(hours))
         } label: {
             Text(title)
-            Text(period.start.formatted(.dateTime.month(.abbreviated).day()) + " – "
-                 + period.end.addingTimeInterval(-1).formatted(.dateTime.month(.abbreviated).day()))
+            Text(period.start.formatted(.dateTime.month(.abbreviated).day().locale(locale)) + " – "
+                 + period.end.addingTimeInterval(-1).formatted(.dateTime.month(.abbreviated).day().locale(locale)))
         }
     }
 
-    private static func hours(_ value: Double) -> String {
-        value.formatted(.number.precision(.fractionLength(0...1))) + " óra"
+    private func hoursText(_ value: Double) -> LocalizedStringResource {
+        "\(value.formatted(.number.precision(.fractionLength(0...1)).locale(locale))) óra"
     }
 }

@@ -5,6 +5,7 @@ import SharedKit
 @K9
 enum SettingsItem: CaseIterable, Identifiable {
     case profilePicture
+    case language
     case guide
     case about
     case signOut
@@ -15,7 +16,7 @@ enum SettingsItem: CaseIterable, Identifiable {
         switch self {
         case .profilePicture: return .profilePicture
         case .guide: return .guide
-        case .about, .signOut: return nil
+        case .language, .about, .signOut: return nil
         }
     }
 }

@@ -72,7 +72,7 @@ struct SupplyRequestView: View {
         viewModel.categories.flatMap(\.items).first { $0.id == itemID }?.unit ?? ""
     }
 
-    private static func title(of status: SupplyRequestStatus) -> String {
+    private static func title(of status: SupplyRequestStatus) -> LocalizedStringKey {
         switch status {
         case .pending: return "Függőben"
         case .approved: return "Jóváhagyva"

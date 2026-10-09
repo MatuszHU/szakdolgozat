@@ -32,7 +32,7 @@ class CodeReaderViewModel: ObservableObject {
         self.zoneCheckIn = zoneCheckIn
     }
 
-    var message: String? {
+    var message: LocalizedStringResource? {
         switch lastResult {
         case .admitted(let guestName, let ticketType): return "Admitted: \(guestName) – \(ticketType)"
         case .ticketAlreadyUsed: return "Ticket already used"

@@ -20,7 +20,7 @@ struct VenueMapView: View {
                 }
                 .safeAreaInset(edge: .bottom) {
                     if !viewModel.colleaguesWithoutPosition.isEmpty {
-                        Text("Nincs bejelentkezve: " + viewModel.colleaguesWithoutPosition.map(\.name).joined(separator: ", "))
+                        Text("Nincs bejelentkezve: \(viewModel.colleaguesWithoutPosition.map(\.name).joined(separator: ", "))")
                             .font(.footnote)
                             .padding()
                             .frame(maxWidth: .infinity)

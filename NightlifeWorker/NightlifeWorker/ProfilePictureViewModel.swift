@@ -37,7 +37,7 @@ struct FileProfilePictureStore: ProfilePictureStoring {
 @K10
 class ProfilePictureViewModel: ObservableObject {
     @Published private(set) var imageData: Data?
-    @Published private(set) var errorMessage: String?
+    @Published private(set) var errorMessage: LocalizedStringResource?
     private let store: ProfilePictureStoring
 
     init(store: ProfilePictureStoring) {

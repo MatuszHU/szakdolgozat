@@ -5,6 +5,7 @@ import SharedKit
 struct SettingsView: View {
     @ObservedObject var viewModel: SettingsViewModel
     @ObservedObject var profilePicture: ProfilePictureViewModel
+    @ObservedObject var language: LanguageSettings
     let guide: GuideViewModel
     @State private var confirmingSignOut = false
 
@@ -28,6 +29,20 @@ struct SettingsView: View {
                 HStack {
                     ProfileImage(data: profilePicture.imageData, size: 32)
                     Text("Profilkép")
+                }
+            }
+        case .language:
+            NavigationLink {
+                LanguageView(settings: language)
+            } label: {
+                LabeledContent {
+                    if let name = language.language.nativeName {
+                        Text(verbatim: name)
+                    } else {
+                        Text("A rendszer nyelve")
+                    }
+                } label: {
+                    Label("Nyelv", systemImage: "globe")
                 }
             }
         case .guide:

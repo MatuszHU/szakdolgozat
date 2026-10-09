@@ -7,14 +7,14 @@ Feature: Settings
 
   Scenario: All settings in one view
     When I open the settings
-    Then the settings offer "Profile picture, Guide, About, Sign out"
+    Then the settings offer "Profile picture, Language, Guide, About, Sign out"
 
   @L6
   Scenario: Settings of turned off features are hidden
     Given the administrator turned off "profile picture"
     And the administrator turned off "guide"
     When I open the settings
-    Then the settings offer "About, Sign out"
+    Then the settings offer "Language, About, Sign out"
 
   Scenario: About the app
     When I open the settings

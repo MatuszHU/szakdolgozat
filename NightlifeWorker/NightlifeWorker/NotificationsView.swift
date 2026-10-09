@@ -39,6 +39,7 @@ struct NotificationsView: View {
 
 @K13
 private struct NotificationRow: View {
+    @Environment(\.locale) private var locale
     let notification: WorkerNotification
 
     var body: some View {
@@ -47,15 +48,15 @@ private struct NotificationRow: View {
                 .foregroundStyle(notification.kind == .user ? .red : .accentColor)
                 .frame(width: 24)
             VStack(alignment: .leading, spacing: 2) {
-                Text(notification.title).font(notification.isRead ? .body : .body.bold())
-                Text(notification.body).font(.subheadline).foregroundStyle(.secondary)
+                Text(LocalizedStringKey(notification.title)).font(notification.isRead ? .body : .body.bold())
+                Text(LocalizedStringKey(notification.body)).font(.subheadline).foregroundStyle(.secondary)
                 if let eventDate = notification.eventDate {
-                    Text(eventDate.formatted(date: .abbreviated, time: .shortened)).font(.caption)
+                    Text(eventDate.formatted(Date.FormatStyle(date: .abbreviated, time: .shortened).locale(locale))).font(.caption)
                 }
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text(notification.date.formatted(date: .omitted, time: .shortened)).font(.caption)
+                Text(notification.date.formatted(Date.FormatStyle(date: .omitted, time: .shortened).locale(locale))).font(.caption)
                     .foregroundStyle(.secondary)
                 if !notification.isRead {
                     Circle().fill(Color.accentColor).frame(width: 8, height: 8)

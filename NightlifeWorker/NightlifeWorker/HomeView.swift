@@ -1,9 +1,10 @@
 import SwiftUI
 import SharedKit
 
-@K4 @K14 @K5 @K17 @K12 @K13 @K9 @K15
+@K4 @K14 @K5 @K17 @K12 @K13 @K9 @K15 @K11
 struct HomeView: View {
     @ObservedObject var viewModel: AuthViewModel
+    @ObservedObject var language: LanguageSettings
     @StateObject private var profilePicture = ProfilePictureViewModel(store: FileProfilePictureStore())
 
     @StateObject private var codeReader = CodeReaderViewModel(
@@ -48,6 +49,7 @@ struct HomeView: View {
                         SettingsView(viewModel: SettingsViewModel(auth: viewModel, workerName: nil,
                                                                   enabledFeatures: menu.enabledFeatures),
                                      profilePicture: profilePicture,
+                                     language: language,
                                      guide: GuideViewModel(menu: menu))
                     } label: {
                         Label("Beállítások", systemImage: "gearshape")
@@ -70,6 +72,10 @@ struct HomeView: View {
     }
 
     private func label(for item: HomeItem) -> Label<Text, Image> {
-        Label(item.title, systemImage: item.symbol)
+        Label {
+            Text(item.title)
+        } icon: {
+            Image(systemName: item.symbol)
+        }
     }
 }

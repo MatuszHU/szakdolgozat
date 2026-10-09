@@ -64,7 +64,7 @@ extension Cucumber {
 
         Given("I requested {int} of {string} because it is {string}") { match, _ in
             try request(match)
-            XCTAssertEqual(viewModel.message, "Request sent")
+            XCTAssertEqual(english(viewModel.message), "Request sent")
         }
 
         When("I open the supply request") { _, _ in
@@ -100,7 +100,7 @@ extension Cucumber {
         }
 
         Then("the supply request screen says {string}") { match, _ in
-            XCTAssertEqual(viewModel.message, try match.first(\.string))
+            XCTAssertEqual(english(viewModel.message), try match.first(\.string))
         }
 
         Then("the administrator sees a request from {string} for {string} in the {string} zone marked {string}") { match, _ in

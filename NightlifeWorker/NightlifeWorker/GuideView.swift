@@ -8,7 +8,7 @@ struct GuideView: View {
     var body: some View {
         List(viewModel.sections) { section in
             VStack(alignment: .leading, spacing: 6) {
-                Label(section.title, systemImage: section.symbol).font(.headline)
+                Label { Text(section.title) } icon: { Image(systemName: section.symbol) }.font(.headline)
                 Text(section.text).font(.subheadline)
             }
             .padding(.vertical, 4)

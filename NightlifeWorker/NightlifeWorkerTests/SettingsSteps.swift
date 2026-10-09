@@ -16,6 +16,7 @@ extension Cucumber {
         func settingName(_ item: SettingsItem) -> String {
             switch item {
             case .profilePicture: return "Profile picture"
+            case .language: return "Language"
             case .guide: return "Guide"
             case .about: return "About"
             case .signOut: return "Sign out"
@@ -82,7 +83,7 @@ extension Cucumber {
 
         Then("the guide has the sections {string}") { match, _ in
             XCTAssertEqual(guide.sections.map { topicName($0.topic) }.joined(separator: ", "), try match.first(\.string))
-            XCTAssertTrue(guide.sections.allSatisfy { !$0.text.isEmpty })
+            XCTAssertTrue(guide.sections.allSatisfy { !(english($0.text) ?? "").isEmpty })
         }
     }
 }

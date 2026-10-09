@@ -4,6 +4,13 @@ import CucumberSwiftExpressions
 import SharedKit
 @testable import NightlifeWorker
 
+@K11
+func english(_ resource: LocalizedStringResource?) -> String? {
+    guard var resource else { return nil }
+    resource.locale = Locale(identifier: "en")
+    return String(localized: resource)
+}
+
 @N8
 struct UnknownScenarioName: Error {
     let name: String

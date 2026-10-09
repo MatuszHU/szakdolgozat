@@ -70,5 +70,6 @@ extension Cucumber: @retroactive StepImplementation {
         setupNotificationSteps()
         setupSettingsSteps()
         setupProfilePictureSteps()
+        setupLanguageSteps()
     }
 }

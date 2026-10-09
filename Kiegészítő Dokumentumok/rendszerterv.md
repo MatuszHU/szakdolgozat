@@ -170,6 +170,12 @@ A CloudKit nem biztosít saját jelszavas fiókkezelést, ezért a jelszavas bej
 
 Hibakódok: hiányzó, lejárt vagy ismeretlen token, hibás jelszó: 401; ideiglenes jelszóval más művelet vagy hiányzó jogosultság: 403; ismeretlen adminisztrátor: 404; foglalt felhasználónév, már beállított tulajdonos, utolsó tulajdonos: 409; egyéb érvénytelen adat: 400.
 
+## Nyelvek (K11)
+
+* A munkavállalói app szövegei egy String Catalogban (`NightlifeWorker/Localizable.xcstrings`) vannak, magyar, angol és európai portugál (`hu`, `en`, `pt-PT`) változatban. A felület szövegeinek kulcsa a magyar szöveg, a ViewModellek és a SharedKit üzeneteié az angol (pl. „Request sent”); ezek `LocalizedStringResource`-ként jutnak a felületre, a SharedKitből érkező értesítéscímek kézi (manual) kulcsok.
+* A nyelvválasztás (`AppLanguage`: a telefon nyelve, magyar, angol, portugál) a felhasználói beállításokban (`AppLanguage` kulcs) tárolódik, és a gyökérnézet `locale` környezeti értékét állítja; ez a szövegeket és a dátum- és számformázást is meghatározza. Az alkalmazás újraindítás nélkül vált nyelvet.
+* Új felületi szöveg esetén a katalógust bővíteni kell; a kulcsok a fordító által kinyert `.stringsdata` fájlokból gyűjthetők ki. A hiányzó fordítást a „Every text is translated” forgatókönyv jelzi.
+
 ## Értesítések és pánik mód
 
 * A pánikjelzés `PanicAlert` rekordként jön létre a CloudKitben; a jogosult kör eszközei feliratkozás (subscription) alapján push értesítést kapnak.

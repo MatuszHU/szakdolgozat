@@ -64,7 +64,7 @@ extension Cucumber {
         }
 
         Then("the code reader shows {string}") { match, _ in
-            XCTAssertEqual(viewModel.message, try match.first(\.string))
+            XCTAssertEqual(english(viewModel.message), try match.first(\.string))
         }
 
         Then("the ticket {string} is marked as used") { match, _ in

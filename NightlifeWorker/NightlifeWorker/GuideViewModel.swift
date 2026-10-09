@@ -10,9 +10,9 @@ enum GuideTopic: Hashable {
 @K15
 struct GuideSection: Identifiable {
     let topic: GuideTopic
-    let title: String
+    let title: LocalizedStringResource
     let symbol: String
-    let text: String
+    let text: LocalizedStringResource
 
     var id: GuideTopic { topic }
 }
@@ -24,13 +24,13 @@ struct GuideViewModel {
     var sections: [GuideSection] {
         menu.items.map { GuideSection(topic: .home($0), title: $0.title, symbol: $0.symbol, text: $0.guideText) }
             + [GuideSection(topic: .settings, title: "Beállítások", symbol: "gearshape",
-                            text: "A profilkép, az útmutató, a névjegy és a kijelentkezés egy helyen.")]
+                            text: "A profilkép, a nyelv, az útmutató, a névjegy és a kijelentkezés egy helyen.")]
     }
 }
 
 extension HomeItem {
     @K15
-    var title: String {
+    var title: LocalizedStringResource {
         switch self {
         case .schedule: return "Beosztás"
         case .notifications: return "Értesítések"
@@ -54,7 +54,7 @@ extension HomeItem {
     }
 
     @K15
-    var guideText: String {
+    var guideText: LocalizedStringResource {
         switch self {
         case .schedule:
             return "A saját műszakjaid időponttal, szinttel, zónával és a neked kiosztott feladatokkal. A folyamatban lévő műszak külön látszik, a korábbiak a lista alján."

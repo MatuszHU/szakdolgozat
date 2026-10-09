@@ -108,7 +108,7 @@ extension Cucumber {
         }
 
         Then("the profile picture screen says {string}") { match, _ in
-            XCTAssertEqual(viewModel.errorMessage, try match.first(\.string))
+            XCTAssertEqual(english(viewModel.errorMessage), try match.first(\.string))
         }
     }
 }

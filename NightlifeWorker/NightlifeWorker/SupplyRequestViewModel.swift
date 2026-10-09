@@ -44,7 +44,7 @@ class SupplyRequestViewModel: ObservableObject {
         let status: SupplyRequestStatus
     }
 
-    @Published private(set) var message: String?
+    @Published private(set) var message: LocalizedStringResource?
     @Published private(set) var isError = false
     @Published private(set) var myRequests: [MyRequest] = []
     private let workerID: UUID
@@ -88,12 +88,12 @@ class SupplyRequestViewModel: ObservableObject {
         }
     }
 
-    private func fail(_ text: String) {
+    private func fail(_ text: LocalizedStringResource) {
         message = text
         isError = true
     }
 
-    private static func message(for error: Inventory.InventoryError) -> String {
+    private static func message(for error: Inventory.InventoryError) -> LocalizedStringResource {
         switch error {
         case .negativeAmount: return "Enter a quantity greater than zero"
         case .openRequestExists(let name): return "You already have an open request for \(name)"

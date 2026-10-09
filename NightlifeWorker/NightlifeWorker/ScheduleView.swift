@@ -3,6 +3,7 @@ import SharedKit
 
 @K5
 struct ScheduleView: View {
+    @Environment(\.locale) private var locale
     @ObservedObject var viewModel: ScheduleViewModel
 
     var body: some View {
@@ -26,7 +27,7 @@ struct ScheduleView: View {
                     ForEach(viewModel.days) { day in
                         let entries = day.entries.filter { $0.status == .upcoming }
                         if !entries.isEmpty {
-                            Section(day.date.formatted(.dateTime.month(.wide).day().weekday(.wide))) {
+                            Section(day.date.formatted(.dateTime.month(.wide).day().weekday(.wide).locale(locale))) {
                                 ForEach(entries) { ShiftRow(entry: $0, showsDay: false) }
                             }
                         }
@@ -47,6 +48,7 @@ struct ScheduleView: View {
 
 @K5
 private struct ShiftRow: View {
+    @Environment(\.locale) private var locale
     let entry: WorkerSchedule.Entry
     let showsDay: Bool
 
@@ -59,7 +61,15 @@ private struct ShiftRow: View {
                     Text("Folyamatban").font(.caption.bold()).foregroundStyle(.green)
                 }
             }
-            Label(entry.place ?? "Nincs megadott zóna", systemImage: "mappin.and.ellipse")
+            Label {
+                if let place = entry.place {
+                    Text(verbatim: place)
+                } else {
+                    Text("Nincs megadott zóna")
+                }
+            } icon: {
+                Image(systemName: "mappin.and.ellipse")
+            }
                 .foregroundStyle(entry.place == nil ? .secondary : .primary)
             if !entry.tasks.isEmpty {
                 VStack(alignment: .leading, spacing: 2) {
@@ -76,8 +86,8 @@ private struct ShiftRow: View {
 
     private var time: String {
         let start = entry.shift.startTime
-        let range = start.formatted(date: .omitted, time: .shortened) + "–"
-            + entry.shift.endTime.formatted(date: .omitted, time: .shortened)
-        return showsDay ? start.formatted(.dateTime.month(.abbreviated).day()) + " " + range : range
+        let range = start.formatted(Date.FormatStyle(date: .omitted, time: .shortened).locale(locale)) + "–"
+            + entry.shift.endTime.formatted(Date.FormatStyle(date: .omitted, time: .shortened).locale(locale))
+        return showsDay ? start.formatted(.dateTime.month(.abbreviated).day().locale(locale)) + " " + range : range
     }
 }
