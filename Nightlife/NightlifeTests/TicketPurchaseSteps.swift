@@ -109,7 +109,7 @@ extension Cucumber {
         }
 
         Then("the shop shows {string}") { match, _ in
-            XCTAssertEqual(shop().errorMessage, try match.first(\.string))
+            XCTAssertEqual(english(shop().errorMessage), try match.first(\.string))
         }
 
         Then("the code reader recognises the guest's ticket for {string}") { match, _ in

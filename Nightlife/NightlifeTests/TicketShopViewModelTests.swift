@@ -21,7 +21,7 @@ struct TicketShopViewModelTests {
         let (catalog, event) = try catalog()
         let viewModel = TicketShopViewModel(catalog: catalog, guestID: UUID(), payment: UnavailablePaymentProcessor(), now: now)
         viewModel.buy(.standard, quantity: 1, forEvent: event.id)
-        #expect(viewModel.errorMessage == "Payment is not available yet")
+        #expect(english(viewModel.errorMessage) == "Payment is not available yet")
         #expect(viewModel.myTickets.isEmpty)
     }
 

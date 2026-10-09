@@ -1,12 +1,16 @@
 import SwiftUI
-import SharedKit
 
-@K11
-struct LanguageView: View {
+@available(iOS 17.0, macOS 14.0, *)
+@K11 @M10
+public struct LanguageView: View {
     @ObservedObject var settings: LanguageSettings
 
-    var body: some View {
-        List(AppLanguage.allCases) { language in
+    public init(settings: LanguageSettings) {
+        self.settings = settings
+    }
+
+    public var body: some View {
+        List(settings.supported) { language in
             Button {
                 settings.choose(language)
             } label: {

@@ -7,7 +7,7 @@ Feature: Guest Settings
 
   Scenario: All settings in one view
     When the guest opens the settings
-    Then the guest settings offer "Profile picture, About, Sign out"
+    Then the guest settings offer "Profile picture, Language, About, Sign out"
 
   Scenario: About the app
     When the guest opens the settings

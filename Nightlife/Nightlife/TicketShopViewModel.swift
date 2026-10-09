@@ -26,7 +26,7 @@ struct UnavailablePaymentProcessor: PaymentProcessing {
 @M4 @K7
 class TicketShopViewModel: ObservableObject {
     @Published private(set) var catalog: EventCatalog
-    @Published private(set) var errorMessage: String?
+    @Published private(set) var errorMessage: LocalizedStringResource?
     private let guestID: UUID
     private let payment: PaymentProcessing
     private let now: Date?
@@ -69,7 +69,7 @@ class TicketShopViewModel: ObservableObject {
         }
     }
 
-    private static func message(for error: EventCatalog.CatalogError) -> String {
+    private static func message(for error: EventCatalog.CatalogError) -> LocalizedStringResource {
         switch error {
         case .notOffered: return "This ticket type is not offered"
         case .soldOut(let type): return "\(type.displayName) tickets are sold out"

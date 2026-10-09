@@ -5,6 +5,7 @@ import SharedKit
 @M8
 enum GuestSettingsItem: CaseIterable, Identifiable {
     case profilePicture
+    case language
     case about
     case signOut
 

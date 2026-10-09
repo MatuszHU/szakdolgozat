@@ -5,7 +5,7 @@ import SharedKit
 @K1 @K4 @K11 @K3
 struct NightlifeWorkerApp: App {
     @StateObject private var authViewModel = AuthViewModel(store: KeychainCredentialStore(service: "hu.matusz.nightlife.worker.signin"))
-    @StateObject private var language = LanguageSettings(store: UserDefaultsLanguageStore())
+    @StateObject private var language = LanguageSettings(store: UserDefaultsLanguageStore(), supported: AppLanguage.worker)
     @StateObject private var loading = LoadingViewModel()
 
     var body: some Scene {

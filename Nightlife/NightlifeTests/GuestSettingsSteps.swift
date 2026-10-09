@@ -29,6 +29,7 @@ extension Cucumber {
         func settingName(_ item: GuestSettingsItem) -> String {
             switch item {
             case .profilePicture: return "Profile picture"
+            case .language: return "Language"
             case .about: return "About"
             case .signOut: return "Sign out"
             }

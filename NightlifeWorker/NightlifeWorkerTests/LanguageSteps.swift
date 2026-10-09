@@ -32,7 +32,7 @@ extension Cucumber {
         }
 
         func choose(_ match: Match) throws {
-            if settings == nil { settings = LanguageSettings(store: store) }
+            if settings == nil { settings = LanguageSettings(store: store, supported: AppLanguage.worker) }
             settings.choose(try language(try match.first(\.string)))
         }
 
@@ -56,11 +56,11 @@ extension Cucumber {
         }
 
         When("I open the language settings") { _, _ in
-            settings = LanguageSettings(store: store)
+            settings = LanguageSettings(store: store, supported: AppLanguage.worker)
         }
 
         When("the language settings are opened again") { _, _ in
-            settings = LanguageSettings(store: store)
+            settings = LanguageSettings(store: store, supported: AppLanguage.worker)
         }
 
         Then("the chosen language is {string}") { match, _ in

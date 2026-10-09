@@ -5,6 +5,7 @@ import SharedKit
 struct GuestSettingsView: View {
     @ObservedObject var viewModel: GuestSettingsViewModel
     @ObservedObject var profilePicture: ProfilePictureViewModel
+    @ObservedObject var language: LanguageSettings
     @State private var confirmingSignOut = false
 
     var body: some View {
@@ -17,6 +18,20 @@ struct GuestSettingsView: View {
                     HStack {
                         ProfileImage(data: profilePicture.imageData, size: 32)
                         Text("Profilkép")
+                    }
+                }
+            case .language:
+                NavigationLink {
+                    LanguageView(settings: language)
+                } label: {
+                    LabeledContent {
+                        if let name = language.language.nativeName {
+                            Text(verbatim: name)
+                        } else {
+                            Text("A rendszer nyelve")
+                        }
+                    } label: {
+                        Label("Nyelv", systemImage: "globe")
                     }
                 }
             case .about:

@@ -1,16 +1,18 @@
 import SwiftUI
 import SharedKit
 
-@M3 @M4 @M6 @M7 @M8 @M9
+@M3 @M4 @M6 @M7 @M8 @M9 @M10
 struct GuestHomeView: View {
     @ObservedObject var viewModel: AuthViewModel
+    @ObservedObject var language: LanguageSettings
     @StateObject private var guestMap = GuestMapViewModel(venue: Venue(name: ""))
     @StateObject private var ticketShop: TicketShopViewModel
     @StateObject private var raffle: RaffleViewModel
     @StateObject private var profilePicture = ProfilePictureViewModel(store: FileProfilePictureStore())
 
-    init(viewModel: AuthViewModel) {
+    init(viewModel: AuthViewModel, language: LanguageSettings) {
         self.viewModel = viewModel
+        self.language = language
         #if DEBUG
         let payment: PaymentProcessing = TestPaymentProcessor()
         #else
@@ -53,7 +55,8 @@ struct GuestHomeView: View {
             .toolbar {
                 NavigationLink {
                     GuestSettingsView(viewModel: GuestSettingsViewModel(auth: viewModel, guestName: nil),
-                                      profilePicture: profilePicture)
+                                      profilePicture: profilePicture,
+                                      language: language)
                 } label: {
                     Label("Beállítások", systemImage: "gearshape")
                 }
