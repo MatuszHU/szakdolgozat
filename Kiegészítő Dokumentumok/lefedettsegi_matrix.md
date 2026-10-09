@@ -23,7 +23,7 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 | K10 | Profilkép | C | – | – | – | – |
 | K11 | Nyelv | S | – | – | – | – |
 | K12 | Összesítés | S | WorkSummary | WorkSummary: 6 forgatókönyv | SharedKit: WorkerSummaryTests | ⚠️ |
-| K13 | Értesítések | S | – | – | – | – |
+| K13 | Értesítések | S | Notifications | Notifications: 6 forgatókönyv | SharedKit: NotificationInboxTests | ⚠️ |
 | K14 | Kijelentkezés | M | SignOut | SignOut: 3 forgatókönyv | AuthViewModelTests, KeychainCredentialStoreTests | ✅ |
 | K15 | Dokumentáció és útmutató | C | – | – | – | – |
 | K16 | Zóna-bejelentkezés | M | ZoneCheckIn | ZoneCheckIn: 5 forgatókönyv | SharedKit: ZoneTests, WorkerPositionTests | ⚠️ |
@@ -65,10 +65,10 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 
 | | Összes | M | Lefedett (✅) | Részleges (⚠️) |
 |---|---|---|---|---|
-| Munkavállaló | 17 | 9 | 4 | 7 |
+| Munkavállaló | 17 | 9 | 4 | 8 |
 | Adminisztrátor | 11 | 6 | 8 | 3 |
 | Vendég | 11 | 5 | 4 | 2 |
-| **Összesen** | **39** | **20** | **16** | **12** |
+| **Összesen** | **39** | **20** | **16** | **13** |
 
 ## Nyitott tételek
 
@@ -79,6 +79,7 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 * **M4:** a jegyvásárlás logikája (csak meghirdetett jegytípus; a keret és a férőhely nem léphető túl; véget ért eseményre nincs vásárlás; 1–10 jegy egyszerre; elutasított fizetésnél nincs jegy; egyedi sorozatszám; a jegyeim eseménydátum szerint), a jegyek QR-kódja és felülete kész. A megvett jegyet a K7 kódolvasó logikája felismeri és egyszer beengedi (`@K7` forgatókönyv). Hátravan: valódi fizetés (Apple Pay) és Apple Tárca (fizetős fejlesztői tagság), valamint az események CloudKit-szinkronja (N2). Debug buildben tesztfizetés, Release-ben „a fizetés még nem elérhető”.
 * **M5:** a vendég térkép logikája (a vendég csak a neki szóló POI-kat látja: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár; az egyéni pontok és a személyzeti zónák rejtettek; a földszinten nyílik; szintváltás; tervrajz nélkül tájékoztató üzenet) és felülete kész. A tervrajz eljuttatása a vendég appba a CloudKittől (N2) függ.
 * **K5:** a beosztás logikája (`WorkerSchedule`: csak a saját műszakok időrendben, a kezdés napja szerint csoportosítva; szint és zóna; csak a nekem kiosztott feladatok; az aktuális és a következő műszak; a lezárult műszakok külön, a legfrissebb elöl) és a felülete (`ScheduleView`, kezdőképernyő-link) kész. A műszakterv a Macről CloudKit-szinkronnal (N2) jut el a telefonra; addig a beosztás üres.
+* **K13:** az értesítések logikája (`NotificationInbox`: rendszer-értesítés az elbírált készletkérésről, felhasználói a nekem szóló pánikjelzésről, adminisztrátori az új műszak-beosztásról; egy listában, legfrissebb elöl; szűrés fajta szerint; olvasatlanok száma, egyenként és egyszerre olvasottra állítás; ugyanaz az esemény egyszer; a függő kérés és a saját riasztás nem értesít) és a felülete (lista, jelvény a kezdőképernyőn) kész. A források (műszakterv, kérések, riasztások) a CloudKittől (N2), a háttérbeli push értesítés fizetős fiókkal érkezik; az olvasottsági állapot jelenleg a memóriában van.
 * **K12:** az összesítés logikája (`WorkerSummary`: ledolgozott órák a műszakokból az aktuális és az előző elszámolási időszakban és összesen; heti időszak hétfőtől, havi a naptári hónap, kétheti és egyedi napszámú időszak rögzített kezdőhétfőtől; az időszakhatáron átnyúló műszak megosztva, a folyamatban lévő a mostani időpontig; a lezárult műszakok saját feladatai, legfrissebb elöl) és a felülete kész; az adminisztrátor kikapcsolhatja (L6). A műszakterv a CloudKittől (N2) függ.
 * **K17:** a készletkérés logikája (készletlista kategóriánként; tétel, mennyiség, „elfogyott” vagy „hamarosan elfogy”, a munkavállaló zónája, megjegyzés; pozitív mennyiség; tételenként egy nyitott kérés; a saját kérések állapota, legfrissebb elöl; az adminisztrátor kikapcsolhatja, L6) és a felülete kész. A kérés az adminisztrátornál a készletkezelőben (L10) és a kérelemnaplóban (L8) jelenik meg; a telefon és a Mac közötti átvitel a CloudKittől (N2) függ, addig a kérés a telefonon helyben marad.
 * **K6:** a térkép logikája (szintválasztás, a munkaterület kiemelése, a munkatársak a legutóbbi zóna-bejelentkezésük zónájában, a be nem jelentkezettek külön listában) és a felülete (`VenueMapView`, a közös `FloorPlanView`-val) készen van; a helyszín és a bejelentkezések valós adatforrása (CloudKit, N2) hátravan, addig a térkép üres állapotot mutat.

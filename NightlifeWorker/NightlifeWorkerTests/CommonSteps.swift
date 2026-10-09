@@ -36,6 +36,7 @@ extension Cucumber {
             case "Map": return .map
             case "Supply request": return .supplyRequest
             case "Summary": return .summary
+            case "Notifications": return .notifications
             default: throw UnknownScenarioName(name: name)
             }
         }

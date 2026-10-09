@@ -1,7 +1,7 @@
 import SwiftUI
 import SharedKit
 
-@K4 @K14 @K5 @K17 @K12
+@K4 @K14 @K5 @K17 @K12 @K13
 struct HomeView: View {
     @ObservedObject var viewModel: AuthViewModel
     @State private var confirmingSignOut = false
@@ -12,6 +12,7 @@ struct HomeView: View {
         zoneCheckIn: ZoneCheckInViewModel(workerID: UUID(), zones: [], isOnShift: false))
     @StateObject private var menu = HomeMenuViewModel()
     @StateObject private var schedule = ScheduleViewModel(workerID: UUID(), shifts: [], venue: Venue(name: ""))
+    @StateObject private var notifications = NotificationsViewModel(sources: { NotificationSources(workerID: UUID()) })
     @StateObject private var summary = WorkSummaryViewModel(workerID: UUID(), shifts: [], payPeriod: .weekly)
     @StateObject private var supplyRequest = SupplyRequestViewModel(workerID: UUID(), zoneID: nil, desk: LocalSupplyDesk())
     @StateObject private var venueMap = VenueMapViewModel(
@@ -28,6 +29,7 @@ struct HomeView: View {
                     destination(for: item)
                 } label: {
                     label(for: item)
+                        .badge(item == .notifications ? notifications.unreadCount : 0)
                 }
             }
             .navigationTitle("Nightlife Worker")
@@ -46,6 +48,7 @@ struct HomeView: View {
     private func destination(for item: HomeItem) -> some View {
         switch item {
         case .schedule: ScheduleView(viewModel: schedule)
+        case .notifications: NotificationsView(viewModel: notifications)
         case .codeReader: CodeReaderView(viewModel: codeReader)
         case .map: VenueMapView(viewModel: venueMap)
         case .supplyRequest: SupplyRequestView(viewModel: supplyRequest)
@@ -56,6 +59,7 @@ struct HomeView: View {
     private func label(for item: HomeItem) -> Label<Text, Image> {
         switch item {
         case .schedule: return Label("Beosztás", systemImage: "calendar")
+        case .notifications: return Label("Értesítések", systemImage: "bell")
         case .codeReader: return Label("Kódolvasó", systemImage: "qrcode.viewfinder")
         case .map: return Label("Térkép", systemImage: "map")
         case .supplyRequest: return Label("Készletkérés", systemImage: "shippingbox")

@@ -5,6 +5,7 @@ import SharedKit
 @K4 @L6
 enum HomeItem: CaseIterable, Identifiable {
     case schedule
+    case notifications
     case codeReader
     case map
     case supplyRequest
