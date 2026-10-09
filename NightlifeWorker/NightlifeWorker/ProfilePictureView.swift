@@ -6,6 +6,7 @@ import SharedKit
 struct ProfilePictureView: View {
     @ObservedObject var viewModel: ProfilePictureViewModel
     @State private var selection: PhotosPickerItem?
+    @EnvironmentObject private var loading: LoadingViewModel
 
     var body: some View {
         Form {
@@ -35,8 +36,10 @@ struct ProfilePictureView: View {
         .onChange(of: selection) { _, item in
             guard let item else { return }
             Task {
-                if let data = try? await item.loadTransferable(type: Data.self) {
-                    viewModel.choose(data)
+                await loading.run {
+                    if let data = try? await item.loadTransferable(type: Data.self) {
+                        viewModel.choose(data)
+                    }
                 }
                 selection = nil
             }

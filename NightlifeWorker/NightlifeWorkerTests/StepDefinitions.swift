@@ -71,5 +71,6 @@ extension Cucumber: @retroactive StepImplementation {
         setupSettingsSteps()
         setupProfilePictureSteps()
         setupLanguageSteps()
+        setupLoadingScreenSteps()
     }
 }

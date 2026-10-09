@@ -1,2124 +1,2146 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "%@ · %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ · %2$@"
+  "sourceLanguage": "en",
+  "strings": {
+    "%@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ · %2$@"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ · %2$@"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ · %2$@"
           }
         }
       }
     },
-    "%@ óra" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ h"
+    "%@ óra": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ h"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ óra"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ óra"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ h"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ h"
           }
         }
       }
     },
-    "A helyszín tervrajza szintenként, a munkaterületeddel és azzal, hogy a kollégák melyik zónában jelentkeztek be utoljára." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The floor plan of the venue, floor by floor, with your work area and the zone where each colleague last checked in."
+    "A helyszín tervrajza szintenként, a munkaterületeddel és azzal, hogy a kollégák melyik zónában jelentkeztek be utoljára.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The floor plan of the venue, floor by floor, with your work area and the zone where each colleague last checked in."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A helyszín tervrajza szintenként, a munkaterületeddel és azzal, hogy a kollégák melyik zónában jelentkeztek be utoljára."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A helyszín tervrajza szintenként, a munkaterületeddel és azzal, hogy a kollégák melyik zónában jelentkeztek be utoljára."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A planta do local, piso a piso, com a tua área de trabalho e a zona onde cada colega fez o último check-in."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A planta do local, piso a piso, com a tua área de trabalho e a zona onde cada colega fez o último check-in."
           }
         }
       }
     },
-    "A helyszín tervrajzát az adminisztrátor készíti el." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The administrator draws the floor plan of the venue."
+    "A helyszín tervrajzát az adminisztrátor készíti el.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The administrator draws the floor plan of the venue."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A helyszín tervrajzát az adminisztrátor készíti el."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A helyszín tervrajzát az adminisztrátor készíti el."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O administrador desenha a planta do local."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O administrador desenha a planta do local."
           }
         }
       }
     },
-    "A kép közepéből egy legfeljebb 512 × 512 pixeles négyzet készül." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A square of at most 512 × 512 pixels is cut from the middle of the photo."
+    "A kép közepéből egy legfeljebb 512 × 512 pixeles négyzet készül.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A square of at most 512 × 512 pixels is cut from the middle of the photo."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A kép közepéből egy legfeljebb 512 × 512 pixeles négyzet készül."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A kép közepéből egy legfeljebb 512 × 512 pixeles négyzet készül."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "É recortado do centro da fotografia um quadrado de, no máximo, 512 × 512 píxeis."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "É recortado do centro da fotografia um quadrado de, no máximo, 512 × 512 píxeis."
           }
         }
       }
     },
-    "A készletlistát az adminisztrátor állítja össze." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The administrator sets up the stock list."
+    "A készletlistát az adminisztrátor állítja össze.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The administrator sets up the stock list."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A készletlistát az adminisztrátor állítja össze."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A készletlistát az adminisztrátor állítja össze."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O administrador define a lista de stock."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O administrador define a lista de stock."
           }
         }
       }
     },
-    "A kódolvasó nem érhető el" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The code reader is not available"
+    "A kódolvasó nem érhető el": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The code reader is not available"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A kódolvasó nem érhető el"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A kódolvasó nem érhető el"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O leitor de códigos não está disponível"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O leitor de códigos não está disponível"
           }
         }
       }
     },
-    "A ledolgozott óráid az aktuális és az előző elszámolási időszakban, valamint a korábbi feladataid." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your hours worked in the current and the previous pay period, and your past tasks."
+    "A ledolgozott óráid az aktuális és az előző elszámolási időszakban, valamint a korábbi feladataid.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your hours worked in the current and the previous pay period, and your past tasks."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A ledolgozott óráid az aktuális és az előző elszámolási időszakban, valamint a korábbi feladataid."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A ledolgozott óráid az aktuális és az előző elszámolási időszakban, valamint a korábbi feladataid."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "As tuas horas trabalhadas no período de pagamento atual e no anterior, e as tuas tarefas anteriores."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As tuas horas trabalhadas no período de pagamento atual e no anterior, e as tuas tarefas anteriores."
           }
         }
       }
     },
-    "A műszakjaidat az adminisztrátor osztja be." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your shifts are assigned by the administrator."
+    "A műszakjaidat az adminisztrátor osztja be.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your shifts are assigned by the administrator."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A műszakjaidat az adminisztrátor osztja be."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A műszakjaidat az adminisztrátor osztja be."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Os teus turnos são atribuídos pelo administrador."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os teus turnos são atribuídos pelo administrador."
           }
         }
       }
     },
-    "A profilkép, a nyelv, az útmutató, a névjegy és a kijelentkezés egy helyen." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Profile picture, language, guide, about and signing out in one place."
+    "A profilkép, a nyelv, az útmutató, a névjegy és a kijelentkezés egy helyen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profile picture, language, guide, about and signing out in one place."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A profilkép, a nyelv, az útmutató, a névjegy és a kijelentkezés egy helyen."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A profilkép, a nyelv, az útmutató, a névjegy és a kijelentkezés egy helyen."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fotografia de perfil, idioma, guia, informações e terminar sessão num só lugar."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotografia de perfil, idioma, guia, informações e terminar sessão num só lugar."
           }
         }
       }
     },
-    "A rendszer nyelve" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "System language"
+    "A rendszer nyelve": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System language"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A rendszer nyelve"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A rendszer nyelve"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Idioma do sistema"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idioma do sistema"
           }
         }
       }
     },
-    "A saját műszakjaid időponttal, szinttel, zónával és a neked kiosztott feladatokkal. A folyamatban lévő műszak külön látszik, a korábbiak a lista alján." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your own shifts with time, floor, zone and the tasks given to you. The shift in progress is shown separately, past ones at the bottom of the list."
+    "A saját műszakjaid időponttal, szinttel, zónával és a neked kiosztott feladatokkal. A folyamatban lévő műszak külön látszik, a korábbiak a lista alján.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your own shifts with time, floor, zone and the tasks given to you. The shift in progress is shown separately, past ones at the bottom of the list."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A saját műszakjaid időponttal, szinttel, zónával és a neked kiosztott feladatokkal. A folyamatban lévő műszak külön látszik, a korábbiak a lista alján."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A saját műszakjaid időponttal, szinttel, zónával és a neked kiosztott feladatokkal. A folyamatban lévő műszak külön látszik, a korábbiak a lista alján."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Os teus turnos com hora, piso, zona e as tarefas que te foram atribuídas. O turno em curso aparece à parte e os anteriores no fim da lista."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os teus turnos com hora, piso, zona e as tarefas que te foram atribuídas. O turno em curso aparece à parte e os anteriores no fim da lista."
           }
         }
       }
     },
-    "Admin" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Admin"
+    "Admin": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Admin"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Admin"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Admin"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Admin"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Admin"
           }
         }
       }
     },
-    "Admitted: %@ – %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Admitted: %1$@ – %2$@"
+    "Admitted: %@ – %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Admitted: %1$@ – %2$@"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beengedve: %1$@ – %2$@"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beengedve: %1$@ – %2$@"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entrada autorizada: %1$@ – %2$@"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entrada autorizada: %1$@ – %2$@"
           }
         }
       }
     },
-    "Állapot" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Status"
+    "Az elbírált készletkérések, a neked szóló pánikjelzések és az új beosztások egy listában. Koppintásra olvasottá válnak.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Decided supply requests, panic alerts sent to you and new shifts in one list. Tap one to mark it as read."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Állapot"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Az elbírált készletkérések, a neked szóló pánikjelzések és az új beosztások egy listában. Koppintásra olvasottá válnak."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estado"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pedidos de stock decididos, alertas de pânico enviados para ti e novos turnos numa só lista. Toca numa notificação para a marcar como lida."
           }
         }
       }
     },
-    "Az elbírált készletkérések, a neked szóló pánikjelzések és az új beosztások egy listában. Koppintásra olvasottá válnak." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Decided supply requests, panic alerts sent to you and new shifts in one list. Tap one to mark it as read."
+    "Bejelentkezve Apple-fiókkal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signed in with Apple"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Az elbírált készletkérések, a neked szóló pánikjelzések és az új beosztások egy listában. Koppintásra olvasottá válnak."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bejelentkezve Apple-fiókkal"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pedidos de stock decididos, alertas de pânico enviados para ti e novos turnos numa só lista. Toca numa notificação para a marcar como lida."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessão iniciada com a Apple"
           }
         }
       }
     },
-    "Beállítások" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Settings"
+    "Bejelentkezve: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signed in as %@"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beállítások"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bejelentkezve: %@"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Definições"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessão iniciada como %@"
           }
         }
       }
     },
-    "Bejelentkezve Apple-fiókkal" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Signed in with Apple"
+    "Belépés (teszt)": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in (test)"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bejelentkezve Apple-fiókkal"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belépés (teszt)"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sessão iniciada com a Apple"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entrar (teste)"
           }
         }
       }
     },
-    "Bejelentkezve: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Signed in as %@"
+    "Beosztás": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schedule"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bejelentkezve: %@"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beosztás"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sessão iniciada como %@"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horário"
           }
         }
       }
     },
-    "Belépés (teszt)" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sign in (test)"
+    "Betöltés…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading…"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Belépés (teszt)"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Betöltés…"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entrar (teste)"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A carregar…"
           }
         }
       }
     },
-    "Beosztás" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schedule"
+    "Beállítások": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beosztás"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beállítások"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Horário"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Definições"
           }
         }
       }
     },
-    "Biztosan kijelentkezel?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Do you really want to sign out?"
+    "Biztosan kijelentkezel?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Do you really want to sign out?"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Biztosan kijelentkezel?"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biztosan kijelentkezel?"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tens a certeza de que queres terminar sessão?"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tens a certeza de que queres terminar sessão?"
           }
         }
       }
     },
-    "Checked in: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Checked in: %@"
+    "Checked in: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checked in: %@"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bejelentkezve a zónába: %@"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bejelentkezve a zónába: %@"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Check-in feito: %@"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check-in feito: %@"
           }
         }
       }
     },
-    "Ebben az időszakban" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This period"
+    "Ebben az időszakban": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This period"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ebben az időszakban"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ebben az időszakban"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este período"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este período"
           }
         }
       }
     },
-    "Elfogyott" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Out of stock"
+    "Elfogyott": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Out of stock"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Elfogyott"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elfogyott"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esgotado"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esgotado"
           }
         }
       }
     },
-    "Előző időszak" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Previous period"
+    "Elutasítva": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rejected"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Előző időszak"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elutasítva"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Período anterior"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recusado"
           }
         }
       }
     },
-    "Elutasítva" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rejected"
+    "Előző időszak": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous period"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Elutasítva"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Előző időszak"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recusado"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Período anterior"
           }
         }
       }
     },
-    "Enter a quantity greater than zero" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter a quantity greater than zero"
+    "Enter a quantity greater than zero": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a quantity greater than zero"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adj meg nullánál nagyobb mennyiséget"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adj meg nullánál nagyobb mennyiséget"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Indica uma quantidade superior a zero"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indica uma quantidade superior a zero"
           }
         }
       }
     },
-    "Értesítések" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notifications"
+    "Ezen az eszközön nincs kamera, vagy nincs engedélyezve a használata.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device has no camera, or the app may not use it."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Értesítések"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ezen az eszközön nincs kamera, vagy nincs engedélyezve a használata."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notificações"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este dispositivo não tem câmara ou a aplicação não tem permissão para a usar."
           }
         }
       }
     },
-    "Ezen az eszközön nincs kamera, vagy nincs engedélyezve a használata." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This device has no camera, or the app may not use it."
+    "Fajta": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kind"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ezen az eszközön nincs kamera, vagy nincs engedélyezve a használata."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fajta"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este dispositivo não tem câmara ou a aplicação não tem permissão para a usar."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tipo"
           }
         }
       }
     },
-    "Fajta" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kind"
+    "Folyamatban": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In progress"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fajta"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folyamatban"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tipo"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em curso"
           }
         }
       }
     },
-    "Folyamatban" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In progress"
+    "Függőben": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pending"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Folyamatban"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Függőben"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Em curso"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pendente"
           }
         }
       }
     },
-    "Függőben" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pending"
+    "Hamarosan elfogy": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Running low"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Függőben"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hamarosan elfogy"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pendente"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quase a acabar"
           }
         }
       }
     },
-    "Hamarosan elfogy" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Running low"
+    "Jegyek beléptetése és zóna-bejelentkezés: irányítsd a kamerát a QR-kódra. Műszak alatt a zóna kódjával jelzed, hol vagy.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Admit tickets and check in to zones: point the camera at the QR code. During your shift, the zone code shows where you are."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hamarosan elfogy"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jegyek beléptetése és zóna-bejelentkezés: irányítsd a kamerát a QR-kódra. Műszak alatt a zóna kódjával jelzed, hol vagy."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quase a acabar"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Validar bilhetes e fazer check-in nas zonas: aponta a câmara para o código QR. Durante o turno, o código da zona indica onde estás."
           }
         }
       }
     },
-    "Jegyek beléptetése és zóna-bejelentkezés: irányítsd a kamerát a QR-kódra. Műszak alatt a zóna kódjával jelzed, hol vagy." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Admit tickets and check in to zones: point the camera at the QR code. During your shift, the zone code shows where you are."
+    "Jelezd, ha valami elfogyott vagy hamarosan elfogy. A kérés állapotát a lista alján követheted; tételenként egy nyitott kérésed lehet.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Report when something has run out or is running low. Follow your requests at the bottom of the list; you can have one open request per item."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jegyek beléptetése és zóna-bejelentkezés: irányítsd a kamerát a QR-kódra. Műszak alatt a zóna kódjával jelzed, hol vagy."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jelezd, ha valami elfogyott vagy hamarosan elfogy. A kérés állapotát a lista alján követheted; tételenként egy nyitott kérésed lehet."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Validar bilhetes e fazer check-in nas zonas: aponta a câmara para o código QR. Durante o turno, o código da zona indica onde estás."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avisa quando algo esgotou ou está quase a acabar. Acompanha os pedidos no fim da lista; podes ter um pedido aberto por artigo."
           }
         }
       }
     },
-    "Jelezd, ha valami elfogyott vagy hamarosan elfogy. A kérés állapotát a lista alján követheted; tételenként egy nyitott kérésed lehet." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Report when something has run out or is running low. Follow your requests at the bottom of the list; you can have one open request per item."
+    "Jóváhagyva": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approved"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jelezd, ha valami elfogyott vagy hamarosan elfogy. A kérés állapotát a lista alján követheted; tételenként egy nyitott kérésed lehet."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jóváhagyva"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Avisa quando algo esgotou ou está quase a acabar. Acompanha os pedidos no fim da lista; podes ter um pedido aberto por artigo."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aprovado"
           }
         }
       }
     },
-    "Jóváhagyva" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Approved"
+    "Kijelentkezés": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign out"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jóváhagyva"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kijelentkezés"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aprovado"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terminar sessão"
           }
         }
       }
     },
-    "Kép cseréje" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Change photo"
+    "Kollégák": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colleagues"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kép cseréje"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kollégák"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alterar fotografia"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colegas"
           }
         }
       }
     },
-    "Kép eltávolítása" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Remove photo"
+    "Korábbi feladatok": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Past tasks"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kép eltávolítása"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Korábbi feladatok"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Remover fotografia"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarefas anteriores"
           }
         }
       }
     },
-    "Kép kiválasztása" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choose photo"
+    "Korábbi műszakok": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Past shifts"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kép kiválasztása"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Korábbi műszakok"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escolher fotografia"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turnos anteriores"
           }
         }
       }
     },
-    "Kérés küldése" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Send request"
+    "Kép cseréje": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change photo"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kérés küldése"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kép cseréje"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enviar pedido"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alterar fotografia"
           }
         }
       }
     },
-    "Kéréseim" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "My requests"
+    "Kép eltávolítása": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove photo"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kéréseim"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kép eltávolítása"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Os meus pedidos"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remover fotografia"
           }
         }
       }
     },
-    "Készletkérés" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Supply request"
+    "Kép kiválasztása": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose photo"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Készletkérés"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kép kiválasztása"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pedido de stock"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escolher fotografia"
           }
         }
       }
     },
-    "Kijelentkezés" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sign out"
+    "Kérés küldése": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send request"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kijelentkezés"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kérés küldése"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Terminar sessão"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviar pedido"
           }
         }
       }
     },
-    "Kódolvasó" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Code reader"
+    "Kéréseim": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My requests"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kódolvasó"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kéréseim"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Leitor de códigos"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os meus pedidos"
           }
         }
       }
     },
-    "Kollégák" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Colleagues"
+    "Készletkérés": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supply request"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kollégák"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Készletkérés"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Colegas"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pedido de stock"
           }
         }
       }
     },
-    "Korábbi feladatok" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Past tasks"
+    "Kódolvasó": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code reader"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Korábbi feladatok"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kódolvasó"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tarefas anteriores"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leitor de códigos"
           }
         }
       }
     },
-    "Korábbi műszakok" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Past shifts"
+    "Ledolgozott órák": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hours worked"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Korábbi műszakok"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ledolgozott órák"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Turnos anteriores"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horas trabalhadas"
           }
         }
       }
     },
-    "Ledolgozott órák" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hours worked"
+    "Megjegyzés (nem kötelező)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note (optional)"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ledolgozott órák"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Megjegyzés (nem kötelező)"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Horas trabalhadas"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nota (opcional)"
           }
         }
       }
     },
-    "Még nincs lezárult feladatod." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You have no finished tasks yet."
+    "Mennyiség: %lld %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quantity: %1$lld %2$@"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Még nincs lezárult feladatod."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mennyiség: %1$lld %2$@"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ainda não tens tarefas concluídas."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quantidade: %1$lld %2$@"
           }
         }
       }
     },
-    "Még nincs tervrajz" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No floor plan yet"
+    "Mi fogy?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What is running out?"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Még nincs tervrajz"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mi fogy?"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ainda não há planta"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O que está a acabar?"
           }
         }
       }
     },
-    "Megjegyzés (nem kötelező)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Note (optional)"
+    "Mind": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Megjegyzés (nem kötelező)"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mind"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nota (opcional)"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todas"
           }
         }
       }
     },
-    "Mennyiség: %lld %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quantity: %1$lld %2$@"
+    "Mind olvasott": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mark all as read"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mennyiség: %1$lld %2$@"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mind olvasott"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quantidade: %1$lld %2$@"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marcar todas como lidas"
           }
         }
       }
     },
-    "Mi fogy?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "What is running out?"
+    "Most": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Now"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mi fogy?"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Most"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O que está a acabar?"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agora"
           }
         }
       }
     },
-    "Mind" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "All"
+    "Még nincs lezárult feladatod.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You have no finished tasks yet."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mind"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Még nincs lezárult feladatod."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Todas"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ainda não tens tarefas concluídas."
           }
         }
       }
     },
-    "Mind olvasott" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mark all as read"
+    "Még nincs tervrajz": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No floor plan yet"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mind olvasott"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Még nincs tervrajz"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Marcar todas como lidas"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ainda não há planta"
           }
         }
       }
     },
-    "Most" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Now"
+    "Műszakok ebben az időszakban: %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shifts in this period: %lld"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Most"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Műszakok ebben az időszakban: %lld"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agora"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turnos neste período: %lld"
           }
         }
       }
     },
-    "Műszakok ebben az időszakban: %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Shifts in this period: %lld"
+    "New shift": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New shift"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Műszakok ebben az időszakban: %lld"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Új műszak"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Turnos neste período: %lld"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novo turno"
           }
         }
       }
     },
-    "New shift" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New shift"
+    "Nightlife Worker": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nightlife Worker"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Új műszak"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nightlife Worker"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Novo turno"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nightlife Worker"
           }
         }
       }
     },
-    "Nightlife Worker" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nightlife Worker"
+    "Nincs bejelentkezve: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not checked in: %@"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nightlife Worker"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nincs bejelentkezve: %@"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nightlife Worker"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sem check-in: %@"
           }
         }
       }
     },
-    "Nincs bejelentkezve: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not checked in: %@"
+    "Nincs beosztásod": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You have no shifts"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nincs bejelentkezve: %@"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nincs beosztásod"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sem check-in: %@"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não tens turnos"
           }
         }
       }
     },
-    "Nincs beosztásod" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You have no shifts"
+    "Nincs készletlista": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No stock list"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nincs beosztásod"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nincs készletlista"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não tens turnos"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sem lista de stock"
           }
         }
       }
     },
-    "Nincs értesítés" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No notifications"
+    "Nincs következő műszakod.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You have no next shift."
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nincs értesítés"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nincs következő műszakod."
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sem notificações"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não tens próximo turno."
           }
         }
       }
     },
-    "Nincs készletlista" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No stock list"
+    "Nincs megadott zóna": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No zone given"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nincs készletlista"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nincs megadott zóna"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sem lista de stock"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sem zona definida"
           }
         }
       }
     },
-    "Nincs következő műszakod." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You have no next shift."
+    "Nincs értesítés": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No notifications"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nincs következő műszakod."
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nincs értesítés"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não tens próximo turno."
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sem notificações"
           }
         }
       }
     },
-    "Nincs megadott zóna" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No zone given"
+    "No zone": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No zone"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nincs megadott zóna"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nincs zóna"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sem zona definida"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sem zona"
           }
         }
       }
     },
-    "No zone" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No zone"
+    "Not on shift": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not on shift"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nincs zóna"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nem vagy műszakban"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sem zona"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não estás de turno"
           }
         }
       }
     },
-    "Not on shift" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not on shift"
+    "Nyelv": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Language"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nem vagy műszakban"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nyelv"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não estás de turno"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idioma"
           }
         }
       }
     },
-    "Nyelv" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Language"
+    "Panic alert": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panic alert"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nyelv"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pánikjelzés"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Idioma"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alerta de pânico"
           }
         }
       }
     },
-    "Összesen" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total"
+    "Profilkép": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profile picture"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Összesen"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profilkép"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotografia de perfil"
           }
         }
       }
     },
-    "Összesítés" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Summary"
+    "Rendszer": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Összesítés"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rendszer"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resumo"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistema"
           }
         }
       }
     },
-    "Panic alert" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Panic alert"
+    "Request approved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Request approved"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pánikjelzés"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kérés jóváhagyva"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alerta de pânico"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pedido aprovado"
           }
         }
       }
     },
-    "Profilkép" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Profile picture"
+    "Request rejected": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Request rejected"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Profilkép"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kérés elutasítva"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fotografia de perfil"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pedido recusado"
           }
         }
       }
     },
-    "Rendszer" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "System"
+    "Request sent": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Request sent"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rendszer"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kérés elküldve"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sistema"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pedido enviado"
           }
         }
       }
     },
-    "Request approved" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Request approved"
+    "Supply requests are turned off": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supply requests are turned off"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kérés jóváhagyva"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A készletkérés ki van kapcsolva"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pedido aprovado"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os pedidos de stock estão desativados"
           }
         }
       }
     },
-    "Request rejected" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Request rejected"
+    "Szint": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Floor"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kérés elutasítva"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Szint"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pedido recusado"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piso"
           }
         }
       }
     },
-    "Request sent" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Request sent"
+    "The file is not an image": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The file is not an image"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kérés elküldve"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A fájl nem kép"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pedido enviado"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O ficheiro não é uma imagem"
           }
         }
       }
     },
-    "Supply requests are turned off" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Supply requests are turned off"
+    "The file is too large": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The file is too large"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A készletkérés ki van kapcsolva"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A fájl túl nagy"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Os pedidos de stock estão desativados"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O ficheiro é demasiado grande"
           }
         }
       }
     },
-    "Szint" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Floor"
+    "The item is no longer available": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The item is no longer available"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Szint"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A tétel már nem kérhető"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Piso"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O artigo já não está disponível"
           }
         }
       }
     },
-    "Térkép" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Map"
+    "The picture could not be removed": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The picture could not be removed"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Térkép"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A kép nem távolítható el"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mapa"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível remover a fotografia"
           }
         }
       }
     },
-    "Tétel" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Item"
+    "The picture could not be saved": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The picture could not be saved"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tétel"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A kép nem menthető"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Artigo"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível guardar a fotografia"
           }
         }
       }
     },
-    "The file is not an image" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The file is not an image"
+    "The request could not be sent": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The request could not be sent"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A fájl nem kép"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A kérés nem küldhető el"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O ficheiro não é uma imagem"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível enviar o pedido"
           }
         }
       }
     },
-    "The file is too large" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The file is too large"
+    "Ticket already used": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ticket already used"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A fájl túl nagy"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A jegyet már felhasználták"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O ficheiro é demasiado grande"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bilhete já utilizado"
           }
         }
       }
     },
-    "The item is no longer available" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The item is no longer available"
+    "Ticket is for another event": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ticket is for another event"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A tétel már nem kérhető"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A jegy másik eseményre szól"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O artigo já não está disponível"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O bilhete é para outro evento"
           }
         }
       }
     },
-    "The picture could not be removed" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The picture could not be removed"
+    "Térkép": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Map"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A kép nem távolítható el"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Térkép"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não foi possível remover a fotografia"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mapa"
           }
         }
       }
     },
-    "The picture could not be saved" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The picture could not be saved"
+    "Tétel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Item"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A kép nem menthető"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tétel"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não foi possível guardar a fotografia"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Artigo"
           }
         }
       }
     },
-    "The request could not be sent" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The request could not be sent"
+    "Unknown code": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown code"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A kérés nem küldhető el"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ismeretlen kód"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não foi possível enviar o pedido"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Código desconhecido"
           }
         }
       }
     },
-    "Ticket already used" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ticket already used"
+    "Unknown ticket": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown ticket"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A jegyet már felhasználták"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ismeretlen jegy"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bilhete já utilizado"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bilhete desconhecido"
           }
         }
       }
     },
-    "Ticket is for another event" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ticket is for another event"
+    "Unknown zone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown zone"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A jegy másik eseményre szól"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ismeretlen zóna"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O bilhete é para outro evento"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zona desconhecida"
           }
         }
       }
     },
-    "Unknown code" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unknown code"
+    "Verzió: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version: %@"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ismeretlen kód"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verzió: %@"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Código desconhecido"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versão: %@"
           }
         }
       }
     },
-    "Unknown ticket" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unknown ticket"
+    "Válassz…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose…"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ismeretlen jegy"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Válassz…"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bilhete desconhecido"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escolher…"
           }
         }
       }
     },
-    "Unknown zone" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unknown zone"
+    "You already have an open request for %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You already have an open request for %@"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ismeretlen zóna"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Már van nyitott kérésed erre: %@"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zona desconhecida"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Já tens um pedido aberto para %@"
           }
         }
       }
     },
-    "Útmutató" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guide"
+    "Állapot": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Útmutató"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Állapot"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guia"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estado"
           }
         }
       }
     },
-    "Válassz…" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choose…"
+    "Értesítések": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Válassz…"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Értesítések"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escolher…"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notificações"
           }
         }
       }
     },
-    "Verzió: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Version: %@"
+    "Összesen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verzió: %@"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Összesen"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Versão: %@"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total"
           }
         }
       }
     },
-    "You already have an open request for %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You already have an open request for %@"
+    "Összesítés": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Summary"
           }
         },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Már van nyitott kérésed erre: %@"
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Összesítés"
           }
         },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Já tens um pedido aberto para %@"
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resumo"
+          }
+        }
+      }
+    },
+    "Útmutató": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guide"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Útmutató"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guia"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

@@ -13,7 +13,7 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 |----|-----|------|------------|------------------|-------------|---------|
 | K1 | Üdvözlőképernyő | M | Authentication | Authentication: Successful login, Failed login | – | ✅ |
 | K2 | Bejelentkezés | M | Authentication | Authentication: Successful login, Failed login | – | ✅ |
-| K3 | Töltőképernyő | C | – | – | – | – |
+| K3 | Töltőképernyő | C | LoadingScreen | LoadingScreen: 3 forgatókönyv | SharedKit: LoadingTrackerTests | ✅ |
 | K4 | Kezdőképernyő | M | Authentication, SignOut | Authentication: Already logged in; SignOut: A sign-in is remembered until signing out | AuthViewModelTests | ✅ |
 | K5 | Beosztások | M | Schedule | Schedule: 6 forgatókönyv | SharedKit: WorkerScheduleTests | ⚠️ |
 | K6 | Térkép | M | VenueMap | VenueMap: 4 forgatókönyv | SharedKit: MapPositionTests, VenueTests | ⚠️ |
@@ -65,10 +65,10 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 
 | | Összes | M | Lefedett (✅) | Részleges (⚠️) |
 |---|---|---|---|---|
-| Munkavállaló | 17 | 9 | 7 | 9 |
+| Munkavállaló | 17 | 9 | 8 | 9 |
 | Adminisztrátor | 11 | 6 | 8 | 3 |
 | Vendég | 11 | 5 | 4 | 2 |
-| **Összesen** | **39** | **20** | **19** | **14** |
+| **Összesen** | **39** | **20** | **20** | **14** |
 
 ## Nyitott tételek
 
@@ -80,6 +80,7 @@ A kódban a megvalósító deklarációk ugyanezekkel az azonosítókkal annotá
 * **M5:** a vendég térkép logikája (a vendég csak a neki szóló POI-kat látja: bár, mosdó, színpad, bejárat, vészkijárat, ruhatár; az egyéni pontok és a személyzeti zónák rejtettek; a földszinten nyílik; szintváltás; tervrajz nélkül tájékoztató üzenet) és felülete kész. A tervrajz eljuttatása a vendég appba a CloudKittől (N2) függ.
 * **K5:** a beosztás logikája (`WorkerSchedule`: csak a saját műszakok időrendben, a kezdés napja szerint csoportosítva; szint és zóna; csak a nekem kiosztott feladatok; az aktuális és a következő műszak; a lezárult műszakok külön, a legfrissebb elöl) és a felülete (`ScheduleView`, kezdőképernyő-link) kész. A műszakterv a Macről CloudKit-szinkronnal (N2) jut el a telefonra; addig a beosztás üres.
 * **K9:** kész: a beállítások egy nézetben (profilkép, útmutató, névjegy a bejelentkezett névvel és a verzióval, kijelentkezés megerősítéssel); a kikapcsolt funkciók beállításai nem jelennek meg (L6). A kezdőképernyőről a fogaskerék gombbal érhető el; a kijelentkezés ide költözött (K14).
+* **K3:** kész: animált töltőképernyő az app fölött, ha egy betöltés 0,3 másodpercnél tovább tart (rövidebbnél nem villan fel), több egyidejű betöltésnél az utolsó végéig; jelenleg az indításkor és a profilkép betöltésekor és feldolgozásakor. A CloudKit-adatok betöltése (N2) ugyanezt használja majd.
 * **K11:** kész: a munkavállalói app összes szövege magyarul, angolul és európai portugálul (`Localizable.xcstrings`); a nyelv a beállításokban választható (alapértelmezés: a telefon nyelve), a választás megmarad; a dátumok és számok is a választott nyelv szerint formázódnak. A teljességet egy forgatókönyv ellenőrzi (a lefordított szövegek kulcsai mindhárom nyelven azonosak). Nem fordul le: a felhasználók által megadott adat (nevek, tételek, zónák) és a pánikjelzés szövegében a munkakör neve.
 * **K10:** a profilkép feldolgozása (a kép közepéből legfeljebb 512 × 512 pixeles négyzet, JPEG, a tájolás figyelembevételével; nem kép és 20 MB feletti fájl elutasítva), cseréje, törlése és helyi mentése kész. A kollégák felé való megjelenítés (feltöltés) a CloudKittől (N2) függ.
 * **K15:** kész: külön útmutató gomb a kezdőképernyőn (és a beállításokban), funkciónként egy szakasz a kezdőképernyő sorrendjében; a kikapcsolt funkciók nem szerepelnek; az útmutató maga is kikapcsolható (L6).

@@ -59,6 +59,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * Értesítések listája, olvasatlan jelvény a kezdőképernyőn, szűrés, olvasottra állítás (K13)
 * Beállítások, profilkép kiválasztása a Fotókból, cseréje és törlése, útmutató gomb (K9, K10, K15)
 * Nyelvváltás a beállításokban: a felület szövegei, dátumai és számai a választott nyelven (K11)
+* Töltőképernyő nagy fotó profilképként való betöltésekor (K3)
 * Push értesítések kézbesítése és hangja (K8, N5)
 * Kamerás kódolvasás és QR-kódos zóna-bejelentkezés (K7, K16)
 * CloudKit-szinkronizáció több eszköz között (N2)
@@ -113,6 +114,7 @@ A CucumberSwift működését 2026-10-07-én ideiglenes próba-forgatókönyvekk
 | Sikertelen lépés utáni lépések | ⚠️ Nem futnak le, de az Xcode-riportban **sikeresként** jelennek meg. |
 | `@` jel a lépés szövegében | ⚠️ A lexer címke kezdetének tekinti, a `@` utáni rész elveszik (pl. e-mail-cím). A forgatókönyvekben e-mail-cím helyett a részeit kell megadni. |
 | A lépés kulcsszava | ⚠️ A `Given`, `When` és `Then` definíciók külön tartoznak: egy `When`-ként regisztrált szöveg egy `Given` (vagy az utána álló `And`) lépésre nem illeszkedik, hanem nem definiált lépés lesz (2026-10-09, K17). Ha egy lépés előfeltételként és műveletként is szerepel, mindkét kulcsszóval regisztrálni kell. |
+| Ismétlődő lépés egy forgatókönyvön belül | ⚠️ Két szó szerint azonos lépés egy forgatókönyvben „duplicate step” hibát ad a `testGherkin`-ben (a lépés szövegéből képzett tesztmetódus-név ütközik), a lépések maguk lefutnak (2026-10-09, K3). A második előfordulást át kell fogalmazni. |
 | Nem definiált lépés | ⚠️ A lépés saját tesztmetódusa sikeres, a hibát a `CucumberTest.testGherkin` jelzi (a javasolt lépésdefiníció kódjával). A futás így összességében sikertelen. |
 
 ## Konvenciók
@@ -211,4 +213,6 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-09 | – | SharedKitTests | 204/204 sikeres | K10: ProfilePictureTests (6 új), előbb sikertelenek. Mutációs ellenőrzés: ha a négyzet a kép széléről vágódik, a teszt elbukott. |
 | 2026-10-09 | – | NightlifeWorkerTests | 369/369 sikeres | K9: Settings (4), K10: ProfilePicture (5), K15: Guide (4) forgatókönyv. Mutációs ellenőrzés: kapcsolók nélküli beállításoknál és feldolgozás nélkül mentett profilképnél a megfelelő forgatókönyvek elbuktak. |
 | 2026-10-09 | – | NightlifeWorkerTests | 390/390 sikeres | K11: Language, 7 forgatókönyv (Scenario Outline 3 nyelvvel); a ViewModell-üzenetek `LocalizedStringResource`-ra váltak, a lépések angolra feloldva hasonlítanak. Kézi ellenőrzés: a szimulátorban portugál beállítással az üdvözlőképernyő gombja „Entrar (teste)”. Mutációs ellenőrzés: egy portugál fordítás törlésekor a teljességi forgatókönyv elbukott. |
+| 2026-10-09 | – | SharedKitTests | 208/208 sikeres | K3: LoadingTrackerTests (4 új), előbb sikertelenek. Az első megvalósítás a 0,3 s-os határon elbukott a lebegőpontos pontosság miatt (nagy időbélyegnél a különbség 0,29999995), ezért mikroszekundumos tűrést kapott. Mutációs ellenőrzés: a „bármelyik betöltés” helyett „mindegyik” feltétellel három teszt elbukott. |
+| 2026-10-09 | – | NightlifeWorkerTests | 406/406 sikeres | K3: LoadingScreen, 3 forgatókönyv. Az első futásban a `testGherkin` „duplicate step” hibát jelzett (ld. A CucumberSwift ellenőrzött viselkedése). Mutációs ellenőrzés: ha a betöltés vége nem frissíti az állapotot, két forgatókönyv elbukott. |
 | 2026-10-07 | d8ef516 | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |
