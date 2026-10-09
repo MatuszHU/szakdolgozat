@@ -30,6 +30,7 @@ extension Cucumber {
             switch item {
             case .profilePicture: return "Profile picture"
             case .language: return "Language"
+            case .tips: return "Tips"
             case .about: return "About"
             case .signOut: return "Sign out"
             }
@@ -81,7 +82,8 @@ extension Cucumber {
         }
 
         When("the guest opens the settings") { _, _ in
-            settings = GuestSettingsViewModel(auth: auth, guestName: name)
+            settings = GuestSettingsViewModel(auth: auth, guestName: name,
+                                              tips: GuideTipCenter.guest(store: InMemoryGuestTipStore()))
         }
 
         When("the guest signs out in the settings") { _, _ in

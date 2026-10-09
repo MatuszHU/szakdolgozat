@@ -157,6 +157,58 @@
         }
       }
     },
+    "A bejáratnál mutasd fel a jegyed QR-kódját. Minden jegy egyszer használható fel.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show the QR code of your ticket at the entrance. Each ticket can be used once."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A bejáratnál mutasd fel a jegyed QR-kódját. Minden jegy egyszer használható fel."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeige am Eingang den QR-Code deines Tickets. Jedes Ticket gilt nur einmal."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostra o código QR do bilhete à entrada. Cada bilhete só pode ser usado uma vez."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pri vchode ukáž QR kód vstupenky. Každú vstupenku možno použiť iba raz."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La intrare arată codul QR al biletului. Fiecare bilet poate fi folosit o singură dată."
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Na ulazu pokaži QR kôd ulaznice. Svaka se ulaznica može iskoristiti samo jednom."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На вході покажіть QR-код квитка. Кожен квиток можна використати лише раз."
+          }
+        }
+      }
+    },
     "A helyszín tervrajza hamarosan itt lesz.": {
       "localizations": {
         "en": {
@@ -205,6 +257,58 @@
           "stringUnit": {
             "state": "translated",
             "value": "План закладу незабаром з’явиться тут."
+          }
+        }
+      }
+    },
+    "A jegyeid": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your tickets"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A jegyeid"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Tickets"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os teus bilhetes"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tvoje vstupenky"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biletele tale"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tvoje ulaznice"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваші квитки"
           }
         }
       }
@@ -466,6 +570,58 @@
           "stringUnit": {
             "state": "translated",
             "value": "Щойно оголосять нову подію, тут можна буде купити квитки."
+          }
+        }
+      }
+    },
+    "Az esemény végéig egyszer jelentkezhetsz egy nyereményjátékra. Sok szerencsét!": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can register once for a raffle until the event ends. Good luck!"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Az esemény végéig egyszer jelentkezhetsz egy nyereményjátékra. Sok szerencsét!"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bis zum Ende der Veranstaltung kannst du einmal an einem Gewinnspiel teilnehmen. Viel Glück!"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podes inscrever-te uma vez num sorteio até ao fim do evento. Boa sorte!"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Do konca podujatia sa môžeš do súťaže prihlásiť raz. Veľa šťastia!"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Te poți înscrie o singură dată la o tombolă până la sfârșitul evenimentului. Mult noroc!"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Do kraja događaja za nagradnu igru možeš se prijaviti jednom. Sretno!"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "До завершення події можна один раз зареєструватися в розіграші. Успіху!"
           }
         }
       }
@@ -987,6 +1143,58 @@
           "stringUnit": {
             "state": "translated",
             "value": "Час"
+          }
+        }
+      }
+    },
+    "Itt vásárolhatsz jegyet, megtalálod a helyszín térképét és jelentkezhetsz a nyereményjátékokra.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buy tickets, find the map of the venue and join the raffles here."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Itt vásárolhatsz jegyet, megtalálod a helyszín térképét és jelentkezhetsz a nyereményjátékokra."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hier kaufst du Tickets, findest den Lageplan und nimmst an Gewinnspielen teil."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aqui compras bilhetes, encontras a planta do local e participas nos sorteios."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu si kúpiš vstupenky, nájdeš mapu podniku a prihlásiš sa do súťaží."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aici cumperi bilete, găsești harta locației și te înscrii la tombole."
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ovdje kupuješ ulaznice, nalaziš kartu prostora i prijavljuješ se za nagradne igre."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тут можна купити квитки, знайти мапу закладу й узяти участь у розіграшах."
           }
         }
       }
@@ -1878,6 +2086,58 @@
         }
       }
     },
+    "Nyereményjátékok": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Raffles"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nyereményjátékok"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gewinnspiele"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sorteios"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Súťaže"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tombole"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nagradne igre"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Розіграші"
+          }
+        }
+      }
+    },
     "Payment is not available yet": {
       "localizations": {
         "en": {
@@ -2662,6 +2922,58 @@
         }
       }
     },
+    "Tippek újra": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show tips again"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tippek újra"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tipps erneut zeigen"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar dicas novamente"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Znova zobraziť tipy"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arată din nou sfaturile"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ponovno prikaži savjete"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показати поради знову"
+          }
+        }
+      }
+    },
     "Térkép": {
       "localizations": {
         "en": {
@@ -2762,6 +3074,110 @@
           "stringUnit": {
             "state": "translated",
             "value": "Версія: %@"
+          }
+        }
+      }
+    },
+    "Válassz eseményt és jegytípust, add meg a darabszámot, majd fizess. A jegyeid a Jegyeim között jelennek meg.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose an event and a ticket type, set the quantity and pay. Your tickets appear under My tickets."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Válassz eseményt és jegytípust, add meg a darabszámot, majd fizess. A jegyeid a Jegyeim között jelennek meg."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wähle eine Veranstaltung und eine Ticketart, gib die Anzahl an und bezahle. Deine Tickets findest du unter Meine Tickets."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escolhe um evento e um tipo de bilhete, indica a quantidade e paga. Os bilhetes aparecem em Os meus bilhetes."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyber podujatie a typ vstupenky, zadaj počet a zaplať. Vstupenky nájdeš v časti Moje vstupenky."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alege un eveniment și un tip de bilet, stabilește cantitatea și plătește. Biletele apar la Biletele mele."
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odaberi događaj i vrstu ulaznice, unesi količinu i plati. Ulaznice se pojavljuju pod Moje ulaznice."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оберіть подію й тип квитка, вкажіть кількість і оплатіть. Квитки з’являться в розділі «Мої квитки»."
+          }
+        }
+      }
+    },
+    "Válts a szintek között, és megtalálod a bárt, a mosdókat, a színpadot és a kijáratokat.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Switch between the floors to find the bar, the toilets, the stage and the exits."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Válts a szintek között, és megtalálod a bárt, a mosdókat, a színpadot és a kijáratokat."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wechsle zwischen den Etagen, um Bar, Toiletten, Bühne und Ausgänge zu finden."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Muda de piso para encontrares o bar, as casas de banho, o palco e as saídas."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prepínaj medzi poschodiami a nájdeš bar, toalety, pódium aj východy."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comută între etaje ca să găsești barul, toaletele, scena și ieșirile."
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mijenjaj katove i pronaći ćeš bar, toalete, pozornicu i izlaze."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перемикайте поверхи, щоб знайти бар, туалети, сцену та виходи."
           }
         }
       }
@@ -2918,6 +3334,215 @@
           "stringUnit": {
             "state": "translated",
             "value": "За раз можна купити від 1 до 10 квитків"
+          }
+        }
+      }
+    },
+    "Értem": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Got it"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Értem"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verstanden"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Percebi"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozumiem"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Am înțeles"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Razumijem"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зрозуміло"
+          }
+        }
+      }
+    },
+    "Így találsz meg mindent": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finding your way"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Így találsz meg mindent"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "So findest du dich zurecht"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Como te orientares"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ako sa zorientovať"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cum te orientezi"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kako se snaći"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Як зорієнтуватися"
+          }
+        }
+      }
+    },
+    "Így vásárolsz jegyet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buying tickets"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Így vásárolsz jegyet"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "So kaufst du Tickets"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Como comprar bilhetes"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ako kúpiť vstupenky"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cum cumperi bilete"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kako kupiti ulaznice"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Як купити квитки"
+          }
+        }
+      }
+    },
+    "Üdv a Nightlife-ban!": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welcome to Nightlife"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üdv a Nightlife-ban!"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Willkommen bei Nightlife"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bem-vindo ao Nightlife"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vitaj v Nightlife"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bun venit la Nightlife"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dobro došli u Nightlife"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ласкаво просимо до Nightlife"
           }
         }
       }

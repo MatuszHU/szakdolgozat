@@ -1,10 +1,11 @@
 import SwiftUI
 import SharedKit
 
-@M3 @M4 @M6 @M7 @M8 @M9 @M10
+@M3 @M4 @M6 @M7 @M8 @M9 @M10 @M11
 struct GuestHomeView: View {
     @ObservedObject var viewModel: AuthViewModel
     @ObservedObject var language: LanguageSettings
+    @EnvironmentObject private var tips: GuideTipCenter
     @StateObject private var guestMap = GuestMapViewModel(venue: Venue(name: ""))
     @StateObject private var ticketShop: TicketShopViewModel
     @StateObject private var raffle: RaffleViewModel
@@ -52,9 +53,10 @@ struct GuestHomeView: View {
                 }
             }
             .navigationTitle("Nightlife")
+            .onAppear { tips.visit(.home) }
             .toolbar {
                 NavigationLink {
-                    GuestSettingsView(viewModel: GuestSettingsViewModel(auth: viewModel, guestName: nil),
+                    GuestSettingsView(viewModel: GuestSettingsViewModel(auth: viewModel, guestName: nil, tips: tips),
                                       profilePicture: profilePicture,
                                       language: language)
                 } label: {

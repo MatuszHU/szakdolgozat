@@ -6,6 +6,7 @@ import SharedKit
 enum GuestSettingsItem: CaseIterable, Identifiable {
     case profilePicture
     case language
+    case tips
     case about
     case signOut
 
@@ -16,10 +17,17 @@ enum GuestSettingsItem: CaseIterable, Identifiable {
 class GuestSettingsViewModel: ObservableObject {
     let guestName: String?
     private let auth: AuthViewModel
+    private let tips: GuideTipCenter
 
-    init(auth: AuthViewModel, guestName: String?) {
+    init(auth: AuthViewModel, guestName: String?, tips: GuideTipCenter) {
         self.auth = auth
         self.guestName = guestName
+        self.tips = tips
+    }
+
+    @M11
+    func showTipsAgain() {
+        tips.reset()
     }
 
     var items: [GuestSettingsItem] { GuestSettingsItem.allCases }

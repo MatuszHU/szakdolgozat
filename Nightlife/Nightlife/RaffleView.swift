@@ -3,6 +3,7 @@ import SharedKit
 
 @M7
 struct RaffleView: View {
+    @EnvironmentObject private var tips: GuideTipCenter
     @ObservedObject var viewModel: RaffleViewModel
 
     var body: some View {
@@ -35,5 +36,6 @@ struct RaffleView: View {
             }
         }
         .navigationTitle("Nyereményjáték")
+        .onAppear { tips.visit(.raffle) }
     }
 }

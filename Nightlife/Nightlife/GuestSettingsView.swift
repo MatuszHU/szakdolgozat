@@ -34,6 +34,8 @@ struct GuestSettingsView: View {
                         Label("Nyelv", systemImage: "globe")
                     }
                 }
+            case .tips:
+                Button("Tippek újra", systemImage: "lightbulb") { viewModel.showTipsAgain() }
             case .about:
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Nightlife").font(.headline)

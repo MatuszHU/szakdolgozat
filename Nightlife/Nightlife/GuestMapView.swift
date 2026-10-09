@@ -3,6 +3,7 @@ import SharedKit
 
 @M5
 struct GuestMapView: View {
+    @EnvironmentObject private var tips: GuideTipCenter
     @ObservedObject var viewModel: GuestMapViewModel
 
     var body: some View {
@@ -30,6 +31,7 @@ struct GuestMapView: View {
             }
         }
         .navigationTitle("Térkép")
+        .onAppear { tips.visit(.map) }
         .toolbar {
             if viewModel.floors.count > 1 {
                 ToolbarItem(placement: .principal) {

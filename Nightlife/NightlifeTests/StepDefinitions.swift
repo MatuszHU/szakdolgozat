@@ -20,5 +20,6 @@ extension Cucumber: @retroactive StepImplementation {
         setupRaffleSteps()
         setupGuestSettingsSteps()
         setupGuestLanguageSteps()
+        setupGuestTipsSteps()
     }
 }

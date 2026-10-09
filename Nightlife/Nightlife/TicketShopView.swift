@@ -3,6 +3,7 @@ import SharedKit
 
 @M4
 struct TicketShopView: View {
+    @EnvironmentObject private var tips: GuideTipCenter
     @ObservedObject var viewModel: TicketShopViewModel
 
     var body: some View {
@@ -26,6 +27,7 @@ struct TicketShopView: View {
             }
         }
         .navigationTitle("Jegyvásárlás")
+        .onAppear { tips.visit(.ticketShop) }
     }
 }
 

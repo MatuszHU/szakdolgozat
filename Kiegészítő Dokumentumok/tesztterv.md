@@ -63,6 +63,7 @@ Az elfogadási tesztek szándékosan a ViewModell rétegen futnak, nem a felüle
 * Nyereményjáték: jelentkezés a vendég appban, a jelentkezők száma a Macen (M7, L11; CloudKit után)
 * Vendég app: beállítások és profilkép kiválasztása a Fotókból (M8, M9)
 * Vendég app nyelvváltása mind a nyolc nyelvre (M10)
+* Felugró tippek a vendég appban: első látogatáskor megjelennek, „Értem” után nem; „Tippek újra” a beállításokban (M11)
 * Push értesítések kézbesítése és hangja (K8, N5)
 * Kamerás kódolvasás és QR-kódos zóna-bejelentkezés (K7, K16)
 * CloudKit-szinkronizáció több eszköz között (N2)
@@ -223,4 +224,6 @@ Ha egy hiba nem tesztből derül ki (pl. manuális tesztelés közben), előszö
 | 2026-10-09 | – | NightlifeTests (vendég), NightlifeWorkerTests | 139/139, 406/406 sikeres | M8: GuestSettings (3), M9: GuestProfilePicture (3) forgatókönyv. A profilkép- és betöltéskód a SharedKitbe került; a Worker forgatókönyvei változatlanul sikeresek (regresszió OK). Mutációs ellenőrzés: ha a beállításokból indított kijelentkezés nem hat, a forgatókönyv elbukott. |
 | 2026-10-09 | – | SharedKitTests | 219/219 sikeres | M10: a nyelvkezelés a SharedKitbe került; LanguageSettingsTests (6 új). Ezek az áthelyezett, már működő kódra készültek, ezért elsőre zöldek voltak; érvényességüket mutáció igazolta: a támogatott nyelvek ellenőrzése nélkül a teszt elbukott. |
 | 2026-10-09 | – | NightlifeTests (vendég), NightlifeWorkerTests | 169/169, 406/406 sikeres | M10: GuestLanguage, 11 forgatókönyv (Scenario Outline 8 nyelvvel). Kézi ellenőrzés: ukrán beállítással a vendég app üdvözlőképernyője ukránul jelenik meg. Mutációs ellenőrzés: egy ukrán fordítás törlésekor a teljességi forgatókönyv elbukott. |
+| 2026-10-09 | – | SharedKitTests | 224/224 sikeres | M11: GuideTipCenterTests (5 új), előbb sikertelenek. Mutációs ellenőrzés: az elolvasottság ellenőrzése nélkül a teszt elbukott. |
+| 2026-10-09 | – | NightlifeTests (vendég), NightlifeWorkerTests | 188/188, sikeres | M11: GuestTips, 6 forgatókönyv; a kódban használt kulcsok és a katalógusok egyezése a `.stringsdata` fájlokból ellenőrizve (egyik appnál sem hiányzik kulcs). Mutációs ellenőrzés: ha a „Tippek újra” nem állítja vissza a tippeket, a forgatókönyv elbukott. |
 | 2026-10-07 | d8ef516 | CI (GitHub Actions) | SharedKit sikeres, Worker nem futtatható | A hosztolt runner legújabb Xcode-ja 26.6, iOS 27 SDK nélkül; a Worker-job ideiglenesen nem kötelező (`continue-on-error`). |

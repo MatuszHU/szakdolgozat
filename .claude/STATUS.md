@@ -1,11 +1,12 @@
 # Munkaállapot (Claude munkanapló)
 
 > **Új session elején ezt a fájlt kell először elolvasni.** Minden lezárt lépés után frissítendő.
-> Utolsó frissítés: 2026-10-09 (M10 kész)
+> Utolsó frissítés: 2026-10-09 (M11 kész — minden M-követelmény feldolgozva)
 
 ## 1. Hol tartunk most
 
-**Aktív ág:** `m10-guest-languages`. **M10 ✅**: vendég `Localizable.xcstrings` (56 szöveg × 8 nyelv), `AppLanguage`/`LanguageSettings`/`LanguageView` a SharedKitben (`AppLanguage.worker`, `.guest`). Hátravan: M11.
+**Aktív ág:** `m11-guide-tips`. **M11 ✅**: `GuideTipCenter`/`GuideTip`/`GuideTipCard` (SharedKit), vendég `GuestPlace` + tipptartalom, `visit` minden képernyőn, „Tippek újra” a beállításokban. **Az „M feladatok” kör kész.** Következő: egyeztetni (nyitott ⚠️ tételek: CloudKit/fizetős fiók; K8 pánik mód felülete).
+- Korábban: `m10-guest-languages`. **M10 ✅**: vendég `Localizable.xcstrings` (56 szöveg × 8 nyelv), `AppLanguage`/`LanguageSettings`/`LanguageView` a SharedKitben (`AppLanguage.worker`, `.guest`). Hátravan: M11.
 - Korábban: `m8-guest-settings`. **M8 ✅, M9 ⚠️**: vendég `GuestSettingsViewModel`/`GuestSettingsView` (fogaskerék), a profilkép- és betöltéskód (`ProfilePictureViewModel`, `FileProfilePictureStore`, `ProfilePictureView`, `ProfileImage`, `LoadingViewModel`, `LoadingScreen`) a SharedKitbe költözött.
 - Korábban: `m7-raffle`. **A felhasználó kérése (2026-10-09): „jöjjenek az M feladatok”** → M7 ✅ (⚠️ N2), M8+M9, M10 (8 nyelv), M11. `EventCatalog.currentRaffles/enterRaffle/hasEnteredRaffle`, vendég `RaffleViewModel` + `RaffleView`, Manager: jelentkezők száma.
 - Korábban: `k3-loading-screen`. **K3 ✅**: `LoadingTracker` (SharedKit), `LoadingViewModel` + `LoadingScreen` fedőréteg, profilkép-betöltés bekötve. **A „k-kal” kör kész.** Következő: egyeztetni (M7–M11, illetve a ⚠️ tételek CloudKit nélkül nem zárhatók).
@@ -62,7 +63,7 @@
 
 ## 4. Tesztek (utolsó ismert állapot)
 
-- SharedKit: `cd SharedKit && swift test` → SharedKit 219 + AdminCore 34
+- SharedKit: `cd SharedKit && swift test` → SharedKit 224 + AdminCore 34
 - AuthService: `cd AuthService && swift test` → 5/5 (CI: Linux, `swift:6.4-noble`)
 - Manager BDD → 359/359
 - Vendég BDD: `xcodebuild test -skipMacroValidation -workspace NightLifeApps.xcworkspace -scheme Nightlife -only-testing:NightlifeTests -destination 'platform=iOS Simulator,name=iPhone 17 Pro'` → 90 BDD + 3 egységteszt
