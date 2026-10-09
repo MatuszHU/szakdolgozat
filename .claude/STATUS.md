@@ -32,6 +32,7 @@
 - 2026-10-08: L6 (`9582495`) és L10 (`4acc0e0`) zöld CI után a `master`-be.
 - 2026-10-08: L1, L2, L3, L5 (`0728b7e`) zöld CI után (run 37839858225) a `master`-be.
 - 2026-10-08: M4 (`0bed548`) zöld CI után (run 37838427883) a `master`-be. `master` = `0bed548`.
+- 2026-10-09: K9, K10, K15 (`a84f984`) zöld CI után (run 37909396900) a `master`-be.
 - 2026-10-09: K13 értesítések (`7469c24`) zöld CI után (run 37907852179) a `master`-be.
 - 2026-10-09: K12 összesítés (`33ef720`) zöld CI után (run 37905759679) a `master`-be.
 - 2026-10-09: K17 készletkérés (`6fbade2`) zöld CI után (run 37904647154) a `master`-be.
